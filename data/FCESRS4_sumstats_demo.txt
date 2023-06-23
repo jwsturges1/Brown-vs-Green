@@ -3,12 +3,19 @@
 # Summary Statistics
 #################################################################
 
-DIC = 128.9397
+DIC = 129.542
 
-                              Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
-p.dry19.Epiphytic microalgae 0.497 0.146 0.248 0.278 0.394 0.482 0.591 0.763 0.818
-p.wet19.Epiphytic microalgae 0.414 0.172 0.168 0.192 0.286 0.381 0.505 0.759 0.827
-p.dry19.Mangrove             0.294 0.092 0.084 0.121 0.238 0.303 0.359 0.428 0.452
-p.wet19.Mangrove             0.321 0.089 0.093 0.139 0.275 0.337 0.384 0.434 0.449
-p.dry19.Phytoplankton        0.208 0.090 0.031 0.054 0.147 0.208 0.269 0.357 0.381
-p.wet19.Phytoplankton        0.265 0.108 0.024 0.052 0.201 0.280 0.346 0.422 0.443
+                              Mean    SD  2.5%    5%   25%   50%   75%   95%
+p.dry19.Epiphytic microalgae 0.529 0.154 0.252 0.288 0.417 0.521 0.631 0.799
+p.wet19.Epiphytic microalgae 0.464 0.188 0.174 0.201 0.318 0.437 0.587 0.808
+p.dry19.Mangrove             0.281 0.095 0.071 0.102 0.223 0.291 0.350 0.424
+p.wet19.Mangrove             0.301 0.099 0.054 0.104 0.248 0.319 0.373 0.432
+p.dry19.Phytoplankton        0.190 0.094 0.019 0.039 0.119 0.188 0.256 0.349
+p.wet19.Phytoplankton        0.235 0.114 0.013 0.028 0.151 0.246 0.321 0.404
+                             97.5%
+p.dry19.Epiphytic microalgae 0.845
+p.wet19.Epiphytic microalgae 0.876
+p.dry19.Mangrove             0.444
+p.wet19.Mangrove             0.447
+p.dry19.Phytoplankton        0.381
+p.wet19.Phytoplankton        0.429

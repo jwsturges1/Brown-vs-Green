@@ -1,9 +1,9 @@
 # source$data_type: means
 # source$by_factor: NA
 # random effects: 0
-# fixed effects: 2
-# nested factors: FALSE FALSE
-# factors: season site
+# fixed effects: 1
+# nested factors: FALSE
+# factors: season
 # continuous effects: 0
 # error structure: Process only (MixSIR, for N = 1)
 # source$conc_dep: FALSE
@@ -33,19 +33,11 @@ model{
     }
   }
 
-  # draw the fac2 specific ILR terms (fixed effect)
-  for(src in 1:(n.sources-1)){
-    ilr.fac2[1,src] <- 0;
-    for(f2 in 2:factor2_levels){
-      ilr.fac2[f2,src] ~ dnorm(0,1);
-    }
-  }
-
    # DON'T generate individual deviates from the global/region/pack mean (but keep same model structure)
    for(i in 1:N) {
       for(src in 1:(n.sources-1)) {
          ilr.ind[i,src] <- 0;
-         ilr.tot[i,src] <- ilr.global[src] + ilr.fac1[Factor.1[i],src] + ilr.fac2[Factor.2[i],src] + ilr.ind[i,src]; # add all effects together for each individual (in ilr-space)
+         ilr.tot[i,src] <- ilr.global[src] + ilr.fac1[Factor.1[i],src] + ilr.ind[i,src]; # add all effects together for each individual (in ilr-space)
       }
    }
 
@@ -66,6 +58,20 @@ model{
       for(i in 1:N){
          # these are weights for variances
          p2[i,src] <- p.ind[i,src]*p.ind[i,src];
+      }
+   }
+
+   # Transform ilr.fac1 into p.fac1 (fac1 not nested within fac2)
+   for(f1 in 1:factor1_levels) {
+      for(src in 1:(n.sources-1)) {
+        ilr.fac1.tot[f1,src] <- ilr.global[src] + ilr.fac1[f1,src];
+        cross.fac1[f1,,src] <- (e[,src]^ilr.fac1.tot[f1,src])/sum(e[,src]^ilr.fac1.tot[f1,src]);
+      }
+      for(src in 1:n.sources) {
+        tmp.p.fac1[f1,src] <- prod(cross.fac1[f1,src,]);
+      }
+      for(src in 1:n.sources){
+        p.fac1[f1,src] <- tmp.p.fac1[f1,src]/sum(tmp.p.fac1[f1,]);
       }
    }
 
