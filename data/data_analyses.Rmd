@@ -600,7 +600,7 @@ source <- load_source_data(filename = "sourcesSRS6_2.csv",
 
 discr <- load_discr_data(file("FCE_TEF_SRS6_1.csv"), mix)
 
-plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
+#plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
 
 model_filename <- "SRS6_mix.txt"
 write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
@@ -805,8 +805,9 @@ output_JAGS(jags.RB10 , mix, source, output_jags.RB10)
 
 
 
-combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Epiphytic microalgae' ), brown=c('Mangrove')))
+combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior = 1,
+                                groups = list(green = c("Phytoplankton", "Epiphytic microalgae"),
+                                              brown = c("Mangrove")))
 
 
 
@@ -972,16 +973,16 @@ options(max.print = 6000000)
 
 
 
-fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
-            source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
-            mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                              c(2, 3), mean), 3))$value,
-            sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                            c(2, 3), sd), 3))$value,
-            `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                                c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
-            `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                                 c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
+# fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
+#             source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
+#             mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                               c(2, 3), mean), 3))$value,
+#             sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                             c(2, 3), sd), 3))$value,
+#             `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                                 c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
+#             `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                                  c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
 
 
 #                      Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
@@ -1214,8 +1215,8 @@ transectCS <- transectCS + facet_wrap(~season, scales = "free_x", nrow = 2, labe
 # Adjust the plot size for better visibility
 ggsave("transectCS_boxplot.png", transectCS, width = 10, height = 8, dpi = 300)
 
-mixoutput
 
+transectCS
 
 SRS_sumstats_gb<-read.csv('SRSMixout_gb.csv')
 SRS_sumstats_gb$site<-fct_relevel(SRS_sumstats_gb$site, "SRS3","RB10", "SRS4","SRS6")
