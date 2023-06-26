@@ -2,11 +2,12 @@
 title: "Sturges_Brown_Green_Code"
 author: "James Sturges"
 date: "2023-06-22"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+dev.off()
 ```
 
 # Librarys Used
@@ -375,7 +376,7 @@ jags.TS3 <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.TS3  <- list(summary_save = TRUE,
                                   summary_name = "FCETS3_sumstats",
                                   sup_post = FALSE,
-                                  plot_post_save_pdf = T,
+                                  plot_post_save_pdf = F,
                                   plot_post_name = "FCETS3_plot",
                                   sup_pairs = FALSE,
                                   plot_pairs_save_pdf = F,
@@ -389,7 +390,7 @@ output_jags.TS3  <- list(summary_save = TRUE,
                                   diag_save = F,
                                   diag_name = "FCETS3_Diagnostic",
                                   indiv_effect = FALSE,
-                                  plot_post_save_png = T,
+                                  plot_post_save_png = F,
                                   plot_pairs_save_png = FALSE,
                                   plot_xy_save_png = F)
 
@@ -457,7 +458,7 @@ jags.SRS4 <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.SRS4  <- list(summary_save = TRUE,
                          summary_name = "FCESRS4_sumstats",
                          sup_post = FALSE,
-                         plot_post_save_pdf = T,
+                         plot_post_save_pdf = F,
                          plot_post_name = "FCESRS4_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = F,
@@ -471,7 +472,7 @@ output_jags.SRS4  <- list(summary_save = TRUE,
                          diag_save = F,
                          diag_name = "FCESRS4_Diagnostic",
                          indiv_effect = FALSE,
-                         plot_post_save_png = T,
+                         plot_post_save_png = F,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = F)
 
@@ -539,7 +540,7 @@ jags.TSFB <- run_model(run="long", mix, source, discr, model_filename,
 output_jags.TSFB  <- list(summary_save = TRUE,
                           summary_name = "FCETSFB_sumstats",
                           sup_post = FALSE,
-                          plot_post_save_pdf = T,
+                          plot_post_save_pdf = F,
                           plot_post_name = "FCETSFB_plot",
                           sup_pairs = FALSE,
                           plot_pairs_save_pdf = F,
@@ -553,7 +554,7 @@ output_jags.TSFB  <- list(summary_save = TRUE,
                           diag_save = F,
                           diag_name = "FCETSFB_Diagnostic",
                           indiv_effect = FALSE,
-                          plot_post_save_png = T,
+                          plot_post_save_png = F,
                           plot_pairs_save_png = FALSE,
                           plot_xy_save_png = F)
 
@@ -600,7 +601,7 @@ source <- load_source_data(filename = "sourcesSRS6_2.csv",
 
 discr <- load_discr_data(file("FCE_TEF_SRS6_1.csv"), mix)
 
-plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
+#plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
 
 model_filename <- "SRS6_mix.txt"
 write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
@@ -622,7 +623,7 @@ jags.SRS6 <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.SRS6  <- list(summary_save = TRUE,
                          summary_name = "FCESRS6_sumstats",
                          sup_post = FALSE,
-                         plot_post_save_pdf = T,
+                         plot_post_save_pdf = F,
                          plot_post_name = "FCESRS6_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = F,
@@ -636,7 +637,7 @@ output_jags.SRS6  <- list(summary_save = TRUE,
                          diag_save = F,
                          diag_name = "FCESRS6_Diagnostic",
                          indiv_effect = FALSE,
-                         plot_post_save_png = T,
+                         plot_post_save_png = F,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = F)
 
@@ -692,7 +693,7 @@ jags.SRS4 <- run_model(run="short", mix, source, discr, model_filename,
 output_jags.SRS4  <- list(summary_save = TRUE,
                           summary_name = "FCESRS4_sumstats_demo",
                           sup_post = FALSE,
-                          plot_post_save_pdf = T,
+                          plot_post_save_pdf = F,
                           plot_post_name = "FCESRS4_plot_demo",
                           sup_pairs = FALSE,
                           plot_pairs_save_pdf = F,
@@ -706,7 +707,7 @@ output_jags.SRS4  <- list(summary_save = TRUE,
                           diag_save = F,
                           diag_name = "FCESRS4_Diagnostic_demo",
                           indiv_effect = FALSE,
-                          plot_post_save_png = T,
+                          plot_post_save_png = F,
                           plot_pairs_save_png = FALSE,
                           plot_xy_save_png = F)
 
@@ -772,7 +773,7 @@ jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.RB10  <- list(summary_save = TRUE,
                           summary_name = "FCERB10_sumstats",
                           sup_post = FALSE,
-                          plot_post_save_pdf = T,
+                          plot_post_save_pdf = F,
                           plot_post_name = "FCERB10_plot",
                           sup_pairs = FALSE,
                           plot_pairs_save_pdf = F,
@@ -786,7 +787,7 @@ output_jags.RB10  <- list(summary_save = TRUE,
                           diag_save = F,
                           diag_name = "FCERB10_Diagnostic",
                           indiv_effect = FALSE,
-                          plot_post_save_png = T,
+                          plot_post_save_png = F,
                           plot_pairs_save_png = FALSE,
                           plot_xy_save_png = F)
 
@@ -805,16 +806,17 @@ output_JAGS(jags.RB10 , mix, source, output_jags.RB10)
 
 
 
-combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Epiphytic microalgae' ), brown=c('Mangrove')))
+# combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior = 1,
+#                                 groups = list(green = c("Phytoplankton", "Epiphytic microalgae"),
+#                                               brown = c("Mangrove")))
 
 
 
 
 # get posterior medians for new source groupings
-apply(combinedRB10$post, 2, median)
-summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-             filename = "RB10_combined_sumstats" )
+# apply(combinedRB10$post, 2, median)
+# summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+#              filename = "RB10_combined_sumstats" )
 
 
 #             Mean    SD  2.5%   25%   50%   75% 97.5%
@@ -972,16 +974,16 @@ options(max.print = 6000000)
 
 
 
-fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
-            source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
-            mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                              c(2, 3), mean), 3))$value,
-            sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                            c(2, 3), sd), 3))$value,
-            `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                                c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
-            `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-                                                 c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
+# fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
+#             source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
+#             mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                               c(2, 3), mean), 3))$value,
+#             sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                             c(2, 3), sd), 3))$value,
+#             `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                                 c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
+#             `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
+#                                                  c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
 
 
 #                      Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
@@ -994,14 +996,14 @@ fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source
 #p.dry19.Sawgrass      0.273 0.093 0.073 0.110 0.214 0.274 0.338 0.422 0.448
 #p.wet19.Sawgrass      0.164 0.092 0.018 0.028 0.092 0.159 0.226 0.327 0.359
 
-combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Periphyton' ), brown=c('Sawgrass','Floc')))
+# combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('Phytoplankton','Periphyton' ), brown=c('Sawgrass','Floc')))
 
 
 # get posterior medians for new source groupings
-apply(combinedSRS3$post, 2, median)
-summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-             filename = "SRS3_combined_sumstats" )
+# apply(combinedSRS3$post, 2, median)
+# summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+#              filename = "SRS3_combined_sumstats" )
 
 
 #               Mean    SD  2.5%   25%   50%   75% 97.5%
@@ -1055,7 +1057,7 @@ jags.TSFB <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.TSFB  <- list(summary_save = TRUE,
                           summary_name = "FCETSFB_sumstats",
                           sup_post = FALSE,
-                          plot_post_save_pdf = T,
+                          plot_post_save_pdf = F,
                           plot_post_name = "FCETSFB_plot",
                           sup_pairs = FALSE,
                           plot_pairs_save_pdf = F,
@@ -1069,7 +1071,7 @@ output_jags.TSFB  <- list(summary_save = TRUE,
                           diag_save = F,
                           diag_name = "FCETSFB_Diagnostic",
                           indiv_effect = FALSE,
-                          plot_post_save_png = T,
+                          plot_post_save_png = F,
                           plot_pairs_save_png = FALSE,
                           plot_xy_save_png = F)
 
@@ -1154,7 +1156,7 @@ jags.TS3 <- run_model(run="normal", mix, source, discr, model_filename,
 output_jags.TS3  <- list(summary_save = TRUE,
                          summary_name = "FCETS3_sumstats",
                          sup_post = FALSE,
-                         plot_post_save_pdf = T,
+                         plot_post_save_pdf = F,
                          plot_post_name = "FCETS3_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = F,
@@ -1168,7 +1170,7 @@ output_jags.TS3  <- list(summary_save = TRUE,
                          diag_save = F,
                          diag_name = "FCETS3_Diagnostic",
                          indiv_effect = FALSE,
-                         plot_post_save_png = T,
+                         plot_post_save_png = F,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = F)
 
@@ -1214,8 +1216,8 @@ transectCS <- transectCS + facet_wrap(~season, scales = "free_x", nrow = 2, labe
 # Adjust the plot size for better visibility
 ggsave("transectCS_boxplot.png", transectCS, width = 10, height = 8, dpi = 300)
 
-mixoutput
 
+transectCS
 
 SRS_sumstats_gb<-read.csv('SRSMixout_gb.csv')
 SRS_sumstats_gb$site<-fct_relevel(SRS_sumstats_gb$site, "SRS3","RB10", "SRS4","SRS6")
