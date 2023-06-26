@@ -1,0 +1,2345 @@
+SITENAME	DATE	SALINTY	TN	TP
+Joe Bay	6/27/89			
+Little Madeira Bay	6/27/89			
+TSph9	6/27/89		37.93	0.53
+TSph10	6/28/89		36.21	0.45
+TSph11	6/28/89			
+Joe Bay	7/25/89			
+Little Madeira Bay	7/25/89			
+TSph9	7/25/89		45.93	0.31
+TSph10	7/26/89		71.93	0.45
+TSph11	7/26/89		16.86	0.49
+Little Madeira Bay	8/22/89			
+TSph9	8/22/89		43.57	0.45
+Joe Bay	8/23/89			
+TSph10	8/23/89		69.5	0.59
+TSph11	8/23/89		18	0.5
+Little Madeira Bay	11/8/89			
+TSph9	11/8/89		44.79	0.16
+Joe Bay	11/9/89			
+TSph10	11/9/89		62.64	0.13
+TSph11	11/9/89		28.21	0.45
+Joe Bay	12/7/89			
+TSph10	12/7/89		63.64	0.45
+TSph11	12/7/89		17.21	0.65
+Little Madeira Bay	12/8/89			
+TSph9	12/8/89		43.14	0.45
+Joe Bay	1/1/90			
+Little Madeira Bay	1/1/90			
+TSph10	1/1/90			
+TSph11	1/1/90			
+TSph9	1/1/90			
+Joe Bay	2/1/90			
+Little Madeira Bay	2/1/90			
+TSph10	2/1/90			
+TSph11	2/1/90			
+TSph9	2/1/90			
+Joe Bay	3/1/90			
+Little Madeira Bay	3/1/90			
+TSph10	3/1/90			
+TSph11	3/1/90			
+TSph9	3/1/90			
+Joe Bay	4/1/90			
+Little Madeira Bay	4/1/90			
+TSph10	4/1/90			
+TSph11	4/1/90			
+TSph9	4/1/90			
+Joe Bay	4/10/90			
+TSph10	4/10/90		55.07	0.3
+TSph11	4/10/90		16.79	0.36
+Little Madeira Bay	4/11/90			
+TSph9	4/11/90		45.5	0.34
+Joe Bay	5/1/90			
+Little Madeira Bay	5/1/90			
+TSph10	5/1/90			
+TSph11	5/1/90			
+TSph9	5/1/90			
+Joe Bay	6/1/90			
+Little Madeira Bay	6/1/90			
+TSph10	6/1/90			
+TSph11	6/1/90			
+TSph9	6/1/90			
+Joe Bay	7/1/90			
+Joe Bay	7/1/90			
+Little Madeira Bay	7/1/90			
+TSph10	7/1/90			
+TSph10	7/1/90		84.36	0.89
+TSph11	7/1/90			
+TSph11	7/1/90		21.71	0.45
+TSph9	7/1/90			
+Little Madeira Bay	7/2/90			
+TSph9	7/2/90		38.11	0.3
+Joe Bay	8/1/90			
+Little Madeira Bay	8/1/90			
+TSph10	8/1/90			
+TSph11	8/1/90			
+TSph9	8/1/90			
+Joe Bay	8/20/90			
+Little Madeira Bay	8/20/90			
+TSph10	8/20/90		81.46	0.47
+TSph11	8/20/90		20.79	0.45
+TSph9	8/20/90		58.32	0.35
+Joe Bay	9/1/90			
+Little Madeira Bay	9/1/90			
+TSph10	9/1/90			
+TSph11	9/1/90			
+TSph9	9/1/90			
+Joe Bay	10/1/90			
+Little Madeira Bay	10/1/90			
+TSph10	10/1/90			
+TSph11	10/1/90			
+TSph9	10/1/90			
+Joe Bay	11/1/90			
+Little Madeira Bay	11/1/90			
+TSph10	11/1/90			
+TSph11	11/1/90			
+TSph9	11/1/90			
+Joe Bay	12/1/90			
+Little Madeira Bay	12/1/90			
+TSph10	12/1/90			
+TSph11	12/1/90			
+TSph9	12/1/90			
+Joe Bay	1/1/91			
+Little Madeira Bay	1/1/91			
+TSph10	1/1/91			
+TSph11	1/1/91			
+TSph9	1/1/91			
+Joe Bay	2/1/91			
+Little Madeira Bay	2/1/91			
+TSph10	2/1/91			
+TSph11	2/1/91			
+TSph9	2/1/91			
+Joe Bay	3/1/91			
+Little Madeira Bay	3/1/91			
+TSph10	3/1/91			
+TSph11	3/1/91			
+TSph9	3/1/91			
+Joe Bay	3/14/91		63.57	0.51
+Little Madeira Bay	3/14/91		89	0.6
+TSph10	3/14/91		74.21	0.52
+TSph11	3/14/91			
+TSph9	3/14/91		68.21	0.47
+Joe Bay	4/16/91		66.06	0.68
+Little Madeira Bay	4/16/91		83.34	0.48
+TSph10	4/16/91		77.38	0.92
+TSph11	4/16/91			
+TSph9	4/16/91		70.46	0.54
+Joe Bay	5/1/91		133.21	0.44
+Little Madeira Bay	5/1/91		132.21	0.19
+TSph10	5/1/91		58.56	0.21
+TSph11	5/1/91			
+TSph9	5/1/91		79.27	0.32
+Joe Bay	6/11/91		84.22	0.32
+Little Madeira Bay	6/11/91		42.25	0.21
+TSph10	6/11/91		47.16	0.15
+TSph11	6/11/91			
+TSph9	6/11/91		38.45	0.14
+Joe Bay	7/9/91		57.42	0.55
+Little Madeira Bay	7/9/91		52.73	0.27
+TSph10	7/9/91		95.27	0.6
+TSph11	7/9/91			
+TSph9	7/9/91		54.03	0.32
+Joe Bay	7/30/91		100.58	0.61
+Little Madeira Bay	7/30/91		85.65	0.49
+TSph10	7/30/91		87.11	0.45
+TSph11	7/30/91			
+TSph9	7/30/91		114.94	0.38
+Joe Bay	9/11/91		72.84	0.74
+Little Madeira Bay	9/11/91		75.76	0.53
+TSph10	9/11/91		70.15	0.45
+TSph11	9/11/91			
+TSph9	9/11/91		61.81	0.39
+Joe Bay	10/9/91		52.69	0.64
+Little Madeira Bay	10/9/91		68.41	0.56
+TSph10	10/9/91		71.41	0.45
+TSph11	10/9/91			
+TSph9	10/9/91		57.98	0.46
+Joe Bay	11/13/91		37.81	0.39
+Little Madeira Bay	11/13/91		53.66	0.23
+TSph10	11/13/91		36.11	0.32
+TSph11	11/13/91			
+TSph9	11/13/91		49.66	0.23
+Joe Bay	12/4/91		56.18	0.58
+Little Madeira Bay	12/4/91		75.04	0.39
+TSph10	12/4/91		56.66	0.26
+TSph11	12/4/91			
+TSph9	12/4/91		63.6	0.37
+Joe Bay	1/15/92		48.38	0.33
+Little Madeira Bay	1/15/92		70.02	0.35
+TSph10	1/15/92		86.99	0.42
+TSph11	1/15/92			
+TSph9	1/15/92		59.27	0.27
+Joe Bay	2/11/92		43.22	0.49
+Little Madeira Bay	2/11/92		65.57	0.46
+TSph10	2/11/92		56.41	0.45
+TSph11	2/11/92			
+TSph9	2/11/92		43.23	0.4
+Joe Bay	3/10/92		62.52	0.44
+Little Madeira Bay	3/10/92		80.42	0.37
+TSph10	3/10/92		58.3	0.41
+TSph11	3/10/92			
+TSph9	3/10/92		103.87	0.27
+Joe Bay	4/22/92		60.23	0.34
+Little Madeira Bay	4/22/92		64.69	0.28
+TSph10	4/22/92		56.7	0.33
+TSph11	4/22/92			
+TSph9	4/22/92		64.89	0.25
+Joe Bay	5/13/92		71.1	0.37
+Little Madeira Bay	5/13/92		74.14	0.26
+TSph10	5/13/92		84.27	0.39
+TSph11	5/13/92			
+TSph9	5/13/92		70.17	0.27
+Joe Bay	6/17/92		99.11	0.45
+Little Madeira Bay	6/17/92		93.02	0.32
+TSph10	6/17/92		57.06	0.44
+TSph11	6/17/92			
+TSph9	6/17/92		67.4	0.18
+Joe Bay	7/15/92		57.61	0.67
+Little Madeira Bay	7/15/92		70.45	0.44
+TSph10	7/15/92		64.6	0.26
+TSph11	7/15/92		12.1	0.38
+TSph9	7/15/92		73.07	0.29
+Joe Bay	8/12/92		50.82	0.54
+Little Madeira Bay	8/12/92		66.85	0.41
+TSph10	8/12/92		103.05	0.28
+TSph11	8/12/92		13.69	0.31
+TSph9	8/12/92		64.54	0.21
+Joe Bay	9/8/92		82.85	0.61
+Little Madeira Bay	9/8/92		87.85	0.34
+TSph10	9/8/92		72.87	0.24
+TSph11	9/8/92		21.37	0.76
+TSph9	9/8/92		82.13	0.34
+Gunboat Isla-9999	9/15/92		73.36	0.62
+Oyster Bay	9/15/92		45.95	1.06
+Ponce de Leon Bay	9/15/92		40.54	1.04
+Tarpon Bay	9/15/92		79.4	0.57
+Joe Bay	10/13/92		74.61	0.43
+Little Madeira Bay	10/13/92		60.43	0.23
+TSph10	10/13/92		94.09	0.11
+TSph11	10/13/92		26.69	0.25
+TSph9	10/13/92		62.06	0.18
+Gunboat Isla-9999	10/20/92		206.19	0.56
+Oyster Bay	10/20/92		129.29	0.47
+Ponce de Leon Bay	10/20/92		115.89	0.48
+Tarpon Bay	10/20/92		210.8	0.46
+Joe Bay	11/10/92		56.61	0.55
+Little Madeira Bay	11/10/92		55.34	0.26
+TSph10	11/10/92		53.4	0.16
+TSph11	11/10/92		79.46	1.78
+TSph9	11/10/92		52.75	0.15
+Gunboat Isla-9999	11/17/92		111.33	0.49
+Oyster Bay	11/17/92		70.16	0.47
+Ponce de Leon Bay	11/17/92		44.89	0.37
+Tarpon Bay	11/17/92		122.56	0.48
+Joe Bay	12/1/92		60.77	0.47
+Little Madeira Bay	12/1/92		60.18	0.26
+TSph10	12/1/92		50.18	0.17
+TSph11	12/1/92		61.77	1.35
+TSph9	12/1/92		60.24	0.19
+Gunboat Isla-9999	12/8/92		85.29	0.7
+Oyster Bay	12/8/92		48.64	0.51
+Ponce de Leon Bay	12/8/92		34.93	0.52
+Tarpon Bay	12/8/92		93.53	0.61
+Joe Bay	1/20/93		58.97	0.55
+Little Madeira Bay	1/20/93		48.96	0.23
+TSph10	1/20/93		64.55	0.28
+TSph11	1/20/93		52.91	0.86
+TSph9	1/20/93		48.27	0.19
+Gunboat Isla-9999	1/27/93		124.76	0.87
+Oyster Bay	1/27/93		39.86	0.75
+Ponce de Leon Bay	1/27/93		49.61	0.72
+Tarpon Bay	1/27/93		113.51	0.71
+Joe Bay	2/9/93		53.71	0.47
+Little Madeira Bay	2/9/93		44.9	0.29
+TSph10	2/9/93		91.91	0.62
+TSph11	2/9/93		20.85	0.31
+TSph9	2/9/93		48.34	0.25
+Gunboat Isla-9999	2/17/93		76.34	0.68
+Oyster Bay	2/17/93		44.26	0.48
+Ponce de Leon Bay	2/17/93		34.76	0.46
+Tarpon Bay	2/17/93		103.03	0.74
+Joe Bay	3/9/93		49.27	0.47
+Little Madeira Bay	3/9/93		47.54	0.3
+TSph10	3/9/93		104.51	0.59
+TSph11	3/9/93		17.33	0.27
+TSph9	3/9/93		43.57	0.24
+Gunboat Isla-9999	3/23/93		78.47	0.92
+Oyster Bay	3/23/93		40.22	0.71
+Ponce de Leon Bay	3/23/93		29.05	0.14
+Tarpon Bay	3/23/93		84.92	1.12
+Joe Bay	4/6/93		60	0.5
+Little Madeira Bay	4/6/93		58.29	0.29
+TSph10	4/6/93		63.55	0.48
+TSph11	4/6/93		23.75	1.16
+TSph9	4/6/93		61.3	0.23
+Gunboat Isla-9999	4/28/93		106.85	1.29
+Oyster Bay	4/28/93		40.36	0.96
+Ponce de Leon Bay	4/28/93		38.36	0.63
+Tarpon Bay	4/28/93		107.37	1.45
+Joe Bay	5/11/93		63.63	0.51
+Little Madeira Bay	5/11/93		49.36	0.19
+TSph10	5/11/93		66.13	0.33
+TSph11	5/11/93		15.88	0.39
+TSph9	5/11/93		44.9	0.21
+Gunboat Isla-9999	5/19/93		64.38	0.53
+Oyster Bay	5/19/93		33.55	0.62
+Ponce de Leon Bay	5/19/93		32.91	0.53
+Tarpon Bay	5/19/93		118.4	0.54
+Joe Bay	6/2/93		56.97	0.44
+Little Madeira Bay	6/2/93		49.42	0.24
+TSph10	6/2/93		69.02	0.37
+TSph11	6/2/93		49.41	0.76
+TSph9	6/2/93		43.87	0.27
+Gunboat Isla-9999	6/9/93		86.94	0.64
+Oyster Bay	6/9/93		61.9	0.69
+Ponce de Leon Bay	6/9/93		57.75	0.67
+Tarpon Bay	6/9/93		102.92	0.54
+Joe Bay	7/6/93		108.45	0.53
+Little Madeira Bay	7/6/93		76.49	0.23
+TSph10	7/6/93		92.79	0.17
+TSph11	7/6/93		18.43	0.11
+TSph9	7/6/93		65.2	0.2
+Gunboat Isla-9999	7/13/93		83.4	0.74
+Oyster Bay	7/13/93		52.71	0.35
+Ponce de Leon Bay	7/13/93		40.91	0.41
+Tarpon Bay	7/13/93		81.64	0.6
+Joe Bay	8/3/93		67.37	0.47
+Little Madeira Bay	8/3/93		63.76	0.17
+TSph10	8/3/93		123.1	0.22
+TSph11	8/3/93		22.69	0.13
+TSph9	8/3/93		52.42	0.17
+Gunboat Isla-9999	8/10/93		63.49	0.54
+Oyster Bay	8/10/93		39.54	0.47
+Ponce de Leon Bay	8/10/93		37.51	0.41
+Tarpon Bay	8/10/93		81.39	0.43
+Joe Bay	9/8/93		63.37	0.39
+Little Madeira Bay	9/8/93		67.14	0.21
+TSph10	9/8/93		107.37	0.19
+TSph11	9/8/93		14	0.09
+TSph9	9/8/93		56.63	0.14
+Gunboat Isla-9999	9/16/93		63.28	0.47
+Oyster Bay	9/16/93		29.1	0.39
+Ponce de Leon Bay	9/16/93		25.24	0.31
+Tarpon Bay	9/16/93		75.4	0.63
+Joe Bay	10/5/93		57.96	0.58
+Little Madeira Bay	10/5/93		56.8	0.35
+TSph10	10/5/93		46.01	0.17
+TSph11	10/5/93		30.43	0.83
+TSph9	10/5/93		44.34	0.2
+Gunboat Isla-9999	10/12/93		37.33	0.69
+Oyster Bay	10/12/93		36.15	0.34
+Ponce de Leon Bay	10/12/93		32.46	0.47
+Tarpon Bay	10/12/93		62.88	0.73
+Joe Bay	11/2/93		67.66	0.32
+Little Madeira Bay	11/2/93		76.75	0.18
+TSph10	11/2/93		101.23	0.31
+TSph11	11/2/93		18.19	0.18
+TSph9	11/2/93		63.52	0.15
+Gunboat Isla-9999	11/9/93		49.02	0.88
+Oyster Bay	11/9/93		44.19	0.42
+Ponce de Leon Bay	11/9/93		30.28	0.41
+Tarpon Bay	11/9/93		71.2	1.2
+Joe Bay	12/1/93		35	0.56
+Little Madeira Bay	12/1/93		36.9	0.3
+TSph10	12/1/93		40.18	0.32
+TSph11	12/1/93		42.08	0.84
+TSph9	12/1/93		32.5	0.16
+Gunboat Isla-9999	12/7/93		104.3	0.57
+Oyster Bay	12/7/93		44.08	0.3
+Ponce de Leon Bay	12/7/93		41.11	0.24
+Tarpon Bay	12/7/93		97.94	0.68
+Joe Bay	1/10/94		45.58	0.43
+Little Madeira Bay	1/10/94		49.16	0.2
+TSph10	1/10/94		60.41	0.44
+TSph11	1/10/94		16.37	0.42
+TSph9	1/10/94		40.79	0.18
+Gunboat Isla-9999	1/24/94		90.63	1.01
+Oyster Bay	1/24/94		34.94	0.49
+Ponce de Leon Bay	1/24/94		34.22	0.49
+Tarpon Bay	1/24/94		87.75	0.85
+Joe Bay	2/1/94		58.91	0.39
+Little Madeira Bay	2/1/94		62.75	0.28
+TSph10	2/1/94		81	0.64
+TSph11	2/1/94		28.99	2.88
+TSph9	2/1/94		60.87	0.32
+Gunboat Isla-9999	2/8/94		62.62	0.56
+Oyster Bay	2/8/94		43.07	0
+Ponce de Leon Bay	2/8/94		33.19	0
+Tarpon Bay	2/8/94		116.06	0.6
+Joe Bay	3/8/94		66.59	0.41
+Little Madeira Bay	3/8/94		75.22	0.27
+TSph10	3/8/94		124.31	0.81
+TSph11	3/8/94		17.89	0.46
+TSph9	3/8/94		64.8	0.2
+Gunboat Isla-9999	3/12/94		52.41	0.43
+Oyster Bay	3/12/94		27.61	0.72
+Ponce de Leon Bay	3/12/94		24.69	0.42
+Tarpon Bay	3/12/94		89.2	0.72
+Joe Bay	4/5/94		39.77	0.32
+Little Madeira Bay	4/5/94		44.29	0.14
+TSph10	4/5/94		45.9	0.18
+TSph11	4/5/94		12.06	0.13
+TSph9	4/5/94		34.21	0.13
+Gunboat Isla-9999	4/12/94		50.97	0.94
+Oyster Bay	4/12/94		36.1	0.59
+Ponce de Leon Bay	4/12/94		29.02	0.67
+Tarpon Bay	4/12/94		83.3	1.51
+Joe Bay	5/3/94		71.63	0.48
+Little Madeira Bay	5/3/94		52.74	0.22
+TSph10	5/3/94		72.39	0.12
+TSph11	5/3/94		24.13	0.5
+TSph9	5/3/94		57.06	0.19
+Gunboat Isla-9999	5/10/94		45.2	0.92
+Oyster Bay	5/10/94		11.36	0.72
+Ponce de Leon Bay	5/10/94		32.73	0.71
+Tarpon Bay	5/10/94		71.1	1.27
+Joe Bay	6/7/94		71	0.36
+Little Madeira Bay	6/7/94		66.01	0.26
+TSph10	6/7/94		86.49	0.31
+TSph11	6/7/94		25.38	0.16
+TSph9	6/7/94		65.56	0.17
+Gunboat Isla-9999	6/21/94		43.89	1.25
+Oyster Bay	6/21/94		30.54	0.69
+Ponce de Leon Bay	6/21/94		26.32	0.78
+Tarpon Bay	6/21/94		75.02	1.37
+Joe Bay	7/6/94		69.07	0.55
+Little Madeira Bay	7/6/94		80.56	0.31
+TSph10	7/6/94		85.86	0.52
+TSph11	7/6/94		24.88	0.29
+TSph9	7/6/94		59.46	0.23
+Gunboat Isla-9999	7/12/94		73.8	1.06
+Oyster Bay	7/12/94		42.43	0.66
+Ponce de Leon Bay	7/12/94		34.46	0.48
+Tarpon Bay	7/12/94		75.02	1.04
+Joe Bay	8/2/94		73.23	0.32
+Little Madeira Bay	8/2/94		87.99	0.28
+TSph10	8/2/94		66.71	0.21
+TSph11	8/2/94		18.43	0.25
+TSph9	8/2/94		64.72	0.15
+Gunboat Isla-9999	8/9/94		82.28	1.25
+Oyster Bay	8/9/94		29.43	0.82
+Ponce de Leon Bay	8/9/94		30.38	0.82
+Tarpon Bay	8/9/94		86.94	1.13
+Joe Bay	9/13/94		73.78	0.38
+Little Madeira Bay	9/13/94		72.11	0.29
+TSph10	9/13/94		62.02	0.17
+TSph11	9/13/94		18.41	0.35
+TSph9	9/13/94		63.27	0.5
+Gunboat Isla-9999	9/20/94		70.39	0.78
+Oyster Bay	9/20/94		43.79	0.79
+Ponce de Leon Bay	9/20/94		34.72	0.81
+Tarpon Bay	9/20/94		75.5	0.94
+Joe Bay	10/4/94		43.86	0.8
+Little Madeira Bay	10/4/94		70.04	0.34
+TSph10	10/4/94		64.14	0.32
+TSph11	10/4/94		15.47	0.37
+TSph9	10/4/94		57.02	0.24
+Gunboat Isla-9999	10/11/94		77.43	0.85
+Oyster Bay	10/11/94		48.75	0.43
+Ponce de Leon Bay	10/11/94		46.91	0.4
+Tarpon Bay	10/11/94		78.56	0.74
+Joe Bay	11/1/94		53.23	0.65
+Little Madeira Bay	11/1/94		63.36	0.36
+TSph10	11/1/94		55.23	0.31
+TSph11	11/1/94		19.66	0.44
+TSph9	11/1/94		54.57	0.31
+Gunboat Isla-9999	11/8/94		64.94	0.67
+Oyster Bay	11/8/94		51.35	0.54
+Ponce de Leon Bay	11/8/94		39.15	0.64
+Tarpon Bay	11/8/94		69.92	0.9
+Joe Bay	11/21/94		39.63	0.56
+Little Madeira Bay	11/21/94		52.44	0.57
+TSph10	11/21/94		67.68	0.37
+TSph11	11/21/94		33.88	0.69
+TSph9	11/21/94		61.02	0.35
+Joe Bay	11/30/94		51.63	0.51
+Little Madeira Bay	11/30/94		56.11	0.29
+TSph10	11/30/94		63.15	0.2
+TSph11	11/30/94		47.97	0.8
+TSph9	11/30/94		57.51	0.21
+Gunboat Isla-9999	12/6/94		53.63	0.7
+Oyster Bay	12/6/94		56.02	1.08
+Ponce de Leon Bay	12/6/94		48.99	1.16
+Tarpon Bay	12/6/94		58.13	0.62
+Joe Bay	1/4/95		51.71	0.48
+Little Madeira Bay	1/4/95		53.12	0.14
+TSph10	1/4/95		70.06	0.26
+TSph11	1/4/95		27.88	1.29
+TSph9	1/4/95		48.51	0.15
+Gunboat Isla-9999	1/8/95		68.67	0.76
+Oyster Bay	1/8/95		52.59	1.07
+Ponce de Leon Bay	1/8/95		54.75	0.98
+Tarpon Bay	1/8/95		60.19	0.87
+Joe Bay	2/1/95		62.78	0.48
+Little Madeira Bay	2/1/95		52.28	0.31
+TSph10	2/1/95		104.64	0.72
+TSph11	2/1/95		24.36	0.38
+TSph9	2/1/95		48.92	0.27
+Gunboat Isla-9999	2/7/95		72.55	0.4
+Oyster Bay	2/7/95		54.83	1.11
+Ponce de Leon Bay	2/7/95		49.67	0.96
+Tarpon Bay	2/7/95		69.67	0.35
+Joe Bay	3/1/95		75.46	0.49
+Little Madeira Bay	3/1/95		57.19	0.25
+TSph10	3/1/95		81.37	0.29
+TSph11	3/1/95		21.5	0.45
+TSph9	3/1/95		56.88	0.23
+Gunboat Isla-9999	3/6/95		85.27	0.58
+Oyster Bay	3/6/95		45.19	1.42
+Ponce de Leon Bay	3/6/95		33.93	0.69
+Tarpon Bay	3/6/95		90.69	0.51
+Joe Bay	4/18/95		58.18	0.44
+Little Madeira Bay	4/18/95		51.98	0.2
+TSph10	4/18/95		61.84	0.23
+TSph11	4/18/95		18.37	0.26
+TSph9	4/18/95		41.88	0.18
+Gunboat Isla-9999	4/19/95		101.57	0.92
+Oyster Bay	4/19/95		62.36	1.06
+Ponce de Leon Bay	4/19/95		51.15	0.7
+Tarpon Bay	4/19/95		115.46	0.95
+Gunboat Isla-9999	5/8/95		84.03	0.94
+Oyster Bay	5/8/95		54.78	0.78
+Ponce de Leon Bay	5/8/95		38.82	0.49
+Tarpon Bay	5/8/95		104.85	0.72
+Joe Bay	5/23/95		63.59	0.21
+Little Madeira Bay	5/23/95		61.34	0.17
+TSph10	5/23/95		96.32	0.21
+TSph11	5/23/95		18.72	0.24
+TSph9	5/23/95		46.42	0.14
+Gunboat Isla-9999	6/13/95		74.15	0.88
+Oyster Bay	6/13/95		53.74	1.02
+Ponce de Leon Bay	6/13/95		46.76	0.75
+Tarpon Bay	6/13/95		76.67	1.08
+Joe Bay	6/20/95		78.9	0.41
+Little Madeira Bay	6/20/95		59.01	0.3
+TSph10	6/20/95		73.56	0.34
+TSph11	6/20/95		22.84	0.76
+TSph9	6/20/95		48.69	0.26
+Gunboat Isla-9999	7/11/95		67.651	1.165
+Joe Bay	7/11/95		64.601	0.513
+Little Madeira Bay	7/11/95		53.39	0.255
+Oyster Bay	7/11/95		48.845	1.03
+Ponce de Leon Bay	7/11/95		48.545	1.415
+Tarpon Bay	7/11/95		63.82	1.063
+TSph10	7/11/95		89.115	0.64
+TSph11	7/11/95		14.897	0.32
+TSph9	7/11/95		49.526	0.228
+Gunboat Isla-9999	8/10/95		54.363	0.733
+Joe Bay	8/10/95		66.268	0.47
+Little Madeira Bay	8/10/95		67.735	0.353
+Oyster Bay	8/10/95		48.762	0.615
+Ponce de Leon Bay	8/10/95		42.968	0.663
+Tarpon Bay	8/10/95		60.534	0.713
+TSph10	8/10/95		78.219	0.22
+TSph11	8/10/95		16.642	0.268
+TSph9	8/10/95		56.906	0.29
+Gunboat Isla-9999	9/7/95		52.468	0.49
+Joe Bay	9/7/95		53.585	0.578
+Little Madeira Bay	9/7/95		65.205	0.353
+Oyster Bay	9/7/95		41.256	0.965
+Ponce de Leon Bay	9/7/95		39.165	0.718
+Tarpon Bay	9/7/95		52.572	0.593
+TSph10	9/7/95		62.301	0.363
+TSph11	9/7/95		15.505	0.275
+TSph9	9/7/95		51.41	0.318
+Gunboat Isla-9999	10/19/95		54.255	0.393
+Joe Bay	10/19/95		52.94	0.75
+Little Madeira Bay	10/19/95		47.362	0.393
+Oyster Bay	10/19/95		44.049	1.003
+Ponce de Leon Bay	10/19/95		47.769	1.11
+Tarpon Bay	10/19/95		53.214	0.375
+TSph10	10/19/95		59.308	0.218
+TSph11	10/19/95		18.908	0.185
+TSph9	10/19/95		53.441	0.27
+Gunboat Isla-9999	11/16/95		62.556	0.563
+Joe Bay	11/16/95		66.95	0.508
+Little Madeira Bay	11/16/95		54.144	0.34
+Oyster Bay	11/16/95		45.334	0.958
+Ponce de Leon Bay	11/16/95		35.745	0.628
+Tarpon Bay	11/16/95		59.366	0.618
+TSph10	11/16/95		58.997	0.333
+TSph11	11/16/95		29.055	0.393
+TSph9	11/16/95		47.702	0.203
+Gunboat Isla-9999	12/13/95		61.149	0.873
+Joe Bay	12/13/95		65.272	0.513
+Little Madeira Bay	12/13/95		55.523	0.33
+Oyster Bay	12/13/95		41.336	0.778
+Ponce de Leon Bay	12/13/95		41.155	0.728
+Tarpon Bay	12/13/95		62.644	0.933
+TSph10	12/13/95		60.577	0.328
+TSph11	12/13/95		24.554	0.383
+TSph9	12/13/95		48.519	0.255
+Gunboat Isla-9999	1/15/96		81.04	0.285
+Ponce de Leon Bay	1/15/96		45.599	0.35
+Tarpon Bay	1/15/96		78.026	0.28
+Oyster Bay	1/16/96		45.862	0.405
+TSph10	1/23/96		72.018	0.413
+TSph11	1/23/96		13.197	0.403
+Joe Bay	1/24/96		62.48	0.558
+Little Madeira Bay	1/24/96		50.973	0.335
+TSph9	1/24/96		52.517	0.273
+Oyster Bay	2/5/96		44.367	1.07
+Gunboat Isla-9999	2/6/96		90.341	0.51
+Ponce de Leon Bay	2/6/96		46.531	0.465
+Tarpon Bay	2/6/96		98.383	0.398
+TSph10	2/12/96		72.262	0.288
+TSph11	2/12/96		18.579	0.578
+Joe Bay	2/14/96		62.719	0.438
+Little Madeira Bay	2/14/96		51.874	0.265
+TSph9	2/14/96		50.429	0.19
+Ponce de Leon Bay	3/4/96		40.082	0.573
+Gunboat Isla-9999	3/5/96		91.637	0.833
+Oyster Bay	3/5/96		51.793	1.188
+Tarpon Bay	3/5/96		106.551	1.148
+Joe Bay	3/21/96		56.726	0.303
+Little Madeira Bay	3/21/96		70.431	0.243
+TSph9	3/21/96		54.327	0.248
+TSph10	3/22/96		49.352	0.348
+TSph11	3/22/96		8.961	0.385
+Gunboat Isla-9999	4/16/96		42.432	0.485
+Ponce de Leon Bay	4/16/96		44.154	0.678
+Tarpon Bay	4/16/96		78.957	0.72
+Oyster Bay	4/17/96		31.974	0.38
+Joe Bay	4/24/96		64.557	0.535
+Little Madeira Bay	4/24/96		55.915	0.368
+TSph9	4/24/96		46.428	0.228
+TSph10	4/25/96		59.162	0.27
+TSph11	4/25/96		15.505	0.45
+Joe Bay	5/9/96		76.462	0.623
+Little Madeira Bay	5/9/96		65.917	0.263
+TSph9	5/9/96		50.892	0.195
+TSph10	5/10/96		45.019	0.16
+TSph11	5/10/96		19.083	0.243
+Gunboat Isla-9999	5/21/96		44.009	0.743
+Ponce de Leon Bay	5/21/96		30.805	0.655
+Tarpon Bay	5/21/96		67.195	0.775
+Oyster Bay	5/22/96		30.616	0.615
+TSph10	6/6/96		79.162	0.228
+TSph11	6/6/96		27.515	0.343
+Joe Bay	6/7/96		107.217	0.398
+Little Madeira Bay	6/7/96		71.855	0.185
+TSph9	6/7/96		48.697	0.138
+Gunboat Isla-9999	6/18/96		54.238	0.575
+Ponce de Leon Bay	6/18/96		33.863	0.525
+Tarpon Bay	6/18/96		67.238	0.48
+Oyster Bay	6/19/96		36.014	0.615
+Joe Bay	7/4/96		60.848	0.528
+Little Madeira Bay	7/4/96		57.342	0.255
+TSph9	7/4/96		48.605	0.305
+TSph10	7/5/96		84.545	0.228
+TSph11	7/5/96		12.483	0.233
+Oyster Bay	7/16/96		63.919	1.398
+Gunboat Isla-9999	7/17/96		61.6	0.418
+Ponce de Leon Bay	7/17/96		64.282	0.98
+Tarpon Bay	7/17/96		61.654	0.43
+Gunboat Isla-9999	8/15/96		66.139	0.563
+Ponce de Leon Bay	8/15/96		34.958	0.363
+Tarpon Bay	8/15/96		79.469	0.435
+Oyster Bay	8/16/96		41.584	0.588
+Joe Bay	8/21/96		66.345	0.525
+Little Madeira Bay	8/21/96		69.219	0.295
+TSph9	8/21/96		56.509	0.168
+TSph10	8/22/96		81.448	0.183
+TSph11	8/22/96		22.382	0.375
+Joe Bay	9/13/96		73.24	0.333
+Little Madeira Bay	9/13/96		71.123	0.245
+TSph9	9/13/96		66.273	0.225
+TSph10	9/14/96		125.753	0.643
+TSph11	9/14/96		19.56	0.315
+Oyster Bay	9/18/96		44.103	0.418
+Gunboat Isla-9999	9/19/96		72.069	0.42
+Ponce de Leon Bay	9/19/96		41.166	0.518
+Tarpon Bay	9/19/96		73.725	0.38
+Joe Bay	10/14/96		54.746	0.315
+TSph9	10/14/96		54.35	0.2
+Little Madeira Bay	10/15/96		77.461	0.255
+TSph10	10/15/96		90.45	0.353
+TSph11	10/15/96		21.439	0.418
+Oyster Bay	10/22/96		45.415	0.475
+Gunboat Isla-9999	10/23/96		60.883	0.59
+Ponce de Leon Bay	10/23/96		39.223	0.475
+Tarpon Bay	10/23/96		73.237	0.483
+Little Madeira Bay	11/7/96		52.047	0.24
+TSph11	11/7/96		27.956	0.293
+Joe Bay	11/8/96		48.897	0.37
+TSph10	11/8/96		38.418	0.153
+TSph9	11/8/96		44.893	0.13
+Oyster Bay	11/21/96		31.325	0.463
+Gunboat Isla-9999	11/22/96		44.54	0.428
+Ponce de Leon Bay	11/22/96		30.52	0.57
+Tarpon Bay	11/22/96		73.149	0.423
+Joe Bay	12/5/96		53.918	0.378
+Little Madeira Bay	12/5/96		53.33	0.253
+TSph9	12/5/96		44.089	0.16
+TSph10	12/6/96		48.363	0.138
+TSph11	12/6/96		37.423	0.49
+Oyster Bay	1/2/97		41.333	0.175
+Ponce de Leon Bay	1/2/97		31.732	0.178
+Gunboat Isla-9999	1/3/97		74.268	0.355
+Tarpon Bay	1/3/97		87.406	0.408
+Joe Bay	1/7/97		37.353	0.283
+Little Madeira Bay	1/7/97		36.772	0.178
+TSph9	1/7/97		33.229	0.143
+TSph10	1/8/97		61.954	0.213
+TSph11	1/8/97		51.8	0.285
+Gunboat Isla-9999	1/28/97		83.391	0.305
+Oyster Bay	1/28/97		40.756	0.248
+Ponce de Leon Bay	1/28/97		33.926	0.353
+Tarpon Bay	1/28/97		76.377	0.27
+Joe Bay	2/14/97		49.281	0.345
+Little Madeira Bay	2/14/97		44.861	0.195
+TSph9	2/14/97		35.98	0.158
+TSph10	2/15/97		55.117	0.233
+TSph11	2/15/97		17.926	0.095
+Gunboat Isla-9999	2/25/97		58.151	0.343
+Oyster Bay	2/25/97		32.723	0.405
+Ponce de Leon Bay	2/25/97		33.302	0.475
+Tarpon Bay	2/25/97		83.754	0.525
+Little Madeira Bay	3/12/97		46.873	0.213
+TSph10	3/12/97		31.904	0.16
+TSph11	3/12/97		17.014	0.258
+Joe Bay	3/13/97		43.054	0.363
+TSph9	3/13/97		33.613	0.175
+Gunboat Isla-9999	3/25/97		50.139	0.5
+Oyster Bay	3/25/97		30.82	0.493
+Ponce de Leon Bay	3/25/97		31.539	0.515
+Tarpon Bay	3/25/97		63.411	0.598
+Joe Bay	4/15/97		35.027	0.263
+Little Madeira Bay	4/15/97		42.356	0.198
+TSph9	4/15/97		32.493	0.135
+TSph10	4/16/97		34.953	0.19
+TSph11	4/16/97		19.158	0.24
+Gunboat Isla-9999	4/23/97		43.89	0.49
+Oyster Bay	4/23/97		31.725	0.505
+Ponce de Leon Bay	4/23/97		32.475	0.523
+Tarpon Bay	4/23/97		64.009	0.583
+Gunboat Isla-9999	5/20/97		52.948	0.668
+Oyster Bay	5/20/97		39.63	0.545
+Ponce de Leon Bay	5/20/97		43.035	0.548
+Tarpon Bay	5/20/97		71.583	0.638
+TSph10	5/22/97		61.089	0.118
+TSph11	5/22/97		23.647	0.248
+Joe Bay	5/23/97		53.961	0.183
+Little Madeira Bay	5/23/97		50.39	0.123
+TSph9	5/23/97		43.459	0.105
+Joe Bay	6/11/97		55.132	0.25
+Little Madeira Bay	6/11/97		41.388	0.28
+TSph10	6/11/97		73.113	0.295
+TSph9	6/11/97		45.12	0.185
+TSph11	6/12/97		17.061	0.3
+Gunboat Isla-9999	6/24/97		48.518	0.848
+Oyster Bay	6/24/97		48.871	1.615
+Ponce de Leon Bay	6/24/97		44.091	1.403
+Tarpon Bay	6/24/97		50.239	0.718
+Joe Bay	7/9/97		77.325	0.34
+Little Madeira Bay	7/9/97		62.772	0.278
+TSph9	7/9/97		58.166	0.188
+TSph10	7/10/97		70.247	0.283
+TSph11	7/10/97		17.473	0.42
+Gunboat Isla-9999	7/23/97		46.454	0.43
+Oyster Bay	7/23/97		36.609	0.69
+Ponce de Leon Bay	7/23/97		33.085	0.678
+Tarpon Bay	7/23/97		43.992	0.395
+TSph10	8/19/97		68.912	0.215
+TSph11	8/19/97		18.26	0.245
+Joe Bay	8/20/97		67.731	0.3
+Little Madeira Bay	8/20/97		56.537	0.235
+TSph9	8/20/97		56.482	0.24
+Gunboat Isla-9999	8/21/97		51.806	0.408
+Oyster Bay	8/21/97		32.532	0.845
+Ponce de Leon Bay	8/21/97		28.773	0.91
+Tarpon Bay	8/21/97		52.88	0.433
+Joe Bay	9/9/97		55.558	0.39
+Little Madeira Bay	9/9/97		60.42	0.27
+TSph9	9/9/97		54.845	0.17
+TSph10	9/10/97		71.439	0.245
+TSph11	9/10/97		28.594	0.323
+Gunboat Isla-9999	9/16/97		53.6	0.628
+Oyster Bay	9/16/97		49.962	0.608
+Ponce de Leon Bay	9/16/97		42.947	0.535
+Tarpon Bay	9/16/97		77.325	0.433
+Oyster Bay	10/8/97		61.695	1.098
+Ponce de Leon Bay	10/8/97		44.788	0.69
+Gunboat Isla-9999	10/9/97		62.03	0.44
+Tarpon Bay	10/9/97		66.511	0.4
+Little Madeira Bay	10/21/97		59.231	0.263
+TSph10	10/21/97		47.443	0.183
+TSph11	10/21/97		27.837	0.47
+Joe Bay	10/22/97		56.342	0.215
+TSph9	10/22/97		49.84	0.195
+Oyster Bay	11/5/97		42.471	0.535
+Ponce de Leon Bay	11/5/97		40.149	0.42
+Gunboat Isla-9999	11/6/97		72.816	0.355
+Tarpon Bay	11/6/97		76.343	0.423
+Joe Bay	11/24/97		59.437	0.385
+Little Madeira Bay	11/24/97		58.717	0.293
+TSph9	11/24/97		48.007	0.175
+TSph10	11/25/97		70.571	0.315
+TSph11	11/25/97		21.212	0.375
+Gunboat Isla-9999	12/9/97		56.062	0.415
+Ponce de Leon Bay	12/9/97		34.567	0.43
+Tarpon Bay	12/9/97		57.323	0.4
+Oyster Bay	12/10/97		32.147	0.48
+Joe Bay	12/11/97		41.749	0.37
+Little Madeira Bay	12/11/97		40.467	0.278
+TSph9	12/11/97		38.033	0.268
+TSph10	12/12/97		49.018	0.265
+TSph11	12/12/97		12.993	0.278
+Joe Bay	1/20/98		51.434	0.475
+Little Madeira Bay	1/20/98		42.712	0.357
+TSph9	1/20/98		40.312	0.217
+TSph10	1/21/98		53.822	0.232
+TSph11	1/21/98		14.486	0.267
+Gunboat Isla-9999	1/29/98		44.08	0.457
+Oyster Bay	1/29/98		25.112	0.285
+Ponce de Leon Bay	1/29/98		28.727	0.774
+Tarpon Bay	1/29/98		57.93	0.387
+Joe Bay	2/17/98		41.034	0.477
+Little Madeira Bay	2/17/98		43.026	0.392
+TSph9	2/17/98		43.66	0.312
+TSph10	2/18/98		54.177	0.257
+TSph11	2/18/98		12.463	0.25
+Gunboat Isla-9999	2/25/98		52.816	0.465
+Oyster Bay	2/25/98		31.517	0.497
+Ponce de Leon Bay	2/25/98		28.443	0.672
+Tarpon Bay	2/25/98		55.54	0.467
+Joe Bay	3/19/98		51.065	0.336
+TSph9	3/19/98		42.122	0.223
+Little Madeira Bay	3/20/98		44.095	0.152
+TSph10	3/20/98		44.788	0.217
+TSph11	3/20/98		15.712	0.239
+Gunboat Isla-9999	3/24/98		63.088	0.255
+Oyster Bay	3/24/98		41.349	0.667
+Ponce de Leon Bay	3/24/98		39.142	1.049
+Tarpon Bay	3/24/98		63.929	0.357
+Gunboat Isla-9999	4/13/98		53.88	0.43
+Oyster Bay	4/13/98		36.545	0.498
+Ponce de Leon Bay	4/13/98		32.973	0.79
+Tarpon Bay	4/13/98		70.789	0.315
+Joe Bay	4/14/98		55.768	0.375
+Little Madeira Bay	4/14/98		43.718	0.158
+TSph9	4/14/98		35.053	0.143
+TSph10	4/15/98		52.8	0.18
+TSph11	4/15/98		16.818	0.265
+Joe Bay	5/13/98		57.631	0.25
+Little Madeira Bay	5/13/98		50.359	0.153
+TSph9	5/13/98		42.4	0.173
+TSph10	5/14/98		66.408	0.303
+TSph11	5/14/98		18.431	0.273
+Gunboat Isla-9999	5/22/98		38.097	0.188
+Oyster Bay	5/22/98		34.893	0.195
+Ponce de Leon Bay	5/22/98		33.5	0.213
+Tarpon Bay	5/22/98		62.551	0.243
+Joe Bay	6/9/98		56.681	0.195
+Little Madeira Bay	6/9/98		53.626	0.138
+TSph9	6/9/98		45.891	0.073
+TSph10	6/10/98		59.075	0.228
+TSph11	6/10/98		13.394	0.193
+Gunboat Isla-9999	6/16/98		53.748	0.698
+Oyster Bay	6/16/98		33.449	0.713
+Ponce de Leon Bay	6/16/98		36.34	0.56
+Tarpon Bay	6/16/98		70.483	0.4
+Gunboat Isla-9999	7/7/98		45.759	0.683
+Oyster Bay	7/7/98		49.811	1.01
+Ponce de Leon Bay	7/7/98		33.121	0.89
+Tarpon Bay	7/7/98		68.599	0.658
+TSph10	7/14/98		59.14	0.193
+TSph11	7/14/98		17.429	0.28
+Joe Bay	7/15/98		52.539	0.16
+Little Madeira Bay	7/15/98		56.576	0.128
+TSph9	7/15/98		47.704	0.093
+Gunboat Isla-9999	8/5/98		43.573	0.538
+Oyster Bay	8/5/98		38.382	0.63
+Ponce de Leon Bay	8/5/98		28.675	0.513
+Tarpon Bay	8/5/98		58.817	0.488
+Joe Bay	8/18/98		78.36	0.158
+Little Madeira Bay	8/18/98		61.021	0.205
+TSph9	8/18/98		55.866	0.033
+TSph10	8/19/98		68.105	0.245
+TSph11	8/19/98		15.765	0.275
+TSph10	9/17/98		43.187	0.255
+TSph11	9/17/98		18.768	0.27
+Joe Bay	9/18/98		45.43	0.165
+Little Madeira Bay	9/18/98		53.767	0.195
+TSph9	9/18/98		51.287	0.175
+Joe Bay	9/29/98		41.333	0.304
+Little Madeira Bay	9/29/98		52.565	0.275
+TSph9	9/29/98		55.246	0.218
+TSph10	9/30/98		43.101	0.279
+TSph11	9/30/98		9.145	0.246
+Gunboat Isla-9999	10/2/98		41.474	0.864
+Oyster Bay	10/2/98		37.939	1.16
+Ponce de Leon Bay	10/2/98		33.35	0.956
+Tarpon Bay	10/2/98		41.371	0.312
+Little Madeira Bay	11/3/98		55.882	0.168
+TSph10	11/3/98		34.706	0.202
+TSph11	11/3/98		25.041	0.29
+Joe Bay	11/4/98		59.208	0.2
+TSph9	11/4/98		53.427	0.162
+Gunboat Isla-9999	11/12/98		44.645	0.365
+Oyster Bay	11/12/98		38.664	0.805
+Ponce de Leon Bay	11/12/98		30.497	1.109
+Tarpon Bay	11/12/98		44.328	0.29
+Little Madeira Bay	12/1/98		50.059	0.418
+TSph10	12/1/98		46.561	0.361
+TSph11	12/1/98		21.756	0.553
+Joe Bay	12/2/98		59.619	0.388
+TSph9	12/2/98		42.548	0.36
+Gunboat Isla-9999	12/3/98		48.345	0.82
+Oyster Bay	12/3/98		43.018	0.877
+Ponce de Leon Bay	12/3/98		36.296	0.733
+Tarpon Bay	12/3/98		56.494	0.615
+Gunboat Isla-9999	1/12/99		73.693	0.4
+Oyster Bay	1/12/99		39.164	0.47
+Ponce De Leon Bay	1/12/99		35.209	0.558
+Tarpon Bay	1/12/99		77.911	0.268
+Joe Bay	1/14/99		41.204	0.33
+Little Madeira Bay	1/14/99		34.269	0.203
+TSph10	1/14/99		49.084	0.259
+TSph11	1/14/99		25.964	0.632
+TSph9	1/14/99		35.772	0.158
+Joe Bay	2/10/99		50.056	0.22
+TSph10	2/10/99		63.109	0.13
+TSph11	2/10/99		27.919	0.163
+TSph9	2/10/99		42.069	0.1
+Little Madeira Bay	2/11/99		46.592	0.123
+Gunboat Isla-9999	2/22/99		59.056	0.3
+Ponce De Leon Bay	2/22/99		22.467	0.342
+Tarpon Bay	2/22/99		60.282	0.285
+Oyster Bay	2/23/99		23.638	0.321
+Gunboat Isla-9999	3/8/99		57.518	0.242
+Oyster Bay	3/8/99		28.752	0.363
+Ponce De Leon Bay	3/8/99		31.113	0.314
+Tarpon Bay	3/8/99		65.389	0.331
+Little Madeira Bay	3/23/99		46.44	0.108
+TSph10	3/23/99		45.157	0.262
+TSph11	3/23/99		12.554	0.193
+Joe Bay	3/24/99		47.046	0.225
+TSph9	3/24/99		37.354	0.089
+Gunboat Isla-9999	4/27/99		34.245	0.718
+Oyster Bay	4/27/99		36.243	0.658
+Ponce De Leon Bay	4/27/99		25.622	0.605
+Tarpon Bay	4/27/99		50.733	0.703
+Little Madeira Bay	4/29/99		52.853	0.328
+TSph10	4/29/99		50.362	0.503
+TSph11	4/29/99		13.001	0.453
+Joe Bay	4/30/99		52.105	0.358
+TSph9	4/30/99		45.25	0.335
+Gunboat Isla-9999	5/11/99		28.94	0.498
+Oyster Bay	5/11/99		22.593	0.589
+Ponce De Leon Bay	5/11/99		23.678	0.411
+Tarpon Bay	5/11/99		43.086	0.411
+Joe Bay	5/28/99		52.791	0.208
+Little Madeira Bay	5/28/99		55.898	0.163
+TSph10	5/28/99		59.091	0.16
+TSph11	5/28/99		14.135	0.333
+TSph9	5/28/99		59.592	0.3
+Little Madeira Bay	6/17/99		73.123	0.166
+TSph10	6/17/99		47.813	0.245
+TSph11	6/17/99		16.918	0.145
+Joe Bay	6/18/99		58.799	0.163
+TSph9	6/18/99		47.599	0.3
+Gunboat Isla-9999	6/25/99		55.851	0.505
+Oyster Bay	6/25/99		40.23	0.599
+Ponce De Leon Bay	6/25/99		35.11	0.523
+Tarpon Bay	6/25/99		56.724	0.45
+Joe Bay	7/6/99		69.487	0.434
+Little Madeira Bay	7/6/99		55.242	0.345
+TSph10	7/6/99		63.43	0.223
+TSph11	7/6/99		15.955	0.381
+TSph9	7/6/99		53.816	0.264
+Gunboat Isla-9999	7/27/99		43.411	0.563
+Oyster Bay	7/27/99		51.869	0.583
+Ponce De Leon Bay	7/27/99		34.9	0.565
+Tarpon Bay	7/27/99		53.92	0.623
+Gunboat Isla-9999	8/16/99		63.428	0.41
+Oyster Bay	8/16/99		36.812	0.555
+Ponce De Leon Bay	8/16/99		39.146	0.535
+Tarpon Bay	8/16/99		62.55	0.45
+Little Madeira Bay	8/24/99		56.033	0.278
+TSph10	8/24/99		61.571	0.118
+TSph11	8/24/99		20.589	0.21
+Joe Bay	8/25/99		57.222	0.31
+TSph9	8/25/99		53.353	0.328
+Little Madeira Bay	9/23/99		76.904	0.308
+TSph10	9/23/99		98.11	0.408
+TSph11	9/23/99		20.826	0.333
+Gunboat Isla-9999	9/24/99		43.924	0.805
+Joe Bay	9/24/99		58.796	0.263
+Oyster Bay	9/24/99		54.024	0.815
+Ponce De Leon Bay	9/24/99		49.065	0.643
+Tarpon Bay	9/24/99		41.665	0.55
+TSph9	9/24/99		68.06	0.2
+Gunboat Isla-9999	10/22/99		26.546	0.526
+Tarpon Bay	10/22/99		25.931	0.702
+Oyster Bay	10/23/99		47.33	1.11
+Ponce De Leon Bay	10/23/99		41.034	1.081
+Joe Bay	10/25/99		20.105	0.242
+Little Madeira Bay	10/25/99		47.663	0.263
+TSph9	10/25/99		35.833	0.2
+TSph10	10/26/99		38.494	0.127
+TSph11	10/26/99		61.891	1.411
+TSph10	11/12/99		29.713	0.155
+TSph11	11/12/99		35.896	2.661
+Joe Bay	11/13/99		21.367	0.44
+Little Madeira Bay	11/13/99		27.695	0.243
+TSph9	11/13/99		24.298	0.222
+Gunboat Isla-9999	11/19/99		25.94	0.293
+Oyster Bay	11/19/99		40.679	0.952
+Ponce De Leon Bay	11/19/99		45.317	0.697
+Tarpon Bay	11/19/99		21.964	0.273
+Joe Bay	12/2/99		49.396	0.185
+Little Madeira Bay	12/2/99		50.941	0.188
+TSph9	12/2/99		43.952	0.105
+TSph10	12/3/99		40.022	0.093
+TSph11	12/3/99		40.198	1.103
+Gunboat Isla-9999	12/10/99		61.796	0.429
+Oyster Bay	12/10/99		41.155	0.504
+Ponce De Leon Bay	12/10/99		39.318	0.531
+Tarpon Bay	12/10/99		56.839	0.322
+Gunboat Isla-9999	1/11/00		39.706	0.362
+Oyster Bay	1/11/00		21.651	0.949
+Ponce De Leon Bay	1/11/00		20.679	0.7
+Tarpon Bay	1/11/00		47.718	0.348
+Joe Bay	1/24/00		41.318	0.269
+Little Madeira Bay	1/24/00		38.928	0.237
+TSph9	1/24/00		32.21	0.212
+TSph10	1/25/00		55.778	0.318
+TSph11	1/25/00		18.625	0.706
+Oyster Bay	2/3/00		34.946	1.138
+Gunboat Isla-9999	2/4/00		52.496	0.736
+Ponce De Leon Bay	2/4/00		29.938	0.927
+Tarpon Bay	2/4/00		55.892	0.534
+TSph10	2/28/00		31.495	0.066
+TSph11	2/28/00		20.229	0.114
+Joe Bay	2/29/00		35.771	0.533
+Little Madeira Bay	2/29/00		34.301	0.217
+TSph9	2/29/00		29.008	0.293
+Gunboat Isla-9999	3/1/00		33.625	0.482
+Oyster Bay	3/1/00		26.967	0.921
+Ponce De Leon Bay	3/1/00		19.889	0.578
+Tarpon Bay	3/1/00		44.34	0.319
+Little Madeira Bay	3/21/00		24.847	0.105
+TSph10	3/21/00		31.359	0.119
+TSph11	3/21/00		6.233	0.127
+Joe Bay	3/22/00		35.007	0.199
+TSph9	3/22/00		25.826	0.052
+Gunboat Isla-9999	4/11/00		32.934	0.653
+Oyster Bay	4/11/00		23.654	1.219
+Ponce De Leon Bay	4/11/00		19.245	0.881
+Tarpon Bay	4/11/00		46.011	0.766
+TSph10	4/13/00		18.636	0.361
+TSph11	4/13/00		30.547	0.438
+Joe Bay	4/17/00		39.624	0.426
+Little Madeira Bay	4/17/00		40.087	0.378
+TSph9	4/17/00		30.7	0.317
+Gunboat Isla-9999	5/16/00		23.951	0.865
+Oyster Bay	5/16/00		21.341	1.111
+Ponce De Leon Bay	5/16/00		19.661	0.962
+Tarpon Bay	5/16/00		37.823	0.832
+TSph10	5/30/00		46.59	0.338
+TSph11	5/30/00		11.426	0.667
+Joe Bay	5/31/00		42.828	0.41
+Little Madeira Bay	5/31/00		42.905	0.296
+TSph9	5/31/00		37.392	0.325
+Oyster Bay	6/15/00		39.775	1.666
+Gunboat Isla-9999	6/16/00		32.514	0.932
+Ponce De Leon Bay	6/16/00		28.788	1.188
+Tarpon Bay	6/16/00		35.292	0.691
+Little Madeira Bay	6/20/00		28.325	0.256
+TSph10	6/20/00		28.783	0.352
+TSph11	6/20/00		11.834	0.461
+Joe Bay	6/21/00		33.473	0.317
+TSph9	6/21/00		25.843	0.253
+Oyster Bay	7/13/00		20.247	0.328
+Ponce De Leon Bay	7/13/00		16.819	0.744
+Gunboat Isla-9999	7/14/00		24.894	0.784
+Tarpon Bay	7/14/00		39.879	0.672
+Little Madeira Bay	7/20/00		23.983	0.298
+TSph10	7/20/00		25.946	0.318
+TSph11	7/20/00		4.814	0.451
+Joe Bay	7/21/00		35.06	0.356
+TSph9	7/21/00		30.982	0.296
+Gunboat Isla-9999	8/3/00		39.026	0.4
+Oyster Bay	8/3/00		36.375	0.77
+Ponce De Leon Bay	8/3/00		35.527	0.85
+Tarpon Bay	8/3/00		38.361	0.365
+Little Madeira Bay	8/29/00		28.474	0.35
+TSph10	8/29/00		32.237	0.203
+TSph11	8/29/00		20.728	0.16
+Joe Bay	8/30/00		29.319	0.378
+TSph9	8/30/00		25.226	0.358
+Gunboat Isla-9999	9/7/00		33.439	0.518
+Oyster Bay	9/7/00		22.342	0.475
+Ponce De Leon Bay	9/7/00		19.376	0.14
+Tarpon Bay	9/7/00		36.138	0.458
+TSph10	9/28/00		56.129	0.105
+TSph11	9/28/00		19.114	0.343
+Joe Bay	9/29/00		38.262	0.163
+Little Madeira Bay	9/29/00		38.367	0.198
+TSph9	9/29/00		28.056	0.13
+Gunboat Isla-9999	10/6/00		25.599	0.28
+Oyster Bay	10/6/00		41.529	0.556
+Ponce De Leon Bay	10/6/00		32.821	0.463
+Tarpon Bay	10/6/00		27.647	0.257
+TSph10	10/26/00		21.318	0.072
+TSph11	10/26/00		23.705	0.461
+Joe Bay	10/27/00		31.72	0.208
+Little Madeira Bay	10/27/00		38.285	0.109
+TSph9	10/27/00		29.958	0.1
+Gunboat Isla-9999	11/2/00		45.576	0.25
+Oyster Bay	11/2/00		32.004	0.561
+Ponce De Leon Bay	11/2/00		26.563	0.543
+Tarpon Bay	11/2/00		50.846	0.211
+Little Madeira Bay	11/30/00		46.409	0.165
+TSph10	11/30/00		51.364	0.188
+TSph11	11/30/00		21.616	0.383
+Joe Bay	12/1/00		36.401	0.215
+TSph9	12/1/00		37.522	0.135
+Little Madeira Bay	12/11/00		23.929	1.146
+TSph10	12/11/00		26.584	1.291
+TSph11	12/11/00		15.56	0.878
+Joe Bay	12/12/00		20.87	0.228
+TSph9	12/12/00		19.084	0.223
+Gunboat Isla-9999	12/13/00		27.126	0.493
+Oyster Bay	12/13/00		17.648	0.54
+Ponce De Leon Bay	12/13/00		19.435	0.865
+Tarpon Bay	12/13/00		28.703	0.338
+Gunboat Isla-9999	1/4/01		42.682	0.45
+Oyster Bay	1/4/01		30.767	1.088
+Ponce De Leon Bay	1/4/01		27.604	1.368
+Tarpon Bay	1/4/01		47.79	0.353
+TSph10	1/25/01		68.057	0.896
+TSph11	1/25/01		32.861	1.688
+Joe Bay	1/26/01		43.582	0.318
+Little Madeira Bay	1/26/01		59.728	1.106
+TSph9	1/26/01		45.692	1.074
+TSph11	2/20/01		29.985	0.481
+Joe Bay	2/21/01		37.795	0.382
+Little Madeira Bay	2/21/01		39.828	0.312
+TSph10	2/21/01		51.481	0.303
+TSph9	2/21/01		43.12	0.279
+Gunboat Isla-9999	2/22/01		34.733	0.89
+Oyster Bay	2/22/01		31.305	0.925
+Ponce De Leon Bay	2/22/01		27.05	0.735
+Tarpon Bay	2/22/01		46.255	0.498
+Little Madeira Bay	3/6/01		44.035	0.51
+TSph10	3/6/01		63.267	0.623
+TSph11	3/6/01		63.052	6.77
+Joe Bay	3/7/01		34.321	0.538
+TSph9	3/7/01		44.395	0.453
+Gunboat Isla-9999	3/29/01		37.509	0.465
+Oyster Bay	3/29/01		31.034	0.745
+Ponce De Leon Bay	3/29/01		34.339	0.745
+Tarpon Bay	3/29/01		48.408	0.605
+Little Madeira Bay	4/3/01		33.89	0.268
+TSph11	4/3/01		12.819	0.38
+Joe Bay	4/4/01		29.025	0.225
+TSph10	4/4/01		31.186	0.175
+TSph9	4/4/01		24.496	0.155
+Gunboat Isla-9999	4/23/01		25.278	0.852
+Oyster Bay	4/23/01		24.056	0.595
+Ponce De Leon Bay	4/23/01		23.311	0.77
+Tarpon Bay	4/23/01		34.195	0.638
+Joe Bay	5/1/01		29.123	0.173
+Little Madeira Bay	5/1/01		30.516	0.118
+TSph9	5/1/01		23.886	0.073
+TSph10	5/2/01		29.042	0.125
+TSph11	5/2/01		6.478	0.103
+Gunboat Isla-9999	6/1/01		24.771	0.573
+Oyster Bay	6/1/01		17.186	0.488
+Ponce De Leon Bay	6/1/01		16.723	0.488
+Tarpon Bay	6/1/01		29.797	0.573
+Little Madeira Bay	6/5/01		17.417	0.093
+TSph10	6/5/01		20.406	0.12
+TSph11	6/5/01		5.814	0.193
+Joe Bay	6/6/01		21.871	0.13
+TSph9	6/6/01		27.43	0.065
+Gunboat Isla-9999	6/12/01		19.036	0.443
+Tarpon Bay	6/12/01		19.358	0.675
+Oyster Bay	6/13/01		11.018	0.405
+Ponce De Leon Bay	6/13/01		9.585	0.443
+Little Madeira Bay	7/12/01		36.42	0.153
+TSph10	7/12/01		36.736	0.248
+TSph11	7/12/01		15.66	0.59
+Joe Bay	7/13/01		40.695	0.188
+TSph9	7/13/01		33.834	0.163
+Gunboat Isla-9999	7/31/01		40.006	0.61
+Tarpon Bay	7/31/01		46.747	0.39
+Oyster Bay	8/6/01		30.935	0.48
+Ponce De Leon Bay	8/6/01		21.541	0.52
+Little Madeira Bay	8/14/01		45.819	0.163
+TSph10	8/14/01		41.224	0.21
+TSph11	8/14/01		16.597	0.248
+Joe Bay	8/15/01		51.027	0.2
+TSph9	8/15/01		38.748	0.143
+Gunboat Isla-9999	8/21/01		36.755	0.653
+Oyster Bay	8/21/01		27.651	0.648
+Ponce De Leon Bay	8/21/01		23.043	0.685
+Tarpon Bay	8/21/01		40.534	0.41
+Little Madeira Bay	9/5/01		20.258	0.158
+TSph10	9/5/01		16.587	0.135
+TSph11	9/5/01		5.537	0.303
+Joe Bay	9/7/01		27.097	0.12
+TSph9	9/7/01		17.404	0.09
+Oyster Bay	9/20/01		48.87	0.711
+Ponce De Leon Bay	9/20/01		21.236	0.745
+Gunboat Isla-9999	9/21/01		30.935	0.02
+Tarpon Bay	9/21/01		28.492	0.3
+Gunboat Isla-9999	10/17/01		29.244	0.243
+Oyster Bay	10/17/01		17.536	0.503
+Ponce De Leon Bay	10/17/01		17.364	1.251
+Tarpon Bay	10/17/01		26.923	0.215
+Little Madeira Bay	10/23/01		28.532	0.138
+TSph10	10/23/01		17.366	0.111
+TSph11	10/23/01		9.696	0.193
+Joe Bay	10/24/01		21.054	0.075
+TSph9	10/24/01		25.548	0.135
+Gunboat Isla-9999	11/1/01		37.285	0.518
+Ponce De Leon Bay	11/1/01		21.635	0.935
+Tarpon Bay	11/1/01		47.29	0.481
+Oyster Bay	11/2/01		26.196	0.798
+Little Madeira Bay	11/8/01		23.702	0.192
+TSph10	11/8/01		10.716	0.11
+TSph11	11/8/01		13.059	0.414
+Joe Bay	11/9/01		13.069	0.173
+TSph9	11/9/01		18.53	0.103
+Little Madeira Bay	12/3/01		33.953	0.129
+TSph10	12/3/01		34.543	0.088
+TSph11	12/3/01		21.051	0.193
+Joe Bay	12/4/01		26.824	0.171
+TSph9	12/4/01		29.33	0.087
+Gunboat Isla-9999	12/20/01		42.199	0.148
+Oyster Bay	12/20/01		32.075	0.472
+Ponce De Leon Bay	12/20/01		29.331	0.444
+Tarpon Bay	12/20/01		42.706	0.155
+Oyster Bay	1/23/02		15.597	0.687
+Ponce De Leon Bay	1/23/02		17.422	0.51
+Gunboat Isla-9999	1/24/02		21.267	0.645
+Tarpon Bay	1/24/02		20.008	0.501
+Little Madeira Bay	1/29/02		28.62	0.265
+TSph10	1/29/02		33.949	0.109
+TSph11	1/29/02		14.116	0.225
+Joe Bay	1/30/02		29.028	0.43
+TSph9	1/30/02		24.028	0.306
+Gunboat Isla-9999	2/14/02		26.315	0.353
+Oyster Bay	2/14/02		14.426	0.393
+Ponce De Leon Bay	2/14/02		11.978	0.071
+Tarpon Bay	2/14/02		24.545	0.268
+Joe Bay	2/19/02		47.891	0.3
+Little Madeira Bay	2/19/02		20.074	0.215
+TSph9	2/19/02		16.465	0.218
+TSph10	2/20/02		22.513	0.155
+TSph11	2/20/02		10.781	0.645
+Oyster Bay	3/7/02		35.174	0.732
+Ponce De Leon Bay	3/7/02		22.793	0.521
+Gunboat Isla-9999	3/8/02		32.948	0.249
+Tarpon Bay	3/8/02		32.047	0.206
+Little Madeira Bay	3/19/02		19.319	0.199
+TSph10	3/19/02		23.191	0.152
+TSph11	3/19/02		17.319	0.314
+Joe Bay	3/20/02		20.296	0.468
+TSph9	3/20/02		10.759	0.264
+Gunboat Isla-9999	4/3/02		21.77	0.452
+Oyster Bay	4/3/02		14.674	0.753
+Ponce De Leon Bay	4/3/02		15.266	0.525
+Tarpon Bay	4/3/02		24.064	0.508
+Little Madeira Bay	4/9/02		17.095	0.165
+TSph10	4/9/02		17.114	0.255
+TSph11	4/9/02		5.577	0.32
+Joe Bay	4/11/02		18.159	0.265
+TSph9	4/11/02		15.118	0.223
+Oyster Bay	5/1/02		62.093	0.553
+Ponce De Leon Bay	5/1/02		53.123	0.462
+Gunboat Isla-9999	5/2/02		75.403	0.605
+Tarpon Bay	5/2/02		83.911	0.655
+Little Madeira Bay	5/15/02		28.769	0.407
+TSph10	5/15/02		25.284	0.542
+TSph11	5/15/02		25.15	0.357
+Joe Bay	5/16/02		33.103	0.438
+TSph9	5/16/02		29.589	0.404
+Little Madeira Bay	6/4/02		36.392	0.409
+TSph10	6/4/02		27.275	0.061
+TSph11	6/4/02		24.331	0.12
+Joe Bay	6/5/02		32.769	0.213
+TSph9	6/5/02		28.208	0.206
+Gunboat Isla-9999	6/11/02		40.636	0.89
+Ponce De Leon Bay	6/11/02		36.014	0.818
+Tarpon Bay	6/11/02		46.788	0.78
+Oyster Bay	6/12/02		31.74	0.652
+Gunboat Isla-9999	7/1/02		22.074	0.42
+Oyster Bay	7/1/02		26.196	1.51
+Ponce De Leon Bay	7/1/02		22.763	0.538
+Tarpon Bay	7/1/02		24.449	0.333
+Joe Bay	7/9/02		13.625	0.3
+TSph9	7/9/02		14.196	0.248
+TSph10	7/10/02		13.246	0.153
+Little Madeira Bay	7/11/02		15.263	0.311
+TSph11	7/11/02		7.02	0.278
+Joe Bay	8/15/02		67.119	0.171
+Little Madeira Bay	8/15/02		57.84	0.185
+TSph9	8/15/02		47.813	0.127
+TSph10	8/19/02		70.542	0.116
+TSph11	8/19/02		35.791	0.275
+Gunboat Isla-9999	8/22/02		83.278	0.647
+Oyster Bay	8/22/02		62.536	0.771
+Ponce De Leon Bay	8/22/02		51.999	0.94
+Tarpon Bay	8/22/02		74.935	0.406
+Little Madeira Bay	9/17/02		48.367	0.695
+TSph10	9/17/02		62.956	0.665
+TSph11	9/17/02		37.645	0.709
+Joe Bay	9/18/02		40.656	0.612
+TSph9	9/18/02		45.114	0.402
+Gunboat Isla-9999	9/24/02		54.367	0.543
+Oyster Bay	9/24/02		30.789	0.697
+Ponce De Leon Bay	9/24/02		33.331	0.808
+Tarpon Bay	9/24/02		39.173	0.495
+Little Madeira Bay	10/17/02		23.679	0.424
+TSph10	10/17/02		21.212	0.294
+TSph11	10/17/02		12.851	0.351
+Joe Bay	10/18/02		20.652	0.387
+TSph9	10/18/02		18.16	0.33
+Gunboat Isla-9999	10/29/02		83.576	0.387
+Ponce De Leon Bay	10/29/02		31.129	0.607
+Tarpon Bay	10/29/02		67.158	0.218
+Oyster Bay	10/30/02		62.713	0.497
+Little Madeira Bay	11/14/02		63.677	0.366
+TSph10	11/14/02		68.004	0.23
+TSph11	11/14/02		42.784	0.113
+Joe Bay	11/15/02		59.056	0.375
+TSph9	11/15/02		64.287	0.192
+Gunboat Isla-9999	11/19/02		45.609	0.315
+Oyster Bay	11/19/02		41.186	0.319
+Ponce De Leon Bay	11/19/02		31.136	0.036
+Tarpon Bay	11/19/02		42.504	0.267
+Little Madeira Bay	12/11/02		19.748	0.287
+TSph10	12/11/02		30.924	0.271
+TSph11	12/11/02		11.437	0.412
+Joe Bay	12/12/02		23.435	0.299
+TSph9	12/12/02		20.583	0.223
+Gunboat Isla-9999	12/16/02		22.777	0.331
+Ponce De Leon Bay	12/16/02		29.369	0.414
+Tarpon Bay	12/16/02		19.678	0.318
+Oyster Bay	12/17/02		28.22	0.376
+Gunboat Isla-9999	1/23/03		64.212	0.205
+Oyster Bay	1/23/03		29.601	0.273
+Ponce De Leon Bay	1/23/03		35.619	0.3
+Tarpon Bay	1/23/03		65.189	0.448
+Joe Bay	1/28/03		29.354	0.244
+Little Madeira Bay	1/28/03		24.426	0.116
+TSph10	1/28/03		29.316	0.182
+TSph11	1/28/03		13.645	0.516
+TSph9	1/28/03		26.996	0.125
+Joe Bay	2/25/03		43.42	0.269
+Little Madeira Bay	2/25/03		34.554	0.306
+TSph10	2/25/03		34.02	0.145
+TSph11	2/25/03		6.68	0.253
+TSph9	2/25/03		57.168	0.241
+Gunboat Isla-9999	2/26/03		46.142	0.495
+Oyster Bay	2/26/03		41.488	0.348
+Ponce De Leon Bay	2/26/03		38.027	0.399
+Tarpon Bay	2/26/03		52.103	0.245
+Joe Bay	3/12/03		45.5	0.152
+Little Madeira Bay	3/12/03		44.459	0.081
+TSph9	3/12/03		42.831	0.18
+TSph10	3/13/03		42.933	0.116
+TSph11	3/13/03		18.405	0.183
+Gunboat Isla-9999	3/25/03		44.61	0.392
+Oyster Bay	3/25/03		63.824	0.456
+Ponce De Leon Bay	3/25/03		36.054	0.361
+Tarpon Bay	3/25/03		41.76	0.623
+Gunboat Isla-9999	4/8/03		27.21	0.383
+Oyster Bay	4/8/03		25.686	0.448
+Ponce De Leon Bay	4/8/03		22.975	0.384
+Tarpon Bay	4/8/03		39.851	0.417
+Joe Bay	4/9/03		38.392	0.412
+Little Madeira Bay	4/9/03		33.528	0.173
+TSph10	4/9/03		32.926	0.163
+TSph11	4/9/03		20.306	0.418
+TSph9	4/9/03		33.456	0.236
+Joe Bay	5/7/03		36.875	0.194
+Little Madeira Bay	5/7/03		34.838	0.105
+TSph9	5/7/03		39.258	0.091
+TSph10	5/8/03		40.67	0.189
+TSph11	5/8/03		24.33	0.198
+Gunboat Isla-9999	5/28/03		39.244	0.457
+Oyster Bay	5/28/03		39.825	0.465
+Ponce De Leon Bay	5/28/03		32.027	0.36
+Tarpon Bay	5/28/03		43.374	0.481
+Little Madeira Bay	6/10/03		38.75	1.379
+TSph10	6/10/03		33.46	0.139
+TSph11	6/10/03		14.75	0.34
+Joe Bay	6/11/03		38.721	0.194
+TSph9	6/11/03		35.251	1.307
+Oyster Bay	6/24/03		27.739	0.461
+Gunboat Isla-9999	6/25/03		26.274	0.235
+Ponce De Leon Bay	6/25/03		25.663	0.403
+Tarpon Bay	6/25/03		26.657	0.237
+Little Madeira Bay	7/1/03		32.884	0.151
+TSph10	7/1/03		30.849	0.229
+TSph11	7/1/03		14.065	0.221
+Joe Bay	7/2/03		38.648	0.221
+TSph9	7/2/03		30.253	0.195
+Gunboat Isla-9999	7/9/03		35.191	0.384
+Oyster Bay	7/9/03		36.887	0.328
+Ponce De Leon Bay	7/9/03		34.128	0.396
+Tarpon Bay	7/9/03		35.142	0.293
+TSph10	8/20/03		45.002	0.098
+TSph11	8/20/03		19.752	0.143
+Joe Bay	8/21/03		39.341	0.177
+Little Madeira Bay	8/21/03		37.474	0.16
+TSph9	8/21/03		34.118	0.215
+Oyster Bay	8/28/03		34.096	0.35
+Gunboat Isla-9999	8/29/03		35.615	0.486
+Ponce De Leon Bay	8/29/03		30.672	0.432
+Tarpon Bay	8/29/03		33.592	0.377
+Joe Bay	9/8/03		45.956	0.114
+TSph9	9/8/03		47.818	0.194
+Little Madeira Bay	9/9/03		52.656	0.147
+TSph10	9/9/03		71.817	0.167
+TSph11	9/9/03		17.213	0.173
+Gunboat Isla-9999	9/24/03		28.69	0.229
+Oyster Bay	9/24/03		24.256	0.426
+Ponce De Leon Bay	9/24/03		20.556	0.339
+Tarpon Bay	9/24/03		26.654	0.207
+Little Madeira Bay	10/15/03		31.207	0.222
+TSph10	10/15/03		42.594	0.264
+TSph11	10/15/03		14.107	0.214
+Joe Bay	10/16/03		26.977	0.306
+TSph9	10/16/03		30.339	0.178
+Gunboat Isla-9999	10/28/03		42.564	0.319
+Ponce De Leon Bay	10/28/03		33.242	0.539
+Tarpon Bay	10/28/03		44.665	0.291
+Oyster Bay	10/29/03		31.291	0.584
+Joe Bay	11/5/03		42.222	0.2
+Little Madeira Bay	11/5/03		42.456	0.209
+TSph9	11/5/03		43.8	0.237
+TSph10	11/7/03		26.911	0.153
+TSph11	11/7/03		18.178	0.284
+Gunboat Isla-9999	11/19/03		25.262	0.446
+Oyster Bay	11/19/03		17.629	0.415
+Ponce De Leon Bay	11/19/03		17.79	0.392
+Tarpon Bay	11/19/03		27.958	0.231
+Joe Bay	12/2/03		39.805	0.337
+Little Madeira Bay	12/2/03		40.06	0.304
+TSph9	12/2/03		40.843	0.314
+TSph10	12/3/03		42.18	0.156
+TSph11	12/3/03		30.801	0.299
+Gunboat Isla-9999	12/9/03		40.6	0.393
+Oyster Bay	12/9/03		33.862	0.732
+Ponce De Leon Bay	12/9/03		34.406	0.92
+Tarpon Bay	12/9/03		44.198	0.274
+TSph10	1/21/04		41.244	0.133
+TSph11	1/21/04		23.575	0.241
+Joe Bay	1/22/04		27.319	0.164
+Little Madeira Bay	1/22/04		33.163	0.148
+TSph9	1/22/04		28.28	0.129
+Gunboat Isla-9999	1/28/04		53.845	0.219
+Oyster Bay	1/28/04		30.531	0.518
+Ponce De Leon Bay	1/28/04		30.932	0.656
+Tarpon Bay	1/28/04		39.7	0.222
+Gunboat Isla-9999	2/10/04		46.469	0.24
+Oyster Bay	2/10/04		31.244	0.43
+Ponce De Leon Bay	2/10/04		31.646	0.486
+Tarpon Bay	2/10/04		42.544	0.269
+TSph10	2/24/04		50.362	0.11
+TSph11	2/24/04		38.812	0.201
+Joe Bay	2/25/04		32.432	0.162
+Little Madeira Bay	2/25/04		55.957	0.11
+TSph9	2/25/04		43.309	0.119
+Oyster Bay	3/2/04		50.442	0.385
+Ponce De Leon Bay	3/2/04		37.718	0.384
+Gunboat Isla-9999	3/3/04		42.167	0.291
+Tarpon Bay	3/3/04		56.998	0.299
+TSph10	3/23/04		47.702	0.238
+TSph11	3/23/04		56.77	0.264
+Joe Bay	3/29/04		45.376	0.25
+Little Madeira Bay	3/29/04		44.366	0.157
+TSph9	3/29/04		39.896	0.377
+Gunboat Isla-9999	4/2/04		31.578	0.394
+Oyster Bay	4/2/04		38.578	0.392
+Ponce De Leon Bay	4/2/04		32.195	0.441
+Tarpon Bay	4/2/04		35.221	0.432
+TSph10	4/21/04		63.836	0.13
+TSph11	4/21/04		41.503	0.275
+Joe Bay	4/22/04		59.339	0.159
+Little Madeira Bay	4/22/04		63.736	0.092
+TSph9	4/22/04		51.457	0.135
+Gunboat Isla-9999	5/2/04		31.656	0.548
+Oyster Bay	5/2/04		23.952	0.474
+Ponce De Leon Bay	5/2/04		26.303	0.422
+Tarpon Bay	5/2/04		28.178	0.689
+Joe Bay	5/20/04		44.15	0.202
+Little Madeira Bay	5/20/04		36.327	0.07
+TSph9	5/20/04		30.553	0.132
+TSph10	5/21/04		28.593	0.074
+TSph11	5/21/04		29.444	0.152
+Gunboat Isla-9999	6/1/04		18.98	0.145
+Oyster Bay	6/1/04		27.59	0.145
+Ponce De Leon Bay	6/1/04		24.273	0.154
+Tarpon Bay	6/1/04		22.074	0.183
+TSph10	6/28/04		27.637	0.107
+TSph11	6/28/04		22.487	0.176
+Joe Bay	6/29/04		26.394	0.115
+Little Madeira Bay	6/29/04		36.261	0.082
+TSph9	6/29/04		26.336	0.156
+Gunboat Isla-9999	7/6/04		37.754	0.286
+Ponce De Leon Bay	7/6/04		21.263	0.416
+Tarpon Bay	7/6/04		40.461	0.24
+Oyster Bay	7/7/04		37.477	0.352
+TSph10	7/27/04		43.111	0.186
+TSph11	7/27/04		17.541	0.252
+Joe Bay	7/28/04		34.577	0.134
+Little Madeira Bay	7/28/04		38.583	0.081
+TSph9	7/28/04		34.531	0.131
+Gunboat Isla-9999	8/3/04		25.976	0.38
+Oyster Bay	8/3/04		20.073	0.513
+Ponce De Leon Bay	8/3/04		22.171	0.607
+Tarpon Bay	8/3/04		23.241	0.352
+TSph10	8/24/04		26.9	0.158
+TSph11	8/24/04		16.981	1.116
+Joe Bay	8/25/04		68.619	0.366
+Little Madeira Bay	8/25/04		55.905	0.135
+TSph9	8/25/04		41.571	0.216
+Gunboat Isla-9999	8/31/04		15.757	0.306
+Ponce De Leon Bay	8/31/04		19.742	0.359
+Tarpon Bay	8/31/04		17.39	0.244
+Oyster Bay	9/1/04		19.419	0.286
+TSph10	9/28/04		33.451	0.158
+TSph11	9/28/04		22.047	0.209
+Joe Bay	9/29/04		37.005	0.196
+Little Madeira Bay	9/29/04		42.622	0.116
+TSph9	9/29/04		35.207	0.141
+Gunboat Isla-9999	10/6/04		28.571	0.313
+Ponce De Leon Bay	10/6/04		19.643	0.527
+Tarpon Bay	10/6/04		28.571	0.356
+Oyster Bay	10/7/04		26.786	0.613
+TSph11	10/26/04		16.639	0.181
+Joe Bay	10/27/04		28.929	0.176
+Little Madeira Bay	10/27/04		38.571	0.108
+TSph10	10/27/04		24.707	0.136
+TSph9	10/27/04		36.071	0.093
+Gunboat Isla-9999	11/2/04		37.857	0.238
+Oyster Bay	11/2/04		36.786	0.483
+Ponce De Leon Bay	11/2/04		36.786	0.485
+Tarpon Bay	11/2/04		36.071	0.245
+TSph10	11/29/04		27.419	0.105
+TSph11	11/29/04		20.146	0.235
+Joe Bay	11/30/04		25.2	0.286
+Little Madeira Bay	11/30/04		26.699	0.245
+TSph9	11/30/04		23.953	0.141
+Gunboat Isla-9999	12/3/04		31.546	0.316
+Oyster Bay	12/3/04		25.123	0.584
+Ponce De Leon Bay	12/3/04		18.169	0.61
+Tarpon Bay	12/3/04		26.898	0.386
+TSph10	12/14/04		19.799	0.187
+TSph11	12/14/04		11.291	0.214
+Joe Bay	12/15/04		20.508	0.342
+Little Madeira Bay	12/15/04		15.637	0.306
+TSph9	12/15/04		21.473	0.129
+Oyster Bay	1/19/05		19.265	0.739
+Ponce De Leon Bay	1/19/05		18.19	0.729
+Gunboat Isla-9999	1/20/05		30.435	0.528
+Tarpon Bay	1/20/05		30.435	0.404
+TSph10	1/24/05		29.615	0.125
+TSph11	1/24/05		16.666	0.499
+Joe Bay	1/25/05		28.717	0.145
+Little Madeira Bay	1/25/05		30.647	0.128
+TSph9	1/25/05		29.943	0.133
+Oyster Bay	2/1/05		21.36	0.922
+Ponce De Leon Bay	2/1/05		16.876	0.967
+Gunboat Isla-9999	2/2/05		32.015	0.457
+Tarpon Bay	2/2/05		35.766	0.396
+TSph10	2/21/05		26.134	0.154
+TSph11	2/21/05		19.916	0.249
+Joe Bay	2/22/05		31.234	0.132
+Little Madeira Bay	2/22/05		28.78	0.105
+TSph9	2/22/05		29.259	0.09
+Gunboat Isla-9999	3/1/05		33.498	0.73
+Oyster Bay	3/1/05		17.622	0.73
+Ponce De Leon Bay	3/1/05		21.048	1.016
+Tarpon Bay	3/1/05		27.808	0.448
+TSph10	3/21/05		24.102	0.174
+TSph11	3/21/05		12.656	0.279
+Joe Bay	3/22/05		27.569	0.14
+Little Madeira Bay	3/22/05		26.845	0.097
+TSph9	3/22/05		27.833	0.126
+Gunboat Isla-9999	3/30/05		20.099	0.979
+Oyster Bay	3/30/05		18.163	0.456
+Ponce De Leon Bay	3/30/05		25.595	0.674
+Tarpon Bay	3/30/05		20.933	0.779
+Joe Bay	4/20/05		42.542	0.159
+Little Madeira Bay	4/20/05		39.237	0.157
+TSph9	4/20/05		32.295	0.106
+TSph10	4/21/05		22.037	0.151
+TSph11	4/21/05		8.046	0.259
+Gunboat Isla-9999	5/3/05		18.81	0.71
+Oyster Bay	5/3/05		17.356	0.623
+Ponce De Leon Bay	5/3/05		14.744	0.739
+Tarpon Bay	5/3/05		20.017	0.69
+Joe Bay	5/25/05		39.797	0.522
+Little Madeira Bay	5/25/05		49.83	0.223
+TSph9	5/25/05		34.216	0.414
+TSph10	5/26/05		36.998	0.289
+TSph11	5/26/05		14.525	0.44
+TSph10	6/13/05		48.715	0.174
+TSph11	6/13/05		32.874	0.208
+Joe Bay	6/14/05		59.784	0.178
+Little Madeira Bay	6/14/05		50.131	0.118
+TSph9	6/14/05		42.162	0.137
+Oyster Bay	6/20/05		12.042	0.448
+Ponce De Leon Bay	6/20/05		14.601	0.647
+Gunboat Isla-9999	6/22/05		21.698	0.51
+Tarpon Bay	6/22/05		26.113	0.39
+TSph10	7/19/05		21.332	0.206
+TSph11	7/19/05		7.938	0.243
+Joe Bay	7/20/05		32.503	0.23
+Little Madeira Bay	7/20/05		34.383	0.163
+TSph9	7/20/05		25.587	0.156
+Gunboat Isla-9999	7/25/05		52.963	0.412
+Oyster Bay	7/25/05		31.364	0.623
+Ponce De Leon Bay	7/25/05		18.02	0.457
+Tarpon Bay	7/25/05		60.697	0.388
+Joe Bay	8/15/05		33.333	0.219
+Little Madeira Bay	8/15/05		31.812	0.111
+TSph9	8/15/05		28.633	0.094
+TSph10	8/17/05		35.168	0.141
+TSph11	8/17/05		17.994	0.319
+Gunboat Isla-9999	8/22/05		17.269	0.38
+Oyster Bay	8/22/05		10.972	0.429
+Ponce De Leon Bay	8/22/05		11.815	0.404
+Tarpon Bay	8/22/05		19.201	0.284
+TSph10	9/5/05		38.803	0.201
+TSph11	9/5/05		9.708	0.202
+Joe Bay	9/6/05		32.135	0.151
+Little Madeira Bay	9/6/05		38.682	0.266
+TSph9	9/6/05		28.744	0.141
+Gunboat Isla-9999	9/26/05		26.839	0.279
+Oyster Bay	9/26/05		29.618	0.765
+Ponce De Leon Bay	9/26/05		19.655	0.731
+Tarpon Bay	9/26/05		25.175	0.218
+Joe Bay	10/6/05		20.593	0.945
+Little Madeira Bay	10/6/05		19.494	0.899
+TSph10	10/6/05		25.561	0.627
+TSph11	10/6/05		14.744	0.604
+TSph9	10/6/05		20.756	1.994
+Joe Bay	11/15/05		33.785	0.333
+Little Madeira Bay	11/15/05		32.307	0.339
+TSph9	11/15/05		36.506	0.357
+TSph10	11/17/05		35.763	0.119
+TSph11	11/17/05		46.611	0.263
+Gunboat Isla-9999	11/28/05		28.431	0.671
+Oyster Bay	11/28/05		19.738	0.926
+Ponce De Leon Bay	11/28/05		16.967	0.779
+Tarpon Bay	11/28/05		35.483	0.262
+TSph10	12/15/05		31.233	0.313
+TSph11	12/15/05		18.803	0.72
+Joe Bay	12/16/05		21.44	0.904
+Little Madeira Bay	12/16/05		20.278	0.222
+TSph9	12/16/05		26.944	0.192
+Gunboat Isla-9999	12/21/05		16.924	0.243
+Oyster Bay	12/21/05		18.89	0.82
+Ponce De Leon Bay	12/21/05		19.546	0.82
+Tarpon Bay	12/21/05		31.67	0.246
+TSph10	1/17/06		18.132	0.285
+TSph11	1/17/06		9.736	0.414
+Joe Bay	1/18/06		20.432	0.29
+Little Madeira Bay	1/18/06		20.698	0.219
+TSph9	1/18/06		29.294	0.23
+Gunboat Isla-9999	1/24/06		28.126	0.499
+Oyster Bay	1/24/06		14.475	0.896
+Ponce De Leon Bay	1/24/06		12.57	0.709
+Tarpon Bay	1/24/06		30.397	0.358
+TSph10	2/14/06		31.244	0.294
+TSph11	2/14/06		8.539	0.394
+Joe Bay	2/15/06		34.93	0.63
+Little Madeira Bay	2/15/06		35.176	0.395
+TSph9	2/15/06		37.63	0.466
+Gunboat Isla-9999	2/23/06		30.478	0.622
+Oyster Bay	2/23/06		24.509	0.664
+Ponce De Leon Bay	2/23/06		26.645	0.69
+Tarpon Bay	2/23/06		34.618	0.424
+TSph10	3/7/06		64.453	0.568
+TSph11	3/7/06		9.433	0.856
+Joe Bay	3/8/06		34.09	0.557
+Little Madeira Bay	3/8/06		33.925	0.292
+TSph9	3/8/06		33	0.462
+Gunboat Isla-9999	3/21/06		19.624	0.851
+Oyster Bay	3/21/06		14.075	0.992
+Ponce De Leon Bay	3/21/06		13.044	0.803
+Tarpon Bay	3/21/06		29.701	1.529
+Gunboat Isla-9999	4/3/06		38.099	0.759
+Oyster Bay	4/3/06		21.84	0.64
+Ponce De Leon Bay	4/3/06		21.093	0.654
+Tarpon Bay	4/3/06		47.439	0.555
+TSph10	4/26/06		21.949	0.352
+TSph11	4/26/06		5.89	0.481
+Joe Bay	4/27/06		28.151	0.488
+Little Madeira Bay	4/27/06		23.998	0.289
+TSph9	4/27/06		26.625	0.326
+Gunboat Isla-9999	5/4/06		20.857	0.873
+Oyster Bay	5/4/06		17.136	0.752
+Ponce De Leon Bay	5/4/06		15.327	0.826
+Tarpon Bay	5/4/06		22.112	0.924
+TSph10	5/30/06		26.579	0.46
+TSph11	5/30/06		7.374	0.292
+Joe Bay	5/31/06		31.246	0.327
+Little Madeira Bay	5/31/06		26.222	0.221
+TSph9	5/31/06		26.575	0.162
+TSph10	6/21/06		25.119	0.297
+TSph11	6/21/06		8.336	0.384
+Joe Bay	6/23/06		40.463	0.296
+Little Madeira Bay	6/23/06		29.57	0.218
+TSph9	6/23/06		26.783	0.223
+Gunboat Isla-9999	6/27/06		19.703	1.008
+Oyster Bay	6/27/06		15.104	1.495
+Ponce De Leon Bay	6/27/06		16.208	1.329
+Tarpon Bay	6/27/06		23.969	0.788
+TSph10	7/5/06		29.44	0.266
+TSph11	7/5/06		10.043	0.527
+Joe Bay	7/6/06		38.483	0.306
+Little Madeira Bay	7/6/06		30.708	0.287
+TSph9	7/6/06		27.458	0.263
+Gunboat Isla-9999	7/10/06		22.493	1.068
+Oyster Bay	7/10/06		20.42	1.131
+Ponce De Leon Bay	7/10/06		16.844	1.225
+Tarpon Bay	7/10/06		22.37	0.738
+TSph10	8/15/06		36.381	0.301
+TSph11	8/15/06		24.321	0.357
+Joe Bay	8/16/06		37.214	0.91
+Little Madeira Bay	8/16/06		38.344	0.396
+TSph9	8/16/06		32.255	0.183
+Gunboat Isla-9999	8/22/06		30.12	0.914
+Oyster Bay	8/22/06		28.683	0.927
+Ponce De Leon Bay	8/22/06		21.768	1.116
+Tarpon Bay	8/22/06		34.685	0.621
+Gunboat Isla-9999	9/7/06		18.402	0.913
+Oyster Bay	9/7/06		19.437	1.146
+Ponce De Leon Bay	9/7/06		19.618	0.765
+Tarpon Bay	9/7/06		18.118	0.556
+TSph10	9/19/06		45.057	0.576
+TSph11	9/19/06		11.188	0.555
+Joe Bay	9/20/06		32.953	0.342
+Little Madeira Bay	9/20/06		36.179	0.262
+TSph9	9/20/06		33.491	0.269
+TSph10	10/9/06		45.743	0.492
+TSph11	10/9/06		15.448	0.406
+Joe Bay	10/10/06		28.628	0.672
+Little Madeira Bay	10/10/06		28.297	0.665
+TSph9	10/10/06		35.199	0.444
+Gunboat Isla-9999	10/17/06		25.915	0.684
+Oyster Bay	10/17/06		24.333	0.787
+Ponce De Leon Bay	10/17/06		19.591	0.969
+Tarpon Bay	10/17/06		27.558	0.55
+TSph10	11/7/06		30.235	0.276
+TSph11	11/7/06		19.138	0.613
+Joe Bay	11/8/06		35	0.456
+Little Madeira Bay	11/8/06		31.258	0.274
+TSph9	11/8/06		39.241	0.366
+Ponce De Leon Bay	11/14/06		26.768	1.109
+Gunboat Isla-9999	11/15/06		35.837	0.734
+Oyster Bay	11/15/06		28.937	0.895
+Tarpon Bay	11/15/06		36.081	0.524
+TSph11	12/3/06		14.904	0.37
+Gunboat Isla-9999	12/5/06		31.66	0.81
+Oyster Bay	12/5/06		23.4	0.707
+Ponce De Leon Bay	12/5/06		21.999	0.812
+Tarpon Bay	12/5/06		36.6	0.478
+Joe Bay	12/6/06		36.444	0.377
+Little Madeira Bay	12/6/06		34.651	0.228
+TSph10	12/6/06		44.649	0.36
+TSph9	12/6/06		38.956	0.263
+Joe Bay	1/10/07		33.83	0.323
+Little Madeira Bay	1/10/07		34.054	0.148
+TSph10	1/10/07		28.529	0.137
+TSph9	1/10/07		39.031	0.153
+TSph11	1/11/07		23.191	0.452
+Gunboat Isla-9999	1/18/07		16.212	0.525
+Oyster Bay	1/18/07		23.529	0.664
+Ponce De Leon Bay	1/18/07		18.411	0.692
+Tarpon Bay	1/18/07		28.116	0.51
+TSph10	2/7/07		28.938	0.191
+TSph11	2/7/07		10.377	0.286
+Joe Bay	2/8/07		38.804	0.326
+Little Madeira Bay	2/8/07		37.629	0.376
+TSph9	2/8/07		34.941	0.197
+Gunboat Isla-9999	2/15/07		29.183	0.541
+Oyster Bay	2/15/07		22.667	0.589
+Ponce De Leon Bay	2/15/07		17.627	0.499
+Tarpon Bay	2/15/07		46.803	0.489
+Gunboat Isla-9999	3/6/07		30.781	0.59
+Oyster Bay	3/6/07		18.114	0.703
+Ponce De Leon Bay	3/6/07		15.399	0.661
+Tarpon Bay	3/6/07		31.918	0.588
+Joe Bay	3/12/07		43.823	0.555
+Little Madeira Bay	3/12/07		38.414	0.435
+TSph10	3/12/07		49.479	0.325
+TSph11	3/12/07		20.733	0.361
+TSph9	3/12/07		40.715	0.342
+Joe Bay	4/2/07		56.336	0.327
+Little Madeira Bay	4/2/07		52.289	0.273
+TSph9	4/2/07		44.263	0.252
+TSph10	4/3/07		34.388	0.188
+TSph11	4/3/07		20.315	
+Gunboat Isla-9999	4/10/07		25.518	0.526
+Oyster Bay	4/10/07		21.013	0.534
+Ponce De Leon Bay	4/10/07		19.375	0.559
+Tarpon Bay	4/10/07		35.512	0.582
+TSph10	5/1/07		24.948	0.264
+TSph11	5/1/07		15.669	0.411
+Joe Bay	5/2/07		38.092	0.37
+Little Madeira Bay	5/2/07		31.36	0.221
+TSph9	5/2/07		41.932	0.197
+Gunboat Isla-9999	5/8/07		22.726	0.659
+Tarpon Bay	5/8/07		23.217	0.882
+Oyster Bay	5/9/07		16.196	0.791
+Ponce De Leon Bay	5/9/07		13.991	1.213
+TSph10	6/6/07		20.501	0.195
+TSph11	6/6/07		10.437	0.42
+Little Madeira Bay	6/7/07		31.96	0.174
+Joe Bay	6/8/07		33.027	0.227
+TSph9	6/8/07		30.906	0.181
+Gunboat Isla-9999	6/11/07		21.434	1.061
+Oyster Bay	6/11/07		18.823	1.032
+Ponce De Leon Bay	6/11/07		16.958	0.768
+Tarpon Bay	6/11/07		19.48	0.741
+Joe Bay	7/2/07		28.135	1.239
+Little Madeira Bay	7/2/07		27.799	0.201
+TSph10	7/2/07		28.117	0.464
+TSph9	7/2/07		27.623	0.248
+TSph11	7/3/07		12.297	0.289
+Gunboat Isla-9999	7/18/07		32.12	0.821
+Oyster Bay	7/18/07		29.557	0.982
+Ponce De Leon Bay	7/18/07		28.255	0.857
+Tarpon Bay	7/18/07		30.08	1.743
+Little Madeira Bay	8/7/07		33.488	0.197
+TSph10	8/7/07		57.403	1.033
+TSph11	8/7/07		15.224	0.336
+Joe Bay	8/8/07		36.07	0.244
+TSph9	8/8/07		29.464	0.229
+Gunboat Isla-9999	8/14/07		30.951	0.628
+Oyster Bay	8/14/07		30.106	0.761
+Ponce De Leon Bay	8/14/07		29.595	1.114
+Tarpon Bay	8/14/07		30.375	0.417
+Joe Bay	9/4/07		22.377	0.261
+Little Madeira Bay	9/4/07		28.023	0.511
+TSph10	9/4/07		40.37	0.286
+TSph9	9/4/07		22.378	0.27
+TSph11	9/5/07		9.508	0.346
+Gunboat Isla-9999	9/11/07		40.611	0.612
+Oyster Bay	9/11/07		69.642	0.611
+Ponce De Leon Bay	9/11/07		47.499	0.731
+Tarpon Bay	9/11/07		36.144	0.496
+Gunboat Isla-9999	10/2/07		24.349	0.663
+Oyster Bay	10/2/07		28.318	0.615
+Ponce De Leon Bay	10/2/07		32.713	0.701
+Tarpon Bay	10/2/07		27.782	0.506
+TSph10	10/4/07		47.879	0.285
+TSph11	10/4/07		17.795	0.375
+Joe Bay	10/5/07		22.191	0.224
+Little Madeira Bay	10/5/07		41.832	0.228
+TSph9	10/5/07		39.483	0.286
+TSph10	11/6/07		20.652	0.14
+TSph11	11/6/07		26.265	0.488
+Joe Bay	11/7/07		29.468	0.228
+Little Madeira Bay	11/7/07		26.617	0.245
+TSph9	11/7/07		25.727	0.315
+Gunboat Isla-9999	11/13/07		21.111	1.58
+Oyster Bay	11/13/07		16.397	1.171
+Ponce De Leon Bay	11/13/07		19.552	1.007
+Tarpon Bay	11/13/07		22.373	1.113
+Joe Bay	12/6/07		22.469	0.24
+Little Madeira Bay	12/6/07		26.002	0.288
+TSph9	12/6/07		25.289	0.344
+TSph10	12/7/07		25.795	0.188
+TSph11	12/7/07		14.3	0.263
+Gunboat Isla-9999	12/11/07		30.727	0.557
+Oyster Bay	12/11/07		20.893	0.573
+Ponce De Leon Bay	12/11/07		19.38	0.606
+Tarpon Bay	12/11/07		29.155	0.485
+Joe Bay	1/8/08		27.65	0.33
+Little Madeira Bay	1/8/08		28.86	0.231
+TSph9	1/8/08		27.686	0.389
+TSph10	1/9/08		25.339	0.348
+TSph11	1/9/08		18.348	0.258
+Gunboat Isla-9999	1/14/08		23.749	0.654
+Oyster Bay	1/14/08		22.328	0.601
+Ponce De Leon Bay	1/14/08		19.369	0.557
+Tarpon Bay	1/14/08		35.663	0.73
+Joe Bay	2/7/08		36.947	0.211
+Little Madeira Bay	2/7/08		44.854	0.14
+TSph9	2/7/08		51.404	0.187
+TSph10	2/8/08		46.553	0.138
+TSph11	2/8/08		22.107	0.247
+Gunboat Isla-9999	2/27/08		23.523	0.833
+Oyster Bay	2/27/08		18.236	0.615
+Ponce De Leon Bay	2/27/08		15.874	0.732
+Tarpon Bay	2/27/08		30.41	0.816
+Joe Bay	3/4/08		44.782	0.216
+Little Madeira Bay	3/4/08		52.687	0.245
+TSph9	3/4/08		45.369	0.279
+TSph10	3/5/08		50.297	0.363
+TSph11	3/5/08		20.275	0.267
+Gunboat Isla-9999	3/17/08		21.355	0.667
+Oyster Bay	3/17/08		12.623	0.532
+Ponce De Leon Bay	3/17/08		10.796	0.511
+Tarpon Bay	3/17/08		25.529	0.692
+Joe Bay	4/1/08		34.479	0.245
+Little Madeira Bay	4/1/08		32.008	0.195
+TSph9	4/1/08		32.165	0.21
+TSph10	4/2/08		41.893	0.257
+TSph11	4/2/08		23.937	0.306
+Gunboat Isla-9999	4/9/08		36.766	0.851
+Oyster Bay	4/9/08		25.395	0.804
+Ponce De Leon Bay	4/9/08		25.58	0.691
+Tarpon Bay	4/9/08		34.795	0.94
+Joe Bay	5/6/08		46.201	0.185
+Little Madeira Bay	5/6/08		38.323	0.224
+TSph10	5/6/08		18.075	0.203
+TSph9	5/6/08		36.487	0.194
+TSph11	5/7/08		26.952	0.405
+Gunboat Isla-9999	5/13/08		27.644	0.902
+Oyster Bay	5/13/08		16.414	0.713
+Ponce De Leon Bay	5/13/08		16.526	0.616
+Tarpon Bay	5/13/08		35.302	0.613
+Joe Bay	6/3/08		29.533	0.208
+Little Madeira Bay	6/3/08		28.229	0.152
+TSph9	6/3/08		24.845	0.172
+TSph10	6/4/08		21.417	0.383
+TSph11	6/4/08		13.399	0.484
+Gunboat Isla-9999	6/30/08		32.131	0.774
+Oyster Bay	6/30/08		23.25	0.511
+Ponce De Leon Bay	6/30/08		26.524	0.675
+Tarpon Bay	6/30/08		44.564	0.606
+Joe Bay	7/1/08		75.556	0.212
+Little Madeira Bay	7/1/08		49.736	0.16
+TSph9	7/1/08		50.501	0.164
+TSph10	7/2/08		32.247	0.198
+TSph11	7/2/08		23.654	0.416
+Gunboat Isla-9999	7/15/08		50.069	0.615
+Oyster Bay	7/15/08		27.198	0.591
+Ponce De Leon Bay	7/15/08		21.472	0.596
+Tarpon Bay	7/15/08		42.071	0.422
+Joe Bay	8/5/08		62.35	0.252
+Little Madeira Bay	8/5/08		75.935	0.204
+TSph9	8/5/08		60.05	0.2
+TSph10	8/6/08		27.525	0.363
+TSph11	8/6/08		25.037	0.265
+Gunboat Isla-9999	8/14/08		59.263	0.468
+Oyster Bay	8/14/08		30.896	0.872
+Ponce De Leon Bay	8/14/08		25.556	0.939
+Tarpon Bay	8/14/08		49.343	0.384
+Joe Bay	9/15/08		30.541	0.202
+Little Madeira Bay	9/15/08		34.666	0.182
+TSph9	9/15/08		23.966	0.178
+TSph10	9/16/08		11.222	0.13
+TSph11	9/16/08		5.731	0.188
+Gunboat Isla-9999	9/25/08		34.724	0.413
+Oyster Bay	9/25/08		27.581	0.845
+Ponce De Leon Bay	9/25/08		24.886	0.561
+Tarpon Bay	9/25/08		29.931	0.363
+TSph10	10/30/08			
+TSph11	10/30/08			
+TSph9	10/30/08			
+TSph10	11/20/08		26.736	0.19
+TSph11	11/20/08		20.564	0.268
+TSph9	11/20/08		25.366	0.213
+TSph10	12/15/08		21.181	0.159
+TSph11	12/15/08		10.01	0.28
+TSph9	12/15/08		24.082	0.168
+TSph10	1/13/09		8.111	0.204
+TSph11	1/13/09		2.533	0.27
+TSph9	1/13/09		21.391	0.18
+TSph10	2/18/09		36.126	0.232
+TSph11	2/18/09		17.021	0.279
+TSph9	2/18/09		26.374	0.227
+TSph10	3/16/09		21.323	0.138
+TSph11	3/16/09		11.513	0.23
+TSph9	3/16/09		16.693	0.145
+TSph10	4/16/09		38.189	0.225
+TSph11	4/16/09		18.562	0.44
+TSph9	4/16/09		40.299	0.145
+TSph10	5/19/09		10.633	0.138
+TSph11	5/19/09		7.492	0.51
+TSph9	5/19/09		21.433	0.16
+TSph10	6/15/09		75.549	0.325
+TSph11	6/15/09		24.858	0.574
+TSph9	6/15/09		63.277	0.282
+TSph10	7/21/09		59.044	0.293
+TSph11	7/21/09		28.826	0.62
+TSph9	7/21/09		72.726	0.2
+TSph10	8/6/09		30.007	0.205
+TSph11	8/6/09		13.555	0.343
+TSph9	8/6/09		13.075	0.136
+TSph10	9/15/09		26.845	0.206
+TSph11	9/15/09		17.997	0.299
+TSph9	9/15/09		30.916	0.166
+TSph10	10/29/09		51.693	0.394
+TSph11	10/29/09		29.193	0.719
+TSph9	10/29/09		45.752	0.31
+TSph10	11/23/09		49.041	0.152
+TSph11	11/23/09		50.765	0.244
+TSph9	11/23/09		52.408	0.173
+TSph10	12/14/09		81.948	0.143
+TSph11	12/14/09		33.623	0.264
+TSph9	12/14/09		69.918	0.209
+TSph10	1/21/10		7.037	0.182
+TSph11	1/21/10		5.667	0.467
+TSph9	1/21/10		8.123	0.193
+TSph10	2/23/10		13.146	0.169
+TSph11	2/23/10		7.808	0.339
+TSph9	2/23/10		24.455	0.11
+TSph10	3/24/10		42	0.235
+TSph11	3/24/10		22.877	0.293
+TSph9	3/24/10		64.02	0.238
+TSph10	4/21/10		49.617	0.175
+TSph11	4/21/10		37.438	0.31
+TSph9	4/21/10		66.438	0.158
+TSph10	5/17/10		36.055	0.181
+TSph11	5/17/10		18.599	0.257
+TSph9	5/17/10		40.93	0.18
+TSph10	6/14/10		109.623	0.343
+TSph11	6/14/10		42.451	0.267
+TSph9	6/14/10		94.391	0.123
+TSph10	7/27/10		143.561	0.303
+TSph11	7/27/10		95.212	0.287
+TSph9	7/27/10		208.005	0.181
+TSph10	8/26/10		79.693	0.209
+TSph11	8/26/10		30.8	0.269
+TSph9	8/26/10		61.958	0.101
+TSph10	9/14/10		72.998	0.26
+TSph11	9/14/10		42.994	0.282
+TSph9	9/14/10		80.254	0.242
+TSph10	10/25/10		25.8	0.083
+TSph11	10/25/10		24.069	0.233
+TSph9	10/25/10		26.656	0.087
+TSph10	11/15/10		24.249	0.11
+TSph11	11/15/10		15.242	0.23
+TSph9	11/15/10		24.775	0.138
+TSph10	12/15/10		56.824	0.127
+TSph11	12/15/10		24.536	0.476
+TSph9	12/15/10		46.988	0.135
+TSph10	1/24/11		56.35	0.094
+TSph11	1/24/11		18.149	0.245
+TSph9	1/24/11		41.118	0.077
+TSph10	2/16/11		73.04	0.154
+TSph11	2/16/11		23.205	0.268
+TSph9	2/16/11		54.056	0.083
+TSph10	3/10/11		46.693	0.165
+TSph11	3/10/11		23.113	0.212
+TSph9	3/10/11		40.424	0.113
+TSph10	4/27/11		38.78	0.172
+TSph11	4/27/11		27.463	0.411
+TSph9	4/27/11		60.09	0.184
+TSph10	5/11/11		50.77	0.115
+TSph11	5/11/11		20.574	0.167
+TSph9	5/11/11		48.118	0.136
+TSph10	6/14/11		25.423	0.133
+TSph11	6/14/11		28.533	0.267
+TSph9	6/14/11		46.538	0.212
+TSph10	7/20/11		63.641	0.219
+TSph11	7/20/11		15.55	0.223
+TSph9	7/20/11		50.489	0.143
+TSph10	8/3/11		55.627	0.138
+TSph11	8/3/11		22.981	0.216
+TSph9	8/3/11		49.458	0.099
+TSph10	9/12/11		74.168	0.196
+TSph11	9/12/11		17.66	0.208
+TSph9	9/12/11		40.27	0.123
+TSph10	10/31/11		54.227	0.122
+TSph11	10/31/11		32.064	0.169
+TSph9	10/31/11		67.301	0.166
+TSph10	11/16/11		45.274	0.192
+TSph11	11/16/11		29.536	0.183
+TSph9	11/16/11		53.702	0.876
+TSph10	12/12/11		41.623	0.14
+TSph11	12/12/11		38.531	0.241
+TSph9	12/12/11		43.942	0.123
+TSph10	1/25/12		54.033	0.136
+TSph11	1/25/12		19.498	0.279
+TSph9	1/25/12		44.968	0.166
+TSph10	2/22/12		47.678	0.108
+TSph11	2/22/12		24.969	0.177
+TSph9	2/22/12		45.279	0.091
+TSph10	3/27/12		21.465	0.155
+TSph11	3/27/12		28.344	0.189
+TSph9	3/27/12		31.493	0.211
+TSph10	4/24/12		37.519	0.257
+TSph11	4/24/12		24.212	0.754
+TSph9	4/24/12		40.004	0.223
+TSph10	5/15/12		28.039	0.149
+TSph11	5/15/12		32.381	0.259
+TSph9	5/15/12		44.731	0.183
+TSph10	6/28/12		55.015	0.204
+TSph11	6/28/12		17.627	0.237
+TSph9	6/28/12		40.155	0.17
+TSph10	7/25/12		60.406	0.128
+TSph11	7/25/12		21.27	0.176
+TSph9	7/25/12		32.895	0.168
+TSph10	8/30/12		39.574	0.211
+TSph11	8/30/12		15.888	0.213
+TSph9	8/30/12		45.224	0.169
+TSph10	9/11/12		63.578	0.254
+TSph11	9/11/12		12.416	0.336
+TSph9	9/11/12		39.602	0.183
+TSph10	10/22/12		47.5	0.225
+TSph11	10/22/12		9.29	0.217
+TSph9	10/22/12		29.66	0.189
+TSph10	11/25/12		42.113	0.331
+TSph11	11/25/12		14.744	0.365
+TSph9	11/25/12		35.96	0.236
+TSph10	12/20/12		31.047	0.238
+TSph11	12/20/12		15.212	0.368
+TSph9	12/20/12		26.469	0.22
+TSph10	1/15/13		23.035	0.205
+TSph11	1/15/13		16.81	0.248
+TSph9	1/15/13		26.147	0.166
+TSph10	2/20/13		33.578	0.139
+TSph11	2/20/13		25.878	0.288
+TSph9	2/20/13		13.517	0.162
+TSph10	3/19/13		41.288	0.149
+TSph11	3/19/13		14.971	0.243
+TSph9	3/19/13		26.922	0.122
+TSph10	4/24/13		25.747	0.116
+TSph11	4/24/13		14.636	0.199
+TSph9	4/24/13		30.964	0.165
+TSph10	5/23/13		24.361	0.129
+TSph11	5/23/13		20.875	0.28
+TSph9	5/23/13		30.293	0.167
+TSph10	6/26/13		29.364	0.195
+TSph11	6/26/13		27.454	0.249
+TSph9	6/26/13		37.204	0.111
+TSph10	7/24/13		34.22	0.135
+TSph11	7/24/13		20.713	0.237
+TSph9	7/24/13		35.058	0.122
+TSph10	8/12/13		37.673	0.148
+TSph11	8/12/13		20.286	0.306
+TSph9	8/12/13		33.135	0.166
+TSph10	9/29/13		40.435	0.159
+TSph11	9/29/13		17.312	0.426
+TSph9	9/29/13		31.772	0.126
+TSph10	10/28/13		34.348	0.085
+TSph11	10/28/13		77.502	0.957
+TSph9	10/28/13		31.579	0.084
+TSph10	11/20/13		19.523	0.052
+TSph11	11/20/13		27.811	0.145
+TSph9	11/20/13		29.831	0.048
+TSph10	12/16/13		24.283	0.186
+TSph11	12/16/13		22.657	0.314
+TSph9	12/16/13		37.239	0.344
+TSph10	1/27/14		24.311	0.551
+TSph11	1/27/14		8.347	1.058
+TSph9	1/27/14		22.372	0.443
+TSph10	2/26/14		27.178	0.211
+TSph11	2/26/14		11.242	0.294
+TSph9	2/26/14		22.649	0.238
+TSph10	3/30/14		30.803	0.442
+TSph11	3/30/14		9.617	0.438
+TSph9	3/30/14		27.363	0.322
+TSph10	4/16/14		30.259	0.327
+TSph11	4/16/14		7.595	0.445
+TSph9	4/16/14		24.34	0.226
+TSph10	5/29/14		20.69	0.208
+TSph11	5/29/14		20.39	0.338
+TSph9	5/29/14		30.714	0.266
+TSph10	6/24/14		21.615	0.183
+TSph11	6/24/14		12.424	0.384
+TSph9	6/24/14		27.638	0.147
+TSph10	7/31/14		37.653	0.334
+TSph11	7/31/14		31.472	0.618
+TSph9	7/31/14		26.166	0.577
+TSph10	8/11/14		49.113	0.226
+TSph11	8/11/14		15.203	0.37
+TSph9	8/11/14		35.731	0.185
+TSph10	9/29/14		36.024	0.04
+TSph11	9/29/14		27.46	0.07
+TSph9	9/29/14		39.142	0.033
+TSph10	10/30/14		43.952	0.166
+TSph11	10/30/14		16.948	0.327
+TSph9	10/30/14		39.199	0.11
+TSph10	11/24/14		32.072	0.141
+TSph11	11/24/14		22.719	0.22
+TSph9	11/24/14		46.394	0.174
+TSph10	12/17/14		51.478	0.114
+TSph11	12/17/14		20.271	0.201
+TSph9	12/17/14		47.603	0.606
+TSph10	1/22/15		31.088	0.114
+TSph11	1/22/15		12.977	0.171
+TSph9	1/22/15		38.59	0.23
+TSph10	2/26/15		36.7	0.26
+TSph11	2/26/15		12.053	0.354
+TSph9	2/26/15		27.967	0.347
+TSph10	3/31/15		61.468	0.215
+TSph11	3/31/15		25.403	0.324
+TSph9	3/31/15		46.435	0.191
+TSph10	4/20/15		32.539	0.216
+TSph11	4/20/15		22.945	0.303
+TSph9	4/20/15		41.892	0.17
+TSph10	5/28/15		30.558	0.134
+TSph11	5/28/15		16.127	0.209
+TSph9	5/28/15		38.528	0.168
+TSph10	6/29/15		22.672	0.284
+TSph11	6/29/15		18.408	0.367
+TSph9	6/29/15		22.566	0.123
+TSph10	7/28/15		21.738	0.22
+TSph11	7/28/15		8.22	0.401
+TSph9	7/28/15		33.027	0.188
+TSph10	8/10/15		28.17	0.303
+TSph11	8/10/15		10.101	0.36
+TSph9	8/10/15		22.709	0.232
+TSph10	9/22/15		56.492	0.224
+TSph11	9/22/15		19.582	0.259
+TSph9	9/22/15		41.559	0.127
+TSph10	10/28/15		32.659	0.155
+TSph11	10/28/15		40.157	0.357
+TSph9	10/28/15		41.969	0.135
+TSph10	11/19/15		35.598	0.15
+TSph11	11/19/15		13.881	0.155
+TSph9	11/19/15		49.523	0.144
+TSph10	12/17/15		37.45	0.137
+TSph11	12/17/15		21.961	0.298
+TSph9	12/17/15		45.841	0.122
+TSph10	1/26/16		55.48	0.2
+TSph11	1/26/16		16.578	0.441
+TSph9	1/26/16		47.111	0.155
+TSph10	2/18/16		54.248	0.298
+TSph11	2/18/16		18.257	0.273
+TSph9	2/18/16		42.461	0.234
+TSph9	3/30/16		39.923	0.385
+TSph10	3/30/16		51.714	0.391
+TSph11	3/30/16		18.35	0.413
+TSph9	4/26/16		31.857	0.38
+TSph10	4/26/16		31.026	0.074
+TSph11	4/26/16		27.341	0.281
+TSph9	5/1/16		39.303	0.185
+TSph10	5/1/16		50.453	0.254
+TSph11	5/1/16		15.004	0.348
+TSph9	6/29/16		43.029	0.196
+TSph10	6/29/16		65.096	0.32
+TSph11	6/29/16		16.519	0.327
+TSph9	7/21/16		36.342	0.355
+TSph10	7/21/16		32.848	0.172
+TSph11	7/21/16		15.844	0.331
+TSph9	8/23/16		41.222	0.146
+TSph10	8/23/16		38.504	0.176
+TSph11	8/23/16		22.785	0.308
+TSph11	9/26/16		24.978	0.241
+TSph10	9/26/16		86.398	0.255
+TSph9	9/26/16		51.764	0.133
+TSph9	10/24/16		32.751	0.098
+TSph10	10/24/16		39.01	0.056
+TSph11	10/24/16		15.782	0.107
+TSph9	11/28/16		28.573	0.461
+TSph10	11/28/16		33.726	0.406
+TSph11	11/28/16		18.324	0.74
+TSph9	12/12/16		31.311	0.125
+TSph10	12/12/16		27.984	0.135
+TSph11	12/12/16		71.133	1.275
+TSph9	1/26/17		44.825	0.275
+TSph10	1/26/17		78.347	0.379
+TSph11	1/26/17		15.506	0.305
+TSph9	2/28/17		39.212	0.209
+TSph10	2/28/17		67.485	0.427
+TSph11	2/28/17		17.52	0.257
+TSph9	3/16/17		37.445	0.318
+TSph10	3/16/17		61.027	0.301
+TSph11	3/16/17		20.771	0.277
+TSph9	4/24/17		34.661	0.123
+TSph10	4/24/17		19.314	0.143
+TSph11	4/24/17		11.659	0.166
+TSph9	5/26/17		38.847	0.177
+TSph10	5/26/17		27.194	0.213
+TSph11	5/26/17		22.623	0.3
+TSph9	6/26/17		39.883	0.191
+TSph10	6/26/17		29.77	0.154
+TSph11	6/26/17		19.728	0.229
+TSph9	7/24/17		38.242	0.177
+TSph10	7/24/17		46.101	0.218
+TSph11	7/24/17		28.566	0.403
+TSph9	8/7/17		45.395	0.225
+TSph10	8/7/17		53.625	0.233
+TSph11	8/7/17		23.245	0.303
+TSph9	9/25/17		64.38	0.777
+TSph10	9/25/17		50.269	0.409
+TSph11	9/25/17		20.071	0.483
+TSph9	10/26/17		66.002	0.575
+TSph10	10/26/17		50.104	0.434
+TSph11	10/26/17		57.884	1.064
+TSph9	11/30/17		51.353	0.419
+TSph10	11/30/17		41.933	0.355
+TSph11	11/30/17		20.837	0.509
+TSph9	12/14/17		84.074	0.53
+TSph10	12/14/17		86.165	0.565
+TSph11	12/14/17		44.094	0.502
+TSph9	1/25/18		45.972	0.502
+TSph10	1/25/18		50.458	0.453
+TSph11	1/25/18		22.756	0.43
+TSph9	2/27/18		47.559	0.327
+TSph10	2/27/18		36.191	0.288
+TSph11	2/27/18		35.077	0.361
+TSph9	3/26/18		53.69	0.36
+TSph10	3/26/18		63.005	0.63
+TSph11	3/26/18		28.388	0.447
+TSph9	4/26/18		45.983	0.282
+TSph10	4/26/18		63.935	0.491
+TSph11	4/26/18		18.97	0.361
+TSph9	5/30/18		54.297	0.482
+TSph10	5/30/18		49.449	0.327
+TSph11	5/30/18		25.304	0.434
+TSph9	6/19/18		53.174	0.364
+TSph10	6/19/18		64.331	0.405
+TSph11	6/19/18		16.918	0.409
+TSph9	7/31/18		52.018	0.29
+TSph10	7/31/18		60.759	0.367
+TSph11	7/31/18		18.834	0.409
+TSph9	8/6/18		85.467	0.324
+TSph10	8/6/18		77.815	0.337
+TSph11	8/6/18		40.274	0.33
+TSph9	9/26/18		58.426	0.209
+TSph10	9/26/18		84.505	0.322
+TSph11	9/26/18		21.241	0.381
+TSph9	10/29/18		51.59	0.204
+TSph10	10/29/18		48.857	0.227
+TSph11	10/29/18		52.338	0.979
+TSph9	11/19/18		57.63	0.345
+TSph10	11/19/18		47.036	0.288
+TSph11	11/19/18		31.389	0.558
+TSph9	12/17/18		58.726	0.308
+TSph10	12/17/18		76.866	0.594
+TSph11	12/17/18		47.663	0.546
+TSph9	1/29/19		59.705	0.305
+TSph10	1/29/19		72.167	0.304
+TSph11	1/29/19		23.4	0.375
+TSph9	3/6/19		63.616	0.236
+TSph10	3/6/19		73.771	0.264
+TSph11	3/6/19		24.913	0.35
+TSph9	3/21/19		43.459	0.213
+TSph10	3/21/19		22.108	0.232
+TSph11	3/21/19		42.852	0.44
+TSph9	4/25/19		43.12	0.24
+TSph10	4/25/19		48.741	0.273
+TSph11	4/25/19		20.747	0.484
+TSph9	5/30/19		39.304	0.399
+TSph10	5/30/19		26.975	0.072
+TSph11	5/30/19		29.959	0.414
+TSph9	6/24/19		55.476	0.394
+TSph10	6/24/19		70.238	0.534
+TSph11	6/24/19		14.762	0.578
+TSph9	7/22/19		56.667	0.208
+TSph10	7/22/19		65.476	0.366
+TSph11	7/22/19		26.667	0.284
+TSph9	8/28/19		48.095	0.241
+TSph10	8/28/19		73.81	0.431
+TSph11	8/28/19		12.143	0.325
+TSph9	9/29/19		52.143	0.218
+TSph10	9/29/19		36.19	0.195
+TSph11	9/29/19		36.905	0.378
+TSph9	10/17/19		50	0.202
+TSph10	10/17/19		30.714	0.199
+TSph11	10/17/19		48.571	0.572
+TSph9	11/12/19		50.714	0.232
+TSph10	11/12/19		11.429	0.182
+TSph11	11/12/19		12.143	0.24
+TSph9	12/10/19		43.571	0.561
+TSph10	12/10/19		57.857	0.218
+TSph11	12/10/19		22.857	0.319
