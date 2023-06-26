@@ -392,7 +392,7 @@ jags.SRS4 <- run_model(run="test", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err=F, process_err=T)
 
 
-jags.SRS4 <- run_model(run="very long", mix, source, discr, model_filename,
+jags.SRS4 <- run_model(run="normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err=F, process_err=T)
 
 
@@ -479,7 +479,7 @@ jags.TSFB <- run_model(run="test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=T)
 
 
-jags.TSFB <- run_model(run="long", mix, source, discr, model_filename,
+jags.TSFB <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=T)
 
 output_jags.TSFB  <- list(summary_save = TRUE,
@@ -548,7 +548,7 @@ source <- load_source_data(filename = "sourcesSRS6_2.csv",
 
 discr <- load_discr_data(file("FCE_TEF_SRS6_1.csv"), mix)
 
-plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
+#plot_data(filename = "SRS6_isospace_plot", plot_save_pdf = TRUE, plot_save_png = TRUE, mix, source, discr)
 
 model_filename <- "SRS6_mix.txt"
 write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
@@ -640,7 +640,7 @@ source <- load_source_data(filename="sourcesSRS4_2.csv",
 
 discr <- load_discr_data(file("FCE_TEF_SRS4_2.csv"), mix)
 
-plot_data(filename="SRS4_isospace_plot", plot_save_pdf=FALSE, plot_save_png=F, mix,source,discr)
+plot_data(filename="SRS4_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
 model_filename <- "SRS4_mix_test.txt"
 write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
@@ -651,7 +651,7 @@ jags.SRS4 <- run_model(run="test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=T)
 
 
-jags.SRS4 <- run_model(run="short", mix, source, discr, model_filename,
+jags.SRS4 <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=T)
 
 
@@ -781,7 +781,7 @@ output_JAGS(jags.RB10 , mix, source, output_jags.RB10)
 
 
 combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Epiphytic microalgae' ), brown=c('Mangrove')))
+                                groups=list(green=c('Phytoplankton','Epiphytes' ), brown=c('Mangrove')))
 
 
 
@@ -945,7 +945,8 @@ df_srs3 = mixTable("FCESRS3_sumstats.txt", type = "SRS3", ind = F, nest = T)
 
 options(max.print = 6000000)
 
-
+# Step 1: Check dimensions and structure of jags.SRS3$BUGSoutput$sims.list$ilr.fac1
+str(jags.SRS3$BUGSoutput$sims.list$ilr.fac1)  # Check dimensions and structure
 
 
 fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
@@ -1189,7 +1190,7 @@ transectCS <- transectCS + facet_wrap(~season, scales = "free_x", nrow = 2, labe
 # Adjust the plot size for better visibility
 ggsave("transectCS_boxplot.png", transectCS, width = 10, height = 8, dpi = 300)
 
-mixoutput
+
 
 
 SRS_sumstats_gb<-read.csv('SRSMixout_gb.csv')
@@ -1200,7 +1201,8 @@ mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=
   theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~.)+
   theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
   scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
-mixoutput_bxplt_gb_SRS
+ggsave("mixoutput_bxplt_gb_SRS.png", transectCS, width = 10, height = 8, dpi = 300)
+
 
 TS_sumstats_gb<-read.csv('TS_sumstats_gb.csv')
 TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS7","TS9","TS10","TS11")
@@ -1213,14 +1215,20 @@ mixoutput_bxplt_gb_TS<-ggplot(TS_sumstats_gb,aes(x=source, fill=source, width=0.
 
 
 mixoutput_bxplt_gb_TS
+ggsave("mixoutput_bxplt_gb_TS.png", transectCS, width = 10, height = 8, dpi = 300)
 
 #### James ----
 
-srs3_spp_boxplot <-ggplot(df_srs3,aes(x=source, fill=source, width=0.8)) +
-  geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
+srs3_spp_boxplot <-ggplot(df_srs3,aes(x=source, y = mean, fill=source, width=0.8)) +
+  geom_boxplot(aes(lower = lowend, upper = highend, middle = mid, ymin = ymin, ymax = ymax), stat="identity")+
   geom_point(aes(shape = as.factor(code))) +
   geom_jitter(position = "dodge") +
-  theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
+  theme_bw()+
+  scale_fill_manual(values=c("saddlebrown",'limegreen', 'red', 'blue'))+
+  coord_cartesian(ylim = c( 0,1))+
+  facet_grid(type~name)+
   theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
-  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
-
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+
+  coord_flip()
+srs3_spp_boxplot
+ggsave("srs3_spp_boxplot.png", transectCS, width = 10, height = 8, dpi = 300)
