@@ -51,7 +51,7 @@ TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS7","TS9","TS10","
 mixoutput_bxplt_gb_TS<-ggplot(TS_sumstats_gb,aes(x=source, fill=source, width=0.8))+
   geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
   theme_bw()+
-  scale_fill_manual(values=c("saddlebrown",'limegreen'))+ 
+  scale_fill_manual(values=c("saddlebrown", "limegreen"))+ 
   coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
