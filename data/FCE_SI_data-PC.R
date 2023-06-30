@@ -1201,7 +1201,12 @@ mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=
   theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~.)+
   theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
   scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
+
+mixoutput_bxplt_gb_SRS
+
 ggsave("mixoutput_bxplt_gb_SRS.png", transectCS, width = 10, height = 8, dpi = 300)
+
+
 
 
 TS_sumstats_gb<-read.csv('TS_sumstats_gb.csv')

@@ -7,7 +7,6 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-dev.off()
 ```
 
 # Librarys Used
@@ -531,7 +530,7 @@ jags.TSFB <- run_model(run="test", mix, source, discr, model_filename,
 #### run normal model ----
 ```{r}
 
-jags.TSFB <- run_model(run="long", mix, source, discr, model_filename,
+jags.TSFB <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=T)
 
 ```
@@ -974,16 +973,16 @@ options(max.print = 6000000)
 
 
 
-# fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
-#             source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
-#             mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-#                                               c(2, 3), mean), 3))$value,
-#             sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-#                                             c(2, 3), sd), 3))$value,
-#             `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-#                                                 c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
-#             `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1, 
-#                                                  c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
+fact1 = tibble(mixFactor = rep(mix$FAC[[1]]$labels, times = length(source$source_names)),
+            source = rep(source$source_names, each = length(mix$FAC[[1]]$labels)),
+            mean = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1,
+                                              c(2, 3), mean), 3))$value,
+            sd = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1,
+                                            c(2, 3), sd), 3))$value,
+            `2.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1,
+                                                c(2, 3), function(x) quantile(x, probs = c(0.025))), 3))$value,
+            `97.5%` = reshape2::melt(round(apply(jags.SRS3$BUGSoutput$sims.list$ilr.fac1,
+                                                 c(2, 3), function(x) quantile(x, probs = c(0.975))), 3))$value)
 
 
 #                      Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
@@ -996,14 +995,14 @@ options(max.print = 6000000)
 #p.dry19.Sawgrass      0.273 0.093 0.073 0.110 0.214 0.274 0.338 0.422 0.448
 #p.wet19.Sawgrass      0.164 0.092 0.018 0.028 0.092 0.159 0.226 0.327 0.359
 
-# combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
-#                                 groups=list(green=c('Phytoplankton','Periphyton' ), brown=c('Sawgrass','Floc')))
+combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1,
+                                groups=list(green=c('Phytoplankton','Periphyton' ), brown=c('Sawgrass','Floc')))
 
 
-# get posterior medians for new source groupings
-# apply(combinedSRS3$post, 2, median)
-# summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-#              filename = "SRS3_combined_sumstats" )
+
+apply(combinedSRS3$post, 2, median)
+summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+             filename = "SRS3_combined_sumstats" )
 
 
 #               Mean    SD  2.5%   25%   50%   75% 97.5%
@@ -1177,7 +1176,6 @@ output_jags.TS3  <- list(summary_save = TRUE,
 output_JAGS(jags.TS3 , mix, source, output_jags.TS3)
 
 
-
 combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1, 
                                groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
 
@@ -1226,8 +1224,26 @@ mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=
   geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
   theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~.)+
   theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
-  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+
+  coord_flip()
+
 mixoutput_bxplt_gb_SRS
+
+ggsave("mixoutput_bxplt_gb_SRS.png", transectCS, width = 10, height = 8, dpi = 300)
+
+mixoutput_bxplt_gb_SRS_2<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=0.8))+
+  geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
+  theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~.)+
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+
+  coord_flip()
+
+mixoutput_bxplt_gb_SRS_2
+
+ggsave("mixoutput_bxplt_gb_SRS_2.png", transectCS, width = 10, height = 8, dpi = 300)
+
+
+
 
 TS_sumstats_gb<-read.csv('TS_sumstats_gb.csv')
 TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS7","TS9","TS10","TS11")
