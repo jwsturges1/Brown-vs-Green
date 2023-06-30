@@ -29,7 +29,8 @@ mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=
         axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
         axis.text.x = element_text(size = 12),
-        strip.text = element_text(face = "bold", size = 12))+
+        strip.text = element_text(face = "bold", size = 12),
+        legend.position = "top")+
   scale_y_continuous(
     breaks = c(0, 0.25, 0.5, 0.75, 1),
     labels = y_label_formatter,
@@ -59,6 +60,7 @@ mixoutput_bxplt_gb_TS<-ggplot(TS_sumstats_gb,aes(x=source, fill=source, width=0.
         axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
         axis.text.x = element_text(size = 12),
+        legend.position = "top",
         strip.text = element_text(face = "bold", size = 12))+
   scale_y_continuous(
     breaks = c(0, 0.25, 0.5, 0.75, 1),
