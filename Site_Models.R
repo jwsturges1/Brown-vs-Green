@@ -939,11 +939,11 @@ mixoutput_bxplt_gb_combined <-ggplot(combine_df,aes(x=site, fill=X50., width=0.8
   geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
   theme_bw()+
   scale_fill_gradient2(low = "saddlebrown",
-                         high = "forestgreen",
-                         mid = 'white',
-                         midpoint = 0.5,
-                         limits = c(0,1),
-                         na.value = "grey50") +
+                       high = "forestgreen",
+                       mid = 'white',
+                       midpoint = 0.5,
+                       limits = c(0,1),
+                       na.value = "grey50") +
   facet_grid(transect~season, scales = "free_y") +
   theme(axis.title = element_text(size = 20), 
         axis.text.y = element_text(size = 20, colour = "black"), 
