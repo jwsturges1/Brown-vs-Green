@@ -1,0 +1,56 @@
+
+#################################################################
+# Summary Statistics
+#################################################################
+
+DIC = 65.67706
+
+                                                   Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
+p.Asian Swamp Eel.wet19.Epiphytic microalgae      0.544 0.196 0.176 0.223 0.398 0.541 0.690 0.871 0.917
+p.Asian Swamp Eel.wet19.Red Mangrove              0.329 0.177 0.022 0.047 0.195 0.325 0.453 0.631 0.676
+p.Asian Swamp Eel.wet19.Seagrass                  0.023 0.025 0.001 0.001 0.006 0.015 0.032 0.073 0.088
+p.Asian Swamp Eel.wet19.SPOM                      0.103 0.102 0.001 0.003 0.025 0.071 0.153 0.310 0.378
+p.Bluefin killifish.dry19.Epiphytic microalgae    0.589 0.215 0.178 0.240 0.431 0.590 0.760 0.927 0.951
+p.Bluefin killifish.dry19.Red Mangrove            0.297 0.203 0.012 0.021 0.122 0.276 0.439 0.652 0.717
+p.Bluefin killifish.dry19.Seagrass                0.037 0.052 0.000 0.001 0.005 0.016 0.046 0.146 0.186
+p.Bluefin killifish.dry19.SPOM                    0.078 0.091 0.001 0.002 0.016 0.045 0.105 0.266 0.337
+p.Bluefin Killifish.wet19.Epiphytic microalgae    0.451 0.246 0.066 0.095 0.255 0.424 0.637 0.894 0.933
+p.Bluefin Killifish.wet19.Red Mangrove            0.346 0.215 0.013 0.028 0.165 0.333 0.506 0.719 0.772
+p.Bluefin Killifish.wet19.Seagrass                0.044 0.062 0.000 0.000 0.004 0.018 0.058 0.179 0.221
+p.Bluefin Killifish.wet19.SPOM                    0.158 0.186 0.001 0.002 0.019 0.076 0.242 0.580 0.658
+p.Bluegill.wet19.Epiphytic microalgae             0.591 0.229 0.157 0.209 0.417 0.600 0.779 0.943 0.963
+p.Bluegill.wet19.Red Mangrove                     0.301 0.213 0.008 0.018 0.119 0.274 0.449 0.694 0.752
+p.Bluegill.wet19.Seagrass                         0.020 0.029 0.000 0.000 0.003 0.010 0.026 0.081 0.109
+p.Bluegill.wet19.SPOM                             0.088 0.103 0.001 0.001 0.014 0.048 0.126 0.306 0.379
+p.Eastern mosquitofish.dry19.Epiphytic microalgae 0.554 0.221 0.152 0.199 0.385 0.545 0.727 0.916 0.938
+p.Eastern mosquitofish.dry19.Red Mangrove         0.330 0.212 0.012 0.022 0.150 0.324 0.488 0.694 0.751
+p.Eastern mosquitofish.dry19.Seagrass             0.037 0.052 0.000 0.001 0.005 0.017 0.047 0.150 0.189
+p.Eastern mosquitofish.dry19.SPOM                 0.078 0.090 0.001 0.003 0.016 0.047 0.110 0.264 0.331
+p.Eastern Mosquitofish.wet19.Epiphytic microalgae 0.508 0.250 0.071 0.104 0.306 0.507 0.708 0.916 0.951
+p.Eastern Mosquitofish.wet19.Red Mangrove         0.274 0.189 0.011 0.022 0.122 0.245 0.393 0.626 0.692
+p.Eastern Mosquitofish.wet19.Seagrass             0.032 0.046 0.000 0.000 0.004 0.014 0.041 0.120 0.163
+p.Eastern Mosquitofish.wet19.SPOM                 0.187 0.209 0.001 0.002 0.018 0.095 0.312 0.628 0.691
+p.Ghost Shrimp.dry19.Epiphytic microalgae         0.432 0.241 0.070 0.112 0.246 0.381 0.596 0.889 0.935
+p.Ghost Shrimp.dry19.Red Mangrove                 0.458 0.253 0.014 0.036 0.237 0.495 0.664 0.818 0.864
+p.Ghost Shrimp.dry19.Seagrass                     0.052 0.087 0.000 0.001 0.005 0.018 0.057 0.223 0.320
+p.Ghost Shrimp.dry19.SPOM                         0.058 0.074 0.001 0.002 0.013 0.033 0.074 0.203 0.269
+p.Ghost Shrimp.wet19.Epiphytic microalgae         0.444 0.261 0.071 0.105 0.233 0.383 0.639 0.920 0.959
+p.Ghost Shrimp.wet19.Red Mangrove                 0.467 0.269 0.010 0.022 0.222 0.520 0.689 0.851 0.878
+p.Ghost Shrimp.wet19.Seagrass                     0.030 0.056 0.000 0.000 0.003 0.009 0.031 0.133 0.196
+p.Ghost Shrimp.wet19.SPOM                         0.059 0.079 0.001 0.001 0.010 0.031 0.074 0.218 0.294
+p.Golden Topminnow.wet19.Epiphytic microalgae     0.493 0.250 0.068 0.099 0.294 0.482 0.690 0.912 0.947
+p.Golden Topminnow.wet19.Red Mangrove             0.325 0.210 0.011 0.025 0.158 0.302 0.471 0.700 0.767
+p.Golden Topminnow.wet19.Seagrass                 0.030 0.044 0.000 0.000 0.004 0.013 0.038 0.118 0.160
+p.Golden Topminnow.wet19.SPOM                     0.151 0.174 0.001 0.002 0.017 0.076 0.230 0.535 0.607
+p.Mayan Cichlid.wet19.Epiphytic microalgae        0.512 0.242 0.096 0.142 0.319 0.500 0.703 0.917 0.952
+p.Mayan Cichlid.wet19.Red Mangrove                0.368 0.237 0.012 0.023 0.169 0.353 0.547 0.782 0.835
+p.Mayan Cichlid.wet19.Seagrass                    0.025 0.038 0.000 0.000 0.003 0.011 0.032 0.099 0.131
+p.Mayan Cichlid.wet19.SPOM                        0.095 0.112 0.001 0.001 0.015 0.052 0.136 0.333 0.404
+p.Peacock Eel.wet19.Epiphytic microalgae          0.453 0.266 0.036 0.062 0.231 0.438 0.662 0.910 0.944
+p.Peacock Eel.wet19.Red Mangrove                  0.417 0.267 0.010 0.027 0.190 0.397 0.624 0.881 0.919
+p.Peacock Eel.wet19.Seagrass                      0.024 0.036 0.000 0.000 0.003 0.010 0.030 0.093 0.124
+p.Peacock Eel.wet19.SPOM                          0.106 0.121 0.001 0.002 0.015 0.055 0.161 0.359 0.438
+p.Redear Sunfish.wet19.Epiphytic microalgae       0.603 0.222 0.179 0.229 0.433 0.616 0.784 0.944 0.965
+p.Redear Sunfish.wet19.Red Mangrove               0.289 0.204 0.009 0.016 0.115 0.258 0.434 0.671 0.724
+p.Redear Sunfish.wet19.Seagrass                   0.021 0.030 0.000 0.000 0.003 0.010 0.027 0.082 0.110
+p.Redear Sunfish.wet19.SPOM                       0.087 0.103 0.001 0.002 0.014 0.047 0.125 0.302 0.368
