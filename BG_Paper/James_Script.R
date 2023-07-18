@@ -246,33 +246,33 @@ ggsave("figures/biplots/SRS6CSbiplot.png")
 
 SRS6CNbiplot
 ggsave("figures/biplots/SRS6CNbiplot.png")
-# TS10 
-TS10<-SIa %>% filter(site == 'TS10', common_name!="Egyptian paspalidium")
+# TS7 
+TS7<-SIa %>% filter(site == 'TS7', common_name!="Egyptian paspalidium")
 
-TS10CSbiplot<-ggplot(TS10,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS10,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS10, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
+TS7CSbiplot<-ggplot(TS7,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
+  geom_errorbarh(data = TS7,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
+  geom_errorbar(data = TS7,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
+  geom_point(data=TS7, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
   ylab(expression(paste(delta^{34}, "S (\u2030)")))+
   xlab(expression(paste(delta^{13}, "C (\u2030)")))+
   theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
 
-TS10CNbiplot<-ggplot(TS10,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS10,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS10, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
+TS7CNbiplot<-ggplot(TS7,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
+  geom_errorbarh(data = TS7,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
+  geom_errorbar(data = TS7,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
+  geom_point(data=TS7, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
   geom_text(aes(label = common_name))+
   ylab(expression(paste(delta^{15}, "N (\u2030)")))+
   xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
 
-TS10CSbiplot
-ggsave("figures/biplots/TS10CSbiplot.png")
+TS7CSbiplot
+ggsave("figures/biplots/TS7CSbiplot.png")
 
-TS10CNbiplot
-ggsave("figures/biplots/TS10CNbiplot.png")
+TS7CNbiplot
+ggsave("figures/biplots/TS7CNbiplot.png")
 # TS9 
 TS9<-SIa %>% filter(site == 'TS9', common_name!="Egyptian paspalidium")
 
@@ -729,7 +729,7 @@ source <- load_source_data(filename="data/sourcesTS11.csv",
                            mix)
 
 # load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TS11.csv"), mix)
+discr <- load_discr_data(file("data/FCE_TEF_TSFB.csv"), mix)
 
 #generates bioplots for CN, CS, and NS in isospace
 plot_data(filename="figures/isospace/TS11_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
