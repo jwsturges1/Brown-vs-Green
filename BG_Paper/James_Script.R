@@ -1,5 +1,5 @@
-# Author: James Sturges
-# Last Updated 13 July 2023
+# Authors: James Sturges, Ryan Rezek, Ryan James
+# Last Updated 19 July 2023
 # Seasonal differences in brown/green energy pathways across 9 FCE sites
 #### DATASETUP ----
 
@@ -776,6 +776,8 @@ output_JAGS(jags.TS11 , mix, source, output_jags.TS11)
 # use mixTable function
 mixTable("data/JAGS_Output/TS11/FCETS11_sumstats.txt",type = "TS11", nest = T)
 
+
+
 ##combine posterior ground into brown/green
 combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1, 
                                 groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
@@ -784,12 +786,6 @@ combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1,
 apply(combinedTS11$post, 2, median)
 summary_stat(combinedTS11, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
              filename = "TS11_combined_sumstats" )
-
-
-
-
-
-
 
 
 #### Shark River Slough Mixing Models 3,4,6 ----
