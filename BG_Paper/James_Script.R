@@ -910,8 +910,6 @@ output_jags.SRS4  <- list(summary_save = TRUE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = F)
 
-output_JAGS(jags.SRS4 , mix, source, output_jags.SRS4)
-
 ##combine posterior ground into brown/green
 
 #                             
