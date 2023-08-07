@@ -138,6 +138,22 @@ ggsave("figures/biplots/SRS3CSbiplot.png")
 
 SRS3CNbiplot 
 ggsave("figures/biplots/SRS3CNbiplot .png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # TS3 
 TS3<-SIa %>% filter(site == 'TS3', common_name!="Egyptian paspalidium")
 
@@ -169,8 +185,8 @@ ggsave("figures/biplots/TS3CNbiplot.png")
 RB10<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium")
 
 RB10CSbiplot<-ggplot(RB10,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = RB10,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
+  # geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
+  # geom_errorbar(data = RB10,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
   geom_point(data=RB10, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = T)+#scale_shape_manual(values=c(1,0,15,16,2))+
   ylab(expression(paste(delta^{34}, "S (\u2030)")))+
   xlab(expression(paste(delta^{13}, "C (\u2030)")))+
@@ -178,8 +194,8 @@ RB10CSbiplot<-ggplot(RB10,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
 
 RB10CNbiplot<-ggplot(RB10,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = RB10,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
+  # geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
+  # geom_errorbar(data = RB10,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
   geom_point(data=RB10, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
   geom_text(aes(label = common_name),check_overlap = T)+
   ylab(expression(paste(delta^{15}, "N (\u2030)")))+
@@ -192,6 +208,151 @@ ggsave("figures/biplots/RB10CSbiplot.png")
 
 RB10CNbiplot
 ggsave("figures/biplots/RB10CNbiplot.png")
+
+
+
+
+
+
+
+
+fish = read_csv('data/SRS6mix.csv')
+
+sources = read.csv('data/sourcesSRS6.csv')%>%
+  mutate(Meand13C = Meand13C + 1.3,
+         Meand15N = Meand15N + 3.3,
+         Meand34S = Meand34S + .5)
+
+
+wcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  geom_point(data = fish, aes(x = d13C, y = d15N,color = common_name), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(0,14))+
+  theme( legend.title = element_blank(),
+         legend.text=element_text(size=12))#,legend.position=c(.85,.15))
+
+#ggsave('flbayCNwet.pdf', units="in", width=10, height=6)
+wcn
+
+# C and S
+wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
+  geom_point(data = fish, aes(x = d13C, y = d34S,color = common_name), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(-16.5, 24))+
+  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
+#ggsave('flbayCSwet.pdf', units="in", width=10, height=6)
+
+wcn
+wcs
+
+
+
+fish = read_csv('data/SRS6mix.csv')
+
+
+sources = read.csv('data/sourcesSRS6_2.csv')%>%
+  mutate(Meand13C = Meand13C + 1.3,
+         Meand15N = Meand15N + 3.3,
+         Meand34S = Meand34S + .5)
+
+
+wcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  geom_point(data = fish, aes(x = d13C, y = d15N,color = season), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(0,14))+
+  theme( legend.title = element_blank(),
+         legend.text=element_text(size=12))#,legend.position=c(.85,.15))
+
+#ggsave('flbayCNwet.pdf', units="in", width=10, height=6)
+wcn
+
+# C and S
+wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
+  geom_point(data = fish, aes(x = d13C, y = d34S,color = season), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(-16.5, 24))+
+  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
+#ggsave('flbayCSwet.pdf', units="in", width=10, height=6)
+
+wcn
+wcs
+
+fish = read_csv('data/RB10mix.csv')
+
+
+sources = read.csv('data/sourcesRB10.csv')%>%
+  mutate(Meand13C = Meand13C + 1.3,
+         Meand15N = Meand15N + 3.3,
+         Meand34S = Meand34S + .5)
+
+
+wcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  geom_point(data = fish, aes(x = d13C, y = d15N,color = hydroseason), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(0,14))+
+  theme( legend.title = element_blank(),
+         legend.text=element_text(size=12))#,legend.position=c(.85,.15))
+
+#ggsave('flbayCNwet.pdf', units="in", width=10, height=6)
+wcn
+
+# C and S
+wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
+  geom_point(data = fish, aes(x = d13C, y = d34S,color = hydroseason), size=3, pch=c(20))+
+  # scale_color_manual(values = cols, drop = F)+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = source),hjust=-.1, vjust=-1) +
+  # scale_x_continuous(limits = c(-27, -6))+
+  # scale_y_continuous(limits = c(-16.5, 24))+
+  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
+#ggsave('flbayCSwet.pdf', units="in", width=10, height=6)
+
+wcn
+wcs
+
+
+
+
+
 # SRS4
 SRS4<-SIa %>% filter(site == 'SRS4', common_name!="Egyptian paspalidium")
 

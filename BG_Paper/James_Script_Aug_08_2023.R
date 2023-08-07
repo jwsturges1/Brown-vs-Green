@@ -122,7 +122,7 @@ SRS3 <- SI %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium")
 SRS3CSbiplot <- ggplot(SRS3, aes(x = d13C, y = d34S)) +
   # coord_fixed(ratio = 1) +
   geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  #geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
   ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
   xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
   theme_bw() +
@@ -553,7 +553,7 @@ ggsave("figures/biplots/TS11CSbiplot.png")
 TS11CNbiplot 
 ggsave("figures/biplots/TS11CNbiplot.png")
 
-
+#### Biplots ----
 
 
 
@@ -1234,12 +1234,12 @@ write.csv(RB10mix,"data/RB10mix.csv",row.names = F)
 
 mix <- load_mix_data(filename="data/RB10mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
 
-source <- load_source_data(filename="data/sources_RB10_1.csv",
+source <- load_source_data(filename="data/sourcesRB10.csv",
                            source_factors=NULL,
                            conc_dep=T,
                            data_type="means",
@@ -1255,19 +1255,19 @@ write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
 
 #run a test model to make sure it works
 jags.RB10 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
+                       alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
+jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err=F, process_err=F)
 
  output_jags.RB10  <- list(summary_save = TRUE,
                           summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_demo",
                           sup_post = FALSE,
-                          plot_post_save_pdf = T,
+                          plot_post_save_pdf = F,
                           plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_demo",
                           sup_pairs = FALSE,
-                          plot_pairs_save_pdf = T,
+                          plot_pairs_save_pdf = F,
                           plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_demo",
                           sup_xy = T,
                           plot_xy_save_pdf = F,
@@ -1278,11 +1278,12 @@ jags.RB10 <- run_model(run="very long", mix, source, discr, model_filename,
                           diag_save = T,
                           diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_demo",
                           indiv_effect = FALSE,
-                          plot_post_save_png = T,
-                          plot_pairs_save_png = T,
+                          plot_post_save_png = F,
+                          plot_pairs_save_png = F,
                           plot_xy_save_png = F)
 
-output_JAGS(jags.RB10 , mix, source, output_jags.RB10)
+ 
+output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 
 #                         Mean    SD  2.5%    5%   25%   50%   105%   95% 910.5%
 #p.dry19.Epiphytic microalgae 0.845 0.066 0.1003 0.1030 0.801 0.851 0.894 0.946 0.9510
@@ -1294,13 +1295,14 @@ output_JAGS(jags.RB10 , mix, source, output_jags.RB10)
 
 
 combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Epiphytes' ), brown=c('Mangrove')))
+                                groups=list(green=c('Phytoplankton','Epiphytes'), brown=c('Mangrove')))
 
-
+apply(combinedRB10$post, 2, median)
+summary_stat(combinedRB10, meanSD=T, savetxt=FALSE)
 
 
 # get posterior medians for new source groupings
-apply(combinedRB10$post, 2, median)
+apply(combinedRB10$post, 2, mean)
 summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T,
              filename = "RB10_combined_sumstats" )
 
