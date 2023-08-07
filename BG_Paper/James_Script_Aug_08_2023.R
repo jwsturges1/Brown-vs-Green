@@ -93,15 +93,21 @@ mixTable = function(file,type,ind = F,nest = F, csv = F){
 # updated data as of August 2023 includes sulfur reruns and dry 2020 supplemental values
 SI <- read.csv("data/FCE_SI_data_xls_07_August_2023_Sturges_edits.csv",na.strings=c("","NA"))%>%filter(is.na(outlier))
 
+#raw stable isotope values for individual level analysis
+SI = SI %>% 
+  select(site,hydroseason,group, year, common_name, functional_grp,d13C,d15N,d34S)
+
 summary(SI)
 
-SIa<-SI %>% group_by(site,season,group, common_name, functional_grp) %>% 
+#average stable isotope values for species across sites and seasons
+SIa<-SI %>% group_by(site, hydroseason, group, common_name, functional_grp) %>% 
   summarise(n=n(),md13C = mean(as.numeric(d13C), na.rm = T),d13Csd=sd(as.numeric(d13C),na.rm = T),
             md15N=mean(as.numeric(d15N),na.rm = T),d15Nsd=sd(as.numeric(d15N),na.rm = T),
             md34S=mean(as.numeric(d34S),na.rm = T),d34Ssd=sd(d34S,na.rm = T)) %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
 
 
+# not including seasonality as a factor
 SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>% 
   summarise(n=n(),md13C = mean(d13C,na.rm = T),d13Csd=sd(d13C,na.rm = T), md15N=mean(d15N,na.rm = T),d15Nsd=sd(d15N,na.rm = T),md34S=mean(d34S,na.rm = T),d34Ssd=sd(d34S,na.rm = T))  %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
@@ -110,250 +116,442 @@ SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>%
 #### Bi-plots ----
 
 # SRS3
-SRS3<-SIa %>% filter(site == 'SRS3', common_name!="Egyptian paspalidium")
 
-SRS3CSbiplot<-ggplot(SRS3,aes(x = md13C,y = md34S )) +            #coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS3,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS3,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS3, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=3,check_overlap = T)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+SRS3 <- SI %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium")
 
-SRS3CNbiplot<-ggplot(SRS3,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS3,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS3,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS3, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name), size =3, check_overlap = T)+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)
+SRS3CSbiplot <- ggplot(SRS3, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
+
+SRS3CNbiplot <- ggplot(SRS3, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 SRS3CSbiplot
 ggsave("figures/biplots/SRS3CSbiplot.png")
 
 SRS3CNbiplot 
-ggsave("figures/biplots/SRS3CNbiplot .png")
+ggsave("figures/biplots/SRS3CNbiplot.png")
+
+
 # TS3 
-TS3<-SIa %>% filter(site == 'TS3', common_name!="Egyptian paspalidium")
+TS3 <- SI %>% filter(site == 'TS3', common_name != "Egyptian paspalidium")
 
-TS3CSbiplot<-ggplot(TS3,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS3,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS3,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS3, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+TS3CSbiplot <- ggplot(TS3, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-TS3CNbiplot<-ggplot(TS3,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS3,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS3,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS3, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+TS3CNbiplot <- ggplot(TS3, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 TS3CSbiplot
 ggsave("figures/biplots/TS3CSbiplot.png")
 
-TS3CNbiplot
+TS3CNbiplot 
 ggsave("figures/biplots/TS3CNbiplot.png")
 # RB10 
-RB10<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium")
+RB10 <- SI %>% filter(site == 'RB10', common_name != "Egyptian paspalidium")
 
-RB10CSbiplot<-ggplot(RB10,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = RB10,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=RB10, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = T)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+RB10CSbiplot <- ggplot(RB10, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-RB10CNbiplot<-ggplot(RB10,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = RB10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = RB10,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=RB10, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name),check_overlap = T)+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+RB10CNbiplot <- ggplot(RB10, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 RB10CSbiplot
 ggsave("figures/biplots/RB10CSbiplot.png")
 
-RB10CNbiplot
+RB10CNbiplot 
 ggsave("figures/biplots/RB10CNbiplot.png")
+
 # SRS4
-SRS4<-SIa %>% filter(site == 'SRS4', common_name!="Egyptian paspalidium")
+SRS4 <- SI %>% filter(site == 'SRS4')
 
-SRS4CSbiplot<-ggplot(SRS4,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS4,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS4,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS4, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+SRS4CSbiplot <- ggplot(SRS4, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-SRS4CNbiplot<-ggplot(SRS4,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS4,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS4,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS4, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+SRS4CNbiplot <- ggplot(SRS4, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 SRS4CSbiplot
 ggsave("figures/biplots/SRS4CSbiplot.png")
 
-SRS4CNbiplot
+SRS4CNbiplot 
 ggsave("figures/biplots/SRS4CNbiplot.png")
 # SRS6  
-SRS6<-SIa %>% filter(site == 'SRS6', common_name!="Egyptian paspalidium")
+SRS6 <- SI %>% filter(site == 'SRS6')
 
-SRS6CSbiplot<-ggplot(SRS6,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS6,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS6,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS6, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+SRS6CSbiplot <- ggplot(SRS6, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-SRS6CNbiplot<-ggplot(SRS6,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = SRS6,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = SRS6,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=SRS6, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+SRS6CNbiplot <- ggplot(SRS6, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 SRS6CSbiplot
 ggsave("figures/biplots/SRS6CSbiplot.png")
 
-SRS6CNbiplot
+SRS6CNbiplot 
 ggsave("figures/biplots/SRS6CNbiplot.png")
 # TS7 
-TS7<-SIa %>% filter(site == 'TS7', common_name!="Egyptian paspalidium")
+TS7 <- SI %>% filter(site == 'TS7')
 
-TS7CSbiplot<-ggplot(TS7,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS7,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS7,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS7, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+TS7CSbiplot <- ggplot(TS7, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-TS7CNbiplot<-ggplot(TS7,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS7,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS7,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS7, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+TS7CNbiplot <- ggplot(TS7, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 TS7CSbiplot
 ggsave("figures/biplots/TS7CSbiplot.png")
 
-TS7CNbiplot
+TS7CNbiplot 
 ggsave("figures/biplots/TS7CNbiplot.png")
 # TS9 
-TS9<-SIa %>% filter(site == 'TS9', common_name!="Egyptian paspalidium")
+TS9 <- SI %>% filter(site == 'TS9')
 
-TS9CSbiplot<-ggplot(TS9,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS9,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS9,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS9, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+TS9CSbiplot <- ggplot(TS9, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-TS9CNbiplot<-ggplot(TS9,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS9,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS9,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS9, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+TS9CNbiplot <- ggplot(TS9, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 TS9CSbiplot
 ggsave("figures/biplots/TS9CSbiplot.png")
 
-TS9CNbiplot
+TS9CNbiplot 
 ggsave("figures/biplots/TS9CNbiplot.png")
 # TS10
-TS10<-SIa %>% filter(site == 'TS10')
+TS10 <- SI %>% filter(site == 'TS10')
 
-TS10CSbiplot<-ggplot(TS10,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS10,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS10, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = T)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+TS10CSbiplot <- ggplot(TS10, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-TS10CNbiplot<-ggplot(TS10,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS10,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS10,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS10, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+TS10CNbiplot <- ggplot(TS10, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 TS10CSbiplot
 ggsave("figures/biplots/TS10CSbiplot.png")
-TS10CNbiplot
+
+TS10CNbiplot 
 ggsave("figures/biplots/TS10CNbiplot.png")
 
 # TS11  
-TS11<-SIa %>% filter(site == 'TS11')
+TS11 <- SI %>% filter(site == 'TS11')
 
-TS11CSbiplot<-ggplot(TS11,aes(x = md13C,y = md34S )) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS11,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS11,aes(ymin = md34S - d34Ssd,ymax = md34S + d34Ssd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS11, aes(color=functional_grp),size=2)+ geom_text(aes(label = common_name),size=4,check_overlap = F)+#scale_shape_manual(values=c(1,0,15,16,2))+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) + facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+TS11CSbiplot <- ggplot(TS11, aes(x = d13C, y = d34S)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
 
-TS11CNbiplot<-ggplot(TS11,aes(x = md13C,y = md15N)) +#coord_fixed(ratio = 1)+
-  geom_errorbarh(data = TS11,aes(xmin = md13C - d13Csd ,xmax = md13C + d13Csd), height=0 ,color="#999999") + 
-  geom_errorbar(data = TS11,aes(ymin = md15N - d15Nsd,ymax = md15N + d15Nsd),width=0,color="#999999")+ theme_bw()+
-  geom_point(data=TS11, aes(color=functional_grp),size=2)+scale_shape_manual(values=c(1,0,15,16,2))+
-  geom_text(aes(label = common_name))+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+theme(text = element_text(size=12))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))+ facet_wrap(~season,nrow=2)+scale_color_viridis_d()
+
+TS11CNbiplot <- ggplot(TS11, aes(x = d13C, y = d15N)) +
+  # coord_fixed(ratio = 1) +
+  geom_point(aes(color = common_name), size = 2) +
+  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 14)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    axis.line = element_line(colour = "black")
+  ) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+  facet_wrap(~ hydroseason, nrow = 2) +
+  scale_color_viridis_d()
+
 
 TS11CSbiplot
 ggsave("figures/biplots/TS11CSbiplot.png")
 
-TS11CNbiplot
-ggsave("figures/biplots/TS11CNbiplot .png")
+TS11CNbiplot 
+ggsave("figures/biplots/TS11CNbiplot.png")
 
 
 

@@ -9,6 +9,7 @@ library(R2jags)
 library(rjags)
 library(tidyverse)
 library(dplyr)
+
 fish = read_csv('data/TS11mix.csv')
 
 sources = read.csv('data/sourcesTS11.csv')%>%
