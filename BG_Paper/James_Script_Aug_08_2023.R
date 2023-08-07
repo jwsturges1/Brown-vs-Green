@@ -593,7 +593,7 @@ write.csv(TS3mix,"data/TS3mix.csv",row.names = F)
 # load consumer data
 mix <- load_mix_data(filename="data/TS3mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -659,8 +659,8 @@ combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1,
 # get posterior medians for new source groupings
 apply(combinedTS3$post, 2, median)
 summary_stat(combinedTS3, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
-             filename = "TS3_combined_sumstats" )
-
+             filename = "TS3_combined_sumstats", na.rm = TRUE)
+glimpse(combinedTS3)
 
 
 # TS7 
