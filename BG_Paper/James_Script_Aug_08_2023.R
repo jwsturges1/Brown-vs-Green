@@ -95,9 +95,8 @@ SI <- read.csv("data/FCE_SI_data_xls_07_August_2023_Sturges_edits.csv",na.string
 
 #raw stable isotope values for individual level analysis
 SI = SI %>% 
-  select(site,hydroseason,group, year, common_name, functional_grp,d13C,d15N,d34S)
+  select(site,hydroseason,year, group, common_name, functional_grp,d13C,d15N,d34S)
 
-summary(SI)
 
 #average stable isotope values for species across sites and seasons
 SIa<-SI %>% group_by(site, hydroseason, group, common_name, functional_grp) %>% 
@@ -113,480 +112,10 @@ SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
 
 
-#### Bi-plots ----
-
-# SRS3
-
-SRS3 <- SI %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium")
-
-SRS3CSbiplot <- ggplot(SRS3, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  #geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS3CNbiplot <- ggplot(SRS3, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS3CSbiplot
-ggsave("figures/biplots/SRS3CSbiplot.png")
-
-SRS3CNbiplot 
-ggsave("figures/biplots/SRS3CNbiplot.png")
-
-
-# TS3 
-TS3 <- SI %>% filter(site == 'TS3', common_name != "Egyptian paspalidium")
-
-TS3CSbiplot <- ggplot(TS3, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS3CNbiplot <- ggplot(TS3, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS3CSbiplot
-ggsave("figures/biplots/TS3CSbiplot.png")
-
-TS3CNbiplot 
-ggsave("figures/biplots/TS3CNbiplot.png")
-# RB10 
-RB10 <- SI %>% filter(site == 'RB10', common_name != "Egyptian paspalidium")
-
-RB10CSbiplot <- ggplot(RB10, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-RB10CNbiplot <- ggplot(RB10, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-RB10CSbiplot
-ggsave("figures/biplots/RB10CSbiplot.png")
-
-RB10CNbiplot 
-ggsave("figures/biplots/RB10CNbiplot.png")
-
-# SRS4
-SRS4 <- SI %>% filter(site == 'SRS4')
-
-SRS4CSbiplot <- ggplot(SRS4, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS4CNbiplot <- ggplot(SRS4, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS4CSbiplot
-ggsave("figures/biplots/SRS4CSbiplot.png")
-
-SRS4CNbiplot 
-ggsave("figures/biplots/SRS4CNbiplot.png")
-# SRS6  
-SRS6 <- SI %>% filter(site == 'SRS6')
-
-SRS6CSbiplot <- ggplot(SRS6, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS6CNbiplot <- ggplot(SRS6, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-SRS6CSbiplot
-ggsave("figures/biplots/SRS6CSbiplot.png")
-
-SRS6CNbiplot 
-ggsave("figures/biplots/SRS6CNbiplot.png")
-# TS7 
-TS7 <- SI %>% filter(site == 'TS7')
-
-TS7CSbiplot <- ggplot(TS7, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS7CNbiplot <- ggplot(TS7, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS7CSbiplot
-ggsave("figures/biplots/TS7CSbiplot.png")
-
-TS7CNbiplot 
-ggsave("figures/biplots/TS7CNbiplot.png")
-# TS9 
-TS9 <- SI %>% filter(site == 'TS9')
-
-TS9CSbiplot <- ggplot(TS9, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS9CNbiplot <- ggplot(TS9, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS9CSbiplot
-ggsave("figures/biplots/TS9CSbiplot.png")
-
-TS9CNbiplot 
-ggsave("figures/biplots/TS9CNbiplot.png")
-# TS10
-TS10 <- SI %>% filter(site == 'TS10')
-
-TS10CSbiplot <- ggplot(TS10, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS10CNbiplot <- ggplot(TS10, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS10CSbiplot
-ggsave("figures/biplots/TS10CSbiplot.png")
-
-TS10CNbiplot 
-ggsave("figures/biplots/TS10CNbiplot.png")
-
-# TS11  
-TS11 <- SI %>% filter(site == 'TS11')
-
-TS11CSbiplot <- ggplot(TS11, aes(x = d13C, y = d34S)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS11CNbiplot <- ggplot(TS11, aes(x = d13C, y = d15N)) +
-  # coord_fixed(ratio = 1) +
-  geom_point(aes(color = common_name), size = 2) +
-  geom_text(aes(label = common_name), size = 3, check_overlap = T, nudge_y = 0.5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_bw() +
-  theme(text = element_text(size = 14)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.background = element_blank(),
-    axis.line = element_line(colour = "black")
-  ) +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  facet_wrap(~ hydroseason, nrow = 2) +
-  scale_color_viridis_d()
-
-
-TS11CSbiplot
-ggsave("figures/biplots/TS11CSbiplot.png")
-
-TS11CNbiplot 
-ggsave("figures/biplots/TS11CNbiplot.png")
-
-#### Biplots ----
-
-
-
-
-SIa$site<-fct_relevel(SIa$site, "SRS3","RB10", "SRS4","SRS6","TS3","TS10","TS9","TS10","TS11")
-
-
-SIa1<-SIa%>% filter(group != 'Source')
-transectCS<-ggplot(SIa1,aes(x = md13C,y = md34S ))+
-  theme_bw()+
-  geom_point(data=SIa1, aes(color=group),size=2)+
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  facet_wrap(season~site,nrow=2)+scale_color_viridis_d()
-
-
-
-
-transectCN<-ggplot(SIa1,aes(x = md13C,y = md15N ))+
-  theme_bw()+
-  geom_point(data=SIa1, aes(color=group),size=2)+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))+
-  theme(text = element_text(size=14))+scale_y_continuous(breaks = scales::pretty_breaks(n = 6))+
-  facet_wrap(season~site,nrow=2)+scale_color_viridis_d()
-
-
 #### Taylor Slough Transect Mixing Models ----
 #TS3
 
-TS3mix<-SIa %>% filter(site == 'TS3', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
-
+TS3mix<-SI %>% filter(site == 'TS3', common_name!="Egyptian paspalidium",group=='Consumer')
 
 write.csv(TS3mix,"data/TS3mix.csv",row.names = F) 
 
@@ -602,7 +131,7 @@ mix <- load_mix_data(filename="data/TS3mix.csv",
 source <- load_source_data(filename="data/sourcesTS3.csv",
                            source_factors=NULL,
                            conc_dep=T,
-                           data_type="means",
+                           data_type="mean",
                            mix)
 
 # load discrimination factors
@@ -665,7 +194,7 @@ glimpse(combinedTS3)
 
 # TS7 
 
-TS7mix<-SIa %>% filter(site == 'TS7', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
+TS7mix <- SI %>% filter(site == 'TS7', common_name!="Egyptian paspalidium",group=='Consumer')
 
 
 write.csv(TS7mix,"data/TS7mix.csv",row.names = F) 
@@ -673,7 +202,7 @@ write.csv(TS7mix,"data/TS7mix.csv",row.names = F)
 # load consumer data
 mix <- load_mix_data(filename="data/TS7mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -747,7 +276,7 @@ summary_stat(combinedTS7, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.97
 
 
 # TS9 
-TS9mix<-SIa %>% filter(site == 'TS9', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
+TS9mix<-SI %>% filter(site == 'TS9', common_name!="Egyptian paspalidium",group=='Consumer')
 
 
 write.csv(TS9mix,"data/TS9mix.csv",row.names = F) 
@@ -755,7 +284,7 @@ write.csv(TS9mix,"data/TS9mix.csv",row.names = F)
 # load consumer data
 mix <- load_mix_data(filename="data/TS9mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -827,7 +356,7 @@ summary_stat(combinedTS9, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9
 
 # TS10 
 
-TS10mix<-SIa %>% filter(site == 'TS10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
+TS10mix<-SI %>% filter(site == 'TS10', common_name!="Egyptian paspalidium",group=='Consumer')
 
 
 write.csv(TS10mix,"data/TS10mix.csv",row.names = F) 
@@ -835,7 +364,7 @@ write.csv(TS10mix,"data/TS10mix.csv",row.names = F)
 # load consumer data
 mix <- load_mix_data(filename="data/TS10mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -906,7 +435,7 @@ summary_stat(combinedTS10, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.
 
 # TS11 Mixing Model 
 
-TS11mix<-SIa %>% filter(site == 'TS11', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
+TS11mix<-SI %>% filter(site == 'TS11', common_name!="Egyptian paspalidium",group=='Consumer')
 
 
 write.csv(TS11mix,"data/TS11mix.csv",row.names = F) 
@@ -914,7 +443,7 @@ write.csv(TS11mix,"data/TS11mix.csv",row.names = F)
 # load consumer data
 mix <- load_mix_data(filename="data/TS11mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -998,7 +527,7 @@ write.csv(SRS3mix,"data/SRS3mix.csv",row.names = F)
 
 mix <- load_mix_data(filename="data/SRS3mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -1009,7 +538,7 @@ source <- load_source_data(filename="data/sourcesSRS3_1.csv",
                            data_type="means",
                            mix)
 
-discr <- load_discr_data(file("data/FCE_TEF_SRS3_1.csv"), mix)
+discr <- load_discr_data(file("data/FCE_TEF_SRS3.csv"), mix)
 
 plot_data(filename="figures/isospace/SRS3_isospace_plot", plot_save_pdf=FALSE, plot_save_png=F, mix,source,discr)
 
@@ -1052,25 +581,24 @@ output_JAGS(jags.SRS3 , mix, source, output_jags.SRS3)
 # SRS4 
 
 
-SRS4mix<-SIa %>% filter(site == 'SRS4', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
-
+SRS4mix<-SI %>% filter(site == 'SRS4', common_name!="Egyptian paspalidium",group=='Consumer')
 
 write.csv(SRS4mix,"data/SRS4mix.csv",row.names = F) 
 
 mix <- load_mix_data(filename="data/SRS4mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
 
-source <- load_source_data(filename="data/sourcesSRS4_2.csv",
+source <- load_source_data(filename="data/sourcesSRS4.csv",
                            source_factors = NULL,
                            conc_dep = T,
                            data_type = "means",
                            mix)
 
-discr <- load_discr_data(file("data/FCE_TEF_SRS4_2.csv"), mix)
+discr <- load_discr_data(file("data/FCE_TEF_SRS4.csv"), mix)
 
 plot_data(filename="figures/isospace/SRS4_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
@@ -1136,13 +664,13 @@ summary_stat(combinedSRS4, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105
 #
 
 # SRS 6
-SRS6mix <- SIa %>% filter(site == 'SRS6', group == 'Consumer') %>% rename(d13C = md13C, d15N = md15N, d34S = md34S)
+SRS6mix <- SI %>% filter(site == 'SRS6', group == 'Consumer') 
 
 write.csv(SRS6mix, "data/SRS6mix.csv", row.names = FALSE)
 
 mix <- load_mix_data(filename = "data/SRS6mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','season'),
+                     factors=c('common_name','hydroseason'),
                      fac_random=c(F,F),
                      fac_nested=c(F,F),
                      cont_effects=NULL)
@@ -1153,7 +681,7 @@ source <- load_source_data(filename = "data/sourcesSRS6_2.csv",
                            data_type = "means",
                            mix)
 
-discr <- load_discr_data(file("data/FCE_TEF_SRS6_1.csv"), mix)
+discr <- load_discr_data(file("data/FCE_TEF_SRS6.csv"), mix)
 
 plot_data(filename = "figures/isospace/SRS6_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
@@ -1227,8 +755,7 @@ summary_stat(combinedSRS6, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105
 #### RB10 Mixing Model ----
 
 
-RB10mix<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
-
+RB10mix<-SI %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')
 
 write.csv(RB10mix,"data/RB10mix.csv",row.names = F) 
 
@@ -1245,7 +772,7 @@ source <- load_source_data(filename="data/sourcesRB10.csv",
                            data_type="means",
                            mix)
 
-discr <- load_discr_data(file("data/FCE_TEF_RB10_1.csv"), mix)
+discr <- load_discr_data(file("data/FCE_TEF_RB10.csv"), mix)
 
 plot_data(filename="figures/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 

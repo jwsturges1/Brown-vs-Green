@@ -1,26 +1,57 @@
-"site","season","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
-"TS10","dry19","Consumer","Amphipod","Benthic_invert",1,-16.89,NA,5.47,NA,18.26,NA
-"TS10","dry19","Consumer","Blue Crab","Crab",1,-12.87,NA,5.84,NA,8.49,NA
-"TS10","dry19","Consumer","Bluegill","demersal_fish",1,-11.7,NA,5.66,NA,9.12,NA
-"TS10","dry19","Consumer","Hermit crab","Crab",4,-15.3125,0.729126189352707,6.99,2.24232022690783,11.6375,1.86810733096362
-"TS10","dry19","Consumer","Polychete","Benthic_invert",1,-13.89,NA,6.7,NA,6.36,NA
-"TS10","dry19","Consumer","Seahorse","demersal_fish",2,-11.51,3.3375440072005,7.515,1.576848122046,8.655,1.66170093578839
-"TS10","dry19","Consumer","Slug","Benthic_invert",2,-19.13,1.08894444302728,4.55,0.29698484809835,17.6,NA
-"TS10","dry19","Consumer","Snapping shrimp","Shrimp",2,-14.995,1.03944696834423,11.215,0.261629509039023,10.93,0.0282842712474613
-"TS10","dry19","Consumer","Spider crab","Crab",2,-13.595,2.19910208949016,4.305,1.46371103705615,8.84,2.54558441227157
-"TS10","dry19","Consumer","Spiny lobster","Benthic_invert",1,-13.86,NA,5.46,NA,12.46,NA
-"TS10","dry19","Consumer","Stone crab","Crab",1,-10.57,NA,4.2,NA,11.77,NA
-"TS10","dry19","Consumer","Tidewater Mojarra","Forage_fish",1,-13.57,NA,7.54,NA,7.53,NA
-"TS10","dry19","Consumer","Tunicate","Sessile_filter_feeder",1,-10.35,NA,5.59,NA,6.88,NA
-"TS10","wet19","Consumer","Atlantic Modulus","Gastropod",2,-9.985,0.0494974746830585,5.1,0.0424264068711926,7.82,0.113137084989848
-"TS10","wet19","Consumer","Blue Crab","Crab",3,-11.7,0.229128784747792,5.18666666666667,0.957096303061157,6.4,4.63181389954303
-"TS10","wet19","Consumer","Brown grass shrimp","Shrimp",2,-11.445,0.81317279836453,5.765,0.233345237791561,10.815,0.502045814642448
-"TS10","wet19","Consumer","Cross-Barred Venus","Sessile_filter_feeder",2,-12.87,0,5.565,0.275771644662753,5.555,0.629325035256027
-"TS10","wet19","Consumer","Goldspotted Killifish","Forage_fish",3,-10.9333333333333,0.283607710285411,7.16333333333333,0.347035060668707,4.63333333333333,0.279344470740577
-"TS10","wet19","Consumer","Hermit Crab","Crab",3,-13.4766666666667,0.891758562242793,4.38666666666667,0.78373039582074,9.95333333333333,0.669427616201583
-"TS10","wet19","Consumer","Pinfish","demersal_fish",1,-9.87,NA,8.09,NA,4.9,NA
-"TS10","wet19","Consumer","Scaly Pearl Oyster","Sessile_filter_feeder",2,-12.68,0.282842712474619,4.71,0.0424264068711932,6.89,0.169705627484772
-"TS10","wet19","Consumer","Silver Jenny","demersal_fish",3,-10.8966666666667,0.751953012716441,9.34,0.0655743852430204,1.92333333333333,0.453908948285153
-"TS10","wet19","Consumer","Tidewater Mojarra","Forage_fish",3,-10.5666666666667,0.0808290376865476,8.14333333333333,0.119303534454488,4.42333333333333,0.375544049790878
-"TS10","wet19","Consumer","Tidewater Silverside","Forage_fish",2,-10.02,0,9.71,0.169705627484772,2.53,0.183847763108503
-"TS10","wet19","Consumer","West Indian False Cerith","Gastropod",2,-12.215,0.360624458405139,5.275,0.0636396103067892,0.46,1.40007142674936
+"site","hydroseason","year","group","common_name","functional_grp","d13C","d15N","d34S"
+"TS10","Dry",2019,"Consumer","Amphipod","Benthic_invert",-16.89,5.47,18.26
+"TS10","Dry",2019,"Consumer","Anemone","Sessile_filter_feeder",-16.58,5.04,NA
+"TS10","Wet",2019,"Consumer","Atlantic Modulus","Gastropod",-10.02,5.07,7.9
+"TS10","Wet",2019,"Consumer","Atlantic Modulus","Gastropod",-9.95,5.13,7.74
+"TS10","Wet",2019,"Consumer","Barracuda","Predator",-12.37,10.53,-0.94
+"TS10","Dry",2019,"Consumer","Blue Crab","Crab",-12.87,5.84,8.49
+"TS10","Wet",2019,"Consumer","Blue Crab","Crab",-11.95,4.58,10.88
+"TS10","Wet",2019,"Consumer","Blue Crab","Crab",-11.5,4.69,6.69
+"TS10","Wet",2019,"Consumer","Blue Crab","Crab",-11.65,6.29,1.63
+"TS10","Dry",2019,"Consumer","Bluegill","demersal_fish",-11.7,5.66,9.12
+"TS10","Wet",2019,"Consumer","Brown Grass Shrimp","Shrimp",-10.87,5.6,10.46
+"TS10","Wet",2019,"Consumer","Brown Grass Shrimp","Shrimp",-12.02,5.93,11.17
+"TS10","Wet",2019,"Consumer","Cross-Barred Venus","Sessile_filter_feeder",-12.87,5.37,6
+"TS10","Wet",2019,"Consumer","Cross-Barred Venus","Sessile_filter_feeder",-12.87,5.76,5.11
+"TS10","Dry",2019,"Consumer","Dwarf Seahorse","demersal_fish",-13.87,6.4,9.83
+"TS10","Dry",2019,"Consumer","Dwarf Seahorse","demersal_fish",-9.15,8.63,7.48
+"TS10","Dry",2019,"Consumer","Gastropods","Gastropod",-12.08,4.84,NA
+"TS10","Wet",2019,"Consumer","Goldspotted Killifish","Forage_fish",-11.14,6.84,4.33
+"TS10","Wet",2019,"Consumer","Goldspotted Killifish","Forage_fish",-10.61,7.12,4.69
+"TS10","Wet",2019,"Consumer","Goldspotted Killifish","Forage_fish",-11.05,7.53,4.88
+"TS10","Dry",2019,"Consumer","Hermit crab","Crab",-14.63,5.17,9.78
+"TS10","Dry",2019,"Consumer","Hermit crab","Crab",-16.29,5.83,11.87
+"TS10","Dry",2019,"Consumer","Hermit crab","Crab",-15.42,6.75,10.77
+"TS10","Dry",2019,"Consumer","Hermit crab","Crab",-14.91,10.21,14.13
+"TS10","Wet",2019,"Consumer","Hermit Crab","Crab",-13.31,3.72,10.18
+"TS10","Wet",2019,"Consumer","Hermit Crab","Crab",-12.68,4.19,9.2
+"TS10","Wet",2019,"Consumer","Hermit Crab","Crab",-14.44,5.25,10.48
+"TS10","Wet",2019,"Consumer","Mangrove Snapper","Predator",-7.87,11.64,6.29
+"TS10","Wet",2019,"Consumer","Mangrove Snapper","Predator",-7.85,11.76,5.81
+"TS10","Wet",2019,"Consumer","Mangrove Snapper","Predator",-7.28,12.43,3.95
+"TS10","Wet",2019,"Consumer","Pinfish","demersal_fish",-9.87,8.09,4.9
+"TS10","Dry",2019,"Consumer","Polychete","Benthic_invert",-13.89,6.7,6.36
+"TS10","Wet",2019,"Consumer","Redfin Needlefish","Predator",-9.04,10.94,4.76
+"TS10","Wet",2019,"Consumer","Redfin Needlefish","Predator",-11.09,11.3,2.59
+"TS10","Wet",2019,"Consumer","Scaly Pearl Oyster","Sessile_filter_feeder",-12.48,4.68,7.01
+"TS10","Wet",2019,"Consumer","Scaly Pearl Oyster","Sessile_filter_feeder",-12.88,4.74,6.77
+"TS10","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-11.54,9.27,2.21
+"TS10","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-11.08,9.35,2.16
+"TS10","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-10.07,9.4,1.4
+"TS10","Dry",2019,"Consumer","Slug","Benthic_invert",-18.36,4.34,17.6
+"TS10","Dry",2019,"Consumer","Slug","Benthic_invert",-19.9,4.76,NA
+"TS10","Dry",2019,"Consumer","Snapping Shrimp","Shrimp",-14.26,11.03,10.91
+"TS10","Dry",2019,"Consumer","Snapping Shrimp","Shrimp",-15.73,11.4,10.95
+"TS10","Dry",2019,"Consumer","Spider Crab","Crab",-12.04,3.27,10.64
+"TS10","Dry",2019,"Consumer","Spider Crab","Crab",-15.15,5.34,7.04
+"TS10","Dry",2019,"Consumer","Spiny Lobster","Benthic_invert",-13.86,5.46,12.46
+"TS10","Dry",2019,"Consumer","Stone Crab","Crab",-10.57,4.2,11.77
+"TS10","Dry",2019,"Consumer","Tidewater Mojarra","Forage_fish",-13.57,7.54,7.53
+"TS10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-10.64,8.06,4.81
+"TS10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-10.48,8.09,4.4
+"TS10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-10.58,8.28,4.06
+"TS10","Wet",2019,"Consumer","Tidewater Silverside","Forage_fish",-10.02,9.59,2.4
+"TS10","Wet",2019,"Consumer","Tidewater Silverside","Forage_fish",-10.02,9.83,2.66
+"TS10","Dry",2019,"Consumer","Tunicate","Sessile_filter_feeder",-10.35,5.59,6.88
+"TS10","Wet",2019,"Consumer","West Indian False Cerith","Gastropod",-11.96,5.23,1.45
+"TS10","Wet",2019,"Consumer","West Indian False Cerith","Gastropod",-12.47,5.32,-0.53

@@ -1,36 +1,115 @@
-"site","hydroseason","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
-"RB10","Dry","Consumer","Bluegill","demersal_fish",6,-31.4783333333333,0.501773521288905,11.3066666666667,1.70444908010379,24.59,1.57680690003564
-"RB10","Dry","Consumer","Coastal Shiner","Forage_fish",15,-32.1766666666667,0.544054444054305,12.3173333333333,0.819481252872525,23.5173333333333,3.26690650237164
-"RB10","Dry","Consumer","Dollar Sunfish","demersal_fish",1,-30.33,NA,10.94,NA,25.79,NA
-"RB10","Dry","Consumer","Eastern Grass Shrimp","Shrimp",1,-31.61,NA,12.08,NA,25.06,NA
-"RB10","Dry","Consumer","Flatback Mud Crab","Crab",2,-25.675,0.643467170879758,7.66,2.87085353161738,11.86,8.6832712729708
-"RB10","Dry","Consumer","Golden Topminnow","Forage_fish",1,-27.93,NA,9.85,NA,24.67,NA
-"RB10","Dry","Consumer","Hogchoker","demersal_fish",3,-31.5666666666667,0.323934149686837,10.1866666666667,0.309246395829173,18.4433333333333,3.78995162678013
-"RB10","Dry","Consumer","Isopod","Benthic_invert",2,-24.93,0.212132034355962,7.785,0.134350288425444,9.805,2.38294985259867
-"RB10","Dry","Consumer","Peacock Eel","demersal_fish",7,-28.3511938742857,1.20924541827182,9.22717150128571,1.23768008785916,20.50969077,1.39729723187859
-"RB10","Dry","Consumer","Redear Sunfish","demersal_fish",1,-30.5,NA,12.82,NA,25.16,NA
-"RB10","Dry","Consumer","Tidewater Silverside","Forage_fish",2,-31.185,0.827314933988259,11.23,0.311126983722081,22.305,0.205060966544098
-"RB10","Wet","Consumer","Bluefin Killifish","Forage_fish",2,-30.34,1.82433549546129,9.12,0.0282842712474626,11.955,11.6743329573899
-"RB10","Wet","Consumer","Bluegill","demersal_fish",3,-31.46,2.69438304626495,10.32,0.720277724214765,17.2966666666667,2.04988617570179
-"RB10","Wet","Consumer","Bowfin","Predator",3,-30.5766666666667,1.22858997771158,11.12,0.192873015219859,24.62,0.386264158316558
-"RB10","Wet","Consumer","Clown Goby","demersal_fish",1,-33.59,NA,12.39,NA,21.83,NA
-"RB10","Wet","Consumer","Coastal Shiner","Forage_fish",2,-31.725,1.30814754519511,11.54,2.07889393668845,20.73,3.22440692221066
-"RB10","Wet","Consumer","Crested Goby","demersal_fish",2,-32.37,0.565685424949241,12.09,1.11722871427475,18.845,2.28395490323255
-"RB10","Wet","Consumer","Dollar Sunfish","demersal_fish",9,-27.71875,1.73125419029921,9.05666666666667,0.79887420787005,15.8755555555556,3.99820932140599
-"RB10","Wet","Consumer","Eastern Grass Shrimp","Shrimp",2,-30.525,0.417193000900063,11.16,0.15556349186104,22.02,0.410121933088196
-"RB10","Wet","Consumer","Eastern Mosquitofish","Forage_fish",3,-29.4666666666667,0.731869751617959,10.6066666666667,0.353883219909242,19.4533333333333,1.06758293979125
-"RB10","Wet","Consumer","Gar","Predator",5,-28.534,1.17876206250456,11.838,0.389448327766342,23.222,2.82546810281058
-"RB10","Wet","Consumer","Harris Mud Crab","Crab",2,-31.13,NA,9.46,0.169705627484772,18.09,1.79605122421383
-"RB10","Wet","Consumer","Hogchoker","demersal_fish",2,-31.18,0.438406204335658,10.315,1.42128463018496,15.225,0.459619407771256
-"RB10","Wet","Consumer","Largemouth Bass","Predator",4,-29.27,0.903880523078134,12.445,0.485077313425396,21.7125,2.40709195226661
-"RB10","Wet","Consumer","Mangrove snapper","Predator",1,-30.01,NA,13.49,NA,22,NA
-"RB10","Wet","Consumer","Mangrove Snapper","Predator",1,-30.4,NA,12.04,NA,8.66,NA
-"RB10","Wet","Consumer","Peacock Eel","demersal_fish",5,-29.63,1.09651721372717,9.57,0.324191301548947,21.954,1.28126109751292
-"RB10","Wet","Consumer","Redear Sunfish","demersal_fish",5,-29.02,1.3027662875589,9.01,0.514344242701325,20.078,3.86051421445382
-"RB10","Wet","Consumer","Redfish","Predator",3,-31.1733333333333,0.461446999484592,13.0233333333333,0.526244556583091,15.2866666666667,6.82697834574956
-"RB10","Wet","Consumer","Snook","Predator",5,-29.428,0.789284486101177,11.666,1.20914432554596,15.922,5.59502189450587
-"RB10","Wet","Consumer","Spotted Sunfish","demersal_fish",2,-30.045,0.770746391493337,10.51,1.01823376490863,23.79,1.49906637611548
-"RB10","Wet","Consumer","Spotted Tilapia","demersal_fish",4,-32.31,2.79306283495377,8.68,1.38530381745907,19.4075,3.60094779190146
-"RB10","Wet","Consumer","Striped Mullet","demersal_fish",2,-32.305,0.558614357137375,10.36,1.5980613254816,12.805,3.14662517628014
-"RB10","Wet","Consumer","Tidewater Mojarra","Forage_fish",3,-31.87,0.381575680566778,12.31,0.163707055437449,16.62,1.51522275590093
-"RB10","Wet","Consumer","Tidewater Silverside","Forage_fish",2,-30.28,0.212132034355965,12.085,0.247487373415291,20.665,0.134350288425445
+"site","hydroseason","year","group","common_name","functional_grp","d13C","d15N","d34S"
+"RB10","Wet",2019,"Consumer","Bluefin Killifish","Forage_fish",-31.63,9.1,20.21
+"RB10","Wet",2019,"Consumer","Bluefin Killifish","Forage_fish",-29.05,9.14,3.7
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-31.21,8.17,22.15
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-31.47,10.99,24.27
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-30.77,11.13,26.68
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-31.79,12.19,25.18
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-32.24,12.64,25.54
+"RB10","Dry",2019,"Consumer","Bluegill","demersal_fish",-31.39,12.72,23.72
+"RB10","Wet",2019,"Consumer","Bluegill","demersal_fish",-28.35,9.54,15.9
+"RB10","Wet",2019,"Consumer","Bluegill","demersal_fish",-32.94,10.46,16.34
+"RB10","Wet",2019,"Consumer","Bluegill","demersal_fish",-33.09,10.96,19.65
+"RB10","Wet",2019,"Consumer","Bowfin","Predator",-31.22,10.9,24.28
+"RB10","Wet",2019,"Consumer","Bowfin","Predator",-31.35,11.2,25.04
+"RB10","Wet",2019,"Consumer","Bowfin","Predator",-29.16,11.26,24.54
+"RB10","Wet",2019,"Consumer","Clown Goby","demersal_fish",-33.59,12.39,21.83
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-31.37,10.65,24.47
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-33.06,11.33,21.63
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-33.13,11.47,27.46
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.26,11.79,24.73
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.32,11.9,24.54
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.68,12.09,24.52
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.5,12.11,25.78
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.19,12.38,25.02
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-31.49,12.43,24.09
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-31.83,12.7,16.51
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.05,12.89,24.41
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.23,12.96,24.53
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-31.82,13.03,15.52
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-31.37,13.29,25.03
+"RB10","Dry",2019,"Consumer","Coastal Shiner","Forage_fish",-32.35,13.74,24.52
+"RB10","Wet",2019,"Consumer","Coastal Shiner","Forage_fish",-32.65,10.07,23.01
+"RB10","Wet",2019,"Consumer","Coastal Shiner","Forage_fish",-30.8,13.01,18.45
+"RB10","Wet",2019,"Consumer","Crested Goby","demersal_fish",-32.77,11.3,17.23
+"RB10","Wet",2019,"Consumer","Crested Goby","demersal_fish",-31.97,12.88,20.46
+"RB10","Dry",2019,"Consumer","Dollar Sunfish","demersal_fish",-30.33,10.94,25.79
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-26.53,7.87,9.52
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-24.71,8.53,15.19
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-27.82,8.66,15.51
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-27.69,8.75,12.59
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-27.5,8.81,15.66
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-27.5,8.81,17.72
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",NA,9.64,13.52
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-30,10.22,20.61
+"RB10","Wet",2019,"Consumer","Dollar Sunfish","demersal_fish",-30,10.22,22.56
+"RB10","Dry",2019,"Consumer","Eastern Grass Shrimp","Shrimp",-31.61,12.08,25.06
+"RB10","Wet",2019,"Consumer","Eastern Grass Shrimp","Shrimp",-30.23,11.05,22.31
+"RB10","Wet",2019,"Consumer","Eastern Grass Shrimp","Shrimp",-30.82,11.27,21.73
+"RB10","Wet",2019,"Consumer","Eastern Mosquitofish","Forage_fish",-29.22,10.21,19.6
+"RB10","Wet",2019,"Consumer","Eastern Mosquitofish","Forage_fish",-30.29,10.72,20.44
+"RB10","Wet",2019,"Consumer","Eastern Mosquitofish","Forage_fish",-28.89,10.89,18.32
+"RB10","Dry",2019,"Consumer","Flatback Mud Crab","Crab",-25.22,5.63,5.72
+"RB10","Dry",2019,"Consumer","Flatback Mud Crab","Crab",-26.13,9.69,18
+"RB10","Wet",2019,"Consumer","Gar","Predator",-27.7,11.43,18.86
+"RB10","Wet",2019,"Consumer","Gar","Predator",-27.86,11.54,22.1
+"RB10","Wet",2019,"Consumer","Gar","Predator",-27.53,11.85,25.93
+"RB10","Wet",2019,"Consumer","Gar","Predator",-29.44,11.95,25.09
+"RB10","Wet",2019,"Consumer","Gar","Predator",-30.14,12.42,24.13
+"RB10","Dry",2019,"Consumer","Golden Topminnow","Forage_fish",-27.93,9.85,24.67
+"RB10","Wet",2019,"Consumer","Harris Mud Crab","Crab",-31.13,9.34,19.36
+"RB10","Wet",2019,"Consumer","Harris Mud Crab","Crab",NA,9.58,16.82
+"RB10","Dry",2019,"Consumer","Hogchoker","demersal_fish",-31.94,9.83,15.83
+"RB10","Dry",2019,"Consumer","Hogchoker","demersal_fish",-31.4,10.35,22.79
+"RB10","Dry",2019,"Consumer","Hogchoker","demersal_fish",-31.36,10.38,16.71
+"RB10","Wet",2019,"Consumer","Hogchoker","demersal_fish",-30.87,9.31,14.9
+"RB10","Wet",2019,"Consumer","Hogchoker","demersal_fish",-31.49,11.32,15.55
+"RB10","Dry",2019,"Consumer","Isopod","Benthic_invert",-25.08,7.69,8.12
+"RB10","Dry",2019,"Consumer","Isopod","Benthic_invert",-24.78,7.88,11.49
+"RB10","Wet",2019,"Consumer","Largemouth Bass","Predator",-29.31,11.91,22.92
+"RB10","Wet",2019,"Consumer","Largemouth Bass","Predator",-27.98,12.25,18.12
+"RB10","Wet",2019,"Consumer","Largemouth Bass","Predator",-29.85,12.57,23.2
+"RB10","Wet",2019,"Consumer","Largemouth Bass","Predator",-29.94,13.05,22.61
+"RB10","Wet",2019,"Consumer","Mangrove Snapper","Predator",-30.4,12.04,8.66
+"RB10","Wet",2019,"Consumer","Mangrove snapper","Predator",-30.01,13.49,22
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-28.82,8.2,NA
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-29.41,9.89,NA
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-28.56003969,8.324010327,19.21784601
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-29.7431152,8.678101432,20.65564663
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-26.12326707,8.7938191,22.27187652
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-28.10427826,8.96277674,21.38989892
+"RB10","Dry",2019,"Consumer","Peacock Eel","demersal_fish",-27.6976569,11.74149291,19.01318577
+"RB10","Wet",2019,"Consumer","Peacock Eel","demersal_fish",-28.99,9.16,22.76
+"RB10","Wet",2019,"Consumer","Peacock Eel","demersal_fish",-28.17,9.41,23.76
+"RB10","Wet",2019,"Consumer","Peacock Eel","demersal_fish",-29.64,9.48,21.47
+"RB10","Wet",2019,"Consumer","Peacock Eel","demersal_fish",-30.88,9.88,21.17
+"RB10","Wet",2019,"Consumer","Peacock Eel","demersal_fish",-30.47,9.92,20.61
+"RB10","Dry",2019,"Consumer","Redear Sunfish","demersal_fish",-30.5,12.82,25.16
+"RB10","Wet",2019,"Consumer","Redear Sunfish","demersal_fish",-30.86,8.51,22.44
+"RB10","Wet",2019,"Consumer","Redear Sunfish","demersal_fish",-29.76,8.55,19.69
+"RB10","Wet",2019,"Consumer","Redear Sunfish","demersal_fish",-27.64,8.94,13.5
+"RB10","Wet",2019,"Consumer","Redear Sunfish","demersal_fish",-28.76,9.35,22.47
+"RB10","Wet",2019,"Consumer","Redear Sunfish","demersal_fish",-28.08,9.7,22.29
+"RB10","Wet",2019,"Consumer","Redfish","Predator",-31.7,12.69,7.83
+"RB10","Wet",2019,"Consumer","Redfish","Predator",-30.84,12.75,21.23
+"RB10","Wet",2019,"Consumer","Redfish","Predator",-30.98,13.63,16.8
+"RB10","Wet",2019,"Consumer","Snook","Predator",-28.55,9.59,8.55
+"RB10","Wet",2019,"Consumer","Snook","Predator",-29.41,11.71,13.35
+"RB10","Wet",2019,"Consumer","Snook","Predator",-30.54,12.04,14.67
+"RB10","Wet",2019,"Consumer","Snook","Predator",-28.84,12.39,21.44
+"RB10","Wet",2019,"Consumer","Snook","Predator",-29.8,12.6,21.6
+"RB10","Wet",2019,"Consumer","Spotted Sunfish","demersal_fish",-30.59,9.79,24.85
+"RB10","Wet",2019,"Consumer","Spotted Sunfish","demersal_fish",-29.5,11.23,22.73
+"RB10","Wet",2019,"Consumer","Spotted Tilapia","demersal_fish",-34.96,7.39,16.22
+"RB10","Wet",2019,"Consumer","Spotted Tilapia","demersal_fish",-32.44,7.77,19.11
+"RB10","Wet",2019,"Consumer","Spotted Tilapia","demersal_fish",-28.42,9.13,17.79
+"RB10","Wet",2019,"Consumer","Spotted Tilapia","demersal_fish",-33.42,10.43,24.51
+"RB10","Wet",2019,"Consumer","Striped Mullet","demersal_fish",-31.91,9.23,10.58
+"RB10","Wet",2019,"Consumer","Striped Mullet","demersal_fish",-32.7,11.49,15.03
+"RB10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-31.43,12.17,18.12
+"RB10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-32.07,12.27,16.65
+"RB10","Wet",2019,"Consumer","Tidewater Mojarra","Forage_fish",-32.11,12.49,15.09
+"RB10","Dry",2019,"Consumer","Tidewater Silverside","Forage_fish",-31.77,11.01,22.45
+"RB10","Dry",2019,"Consumer","Tidewater Silverside","Forage_fish",-30.6,11.45,22.16
+"RB10","Wet",2019,"Consumer","Tidewater Silverside","Forage_fish",-30.43,11.91,20.76
+"RB10","Wet",2019,"Consumer","Tidewater Silverside","Forage_fish",-30.13,12.26,20.57
