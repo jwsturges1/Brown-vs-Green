@@ -147,25 +147,25 @@ jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
+jags.RB10 <- run_model(run="very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
   output_jags.RB10  <- list(summary_save = T,
-                          summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_demo",
+                          summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats",
                           sup_post = F,
                           plot_post_save_pdf = T,
-                          plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_demo",
+                          plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot",
                           sup_pairs = F,
                           plot_pairs_save_pdf = T,
-                          plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_demo",
+                          plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs",
                           sup_xy = T,
                           plot_xy_save_pdf = T,
-                          plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot_demo",
+                          plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot",
                           gelman = T,
                           heidel = F,
                           geweke = T,
                           diag_save = T,
-                          diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_demo",
+                          diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic",
                           indiv_effect = F,
                           plot_post_save_png = F,
                           plot_pairs_save_png = F,
@@ -174,7 +174,7 @@ jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
  
 output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 
-mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats_demo.txt",type = "RB10", nest = T)
+mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats.txt",type = "RB10", nest = T)
 
 # # combines sources into energy channel groups (brown or green pathway)
 # combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
@@ -223,31 +223,35 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.SRS3 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
 output_jags.SRS3 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS3/FCERSRS3_sumstats_demo",
+                         summary_name = "data/JAGS_Output/SRS3/FCESRS3_sumstats",
                          sup_post = FALSE,
-                         plot_post_save_pdf = FALSE,
-                         plot_post_name = "data/JAGS_Output/SRS3/FCERSRS3_plot_demo",
+                         plot_post_save_pdf = T,
+                         plot_post_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
                          sup_pairs = FALSE,
-                         plot_pairs_save_pdf = FALSE,
-                         plot_pairs_name = "data/JAGS_Output/SRS3/FCERSRS3_pairs_demo",
+                         plot_pairs_save_pdf = T,
+                         plot_pairs_name = "data/JAGS_Output/SRS3/FCESRS3_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = FALSE,
-                         plot_xy_name = "data/JAGS_Output/SRS3/FCERSRS3_plot_demo",
+                         plot_xy_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS3/FCERSRS3_Diagnostic_demo",
+                         diag_name = "data/JAGS_Output/SRS3/FCESRS3_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
+
 output_JAGS(jags.SRS3, mix, source, output_jags.SRS3)
 
-mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/FCERSRS3_sumstats_demo.txt", type = "SRS3", nest = TRUE)
+mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/FCESRS3_sumstats.txt", type = "SRS3", nest = TRUE)
+
+write.csv(mixtable_SRS3, "data/Mix_Quants/SRS3/MT_SRS3.csv", row.names = FALSE)
 
 # combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Phytoplankton','Floc'), brown=c('Sawgrass, Periphyton')))
@@ -255,7 +259,7 @@ mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/FCERSRS3_sumstats_demo.txt", typ
 # # get posterior medians for new source groupings
 # apply(combinedSRS3$post, 2, median)
 # # summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-# #              filename = "SRS3_combined_sumstats_demo" )
+# #              filename = "SRS3_combined_sumstats" )
 
 
 # SRS4 
@@ -291,31 +295,31 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.SRS4 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.SRS4 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS4/FCERSRS4_sumstats_demo",
+                         summary_name = "data/JAGS_Output/SRS4/FCERSRS4_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = FALSE,
-                         plot_post_name = "data/JAGS_Output/SRS4/FCERSRS4_plot_demo",
+                         plot_post_name = "data/JAGS_Output/SRS4/FCERSRS4_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = FALSE,
-                         plot_pairs_name = "data/JAGS_Output/SRS4/FCERSRS4_pairs_demo",
+                         plot_pairs_name = "data/JAGS_Output/SRS4/FCERSRS4_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = FALSE,
-                         plot_xy_name = "data/JAGS_Output/SRS4/FCERSRS4_plot_demo",
+                         plot_xy_name = "data/JAGS_Output/SRS4/FCERSRS4_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS4/FCERSRS4_Diagnostic_demo",
+                         diag_name = "data/JAGS_Output/SRS4/FCERSRS4_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 output_JAGS(jags.SRS4, mix, source, output_jags.SRS4)
 
-mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/FCERSRS4_sumstats_demo.txt", type = "SRS4", nest = TRUE)
+mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/FCERSRS4_sumstats.txt", type = "SRS4", nest = TRUE)
 
 # combinedSRS4 <- combine_sources(jags.SRS4, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Phytoplankton',"Epiphytes"), brown=c('Mangrove')))
@@ -323,7 +327,7 @@ mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/FCERSRS4_sumstats_demo.txt", typ
 # # get posterior medians for new source groupings
 # apply(combinedSRS4$post, 2, median)
 # # summary_stat(combinedSRS4, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-# #              filename = "SRS4_combined_sumstats_demo" )
+# #              filename = "SRS4_combined_sumstats" )
 
 # SRS 6
 SRS6mix <- SIa %>% filter(site == 'SRS6', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
@@ -356,31 +360,31 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.SRS6 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.SRS6 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS6/FCERSRS6_sumstats_demo",
+                         summary_name = "data/JAGS_Output/SRS6/FCERSRS6_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = FALSE,
-                         plot_post_name = "data/JAGS_Output/SRS6/FCERSRS6_plot_demo",
+                         plot_post_name = "data/JAGS_Output/SRS6/FCERSRS6_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = FALSE,
-                         plot_pairs_name = "data/JAGS_Output/SRS6/FCERSRS6_pairs_demo",
+                         plot_pairs_name = "data/JAGS_Output/SRS6/FCERSRS6_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = FALSE,
-                         plot_xy_name = "data/JAGS_Output/SRS6/FCERSRS6_plot_demo",
+                         plot_xy_name = "data/JAGS_Output/SRS6/FCERSRS6_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS6/FCERSRS6_Diagnostic_demo",
+                         diag_name = "data/JAGS_Output/SRS6/FCERSRS6_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 output_JAGS(jags.SRS6, mix, source, output_jags.SRS6)
 
-mixtable_SRS6 = mixTable("data/JAGS_Output/SRS6/FCERSRS6_sumstats_demo.txt", type = "SRS6", nest = TRUE)
+mixtable_SRS6 = mixTable("data/JAGS_Output/SRS6/FCERSRS6_sumstats.txt", type = "SRS6", nest = TRUE)
 
 
 # combinedSRS6 <- combine_sources(jags.SRS6, mix, source, alpha.prior=1, 
@@ -425,30 +429,30 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS3 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS3 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS3/FCERTS3_sumstats_demo",
+                        summary_name = "data/JAGS_Output/TS3/FCERTS3_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = FALSE,
-                        plot_post_name = "data/JAGS_Output/TS3/FCERTS3_plot_demo",
+                        plot_post_name = "data/JAGS_Output/TS3/FCERTS3_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = FALSE,
-                        plot_pairs_name = "data/JAGS_Output/TS3/FCERTS3_pairs_demo",
+                        plot_pairs_name = "data/JAGS_Output/TS3/FCERTS3_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = FALSE,
-                        plot_xy_name = "data/JAGS_Output/TS3/FCERTS3_plot_demo",
+                        plot_xy_name = "data/JAGS_Output/TS3/FCERTS3_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS3/FCERTS3_Diagnostic_demo",
+                        diag_name = "data/JAGS_Output/TS3/FCERTS3_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 output_JAGS(jags.TS3, mix, source, output_jags.TS3)
-mixtable_TS3 = mixTable("data/JAGS_Output/TS3/FCERTS3_sumstats_demo.txt", type = "TS3", nest = TRUE)
+mixtable_TS3 = mixTable("data/JAGS_Output/TS3/FCERTS3_sumstats.txt", type = "TS3", nest = TRUE)
 
 # ##combine posterior ground into brown/green
 # combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1, 
@@ -496,30 +500,30 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS7 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS7 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS7 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS7/FCERTS7_sumstats_demo",
+                        summary_name = "data/JAGS_Output/TS7/FCERTS7_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = FALSE,
-                        plot_post_name = "data/JAGS_Output/TS7/FCERTS7_plot_demo",
+                        plot_post_name = "data/JAGS_Output/TS7/FCERTS7_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = FALSE,
-                        plot_pairs_name = "data/JAGS_Output/TS7/FCERTS7_pairs_demo",
+                        plot_pairs_name = "data/JAGS_Output/TS7/FCERTS7_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = FALSE,
-                        plot_xy_name = "data/JAGS_Output/TS7/FCERTS7_plot_demo",
+                        plot_xy_name = "data/JAGS_Output/TS7/FCERTS7_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS7/FCERTS7_Diagnostic_demo",
+                        diag_name = "data/JAGS_Output/TS7/FCERTS7_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 output_JAGS(jags.TS7, mix, source, output_jags.TS7)
-mixtable_TS7 = mixTable("data/JAGS_Output/TS7/FCERTS7_sumstats_demo.txt", type = "TS7", nest = TRUE)
+mixtable_TS7 = mixTable("data/JAGS_Output/TS7/FCERTS7_sumstats.txt", type = "TS7", nest = TRUE)
 
 # ##combine posterior ground into brown/green
 # combinedTS7 <- combine_sources(jags.TS7, mix, source, alpha.prior=1, 
@@ -565,30 +569,30 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS9 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS9 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS9/FCERTS9_sumstats_demo",
+                        summary_name = "data/JAGS_Output/TS9/FCERTS9_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = FALSE,
-                        plot_post_name = "data/JAGS_Output/TS9/FCERTS9_plot_demo",
+                        plot_post_name = "data/JAGS_Output/TS9/FCERTS9_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = FALSE,
-                        plot_pairs_name = "data/JAGS_Output/TS9/FCERTS9_pairs_demo",
+                        plot_pairs_name = "data/JAGS_Output/TS9/FCERTS9_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = FALSE,
-                        plot_xy_name = "data/JAGS_Output/TS9/FCERTS9_plot_demo",
+                        plot_xy_name = "data/JAGS_Output/TS9/FCERTS9_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS9/FCERTS9_Diagnostic_demo",
+                        diag_name = "data/JAGS_Output/TS9/FCERTS9_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 output_JAGS(jags.TS9, mix, source, output_jags.TS9)
-mixtable_TS9 = mixTable("data/JAGS_Output/TS9/FCERTS9_sumstats_demo.txt", type = "TS9", nest = TRUE)
+mixtable_TS9 = mixTable("data/JAGS_Output/TS9/FCERTS9_sumstats.txt", type = "TS9", nest = TRUE)
 
 # ##combine posterior ground into brown/green
 # combinedTS9 <- combine_sources(jags.TS9, mix, source, alpha.prior=1, 
@@ -633,31 +637,31 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS10 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS10 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS10/FCERTS10_sumstats_demo",
+                        summary_name = "data/JAGS_Output/TS10/FCERTS10_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = FALSE,
-                        plot_post_name = "data/JAGS_Output/TS10/FCERTS10_plot_demo",
+                        plot_post_name = "data/JAGS_Output/TS10/FCERTS10_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = FALSE,
-                        plot_pairs_name = "data/JAGS_Output/TS10/FCERTS10_pairs_demo",
+                        plot_pairs_name = "data/JAGS_Output/TS10/FCERTS10_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = FALSE,
-                        plot_xy_name = "data/JAGS_Output/TS10/FCERTS10_plot_demo",
+                        plot_xy_name = "data/JAGS_Output/TS10/FCERTS10_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS10/FCERTS10_Diagnostic_demo",
+                        diag_name = "data/JAGS_Output/TS10/FCERTS10_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 output_JAGS(jags.TS10, mix, source, output_jags.TS10)
 
-mixtable_TS10 = mixTable("data/JAGS_Output/TS10/FCERTS10_sumstats_demo.txt", type = "TS10", nest = TRUE)
+mixtable_TS10 = mixTable("data/JAGS_Output/TS10/FCERTS10_sumstats.txt", type = "TS10", nest = TRUE)
 
 
 # ##combine posterior ground into brown/green
@@ -702,31 +706,31 @@ write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, sou
 jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS11 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS11 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS11/FCERTS11_sumstats_demo",
+                         summary_name = "data/JAGS_Output/TS11/FCERTS11_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = FALSE,
-                         plot_post_name = "data/JAGS_Output/TS11/FCERTS11_plot_demo",
+                         plot_post_name = "data/JAGS_Output/TS11/FCERTS11_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = FALSE,
-                         plot_pairs_name = "data/JAGS_Output/TS11/FCERTS11_pairs_demo",
+                         plot_pairs_name = "data/JAGS_Output/TS11/FCERTS11_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = FALSE,
-                         plot_xy_name = "data/JAGS_Output/TS11/FCERTS11_plot_demo",
+                         plot_xy_name = "data/JAGS_Output/TS11/FCERTS11_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/TS11/FCERTS11_Diagnostic_demo",
+                         diag_name = "data/JAGS_Output/TS11/FCERTS11_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 output_JAGS(jags.TS11, mix, source, output_jags.TS11)
 
-mixtable_TS11 = mixTable("data/JAGS_Output/TS11/FCERTS11_sumstats_demo.txt", type = "TS11", nest = TRUE)
+mixtable_TS11 = mixTable("data/JAGS_Output/TS11/FCERTS11_sumstats.txt", type = "TS11", nest = TRUE)
 
 # ##combine posterior ground into brown/green
 # combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1, 
@@ -801,7 +805,7 @@ ggsave("figures/mixoutput_bxplt_gb_TS.png", width = 10, height = 8, dpi = 300)
 
 
 
-# combined plot ----
+# Combined boxplot ----
 
 
 

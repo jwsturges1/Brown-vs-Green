@@ -1,50 +1,24 @@
-"site","hydroseason","year","group","common_name","functional_grp","d13C","d15N","d34S"
-"TS11","Dry",2019,"Consumer","Anemone","Sessile_filter_feeder",-14.71,3.58,12.84
-"TS11","Wet",2019,"Consumer","Arrow Shrimp","Shrimp",-15.95,4.18,13.28
-"TS11","Wet",2019,"Consumer","Arrow Shrimp","Shrimp",-16.44,4.2,12.62
-"TS11","Wet",2019,"Consumer","Atlantic Modulus","Gastropod",-13.37,1.88,16.37
-"TS11","Wet",2019,"Consumer","Atlantic Modulus","Gastropod",-13.94,1.91,15.75
-"TS11","Wet",2019,"Consumer","Blue Striped Grunt","demersal_fish",-13.91,8.31,9.13
-"TS11","Wet",2019,"Consumer","Blue Striped Grunt","demersal_fish",-14.49,8.91,11.28
-"TS11","Wet",2019,"Consumer","Blue Striped Grunt","demersal_fish",-15.01,8.94,9.74
-"TS11","Wet",2019,"Consumer","Brown Grass Shrimp","Shrimp",-14.47,5.93,12.98
-"TS11","Wet",2019,"Consumer","Brown Grass Shrimp","Shrimp",-14.51,6.05,11.88
-"TS11","Wet",2019,"Consumer","Brown Grass Shrimp","Shrimp",-14.62,6.13,12.79
-"TS11","Wet",2019,"Consumer","Bubble Snail","Gastropod",-18.8,4.37,14.21
-"TS11","Wet",2019,"Consumer","Chestnut Turban Snail","Gastropod",-13.67,3.27,13.95
-"TS11","Wet",2019,"Consumer","Chestnut Turban Snail","Gastropod",NA,NA,15.52
-"TS11","Dry",2019,"Consumer","Fringed Filefish","demersal_fish",-17.71,6.27,11.4
-"TS11","Wet",2019,"Consumer","Fringed Filefish","demersal_fish",-13.79,6.82,10.5
-"TS11","Wet",2019,"Consumer","Fringed Filefish","demersal_fish",-14.34,6.83,8.77
-"TS11","Wet",2019,"Consumer","Fringed Filefish","demersal_fish",-13.63,6.85,10.49
-"TS11","Wet",2019,"Consumer","Giant Purple Barnacle","Sessile_filter_feeder",-16.18,8.25,12.37
-"TS11","Wet",2019,"Consumer","Giant Purple Barnacle","Sessile_filter_feeder",-17.02,8.49,15.91
-"TS11","Dry",2019,"Consumer","Golden Topminnow","Forage_fish",-15.17,4.26,12.1
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-13.57,3.44,15.4
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-14.65,3.93,15.21
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-16.04,4.08,14.67
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-14.67,4.39,13.44
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-16.34,4.92,14.54
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-17.6,5.53,13.29
-"TS11","Dry",2019,"Consumer","Harris Mud Crab","Crab",-15.76,5.62,14.74
-"TS11","Wet",2019,"Consumer","Harris Mud Crab","Crab",-19.29,3.48,13.38
-"TS11","Wet",2019,"Consumer","Harris Mud Crab","Crab",-19.44,3.64,14.22
-"TS11","Wet",2019,"Consumer","Hermit Crab","Crab",-16.82,3.08,10.15
-"TS11","Wet",2019,"Consumer","Isopod","Benthic_invert",-19.11,5.05,17.7
-"TS11","Wet",2019,"Consumer","Ivory Cerith","Gastropod",-13.57,3.05,14.89
-"TS11","Wet",2019,"Consumer","Ivory Cerith","Gastropod",-13.83,3.07,9.42
-"TS11","Wet",2019,"Consumer","Penaeid Shrimp","Shrimp",-14.18,6.67,12.77
-"TS11","Wet",2019,"Consumer","Penaeid Shrimp","Shrimp",-14.92,6.89,12.38
-"TS11","Wet",2019,"Consumer","Schoolmaster Snapper","Predator",-14.03,8.45,11.21
-"TS11","Wet",2019,"Consumer","Schoolmaster Snapper","Predator",-13.94,8.95,11.81
-"TS11","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-11.9,7.31,10.03
-"TS11","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-12.91,7.93,6.12
-"TS11","Wet",2019,"Consumer","Silver Jenny","demersal_fish",-12.99,8.18,5.41
-"TS11","Dry",2019,"Consumer","Sponge","Sessile_filter_feeder",-18.25,6.06,9.38
-"TS11","Wet",2019,"Consumer","Stone Crab","Crab",-17.57,6.61,13.98
-"TS11","Wet",2019,"Consumer","Stone Crab","Crab",-18.13,7.18,15.57
-"TS11","Dry",2019,"Consumer","Tunicate","Sessile_filter_feeder",-15.19,3.42,10.13
-"TS11","Dry",2019,"Consumer","Tunicate","Sessile_filter_feeder",-16.15,3.95,10.04
-"TS11","Wet",2019,"Consumer","Tunicate","Sessile_filter_feeder",-26.07,3.59,14.96
-"TS11","Wet",2019,"Consumer","Tunicate","Sessile_filter_feeder",-22.5,4.5,9.95
-"TS11","Dry",2019,"Consumer","Variable Urchin","Benthic_invert",-12.43,3.31,NA
+"site","hydroseason","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
+"TS11","Dry","Consumer","Anemone","Sessile_filter_feeder",1,-14.71,NA,3.58,NA,12.84,NA
+"TS11","Dry","Consumer","Fringed Filefish","demersal_fish",1,-17.71,NA,6.27,NA,11.4,NA
+"TS11","Dry","Consumer","Golden Topminnow","Forage_fish",1,-15.17,NA,4.26,NA,12.1,NA
+"TS11","Dry","Consumer","Harris Mud Crab","Crab",7,-15.5185714285714,1.3297045858815,4.55857142857143,0.827112015215766,14.47,0.814821043747235
+"TS11","Dry","Consumer","Sponge","Sessile_filter_feeder",1,-18.25,NA,6.06,NA,9.38,NA
+"TS11","Dry","Consumer","Tunicate","Sessile_filter_feeder",2,-15.67,0.678822509939085,3.685,0.37476659402887,10.085,0.0636396103067904
+"TS11","Wet","Consumer","Arrow Shrimp","Shrimp",2,-16.195,0.34648232278141,4.19,0.0141421356237313,12.95,0.466690475583121
+"TS11","Wet","Consumer","Atlantic Modulus","Gastropod",2,-13.655,0.403050865276332,1.895,0.0212132034355964,16.06,0.43840620433566
+"TS11","Wet","Consumer","Blue Striped Grunt","demersal_fish",3,-14.47,0.550272659687904,8.72,0.355387112878337,10.05,1.10801624536827
+"TS11","Wet","Consumer","Brown Grass Shrimp","Shrimp",3,-14.5333333333333,0.0776745346515396,6.03666666666667,0.100664459136943,12.55,0.587962583843563
+"TS11","Wet","Consumer","Bubble Snail","Gastropod",1,-18.8,NA,4.37,NA,14.21,NA
+"TS11","Wet","Consumer","Chestnut Turban Snail","Gastropod",2,-13.67,NA,3.27,NA,14.735,1.11015764646288
+"TS11","Wet","Consumer","Fringed Filefish","demersal_fish",3,-13.92,0.372424488990721,6.83333333333333,0.0152752523165191,9.92,0.995941765365827
+"TS11","Wet","Consumer","Giant Purple Barnacle","Sessile_filter_feeder",2,-16.6,0.5939696961967,8.37,0.169705627484772,14.14,2.50315800540038
+"TS11","Wet","Consumer","Harris Mud Crab","Crab",2,-19.365,0.106066017177984,3.56,0.113137084989848,13.8,0.5939696961967
+"TS11","Wet","Consumer","Hermit Crab","Crab",1,-16.82,NA,3.08,NA,10.15,NA
+"TS11","Wet","Consumer","Isopod","Benthic_invert",1,-19.11,NA,5.05,NA,17.7,NA
+"TS11","Wet","Consumer","Ivory Cerith","Gastropod",2,-13.7,0.183847763108502,3.06,0.014142135623731,12.155,3.86787409309042
+"TS11","Wet","Consumer","Penaeid Shrimp","Shrimp",2,-14.55,0.523259018078045,6.78,0.15556349186104,12.575,0.275771644662753
+"TS11","Wet","Consumer","Schoolmaster Snapper","Predator",2,-13.985,0.0636396103067892,8.7,0.353553390593274,11.51,0.424264068711928
+"TS11","Wet","Consumer","Silver Jenny","demersal_fish",3,-12.6,0.607536007163361,7.80666666666667,0.44792112400883,7.18666666666667,2.48785717703676
+"TS11","Wet","Consumer","Stone Crab","Crab",2,-17.85,0.395979797464466,6.895,0.403050865276332,14.775,1.12429978208661
+"TS11","Wet","Consumer","Tunicate","Sessile_filter_feeder",2,-24.285,2.52437120883597,4.045,0.643467170879758,12.455,3.5426049737446

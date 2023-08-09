@@ -3,7 +3,7 @@
 # random effects: 0
 # fixed effects: 2
 # nested factors: FALSE FALSE
-# factors: common_name season
+# factors: common_name hydroseason
 # continuous effects: 0
 # error structure: Process only (MixSIR, for N = 1)
 # source$conc_dep: TRUE

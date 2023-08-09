@@ -1,26 +1,14 @@
-"site","hydroseason","year","group","common_name","functional_grp","d13C","d15N","d34S"
-"TS9","Dry",2019,"Consumer","Amphipod","Benthic_invert",-18.26,11.2,10.7
-"TS9","Wet",2019,"Consumer","Atlantic Marginella","Gastropod",-15.32,12.35,13.94
-"TS9","Wet",2019,"Consumer","Atlantic Marginella","Gastropod",-15.71,12.73,14.49
-"TS9","Dry",2019,"Consumer","Bivalve","Sessile_filter_feeder",-16.76,8.88,NA
-"TS9","Wet",2019,"Consumer","Bubble Snail","Gastropod",-20.25,11.99,17.57
-"TS9","Wet",2019,"Consumer","Bubble Snail","Gastropod",-20.71,12.94,18.45
-"TS9","Dry",2019,"Consumer","Clam","Sessile_filter_feeder",-18.12,8.93,NA
-"TS9","Dry",2019,"Consumer","Eastern Grass Shrimp","Shrimp",-18.55,11.61,15.04
-"TS9","Wet",2019,"Consumer","Hermit Crab","Crab",-16.2,9.82,13.67
-"TS9","Wet",2019,"Consumer","Isopod","Benthic_invert",-23.75,8.41,16.86
-"TS9","Wet",2019,"Consumer","Mangrove Snapper","Predator",-11.62,13.9,8.72
-"TS9","Wet",2019,"Consumer","Mangrove Snapper","Predator",-11.34,13.95,3.95
-"TS9","Wet",2019,"Consumer","Mangrove Snapper","Predator",-13.95,15.91,6.89
-"TS9","Dry",2019,"Consumer","Rainwater Killifish","Forage_fish",-16.38,13.73,12.68
-"TS9","Wet",2019,"Consumer","Rainwater Killifish","Forage_fish",-15.65,12.66,9.5
-"TS9","Wet",2019,"Consumer","Rainwater Killifish","Forage_fish",-15.87,12.96,8.4
-"TS9","Dry",2019,"Consumer","Redfin Needlefish","Predator",-15.85,12.29,10.87
-"TS9","Wet",2019,"Consumer","Snapping Shrimp","Shrimp",-15.22,11.12,2.02
-"TS9","Wet",2019,"Consumer","Snapping Shrimp","Shrimp",-17.61,11.45,0.85
-"TS9","Wet",2019,"Consumer","Snapping Shrimp","Shrimp",-18.04,11.87,1.03
-"TS9","Dry",2019,"Consumer","Sponge","Sessile_filter_feeder",-13.24,4.74,15.18
-"TS9","Dry",2019,"Consumer","Sponge","Sessile_filter_feeder",-16.07,6.89,8.86
-"TS9","Dry",2019,"Consumer","Sponge","Sessile_filter_feeder",-16.47,7.01,NA
-"TS9","Dry",2019,"Consumer","Toadfish","demersal_fish",-15.17,12.66,9.54
-"TS9","Dry",2019,"Consumer","Tunicate","Sessile_filter_feeder",-7.73,6.79,NA
+"site","hydroseason","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
+"TS9","Dry","Consumer","Amphipod","Benthic_invert",1,-18.26,NA,11.2,NA,10.7,NA
+"TS9","Dry","Consumer","Eastern Grass Shrimp","Shrimp",1,-18.55,NA,11.61,NA,15.04,NA
+"TS9","Dry","Consumer","Rainwater Killifish","Forage_fish",1,-16.38,NA,13.73,NA,12.68,NA
+"TS9","Dry","Consumer","Redfin Needlefish","Predator",1,-15.85,NA,12.29,NA,10.87,NA
+"TS9","Dry","Consumer","Sponge","Sessile_filter_feeder",3,-15.26,1.76076687837999,6.21333333333333,1.27735403601873,12.02,4.46891485709898
+"TS9","Dry","Consumer","Toadfish","demersal_fish",1,-15.17,NA,12.66,NA,9.54,NA
+"TS9","Wet","Consumer","Atlantic Marginella","Gastropod",2,-15.515,0.275771644662754,12.54,0.268700576850889,14.215,0.388908729652602
+"TS9","Wet","Consumer","Bubble Snail","Gastropod",2,-20.48,0.325269119345812,12.465,0.67175144212722,18.01,0.622253967444161
+"TS9","Wet","Consumer","Hermit Crab","Crab",1,-16.2,NA,9.82,NA,13.67,NA
+"TS9","Wet","Consumer","Isopod","Benthic_invert",1,-23.75,NA,8.41,NA,16.86,NA
+"TS9","Wet","Consumer","Mangrove Snapper","Predator",3,-12.3033333333333,1.43291079043091,14.5866666666667,1.14631292993377,6.52,2.40642888945425
+"TS9","Wet","Consumer","Rainwater Killifish","Forage_fish",2,-15.76,0.15556349186104,12.81,0.212132034355965,8.95,0.777817459305202
+"TS9","Wet","Consumer","Snapping Shrimp","Shrimp",3,-16.9566666666667,1.51928711352836,11.48,0.37589892258425,1.3,0.63
