@@ -274,16 +274,15 @@ output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats.txt",type = "RB10", nest = T)
 
 write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10.csv", row.names = FALSE)
-# # combines sources into energy channel groups (brown or green pathway)
+# #  combines sources into energy channel groups (brown or green pathway)
 # combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
 #                                 groups=list(green=c('Phytoplankton','Epiphytes'),
 #                                             brown=c('Wet Mangrove', 'Dry Mangrove')))
 # 
-# 
 # # get posterior medians for new source groupings
 # apply(combinedRB10$post, 2, median)
-# # summary_stat(combinedRB10, meanSD=T, quantiles=c(c(0.025, 0.25, 0.5, 0.75, 0.975)), savetxt=T,
-# #              filename = "RB10_combined_sumstats" )
+# summary_stat(combinedRB10, meanSD=T, quantiles=c(c(0.025, 0.25, 0.5, 0.75, 0.975)), savetxt=T,
+#              filename = "RB10_combined_sumstats" )
 
 
 
