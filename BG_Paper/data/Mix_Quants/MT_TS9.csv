@@ -1,0 +1,53 @@
+"name","type","source","code","mean","sd","lowend","highend","mid","low","up","ymax","ymin"
+"Amphipod","TS9","Epiphytic microalgae","Dry",0.65,0.173,0.287,0.927,0.671,0.535,0.787,0.927,0.287
+"Amphipod","TS9","Mangrove","Dry",0.086,0.075,0.002,0.278,0.065,0.028,0.123,0.2655,0.002
+"Amphipod","TS9","Seagrass","Dry",0.105,0.086,0.004,0.33,0.084,0.04,0.147,0.3075,0.004
+"Amphipod","TS9","SPOM","Dry",0.158,0.135,0.007,0.49,0.122,0.053,0.229,0.49,0.007
+"Atlantic Marginella","TS9","Epiphytic microalgae","Wet",0.745,0.207,0.254,0.99,0.793,0.622,0.916,0.99,0.254
+"Atlantic Marginella","TS9","Mangrove","Wet",0.041,0.052,0,0.191,0.02,0.006,0.054,0.126,0
+"Atlantic Marginella","TS9","Seagrass","Wet",0.082,0.114,0,0.421,0.032,0.008,0.115,0.2755,0
+"Atlantic Marginella","TS9","SPOM","Wet",0.133,0.159,0.001,0.566,0.068,0.016,0.201,0.4785,0.001
+"Bubble Snail","TS9","Epiphytic microalgae","Wet",0.75,0.213,0.233,0.99,0.811,0.626,0.923,0.99,0.233
+"Bubble Snail","TS9","Mangrove","Wet",0.052,0.071,0,0.258,0.022,0.006,0.068,0.161,0
+"Bubble Snail","TS9","Seagrass","Wet",0.038,0.049,0,0.175,0.019,0.007,0.051,0.117,0
+"Bubble Snail","TS9","SPOM","Wet",0.16,0.199,0.001,0.683,0.067,0.014,0.248,0.599,0.001
+"Eastern Grass Shrimp","TS9","Epiphytic microalgae","Dry",0.658,0.21,0.209,0.967,0.684,0.514,0.831,0.967,0.209
+"Eastern Grass Shrimp","TS9","Mangrove","Dry",0.088,0.088,0.001,0.312,0.057,0.018,0.133,0.3055,0.001
+"Eastern Grass Shrimp","TS9","Seagrass","Dry",0.089,0.095,0.001,0.345,0.057,0.019,0.126,0.2865,0.001
+"Eastern Grass Shrimp","TS9","SPOM","Dry",0.165,0.171,0.002,0.597,0.099,0.032,0.254,0.587,0.002
+"Hermit Crab","TS9","Epiphytic microalgae","Wet",0.685,0.255,0.12,0.99,0.749,0.511,0.906,0.99,0.12
+"Hermit Crab","TS9","Mangrove","Wet",0.046,0.058,0,0.213,0.023,0.006,0.065,0.1535,0
+"Hermit Crab","TS9","Seagrass","Wet",0.086,0.117,0,0.432,0.035,0.009,0.118,0.2815,0
+"Hermit Crab","TS9","SPOM","Wet",0.183,0.218,0.001,0.756,0.083,0.017,0.297,0.717,0.001
+"Isopod","TS9","Epiphytic microalgae","Wet",0.688,0.278,0.074,0.992,0.787,0.501,0.922,0.992,0.074
+"Isopod","TS9","Mangrove","Wet",0.059,0.08,0,0.288,0.023,0.006,0.078,0.186,0
+"Isopod","TS9","Seagrass","Wet",0.029,0.035,0,0.125,0.016,0.006,0.037,0.0835,0
+"Isopod","TS9","SPOM","Wet",0.224,0.279,0.001,0.879,0.068,0.014,0.397,0.879,0.001
+"Mangrove Snapper","TS9","Epiphytic microalgae","Wet",0.763,0.242,0.098,0.992,0.856,0.653,0.946,0.992,0.2135
+"Mangrove Snapper","TS9","Mangrove","Wet",0.025,0.037,0,0.118,0.013,0.004,0.032,0.074,0
+"Mangrove Snapper","TS9","Seagrass","Wet",0.081,0.128,0,0.459,0.027,0.006,0.099,0.2385,0
+"Mangrove Snapper","TS9","SPOM","Wet",0.13,0.195,0,0.776,0.042,0.011,0.159,0.381,0
+"Rainwater Killifish","TS9","Epiphytic microalgae","Dry",0.7,0.198,0.248,0.968,0.736,0.576,0.856,0.968,0.248
+"Rainwater Killifish","TS9","Mangrove","Dry",0.068,0.07,0.001,0.259,0.043,0.015,0.1,0.2275,0.001
+"Rainwater Killifish","TS9","Seagrass","Dry",0.107,0.112,0.001,0.407,0.067,0.022,0.154,0.352,0.001
+"Rainwater Killifish","TS9","SPOM","Dry",0.126,0.14,0.002,0.531,0.078,0.026,0.174,0.396,0.002
+"Rainwater Killifish","TS9","Epiphytic microalgae","Wet",0.772,0.216,0.197,0.992,0.847,0.662,0.939,0.992,0.2465
+"Rainwater Killifish","TS9","Mangrove","Wet",0.037,0.053,0,0.192,0.016,0.005,0.047,0.11,0
+"Rainwater Killifish","TS9","Seagrass","Wet",0.062,0.092,0,0.344,0.023,0.007,0.075,0.177,0
+"Rainwater Killifish","TS9","SPOM","Wet",0.129,0.177,0,0.639,0.053,0.01,0.18,0.435,0
+"Redfin Needlefish","TS9","Epiphytic microalgae","Dry",0.62,0.232,0.146,0.965,0.645,0.447,0.82,0.965,0.146
+"Redfin Needlefish","TS9","Mangrove","Dry",0.083,0.085,0.001,0.301,0.052,0.017,0.128,0.2945,0.001
+"Redfin Needlefish","TS9","Seagrass","Dry",0.141,0.143,0.001,0.497,0.092,0.026,0.216,0.497,0.001
+"Redfin Needlefish","TS9","SPOM","Dry",0.155,0.159,0.002,0.565,0.098,0.036,0.227,0.5135,0.002
+"Snapping Shrimp","TS9","Epiphytic microalgae","Wet",0.619,0.33,0.044,0.992,0.745,0.297,0.928,0.992,0.044
+"Snapping Shrimp","TS9","Mangrove","Wet",0.06,0.105,0,0.367,0.022,0.006,0.063,0.1485,0
+"Snapping Shrimp","TS9","Seagrass","Wet",0.059,0.095,0,0.359,0.023,0.007,0.067,0.157,0
+"Snapping Shrimp","TS9","SPOM","Wet",0.262,0.295,0.001,0.894,0.087,0.013,0.522,0.894,0.001
+"Sponge","TS9","Epiphytic microalgae","Dry",0.74,0.211,0.143,0.975,0.798,0.652,0.894,0.975,0.289
+"Sponge","TS9","Mangrove","Dry",0.045,0.048,0.001,0.173,0.029,0.01,0.064,0.145,0.001
+"Sponge","TS9","Seagrass","Dry",0.09,0.109,0.001,0.378,0.051,0.017,0.125,0.287,0.001
+"Sponge","TS9","SPOM","Dry",0.124,0.169,0.001,0.688,0.063,0.021,0.144,0.3285,0.001
+"Toadfish","TS9","Epiphytic microalgae","Dry",0.63,0.236,0.132,0.97,0.668,0.459,0.825,0.97,0.132
+"Toadfish","TS9","Mangrove","Dry",0.073,0.076,0.001,0.282,0.046,0.016,0.106,0.241,0.001
+"Toadfish","TS9","Seagrass","Dry",0.148,0.157,0.002,0.557,0.091,0.027,0.224,0.5195,0.002
+"Toadfish","TS9","SPOM","Dry",0.149,0.159,0.002,0.595,0.092,0.031,0.212,0.4835,0.002
