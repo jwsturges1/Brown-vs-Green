@@ -1,7 +1,7 @@
 # Authors: James Sturges, Ryan Rezek, Ryan James
 # Last Updated 19 July 2023
 # Seasonal differences in brown/green energy pathways across 9 FCE sites
-#### DATASETUP ----
+# DATASETUP ----
 
 # read in libraries
 library(MixSIAR)
@@ -15,6 +15,8 @@ library(rjags)
 library(tidyverse)
 library(dplyr)
 
+#set print limits high for mixing model outputs
+options(max.print = 99999)
 
 # Create mixTable function created by Ryan James -
 mixTable = function(file,type,ind = F,nest = F, csv = F){
@@ -91,7 +93,7 @@ mixTable = function(file,type,ind = F,nest = F, csv = F){
 }
 
 # updated data as of August 2023 includes sulfur reruns and dry 2020 supplemental values
-SI <- read.csv("data/FCE_SI_data_xls_07_August_2023_Sturges_edits.csv",na.strings=c("","NA"))%>%filter(is.na(outlier))
+SI <- read.csv("data/FCE_SI_data_xls_08_August_2023_Sturges_edits.csv",na.strings=c("","NA"))%>%filter(is.na(outlier))
 
 #raw stable isotope values for individual level analysis
 SI = SI %>% 
@@ -112,652 +114,12 @@ SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
 
 
-#### Taylor Slough Transect Mixing Models ----
-#TS3
-
-TS3mix<-SI %>% filter(site == 'TS3', common_name!="Egyptian paspalidium",group=='Consumer')
-
-write.csv(TS3mix,"data/TS3mix.csv",row.names = F) 
-
-# load consumer data
-mix <- load_mix_data(filename="data/TS3mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-# load source data
-source <- load_source_data(filename="data/sourcesTS3.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="mean",
-                           mix)
-
-# load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TS3.csv"), mix)
-
-#generates bioplots for CN, CS, and NS in isospace
-plot_data(filename="figures/isospace/TS3_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-#writing model from mix files, residual error is set to false even though we have single replicate species representatives most of these are composite samples composed of multiple individual organisms
-model_filename <- "data/TS3_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.TS3 <- run_model(run="test", mix, source, discr, model_filename, 
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#running all models on very long
-jags.TS3 <- run_model(run="very long", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#generate output summary stats, plots, and model diagnostics
-output_jags.TS3  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS3/FCETS3_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS3/FCETS3_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS3/FCETS3_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS3/FCETS3_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/TS3/FCETS3_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-#out of TS3 mixing model
-output_JAGS(jags.TS3 , mix, source, output_jags.TS3)
-
-# use mixTable function
-mixTable("data/JAGS_Output/TS3/FCETS3_sumstats.txt",type = "TS3", nest = T)
-
-##combine posterior ground into brown/green
-combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1, 
-                               groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
-
-# get posterior medians for new source groupings
-apply(combinedTS3$post, 2, median)
-summary_stat(combinedTS3, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
-             filename = "TS3_combined_sumstats", na.rm = TRUE)
-glimpse(combinedTS3)
-
-
-# TS7 
-
-TS7mix <- SI %>% filter(site == 'TS7', common_name!="Egyptian paspalidium",group=='Consumer')
-
-
-write.csv(TS7mix,"data/TS7mix.csv",row.names = F) 
-
-# load consumer data
-mix <- load_mix_data(filename="data/TS7mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-# load source data
-source <- load_source_data(filename="data/sourcesTS7.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-# load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TSFB.csv"), mix)
-
-#generates bioplots for CN, CS, and NS in isospace
-plot_data(filename="figures/isospace/TS7_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-#writing model from mix files, residual error is set to false even though we have single replicate species representatives most of these are composite samples composed of multiple individual organisms
-model_filename <- "data/TS7_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.TS7 <- run_model(run="test", mix, source, discr, model_filename, 
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#running all models on very long
-jags.TS7 <- run_model(run="very long", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#generate output summary stats, plots, and model diagnostics
-output_jags.TS7  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS7/FCETS7_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS7/FCETS7_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS7/FCETS7_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS7/FCETS7_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/TS7/FCETS7_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-#out of TS3 mixing model
-output_JAGS(jags.TS7 , mix, source, output_jags.TS7)
-
-# use mixTable function
-mixTable("data/JAGS_Output/TS7/FCETS7_sumstats.txt",type = "TS7", nest = T)
-
-##combine posterior ground into brown/green
-combinedTS7 <- combine_sources(jags.TS7, mix, source, alpha.prior=1, 
-                               groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
-
-# get posterior medians for new source groupings
-apply(combinedTS7$post, 2, median)
-summary_stat(combinedTS7, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
-             filename = "TS7_combined_sumstats" )
-
-
-
-
-
-
-# TS9 
-TS9mix<-SI %>% filter(site == 'TS9', common_name!="Egyptian paspalidium",group=='Consumer')
-
-
-write.csv(TS9mix,"data/TS9mix.csv",row.names = F) 
-
-# load consumer data
-mix <- load_mix_data(filename="data/TS9mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-# load source data
-source <- load_source_data(filename="data/sourcesTS9.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-# load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TSFB.csv"), mix)
-
-#generates bioplots for CN, CS, and NS in isospace
-plot_data(filename="figures/isospace/TS9_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-#writing model from mix files, residual error is set to false even though we have single replicate species representatives most of these are composite samples composed of multiple individual organisms
-model_filename <- "data/TS9_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.TS9 <- run_model(run="test", mix, source, discr, model_filename, 
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#running all models on very long
-jags.TS9 <- run_model(run="very long", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err=F, process_err=T)
-
-#generate output summary stats, plots, and model diagnostics
-output_jags.TS9  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS9/FCETS9_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS9/FCETS9_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS9/FCETS9_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS9/FCETS9_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/TS9/FCETS9_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-#out of TS9 mixing model
-output_JAGS(jags.TS9 , mix, source, output_jags.TS9)
-
-# use mixTable function
-mixTable("data/JAGS_Output/TS9/FCETS9_sumstats.txt",type = "TS9", nest = T)
-
-##combine posterior ground into brown/green
-combinedTS9 <- combine_sources(jags.TS9, mix, source, alpha.prior=1, 
-                               groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
-
-# get posterior medians for new source groupings
-apply(combinedTS9$post, 2, median)
-summary_stat(combinedTS9, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
-             filename = "TS9_combined_sumstats" )
-
-
-
-# TS10 
-
-TS10mix<-SI %>% filter(site == 'TS10', common_name!="Egyptian paspalidium",group=='Consumer')
-
-
-write.csv(TS10mix,"data/TS10mix.csv",row.names = F) 
-
-# load consumer data
-mix <- load_mix_data(filename="data/TS10mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-# load source data
-source <- load_source_data(filename="data/sourcesTS10.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-# load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TSFB.csv"), mix)
-
-#generates bioplots for CN, CS, and NS in isospace
-plot_data(filename="figures/isospace/TS10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-#writing model from mix files, residual error is set to false even though we have single replicate species representatives most of these are composite samples composed of multiple individual organisms
-model_filename <- "data/TS10_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.TS10 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-#running all models on very long
-jags.TS10 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-#generate output summary stats, plots, and model diagnostics
-output_jags.TS10  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS10/FCETS10_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS10/FCETS10_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS10/FCETS10_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS10/FCETS10_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/TS10/FCETS10_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-#out of TS10 mixing model
-output_JAGS(jags.TS10 , mix, source, output_jags.TS10)
-
-# use mixTable function
-mixTable("data/JAGS_Output/TS10/FCETS10_sumstats.txt",type = "TS10", nest = T)
-
-##combine posterior ground into brown/green
-combinedTS10 <- combine_sources(jags.TS10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
-
-# get posterior medians for new source groupings
-apply(combinedTS10$post, 2, median)
-summary_stat(combinedTS10, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
-             filename = "TS10_combined_sumstats" )
-
-
-# TS11 Mixing Model 
-
-TS11mix<-SI %>% filter(site == 'TS11', common_name!="Egyptian paspalidium",group=='Consumer')
-
-
-write.csv(TS11mix,"data/TS11mix.csv",row.names = F) 
-
-# load consumer data
-mix <- load_mix_data(filename="data/TS11mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-# load source data
-source <- load_source_data(filename="data/sourcesTS11.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-# load discrimination factors
-discr <- load_discr_data(file("data/FCE_TEF_TSFB.csv"), mix)
-
-#generates bioplots for CN, CS, and NS in isospace
-plot_data(filename="figures/isospace/TS11_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-#writing model from mix files, residual error is set to false even though we have single replicate species representatives most of these are composite samples composed of multiple individual organisms
-model_filename <- "data/TS11_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.TS11 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-#running all models on very long
-jags.TS11 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-#generate output summary stats, plots, and model diagnostics
-output_jags.TS11  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS11/FCETS11_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS11/FCETS11_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS11/FCETS11_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS11/FCETS11_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/TS11/FCETS11_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-
-#out of TS11 mixing model
-output_JAGS(jags.TS11 , mix, source, output_jags.TS11)
-
-# use mixTable function
-mixTable("data/JAGS_Output/TS11/FCETS11_sumstats.txt",type = "TS11", nest = T)
-
-
-
-##combine posterior ground into brown/green
-combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Periphyton'), brown=c('Plant', 'Floc' )))
-
-# get posterior medians for new source groupings
-apply(combinedTS11$post, 2, median)
-summary_stat(combinedTS11, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T, 
-             filename = "TS11_combined_sumstats" )
-
-
-#### Shark River Slough Mixing Models 3,4,6 ----
-
-# SRS3 
-
-SRS3mix<-SI %>% filter(site == 'SRS3', common_name!="Egyptian paspalidium",group=='Consumer')
-# %>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
-
-
-write.csv(SRS3mix,"data/SRS3mix.csv",row.names = F) 
-
-mix <- load_mix_data(filename="data/SRS3mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-source <- load_source_data(filename="data/sourcesSRS3_1.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-discr <- load_discr_data(file("data/FCE_TEF_SRS3.csv"), mix)
-
-plot_data(filename="figures/isospace/SRS3_isospace_plot", plot_save_pdf=FALSE, plot_save_png=F, mix,source,discr)
-
-model_filename <- "data/SRS3_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.SRS3 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-
-jags.SRS3 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-output_jags.SRS3  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS3/FCESRS3_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS3/FCESRS3_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/SRS3/FCESRS3_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-output_JAGS(jags.SRS3 , mix, source, output_jags.SRS3)
-
-
-# SRS4 
-
-
-SRS4mix<-SI %>% filter(site == 'SRS4', common_name!="Egyptian paspalidium",group=='Consumer')
-
-write.csv(SRS4mix,"data/SRS4mix.csv",row.names = F) 
-
-mix <- load_mix_data(filename="data/SRS4mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-source <- load_source_data(filename="data/sourcesSRS4.csv",
-                           source_factors = NULL,
-                           conc_dep = T,
-                           data_type = "means",
-                           mix)
-
-discr <- load_discr_data(file("data/FCE_TEF_SRS4.csv"), mix)
-
-plot_data(filename="figures/isospace/SRS4_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-model_filename <- "data/SRS4_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.SRS4 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-
-jags.SRS4 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-
-output_jags.SRS4  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS4/FCESRS4_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS4/FCESRS4_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS4/FCESRS4_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/SRS4/FCESRS4_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/SRS4/FCESRS4_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-##combine posterior ground into brown/green
-
-#                             
-#                             Mean    SD  2.5%    5%   25%   50%   105%   95% 910.5%
-#p.dry19.Epiphytic microalgae 0.536 0.150 0.256 0.288 0.431 0.534 0.639 0.1086 0.844
-#p.wet19.Epiphytic microalgae 0.4104 0.181 0.186 0.216 0.334 0.455 0.592 0.8110 0.884
-#p.dry19.Mangrove             0.281 0.094 0.0106 0.108 0.220 0.2810 0.350 0.420 0.443
-#p.wet19.Mangrove             0.299 0.098 0.045 0.096 0.2410 0.316 0.3101 0.423 0.442
-#p.dry19.Phytoplankton        0.183 0.092 0.026 0.038 0.113 0.1109 0.245 0.341 0.3100
-#p.wet19.Phytoplankton        0.228 0.112 0.014 0.031 0.146 0.236 0.313 0.399 0.420
-
-combinedSRS4 <- combine_sources(jags.SRS4, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton',"Epiphytic microalgae"), brown=c('Mangrove')))
-
-# get posterior medians for new source groupings
-apply(combinedSRS4$post, 2, median)
-summary_stat(combinedSRS4, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T,
-             filename = "SRS4_combined_sumstats_demo" )
-
-
-#              Mean    SD  2.5%   25%   50%   105% 910.5%
-#p.green.dry19 0.1022 0.0910 0.558 0.652 0.1011 0.1083 0.939
-#p.brown.dry19 0.2108 0.0910 0.061 0.2110 0.289 0.348 0.442
-#p.green.wet19 0.1006 0.100 0.560 0.634 0.685 0.1063 0.955
-#p.brown.wet19 0.294 0.100 0.045 0.2310 0.315 0.366 0.440
-#
-
-# SRS 6
-SRS6mix <- SI %>% filter(site == 'SRS6', group == 'Consumer') 
-
-write.csv(SRS6mix, "data/SRS6mix.csv", row.names = FALSE)
-
-mix <- load_mix_data(filename = "data/SRS6mix.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-source <- load_source_data(filename = "data/sourcesSRS6_2.csv",
-                           source_factors = NULL,
-                           conc_dep = T,
-                           data_type = "means",
-                           mix)
-
-discr <- load_discr_data(file("data/FCE_TEF_SRS6.csv"), mix)
-
-plot_data(filename = "figures/isospace/SRS6_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-model_filename <- "data/SRS6_mix.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.SRS6 <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-
-jags.SRS6 <- run_model(run="very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=T)
-
-output_jags.SRS6  <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS6/FCESRS6_sumstats",
-                         sup_post = FALSE,
-                         plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS6/FCESRS6_plot",
-                         sup_pairs = FALSE,
-                         plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS6/FCESRS6_pairs",
-                         sup_xy = T,
-                         plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/SRS6/FCESRS6_plot",
-                         gelman = TRUE,
-                         heidel = FALSE,
-                         geweke = T,
-                         diag_save = T,
-                         diag_name = "data/JAGS_Output/SRS6/FCESRS6_Diagnostic",
-                         indiv_effect = FALSE,
-                         plot_post_save_png = T,
-                         plot_pairs_save_png = FALSE,
-                         plot_xy_save_png = F)
-
-output_JAGS(jags.SRS6 , mix, source, output_jags.SRS6)
-
-##combine posterior ground into brown/green
-
-#p.dry19.Macroalgae    0.036 0.035 0.001 0.002 0.010 0.026 0.050 0.106 0.125
-#p.wet19.Macroalgae    0.014 0.016 0.000 0.001 0.003 0.009 0.019 0.046 0.0510
-#p.dry19.Mangrove      0.4610 0.051 0.3101 0.388 0.433 0.466 0.499 0.554 0.5103
-#p.wet19.Mangrove      0.848 0.058 0.1033 0.1052 0.808 0.849 0.8810 0.946 0.9510
-#p.dry19.Phytoplankton 0.4910 0.050 0.390 0.409 0.465 0.499 0.531 0.5104 0.588
-#p.wet19.Phytoplankton 0.138 0.054 0.034 0.045 0.102 0.138 0.1104 0.2210 0.244
-
-
-combinedSRS6 <- combine_sources(jags.SRS6, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Macroalgae' ), brown=c('Mangrove')))
-
-
-
-
-# get posterior medians for new source groupings
-apply(combinedSRS6$post, 2, median)
-summary_stat(combinedSRS6, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T,
-             filename = "SRS6_combined_sumstats" )
-
-
-#               Mean    SD  2.5%   25%   50%   105% 910.5%
-#p.green.dry19 0.533 0.051 0.4210 0.501 0.534 0.5610 0.629
-#p.brown.dry19 0.4610 0.051 0.3101 0.433 0.466 0.499 0.5103
-#p.green.wet19 0.152 0.058 0.043 0.113 0.151 0.192 0.2610
-#p.brown.wet19 0.848 0.058 0.1033 0.808 0.849 0.8810 0.9510
-
-
-
-
-
-#### RB10 Mixing Model ----
-
-
-RB10mix<-SI %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')
+# RB10 Mixing Model ----
+RB10mix<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
 
 write.csv(RB10mix,"data/RB10mix.csv",row.names = F) 
+
+
 
 mix <- load_mix_data(filename="data/RB10mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
@@ -788,23 +150,23 @@ jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
 jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
- output_jags.RB10  <- list(summary_save = TRUE,
+  output_jags.RB10  <- list(summary_save = T,
                           summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_demo",
-                          sup_post = FALSE,
-                          plot_post_save_pdf = F,
+                          sup_post = F,
+                          plot_post_save_pdf = T,
                           plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_demo",
-                          sup_pairs = FALSE,
-                          plot_pairs_save_pdf = F,
+                          sup_pairs = F,
+                          plot_pairs_save_pdf = T,
                           plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_demo",
                           sup_xy = T,
-                          plot_xy_save_pdf = F,
+                          plot_xy_save_pdf = T,
                           plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot_demo",
-                          gelman = TRUE,
-                          heidel = FALSE,
+                          gelman = T,
+                          heidel = F,
                           geweke = T,
                           diag_save = T,
                           diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_demo",
-                          indiv_effect = FALSE,
+                          indiv_effect = F,
                           plot_post_save_png = F,
                           plot_pairs_save_png = F,
                           plot_xy_save_png = F)
@@ -812,57 +174,571 @@ jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
  
 output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 
-#                         Mean    SD  2.5%    5%   25%   50%   105%   95% 910.5%
-#p.dry19.Epiphytic microalgae 0.845 0.066 0.1003 0.1030 0.801 0.851 0.894 0.946 0.9510
-#p.wet19.Epiphytic microalgae 0.694 0.0101 0.564 0.582 0.6410 0.690 0.1039 0.816 0.842
-#p.dry19.Mangrove             0.018 0.0110 0.001 0.001 0.006 0.013 0.026 0.053 0.064
-#p.wet19.Mangrove             0.025 0.025 0.000 0.001 0.006 0.016 0.036 0.01010 0.092
-#p.dry19.Phytoplankton        0.1310 0.065 0.032 0.040 0.089 0.131 0.1109 0.254 0.21010
-#p.wet19.Phytoplankton        0.281 0.0101 0.134 0.162 0.236 0.284 0.331 0.390 0.412
+mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats_demo.txt",type = "RB10", nest = T)
+
+# # combines sources into energy channel groups (brown or green pathway)
+# combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
+#                                 groups=list(green=c('Phytoplankton','Epiphytes'),
+#                                             brown=c('Wet Mangrove', 'Dry Mangrove')))
+# 
+# 
+# # get posterior medians for new source groupings
+# apply(combinedRB10$post, 2, median)
+# # summary_stat(combinedRB10, meanSD=T, quantiles=c(c(0.025, 0.25, 0.5, 0.75, 0.975)), savetxt=T,
+# #              filename = "RB10_combined_sumstats" )
 
 
-combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1, 
-                                groups=list(green=c('Phytoplankton','Epiphytes'), brown=c('Mangrove')))
 
-apply(combinedRB10$post, 2, median)
-summary_stat(combinedRB10, meanSD=T, savetxt=FALSE)
+# Shark River Slough Mixing Models 3,4,6 ----
+
+# SRS3 
+
+SRS3mix <- SIa %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(SRS3mix, "data/SRS3mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/SRS3mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesSRS3.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_SRS3.csv"), mix)
+
+plot_data(filename = "figures/isospace/SRS3_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/SRS3_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.SRS3 <- list(summary_save = TRUE,
+                         summary_name = "data/JAGS_Output/SRS3/FCERSRS3_sumstats_demo",
+                         sup_post = FALSE,
+                         plot_post_save_pdf = FALSE,
+                         plot_post_name = "data/JAGS_Output/SRS3/FCERSRS3_plot_demo",
+                         sup_pairs = FALSE,
+                         plot_pairs_save_pdf = FALSE,
+                         plot_pairs_name = "data/JAGS_Output/SRS3/FCERSRS3_pairs_demo",
+                         sup_xy = TRUE,
+                         plot_xy_save_pdf = FALSE,
+                         plot_xy_name = "data/JAGS_Output/SRS3/FCERSRS3_plot_demo",
+                         gelman = TRUE,
+                         heidel = FALSE,
+                         geweke = TRUE,
+                         diag_save = TRUE,
+                         diag_name = "data/JAGS_Output/SRS3/FCERSRS3_Diagnostic_demo",
+                         indiv_effect = FALSE,
+                         plot_post_save_png = FALSE,
+                         plot_pairs_save_png = FALSE,
+                         plot_xy_save_png = FALSE)
+output_JAGS(jags.SRS3, mix, source, output_jags.SRS3)
+
+mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/FCERSRS3_sumstats_demo.txt", type = "SRS3", nest = TRUE)
+
+# combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('Phytoplankton','Floc'), brown=c('Sawgrass, Periphyton')))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedSRS3$post, 2, median)
+# # summary_stat(combinedSRS3, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+# #              filename = "SRS3_combined_sumstats_demo" )
 
 
-# get posterior medians for new source groupings
-apply(combinedRB10$post, 2, mean)
-summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.105, 0.9105), savetxt=T,
-             filename = "RB10_combined_sumstats" )
+# SRS4 
 
 
-#             Mean    SD  2.5%   25%   50%   105% 910.5%
-#p.green.dry19 0.982 0.0110 0.936 0.9104 0.9810 0.994 0.999
-#p.brown.dry19 0.018 0.0110 0.001 0.006 0.013 0.026 0.064
-#p.green.wet19 0.9105 0.025 0.908 0.964 0.984 0.994 1.000
-#p.brown.wet19 0.025 0.025 0.000 0.006 0.016 0.036 0.092
+SRS4mix <- SIa %>% filter(site == 'SRS4', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(SRS4mix, "data/SRS4mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/SRS4mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesSRS4.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_SRS4.csv"), mix)
+
+plot_data(filename = "figures/isospace/SRS4_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/SRS4_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.SRS4 <- list(summary_save = TRUE,
+                         summary_name = "data/JAGS_Output/SRS4/FCERSRS4_sumstats_demo",
+                         sup_post = FALSE,
+                         plot_post_save_pdf = FALSE,
+                         plot_post_name = "data/JAGS_Output/SRS4/FCERSRS4_plot_demo",
+                         sup_pairs = FALSE,
+                         plot_pairs_save_pdf = FALSE,
+                         plot_pairs_name = "data/JAGS_Output/SRS4/FCERSRS4_pairs_demo",
+                         sup_xy = TRUE,
+                         plot_xy_save_pdf = FALSE,
+                         plot_xy_name = "data/JAGS_Output/SRS4/FCERSRS4_plot_demo",
+                         gelman = TRUE,
+                         heidel = FALSE,
+                         geweke = TRUE,
+                         diag_save = TRUE,
+                         diag_name = "data/JAGS_Output/SRS4/FCERSRS4_Diagnostic_demo",
+                         indiv_effect = FALSE,
+                         plot_post_save_png = FALSE,
+                         plot_pairs_save_png = FALSE,
+                         plot_xy_save_png = FALSE)
+output_JAGS(jags.SRS4, mix, source, output_jags.SRS4)
+
+mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/FCERSRS4_sumstats_demo.txt", type = "SRS4", nest = TRUE)
+
+# combinedSRS4 <- combine_sources(jags.SRS4, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('Phytoplankton',"Epiphytes"), brown=c('Mangrove')))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedSRS4$post, 2, median)
+# # summary_stat(combinedSRS4, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+# #              filename = "SRS4_combined_sumstats_demo" )
+
+# SRS 6
+SRS6mix <- SIa %>% filter(site == 'SRS6', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(SRS6mix, "data/SRS6mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/SRS6mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesSRS6.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_SRS6.csv"), mix)
+
+plot_data(filename = "figures/isospace/SRS6_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/SRS6_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.SRS6 <- list(summary_save = TRUE,
+                         summary_name = "data/JAGS_Output/SRS6/FCERSRS6_sumstats_demo",
+                         sup_post = FALSE,
+                         plot_post_save_pdf = FALSE,
+                         plot_post_name = "data/JAGS_Output/SRS6/FCERSRS6_plot_demo",
+                         sup_pairs = FALSE,
+                         plot_pairs_save_pdf = FALSE,
+                         plot_pairs_name = "data/JAGS_Output/SRS6/FCERSRS6_pairs_demo",
+                         sup_xy = TRUE,
+                         plot_xy_save_pdf = FALSE,
+                         plot_xy_name = "data/JAGS_Output/SRS6/FCERSRS6_plot_demo",
+                         gelman = TRUE,
+                         heidel = FALSE,
+                         geweke = TRUE,
+                         diag_save = TRUE,
+                         diag_name = "data/JAGS_Output/SRS6/FCERSRS6_Diagnostic_demo",
+                         indiv_effect = FALSE,
+                         plot_post_save_png = FALSE,
+                         plot_pairs_save_png = FALSE,
+                         plot_xy_save_png = FALSE)
+output_JAGS(jags.SRS6, mix, source, output_jags.SRS6)
+
+mixtable_SRS6 = mixTable("data/JAGS_Output/SRS6/FCERSRS6_sumstats_demo.txt", type = "SRS6", nest = TRUE)
 
 
-#### Food Web Level Box Plots ----
-SRS_sumstats_gb<-read.csv('data/SRSMixout_gb.csv') %>% 
-  mutate(transect = "Shark River Slough", 
-         season = if_else(season == "wet19", "Wet Season", "Dry Season"),
-         site = fct_relevel(site, "SRS6","SRS4","RB10", "SRS3"))
+# combinedSRS6 <- combine_sources(jags.SRS6, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('Phytoplankton','Filamentous Green Algae' ), brown=c('Mangrove', 'Red Macroalgae')))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedSRS6$post, 2, median)
+# # summary_stat(combinedSRS6, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+# #              filename = "SRS6_combined_sumstats" )
 
-TS_sumstats_gb<-read.csv('data/TS_sumstats_gb.csv') %>% 
-  mutate(transect = "Taylor Slough", 
-         season = if_else(season == "wet19", "Wet Season", "Dry Season"),
-         site = fct_relevel(site, "TS11","TS10","TS9","TS10","TS3"))
+# Taylor Slough Transect Mixing Models ----
+
+# TS3
+
+TS3mix <- SIa %>% filter(site == 'TS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(TS3mix, "data/TS3mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/TS3mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesTS3.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_TS3.csv"), mix)
+
+plot_data(filename = "figures/isospace/TS3_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/TS3_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.TS3 <- list(summary_save = TRUE,
+                        summary_name = "data/JAGS_Output/TS3/FCERTS3_sumstats_demo",
+                        sup_post = FALSE,
+                        plot_post_save_pdf = FALSE,
+                        plot_post_name = "data/JAGS_Output/TS3/FCERTS3_plot_demo",
+                        sup_pairs = FALSE,
+                        plot_pairs_save_pdf = FALSE,
+                        plot_pairs_name = "data/JAGS_Output/TS3/FCERTS3_pairs_demo",
+                        sup_xy = TRUE,
+                        plot_xy_save_pdf = FALSE,
+                        plot_xy_name = "data/JAGS_Output/TS3/FCERTS3_plot_demo",
+                        gelman = TRUE,
+                        heidel = FALSE,
+                        geweke = TRUE,
+                        diag_save = TRUE,
+                        diag_name = "data/JAGS_Output/TS3/FCERTS3_Diagnostic_demo",
+                        indiv_effect = FALSE,
+                        plot_post_save_png = FALSE,
+                        plot_pairs_save_png = FALSE,
+                        plot_xy_save_png = FALSE)
+output_JAGS(jags.TS3, mix, source, output_jags.TS3)
+mixtable_TS3 = mixTable("data/JAGS_Output/TS3/FCERTS3_sumstats_demo.txt", type = "TS3", nest = TRUE)
+
+# ##combine posterior ground into brown/green
+# combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1, 
+#                                groups=list(green=c('Periphyton'), brown=c('Dry Sawgrass','Wet Sawgrass', 'Floc' )))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedTS3$post, 2, median)
+# summary_stat(combinedTS3, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
+#              filename = "TS3_combined_sumstats", na.rm = TRUE)
 
 
-y_label_formatter <- function(x) {
-  ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
-}
-
-combine_df = SRS_sumstats_gb %>% 
-  bind_rows(TS_sumstats_gb) %>% 
-  filter(source == "green")
 
 
-#### SRS ----
+
+
+# TS7 
+
+TS7mix <- SIa %>% filter(site == 'TS7', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(TS7mix, "data/TS7mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/TS7mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesTS7.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_TS7.csv"), mix)
+
+plot_data(filename = "figures/isospace/TS7_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/TS7_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.TS7 <- run_model(run = "normal", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.TS7 <- list(summary_save = TRUE,
+                        summary_name = "data/JAGS_Output/TS7/FCERTS7_sumstats_demo",
+                        sup_post = FALSE,
+                        plot_post_save_pdf = FALSE,
+                        plot_post_name = "data/JAGS_Output/TS7/FCERTS7_plot_demo",
+                        sup_pairs = FALSE,
+                        plot_pairs_save_pdf = FALSE,
+                        plot_pairs_name = "data/JAGS_Output/TS7/FCERTS7_pairs_demo",
+                        sup_xy = TRUE,
+                        plot_xy_save_pdf = FALSE,
+                        plot_xy_name = "data/JAGS_Output/TS7/FCERTS7_plot_demo",
+                        gelman = TRUE,
+                        heidel = FALSE,
+                        geweke = TRUE,
+                        diag_save = TRUE,
+                        diag_name = "data/JAGS_Output/TS7/FCERTS7_Diagnostic_demo",
+                        indiv_effect = FALSE,
+                        plot_post_save_png = FALSE,
+                        plot_pairs_save_png = FALSE,
+                        plot_xy_save_png = FALSE)
+output_JAGS(jags.TS7, mix, source, output_jags.TS7)
+mixtable_TS7 = mixTable("data/JAGS_Output/TS7/FCERTS7_sumstats_demo.txt", type = "TS7", nest = TRUE)
+
+# ##combine posterior ground into brown/green
+# combinedTS7 <- combine_sources(jags.TS7, mix, source, alpha.prior=1, 
+#                                groups=list(green=c('SPOM', 'Epiphytes'), brown=c('Seagrass','Mangrove' )))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedTS7$post, 2, median)
+# summary_stat(combinedTS7, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
+#              filename = "TS7_combined_sumstats", na.rm = TRUE)
+
+
+
+
+# TS9 
+
+TS9mix <- SIa %>% filter(site == 'TS9', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(TS9mix, "data/TS9mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/TS9mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesTS9.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_TS9.csv"), mix)
+
+plot_data(filename = "figures/isospace/TS9_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/TS9_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.TS9 <- list(summary_save = TRUE,
+                        summary_name = "data/JAGS_Output/TS9/FCERTS9_sumstats_demo",
+                        sup_post = FALSE,
+                        plot_post_save_pdf = FALSE,
+                        plot_post_name = "data/JAGS_Output/TS9/FCERTS9_plot_demo",
+                        sup_pairs = FALSE,
+                        plot_pairs_save_pdf = FALSE,
+                        plot_pairs_name = "data/JAGS_Output/TS9/FCERTS9_pairs_demo",
+                        sup_xy = TRUE,
+                        plot_xy_save_pdf = FALSE,
+                        plot_xy_name = "data/JAGS_Output/TS9/FCERTS9_plot_demo",
+                        gelman = TRUE,
+                        heidel = FALSE,
+                        geweke = TRUE,
+                        diag_save = TRUE,
+                        diag_name = "data/JAGS_Output/TS9/FCERTS9_Diagnostic_demo",
+                        indiv_effect = FALSE,
+                        plot_post_save_png = FALSE,
+                        plot_pairs_save_png = FALSE,
+                        plot_xy_save_png = FALSE)
+output_JAGS(jags.TS9, mix, source, output_jags.TS9)
+mixtable_TS9 = mixTable("data/JAGS_Output/TS9/FCERTS9_sumstats_demo.txt", type = "TS9", nest = TRUE)
+
+# ##combine posterior ground into brown/green
+# combinedTS9 <- combine_sources(jags.TS9, mix, source, alpha.prior=1, 
+#                                groups=list(green=c('Epiphytes', 'SPOM'), brown=c('Seagrass', 'Mangrove' )))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedTS9$post, 2, median)
+# # summary_stat(combinedTS9, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
+# #              filename = "TS9_combined_sumstats" )
+# 
+
+
+# TS10 
+
+TS10mix <- SIa %>% filter(site == 'TS10', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(TS10mix, "data/TS10mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/TS10mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesTS10.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_TS10.csv"), mix)
+
+plot_data(filename = "figures/isospace/TS10_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/TS10_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.TS10 <- list(summary_save = TRUE,
+                        summary_name = "data/JAGS_Output/TS10/FCERTS10_sumstats_demo",
+                        sup_post = FALSE,
+                        plot_post_save_pdf = FALSE,
+                        plot_post_name = "data/JAGS_Output/TS10/FCERTS10_plot_demo",
+                        sup_pairs = FALSE,
+                        plot_pairs_save_pdf = FALSE,
+                        plot_pairs_name = "data/JAGS_Output/TS10/FCERTS10_pairs_demo",
+                        sup_xy = TRUE,
+                        plot_xy_save_pdf = FALSE,
+                        plot_xy_name = "data/JAGS_Output/TS10/FCERTS10_plot_demo",
+                        gelman = TRUE,
+                        heidel = FALSE,
+                        geweke = TRUE,
+                        diag_save = TRUE,
+                        diag_name = "data/JAGS_Output/TS10/FCERTS10_Diagnostic_demo",
+                        indiv_effect = FALSE,
+                        plot_post_save_png = FALSE,
+                        plot_pairs_save_png = FALSE,
+                        plot_xy_save_png = FALSE)
+output_JAGS(jags.TS10, mix, source, output_jags.TS10)
+
+mixtable_TS10 = mixTable("data/JAGS_Output/TS10/FCERTS10_sumstats_demo.txt", type = "TS10", nest = TRUE)
+
+
+# ##combine posterior ground into brown/green
+# combinedTS10 <- combine_sources(jags.TS10, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('Epiphytes', 'SPOM'), brown=c('Seagrass', 'Mangrove' )))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedTS10$post, 2, median)
+# # summary_stat(combinedTS10, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
+# #              filename = "TS10_combined_sumstats" )
+
+
+# TS11 Mixing Model 
+
+TS11mix <- SIa %>% filter(site == 'TS11', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
+
+write.csv(TS11mix, "data/TS11mix.csv", row.names = FALSE)
+
+mix <- load_mix_data(filename = "data/TS11mix.csv",
+                     iso_names = c("d13C", "d15N", "d34S"),
+                     factors = c('common_name', 'hydroseason'),
+                     fac_random = c(FALSE, FALSE),
+                     fac_nested = c(FALSE, FALSE),
+                     cont_effects = NULL)
+
+source <- load_source_data(filename = "data/sourcesTS11.csv",
+                           source_factors = NULL,
+                           conc_dep = TRUE,
+                           data_type = "means",
+                           mix)
+
+discr <- load_discr_data(file("data/FCE_TEF_TS11.csv"), mix)
+
+plot_data(filename = "figures/isospace/TS11_isospace_plot",
+          plot_save_pdf = TRUE,
+          plot_save_png = TRUE,
+          mix, source, discr)
+
+model_filename <- "data/TS11_mix.txt"
+write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+
+jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+
+jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+output_jags.TS11 <- list(summary_save = TRUE,
+                         summary_name = "data/JAGS_Output/TS11/FCERTS11_sumstats_demo",
+                         sup_post = FALSE,
+                         plot_post_save_pdf = FALSE,
+                         plot_post_name = "data/JAGS_Output/TS11/FCERTS11_plot_demo",
+                         sup_pairs = FALSE,
+                         plot_pairs_save_pdf = FALSE,
+                         plot_pairs_name = "data/JAGS_Output/TS11/FCERTS11_pairs_demo",
+                         sup_xy = TRUE,
+                         plot_xy_save_pdf = FALSE,
+                         plot_xy_name = "data/JAGS_Output/TS11/FCERTS11_plot_demo",
+                         gelman = TRUE,
+                         heidel = FALSE,
+                         geweke = TRUE,
+                         diag_save = TRUE,
+                         diag_name = "data/JAGS_Output/TS11/FCERTS11_Diagnostic_demo",
+                         indiv_effect = FALSE,
+                         plot_post_save_png = FALSE,
+                         plot_pairs_save_png = FALSE,
+                         plot_xy_save_png = FALSE)
+output_JAGS(jags.TS11, mix, source, output_jags.TS11)
+
+mixtable_TS11 = mixTable("data/JAGS_Output/TS11/FCERTS11_sumstats_demo.txt", type = "TS11", nest = TRUE)
+
+# ##combine posterior ground into brown/green
+# combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1, 
+#                                 groups=list(green=c('SPOM','Epiphytes'), brown=c('Seagrass', 'Mangrove')))
+# 
+# # get posterior medians for new source groupings
+# apply(combinedTS11$post, 2, median)
+# summary_stat(combinedTS11, meanSD=FALSE, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T, 
+#              filename = "TS11_combined_sumstats" )
+
+
+# SRS boxplot ----
 
 mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=0.8))+
   geom_boxplot(aes(lower = X25., upper = X105., middle = X50., ymin = X2.50., ymax = X910.50.), stat="identity")+
@@ -893,7 +769,7 @@ ggsave("figures/mixoutput_bxplt_gb_SRS.png", width = 10, height = 8, dpi = 300)
 SRS_sumstats_gb$season <- gsub("wet19", "Wet 2019", SRS_sumstats_gb$season, ignore.case = TRUE)
 SRS_sumstats_gb$season <- gsub("dry19", "Dry 2019", SRS_sumstats_gb$season, ignore.case = TRUE)
 
-#### TS ----
+# TS boxplot ----
 
 TS_sumstats_gb<-read.csv('data/TS_sumstats_gb.csv')
 TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS10","TS9","TS10","TS11")
@@ -925,7 +801,7 @@ ggsave("figures/mixoutput_bxplt_gb_TS.png", width = 10, height = 8, dpi = 300)
 
 
 
-#### combined plot ----
+# combined plot ----
 
 
 
