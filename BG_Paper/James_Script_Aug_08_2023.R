@@ -244,7 +244,7 @@ jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run="very long", mix, source, discr, model_filename,
+jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
   output_jags.RB10  <- list(summary_save = T,
@@ -274,22 +274,21 @@ output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats.txt",type = "RB10", nest = T)
 
 write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10.csv", row.names = FALSE)
-# #  combines sources into energy channel groups (brown or green pathway)
-# combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
-#                                 groups=list(green=c('Phytoplankton','Epiphytes'),
-#                                             brown=c('Wet Mangrove', 'Dry Mangrove')))
-# 
-# # get posterior medians for new source groupings
-# apply(combinedRB10$post, 2, median)
-# summary_stat(combinedRB10, meanSD=T, quantiles=c(c(0.025, 0.25, 0.5, 0.75, 0.975)), savetxt=T,
-#              filename = "RB10_combined_sumstats" )
 
 
 
-# Shark River Slough Mixing Models 3,4,6 ----
+combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
+                                groups=list(green=c('Phytoplankton',"Epiphytes"), brown=c('Wet Mangrove', 'Dry Mangrove')))
 
-# SRS3 
+# get posterior medians for new source groupings
+apply(combinedRB10$post, 2, median)
 
+view(combinedRB10$post)
+
+summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
+             filename = "RB10_combined_sumstats" )
+
+# SRS 3
 SRS3mix <- SIa %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
 write.csv(SRS3mix, "data/SRS3mix.csv", row.names = FALSE)
@@ -861,10 +860,74 @@ write.csv(mixtable_TS11, "data/Mix_Quants/MT_TS11.csv", row.names = FALSE)
 #              filename = "TS11_combined_sumstats" )
 
 
+# Aggregating by Energy Channel ----
+MixOut_RB10 = read.csv('data/Mix_Quants/MT_RB10.csv')
+MixOut_SRS3 = read.csv('data/Mix_Quants/MT_SRS3.csv')
+MixOut_SRS4 = read.csv('data/Mix_Quants/MT_SRS4.csv')
+MixOut_SRS6 = read.csv('data/Mix_Quants/MT_SRS6.csv')
+MixOut_TS3 = read.csv('data/Mix_Quants/MT_TS3.csv')
+MixOut_TS7 = read.csv('data/Mix_Quants/MT_TS7.csv')
+MixOut_TS9 = read.csv('data/Mix_Quants/MT_TS9.csv')
+MixOut_TS10 = read.csv('data/Mix_Quants/MT_TS10.csv')
+MixOut_TS11 = read.csv('data/Mix_Quants/MT_TS11.csv')
+
+
+SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
+
+SRSMixout_gb = SRSMixout_gb %>% 
+  rename(site = type, season = code) %>%
+  mutate(path = case_when(
+    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 'Floc') ~ "green",
+    source %in% c("Dry Mangrove", "Wet Mangrove", 'Mangrove', "Sawgrass", "Red Macroalgae") ~ "brown",
+    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
+  ))
+
+SRSMixout_gb = SRSMixout_gb %>% 
+  group_by(site, season, path) %>% 
+  summarize(across(.cols = c(mean, sd, mid, low, up, ymax, ymin),
+                   .fns = median))
+
+SRSMixout_gb = SRSMixout_gb %>% 
+  rename(source = path) 
+
+TSMixout_gb <- rbind(MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
+
+TSMixout_gb = TSMixout_gb %>% 
+  rename(site = type, season = code) %>%
+  mutate(path = case_when(
+    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 'Floc', "Epiphytic microalgae", 'SPOM') ~ "green",
+    source %in% c("Mangrove", "Wet Sawgrass", "Dry Sawgrass", "Red Macroalgae", "Seagrass") ~ "brown",
+    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
+  ))
+
+TSMixout_gb = TSMixout_gb %>% 
+  group_by(site, season, path) %>% 
+  summarize(across(.cols = c(mean, sd, mid, low, up, ymax, ymin),
+                   .fns = mean))
+
+TSMixout_gb = TSMixout_gb %>% 
+  rename(source = path) 
+
+
+
+y_label_formatter <- function(x) {
+  ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
+}
+
+combine_df = SRSMixout_gb %>%
+  bind_rows(TSMixout_gb) %>%
+  filter(source == "green")
+
+
+combine_df = combine_df %>% 
+  mutate(transect = case_when(
+    site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
+    site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
+
 # SRS boxplot ----
 
-mixoutput_bxplt_gb_SRS<-ggplot(SRS_sumstats_gb,aes(x=season, fill=source, width=0.8))+
-  geom_boxplot(aes(lower = X25., upper = X105., middle = X50., ymin = X2.50., ymax = X910.50.), stat="identity")+
+mixoutput_bxplt_gb_SRS<-ggplot(SRSMixout_gb,aes(x=season, fill=source, width=0.8))+
+  geom_boxplot(aes(lower = low, upper = up, middle = mid, ymin = ymin, ymax = ymax), stat="identity")+
   theme_bw()+
   scale_fill_manual(values=c("saddlebrown",'limegreen'))+ 
   coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
@@ -889,16 +952,13 @@ mixoutput_bxplt_gb_SRS
 ggsave("figures/mixoutput_bxplt_gb_SRS.png", width = 10, height = 8, dpi = 300)
 
 
-SRS_sumstats_gb$season <- gsub("wet19", "Wet 2019", SRS_sumstats_gb$season, ignore.case = TRUE)
-SRS_sumstats_gb$season <- gsub("dry19", "Dry 2019", SRS_sumstats_gb$season, ignore.case = TRUE)
 
 # TS boxplot ----
+TSMixout_gb$site <- factor(TSMixout_gb$site, levels=c("TS3", "TS7", "TS9", "TS10", "TS11"))
 
-TS_sumstats_gb<-read.csv('data/TS_sumstats_gb.csv')
-TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS10","TS9","TS10","TS11")
 
-mixoutput_bxplt_gb_TS<-ggplot(TS_sumstats_gb,aes(x=source, fill=source, width=0.8))+
-  geom_boxplot(aes(lower = X25., upper = X105., middle = X50., ymin = X2.50., ymax = X910.50.), stat="identity")+
+mixoutput_bxplt_gb_TS<-ggplot(TSMixout_gb,aes(x=source, fill=source, width=0.8))+
+  geom_boxplot(aes(lower = low, upper = up, middle = mid, ymin = ymin, ymax = ymax), stat="identity")+
   theme_bw()+
   scale_fill_manual(values=c("saddlebrown", "limegreen"))+ 
   coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
@@ -928,8 +988,8 @@ ggsave("figures/mixoutput_bxplt_gb_TS.png", width = 10, height = 8, dpi = 300)
 
 
 
-mixoutput_bxplt_gb_combined <-ggplot(combine_df,aes(x=site, fill=X50., width=0.8))+
-  geom_boxplot(aes(lower = X25., upper = X105., middle = X50., ymin = X2.50., ymax = X910.50.), stat="identity")+
+mixoutput_bxplt_gb_combined <-ggplot(combine_df,aes(x=site, fill=mid, width=0.8))+
+  geom_boxplot(aes(lower = low, upper = up, middle = mid, ymin = ymin, ymax = ymax), stat="identity")+
   theme_bw()+
   scale_fill_gradient2(low = "saddlebrown",
                          high = "forestgreen",
@@ -961,6 +1021,69 @@ mixoutput_bxplt_gb_combined <-ggplot(combine_df,aes(x=site, fill=X50., width=0.8
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/mixoutput_bxplt_gb_combined.png", width = 9, height = 6, dpi = 600)
+ggsave("figures/mixoutput_bxplt_gb_combined_NEW.png", width = 9, height = 6, dpi = 600)
 
 
+
+
+# Old boxplot code ---- 
+
+SRS_sumstats<-read.csv('RB10_mixout.csv')
+
+# Set up plot aesthetics and label adjustments
+theme_set(theme_bw())
+theme_update(plot.title = element_text(size = 16, face = "bold"),
+             axis.title = element_text(size = 14),
+             axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+             strip.text = element_text(size = 14))
+
+# Create the boxplot
+transectCS <- ggplot(SIa1, aes(x = group, y = md34S, fill = group)) +
+  geom_boxplot() +
+  ylab(expression(paste(delta^{34}, "S (‰)"))) +
+  xlab("Group") +
+  ggtitle("Carbon and Sulfur Isotope Comparison") +
+  scale_fill_viridis_d() +
+  guides(fill = FALSE)
+
+transectCS
+# Adjust the facet labels to avoid overlap
+transectCS <- transectCS + facet_wrap(~season, scales = "free_x", nrow = 2, labeller = label_wrap_gen(width = 20))
+
+# Adjust the plot size for better visibility
+ggsave("transectCS_boxplot.png", transectCS, width = 10, height = 8, dpi = 300)
+
+mixoutput
+
+
+SRS_sumstats_gb<-read.csv('SRSMixout_gb.csv')
+SRS_sumstats_gb$site<-fct_relevel(SRS_sumstats_gb$site, "SRS3","RB10", "SRS4","SRS6")
+
+mixoutput_bxplt_gb_SRS<-ggplot(SRSMixout_gb,aes(x=season, fill=source, width=0.8))+
+  geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
+  theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~.)+
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
+mixoutput_bxplt_gb_SRS
+
+TS_sumstats_gb<-read.csv('TS_sumstats_gb.csv')
+TS_sumstats_gb$site<-fct_relevel(TS_sumstats_gb$site, "TS3","TS7","TS9","TS10","TS11")
+
+mixoutput_bxplt_gb_TS<-ggplot(TS_sumstats_gb,aes(x=source, fill=source, width=0.8))+
+  geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
+  theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
+
+
+mixoutput_bxplt_gb_TS
+
+#### James ----
+
+srs3_spp_boxplot <-ggplot(df_srs3,aes(x=source, fill=source, width=0.8)) +
+  geom_boxplot(aes(lower = X25., upper = X75., middle = X50., ymin = X2.50., ymax = X97.50.), stat="identity")+
+  geom_point(aes(shape = as.factor(code))) +
+  geom_jitter(position = "dodge") +
+  theme_bw()+scale_fill_manual(values=c("saddlebrown",'limegreen'))+ coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())+
+  scale_y_continuous(expand = c(0.01, 0))+labs(y="Dietary contribution")+coord_flip()
