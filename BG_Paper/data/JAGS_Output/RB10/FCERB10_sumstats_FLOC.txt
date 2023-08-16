@@ -1,0 +1,136 @@
+
+#################################################################
+# Summary Statistics
+#################################################################
+
+DIC = 250.3725
+
+                                          Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
+p.Bluefin Killifish.Wet.Epiphytes        0.490 0.166 0.067 0.157 0.405 0.510 0.604 0.726 0.758
+p.Bluefin Killifish.Wet.Floc             0.064 0.064 0.002 0.003 0.018 0.045 0.089 0.197 0.235
+p.Bluefin Killifish.Wet.Mangrove         0.131 0.159 0.001 0.003 0.023 0.072 0.173 0.492 0.609
+p.Bluefin Killifish.Wet.Phytoplankton    0.315 0.105 0.138 0.162 0.242 0.305 0.380 0.493 0.545
+p.Bluegill.Dry.Epiphytes                 0.204 0.159 0.014 0.025 0.088 0.163 0.281 0.514 0.614
+p.Bluegill.Dry.Floc                      0.076 0.074 0.002 0.003 0.020 0.053 0.113 0.229 0.269
+p.Bluegill.Dry.Mangrove                  0.115 0.132 0.001 0.002 0.019 0.063 0.168 0.394 0.466
+p.Bluegill.Dry.Phytoplankton             0.605 0.173 0.214 0.301 0.492 0.625 0.734 0.855 0.888
+p.Bluegill.Wet.Epiphytes                 0.349 0.184 0.026 0.054 0.217 0.343 0.464 0.674 0.752
+p.Bluegill.Wet.Floc                      0.059 0.072 0.001 0.002 0.010 0.032 0.081 0.219 0.265
+p.Bluegill.Wet.Mangrove                  0.135 0.165 0.001 0.001 0.015 0.063 0.197 0.494 0.575
+p.Bluegill.Wet.Phytoplankton             0.457 0.154 0.135 0.197 0.361 0.458 0.560 0.704 0.761
+p.Bowfin.Wet.Epiphytes                   0.339 0.238 0.023 0.040 0.140 0.288 0.504 0.799 0.863
+p.Bowfin.Wet.Floc                        0.064 0.077 0.001 0.001 0.010 0.033 0.092 0.220 0.275
+p.Bowfin.Wet.Mangrove                    0.146 0.187 0.001 0.001 0.014 0.063 0.210 0.559 0.663
+p.Bowfin.Wet.Phytoplankton               0.451 0.237 0.049 0.081 0.265 0.441 0.635 0.855 0.895
+p.Clown Goby.Wet.Epiphytes               0.240 0.190 0.017 0.032 0.109 0.190 0.308 0.671 0.817
+p.Clown Goby.Wet.Floc                    0.033 0.042 0.001 0.001 0.007 0.019 0.044 0.110 0.147
+p.Clown Goby.Wet.Mangrove                0.064 0.084 0.000 0.001 0.009 0.033 0.085 0.231 0.288
+p.Clown Goby.Wet.Phytoplankton           0.663 0.193 0.104 0.218 0.587 0.704 0.794 0.897 0.923
+p.Coastal Shiner.Dry.Epiphytes           0.157 0.138 0.009 0.016 0.058 0.116 0.213 0.442 0.518
+p.Coastal Shiner.Dry.Floc                0.047 0.048 0.001 0.003 0.013 0.032 0.068 0.145 0.172
+p.Coastal Shiner.Dry.Mangrove            0.081 0.095 0.001 0.002 0.014 0.045 0.115 0.275 0.343
+p.Coastal Shiner.Dry.Phytoplankton       0.715 0.158 0.345 0.411 0.622 0.743 0.833 0.921 0.940
+p.Coastal Shiner.Wet.Epiphytes           0.275 0.162 0.027 0.051 0.156 0.255 0.371 0.581 0.648
+p.Coastal Shiner.Wet.Floc                0.038 0.045 0.001 0.001 0.008 0.022 0.051 0.130 0.162
+p.Coastal Shiner.Wet.Mangrove            0.101 0.126 0.000 0.001 0.013 0.052 0.145 0.371 0.449
+p.Coastal Shiner.Wet.Phytoplankton       0.586 0.162 0.243 0.300 0.482 0.594 0.703 0.832 0.869
+p.Crested Goby.Wet.Epiphytes             0.368 0.214 0.030 0.064 0.217 0.334 0.489 0.801 0.866
+p.Crested Goby.Wet.Floc                  0.043 0.052 0.001 0.001 0.009 0.025 0.057 0.140 0.178
+p.Crested Goby.Wet.Mangrove              0.097 0.125 0.001 0.001 0.012 0.048 0.134 0.357 0.441
+p.Crested Goby.Wet.Phytoplankton         0.492 0.201 0.055 0.106 0.365 0.523 0.636 0.785 0.837
+p.Dollar Sunfish.Dry.Epiphytes           0.395 0.251 0.017 0.034 0.172 0.380 0.598 0.826 0.876
+p.Dollar Sunfish.Dry.Floc                0.123 0.129 0.002 0.003 0.025 0.078 0.182 0.390 0.469
+p.Dollar Sunfish.Dry.Mangrove            0.162 0.208 0.001 0.003 0.019 0.069 0.223 0.645 0.759
+p.Dollar Sunfish.Dry.Phytoplankton       0.320 0.198 0.040 0.057 0.160 0.291 0.447 0.697 0.759
+p.Dollar Sunfish.Wet.Epiphytes           0.557 0.252 0.024 0.060 0.393 0.603 0.756 0.899 0.931
+p.Dollar Sunfish.Wet.Floc                0.089 0.125 0.001 0.001 0.009 0.036 0.113 0.382 0.452
+p.Dollar Sunfish.Wet.Mangrove            0.157 0.224 0.001 0.001 0.014 0.058 0.199 0.736 0.853
+p.Dollar Sunfish.Wet.Phytoplankton       0.197 0.133 0.023 0.034 0.095 0.172 0.268 0.445 0.501
+p.Eastern Grass Shrimp.Dry.Epiphytes     0.173 0.166 0.009 0.015 0.054 0.116 0.241 0.528 0.615
+p.Eastern Grass Shrimp.Dry.Floc          0.057 0.059 0.001 0.002 0.016 0.038 0.080 0.172 0.220
+p.Eastern Grass Shrimp.Dry.Mangrove      0.102 0.125 0.001 0.002 0.016 0.051 0.142 0.381 0.445
+p.Eastern Grass Shrimp.Dry.Phytoplankton 0.668 0.196 0.223 0.297 0.541 0.706 0.824 0.921 0.943
+p.Eastern Grass Shrimp.Wet.Epiphytes     0.286 0.181 0.024 0.044 0.150 0.251 0.395 0.640 0.718
+p.Eastern Grass Shrimp.Wet.Floc          0.046 0.055 0.001 0.001 0.009 0.025 0.061 0.166 0.206
+p.Eastern Grass Shrimp.Wet.Mangrove      0.126 0.157 0.001 0.001 0.013 0.058 0.181 0.473 0.557
+p.Eastern Grass Shrimp.Wet.Phytoplankton 0.543 0.190 0.156 0.222 0.409 0.552 0.689 0.832 0.870
+p.Eastern Mosquitofish.Wet.Epiphytes     0.424 0.228 0.038 0.070 0.248 0.409 0.592 0.821 0.877
+p.Eastern Mosquitofish.Wet.Floc          0.082 0.098 0.001 0.002 0.013 0.042 0.116 0.282 0.351
+p.Eastern Mosquitofish.Wet.Mangrove      0.197 0.228 0.001 0.002 0.018 0.097 0.314 0.698 0.789
+p.Eastern Mosquitofish.Wet.Phytoplankton 0.298 0.178 0.036 0.054 0.154 0.275 0.418 0.625 0.685
+p.Flatback Mud Crab.Dry.Epiphytes        0.506 0.342 0.012 0.022 0.134 0.609 0.833 0.937 0.956
+p.Flatback Mud Crab.Dry.Floc             0.305 0.310 0.001 0.002 0.017 0.136 0.616 0.814 0.854
+p.Flatback Mud Crab.Dry.Mangrove         0.085 0.143 0.001 0.002 0.012 0.037 0.096 0.312 0.477
+p.Flatback Mud Crab.Dry.Phytoplankton    0.103 0.071 0.014 0.021 0.052 0.088 0.138 0.237 0.269
+p.Gar.Wet.Epiphytes                      0.508 0.259 0.029 0.063 0.310 0.530 0.720 0.896 0.927
+p.Gar.Wet.Floc                           0.061 0.081 0.001 0.001 0.009 0.030 0.079 0.229 0.304
+p.Gar.Wet.Mangrove                       0.162 0.220 0.001 0.001 0.014 0.060 0.220 0.694 0.812
+p.Gar.Wet.Phytoplankton                  0.269 0.215 0.022 0.033 0.106 0.205 0.373 0.728 0.824
+p.Golden Topminnow.Dry.Epiphytes         0.359 0.276 0.012 0.021 0.105 0.306 0.594 0.843 0.886
+p.Golden Topminnow.Dry.Floc              0.184 0.179 0.001 0.003 0.025 0.124 0.314 0.520 0.589
+p.Golden Topminnow.Dry.Mangrove          0.165 0.216 0.001 0.002 0.018 0.067 0.225 0.683 0.788
+p.Golden Topminnow.Dry.Phytoplankton     0.291 0.219 0.029 0.040 0.120 0.230 0.416 0.769 0.856
+p.Harris Mud Crab.Wet.Epiphytes          0.421 0.226 0.033 0.062 0.251 0.407 0.583 0.819 0.878
+p.Harris Mud Crab.Wet.Floc               0.098 0.120 0.001 0.001 0.012 0.045 0.140 0.369 0.430
+p.Harris Mud Crab.Wet.Mangrove           0.138 0.175 0.001 0.002 0.016 0.065 0.195 0.516 0.626
+p.Harris Mud Crab.Wet.Phytoplankton      0.343 0.173 0.042 0.069 0.212 0.340 0.461 0.637 0.692
+p.Hogchoker.Dry.Epiphytes                0.288 0.171 0.022 0.043 0.159 0.270 0.395 0.599 0.675
+p.Hogchoker.Dry.Floc                     0.111 0.105 0.002 0.004 0.026 0.076 0.172 0.320 0.367
+p.Hogchoker.Dry.Mangrove                 0.135 0.144 0.001 0.003 0.023 0.079 0.206 0.437 0.509
+p.Hogchoker.Dry.Phytoplankton            0.466 0.152 0.154 0.204 0.367 0.471 0.566 0.709 0.764
+p.Hogchoker.Wet.Epiphytes                0.460 0.219 0.036 0.080 0.300 0.469 0.622 0.818 0.855
+p.Hogchoker.Wet.Floc                     0.073 0.086 0.001 0.002 0.012 0.039 0.102 0.254 0.315
+p.Hogchoker.Wet.Mangrove                 0.147 0.184 0.001 0.002 0.015 0.066 0.211 0.547 0.662
+p.Hogchoker.Wet.Phytoplankton            0.320 0.149 0.065 0.091 0.211 0.311 0.417 0.578 0.636
+p.Largemouth Bass.Wet.Epiphytes          0.490 0.244 0.037 0.070 0.307 0.501 0.679 0.876 0.916
+p.Largemouth Bass.Wet.Floc               0.052 0.065 0.001 0.001 0.009 0.028 0.069 0.184 0.235
+p.Largemouth Bass.Wet.Mangrove           0.155 0.208 0.001 0.001 0.014 0.060 0.215 0.647 0.772
+p.Largemouth Bass.Wet.Phytoplankton      0.302 0.213 0.023 0.038 0.130 0.254 0.438 0.722 0.788
+p.Peacock Eel.Dry.Epiphytes              0.275 0.224 0.013 0.022 0.095 0.208 0.405 0.728 0.805
+p.Peacock Eel.Dry.Floc                   0.245 0.183 0.002 0.004 0.064 0.243 0.382 0.552 0.603
+p.Peacock Eel.Dry.Mangrove               0.194 0.215 0.001 0.003 0.027 0.105 0.298 0.662 0.770
+p.Peacock Eel.Dry.Phytoplankton          0.286 0.164 0.041 0.058 0.158 0.265 0.390 0.581 0.646
+p.Peacock Eel.Wet.Epiphytes              0.417 0.245 0.029 0.060 0.214 0.392 0.603 0.849 0.893
+p.Peacock Eel.Wet.Floc                   0.169 0.156 0.001 0.002 0.031 0.132 0.269 0.466 0.534
+p.Peacock Eel.Wet.Mangrove               0.203 0.232 0.001 0.002 0.023 0.099 0.328 0.711 0.789
+p.Peacock Eel.Wet.Phytoplankton          0.211 0.146 0.023 0.035 0.101 0.178 0.291 0.502 0.558
+p.Redear Sunfish.Dry.Epiphytes           0.380 0.251 0.016 0.030 0.150 0.374 0.577 0.804 0.867
+p.Redear Sunfish.Dry.Floc                0.070 0.076 0.002 0.003 0.017 0.045 0.095 0.216 0.271
+p.Redear Sunfish.Dry.Mangrove            0.123 0.168 0.001 0.002 0.016 0.053 0.161 0.511 0.661
+p.Redear Sunfish.Dry.Phytoplankton       0.427 0.243 0.049 0.076 0.224 0.397 0.621 0.847 0.883
+p.Redear Sunfish.Wet.Epiphytes           0.535 0.248 0.030 0.069 0.356 0.571 0.728 0.898 0.935
+p.Redear Sunfish.Wet.Floc                0.053 0.081 0.001 0.001 0.007 0.022 0.061 0.230 0.305
+p.Redear Sunfish.Wet.Mangrove            0.130 0.193 0.000 0.001 0.012 0.045 0.159 0.622 0.747
+p.Redear Sunfish.Wet.Phytoplankton       0.283 0.187 0.029 0.042 0.137 0.245 0.394 0.652 0.719
+p.Redfish.Wet.Epiphytes                  0.560 0.221 0.040 0.125 0.422 0.571 0.729 0.887 0.919
+p.Redfish.Wet.Floc                       0.040 0.051 0.001 0.001 0.008 0.022 0.053 0.141 0.182
+p.Redfish.Wet.Mangrove                   0.113 0.165 0.001 0.001 0.012 0.048 0.135 0.498 0.642
+p.Redfish.Wet.Phytoplankton              0.287 0.172 0.029 0.045 0.149 0.266 0.404 0.593 0.657
+p.Snook.Wet.Epiphytes                    0.518 0.228 0.043 0.102 0.361 0.527 0.692 0.873 0.907
+p.Snook.Wet.Floc                         0.059 0.070 0.001 0.001 0.011 0.032 0.080 0.210 0.263
+p.Snook.Wet.Mangrove                     0.181 0.224 0.001 0.001 0.016 0.073 0.284 0.682 0.772
+p.Snook.Wet.Phytoplankton                0.242 0.153 0.026 0.041 0.122 0.216 0.339 0.525 0.584
+p.Spotted Sunfish.Wet.Epiphytes          0.368 0.238 0.026 0.047 0.167 0.325 0.537 0.811 0.871
+p.Spotted Sunfish.Wet.Floc               0.083 0.101 0.001 0.001 0.012 0.042 0.120 0.303 0.374
+p.Spotted Sunfish.Wet.Mangrove           0.168 0.209 0.001 0.001 0.016 0.072 0.258 0.634 0.730
+p.Spotted Sunfish.Wet.Phytoplankton      0.380 0.221 0.042 0.067 0.201 0.351 0.545 0.780 0.843
+p.Spotted Tilapia.Wet.Epiphytes          0.397 0.241 0.024 0.049 0.205 0.367 0.568 0.841 0.891
+p.Spotted Tilapia.Wet.Floc               0.117 0.156 0.001 0.001 0.011 0.043 0.169 0.468 0.543
+p.Spotted Tilapia.Wet.Mangrove           0.097 0.140 0.001 0.001 0.013 0.045 0.124 0.355 0.492
+p.Spotted Tilapia.Wet.Phytoplankton      0.388 0.203 0.039 0.063 0.229 0.389 0.536 0.723 0.784
+p.Striped Mullet.Wet.Epiphytes           0.530 0.243 0.028 0.060 0.370 0.549 0.718 0.893 0.928
+p.Striped Mullet.Wet.Floc                0.060 0.086 0.001 0.001 0.009 0.027 0.074 0.232 0.315
+p.Striped Mullet.Wet.Mangrove            0.111 0.167 0.001 0.001 0.012 0.043 0.130 0.474 0.647
+p.Striped Mullet.Wet.Phytoplankton       0.298 0.183 0.028 0.046 0.146 0.285 0.421 0.625 0.701
+p.Tidewater Mojarra.Wet.Epiphytes        0.458 0.224 0.032 0.073 0.303 0.446 0.620 0.838 0.901
+p.Tidewater Mojarra.Wet.Floc             0.045 0.053 0.001 0.002 0.009 0.026 0.061 0.152 0.192
+p.Tidewater Mojarra.Wet.Mangrove         0.106 0.143 0.001 0.001 0.013 0.050 0.140 0.411 0.528
+p.Tidewater Mojarra.Wet.Phytoplankton    0.391 0.195 0.035 0.066 0.241 0.398 0.531 0.704 0.768
+p.Tidewater Silverside.Dry.Epiphytes     0.223 0.166 0.014 0.025 0.097 0.184 0.307 0.560 0.636
+p.Tidewater Silverside.Dry.Floc          0.071 0.070 0.001 0.003 0.020 0.049 0.102 0.210 0.255
+p.Tidewater Silverside.Dry.Mangrove      0.133 0.142 0.001 0.002 0.022 0.080 0.203 0.429 0.503
+p.Tidewater Silverside.Dry.Phytoplankton 0.573 0.185 0.178 0.237 0.446 0.588 0.712 0.850 0.882
+p.Tidewater Silverside.Wet.Epiphytes     0.370 0.192 0.033 0.064 0.225 0.364 0.504 0.702 0.763
+p.Tidewater Silverside.Wet.Floc          0.049 0.056 0.001 0.002 0.010 0.030 0.068 0.168 0.203
+p.Tidewater Silverside.Wet.Mangrove      0.149 0.174 0.001 0.002 0.018 0.076 0.220 0.531 0.617
+p.Tidewater Silverside.Wet.Phytoplankton 0.431 0.174 0.118 0.157 0.309 0.420 0.547 0.737 0.782

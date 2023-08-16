@@ -3,82 +3,46 @@
 # Summary Statistics
 #################################################################
 
-DIC = 145.09
+DIC = 120.8434
 
-                                       Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
-p.Bay Anchovy.Wet.Epiphytes           0.604 0.175 0.228 0.303 0.498 0.620 0.727 0.862 0.893
-p.Bay Anchovy.Wet.Mangrove            0.046 0.051 0.000 0.001 0.008 0.026 0.067 0.154 0.183
-p.Bay Anchovy.Wet.Seagrass            0.221 0.102 0.047 0.071 0.146 0.212 0.283 0.405 0.445
-p.Bay Anchovy.Wet.SPOM                0.130 0.156 0.001 0.003 0.025 0.078 0.177 0.419 0.543
-p.Brown Grass Shrimp.Wet.Epiphytes    0.551 0.230 0.077 0.145 0.388 0.563 0.729 0.911 0.943
-p.Brown Grass Shrimp.Wet.Mangrove     0.043 0.056 0.000 0.001 0.005 0.020 0.060 0.162 0.203
-p.Brown Grass Shrimp.Wet.Seagrass     0.236 0.151 0.019 0.031 0.120 0.215 0.325 0.510 0.603
-p.Brown Grass Shrimp.Wet.SPOM         0.169 0.210 0.001 0.002 0.018 0.080 0.249 0.632 0.758
-p.Code Goby.Wet.Epiphytes             0.544 0.244 0.075 0.121 0.358 0.559 0.740 0.916 0.947
-p.Code Goby.Wet.Mangrove              0.052 0.069 0.000 0.001 0.006 0.022 0.071 0.208 0.250
-p.Code Goby.Wet.Seagrass              0.235 0.152 0.018 0.030 0.116 0.211 0.330 0.521 0.578
-p.Code Goby.Wet.SPOM                  0.169 0.214 0.001 0.002 0.018 0.074 0.241 0.657 0.778
-p.Crested Goby.Wet.Epiphytes          0.554 0.250 0.064 0.121 0.359 0.580 0.762 0.924 0.950
-p.Crested Goby.Wet.Mangrove           0.060 0.080 0.000 0.001 0.006 0.025 0.084 0.241 0.293
-p.Crested Goby.Wet.Seagrass           0.202 0.138 0.017 0.028 0.094 0.176 0.288 0.462 0.520
-p.Crested Goby.Wet.SPOM               0.184 0.227 0.001 0.002 0.017 0.078 0.282 0.694 0.794
-p.Eastern Oyster.Dry.Epiphytes        0.768 0.161 0.391 0.475 0.691 0.802 0.886 0.955 0.969
-p.Eastern Oyster.Dry.Mangrove         0.043 0.066 0.000 0.001 0.004 0.015 0.053 0.184 0.245
-p.Eastern Oyster.Dry.Seagrass         0.109 0.083 0.010 0.016 0.050 0.090 0.147 0.258 0.302
-p.Eastern Oyster.Dry.SPOM             0.081 0.126 0.001 0.002 0.013 0.035 0.096 0.313 0.432
-p.Eastern Oyster.Wet.Epiphytes        0.805 0.167 0.361 0.500 0.743 0.851 0.919 0.969 0.978
-p.Eastern Oyster.Wet.Mangrove         0.053 0.093 0.000 0.000 0.003 0.015 0.058 0.251 0.332
-p.Eastern Oyster.Wet.Seagrass         0.066 0.060 0.005 0.009 0.027 0.051 0.087 0.166 0.201
-p.Eastern Oyster.Wet.SPOM             0.076 0.131 0.001 0.001 0.009 0.033 0.090 0.263 0.398
-p.Flatback Mud Crab.Wet.Epiphytes     0.718 0.208 0.165 0.297 0.609 0.764 0.880 0.962 0.975
-p.Flatback Mud Crab.Wet.Mangrove      0.089 0.145 0.000 0.000 0.004 0.021 0.105 0.419 0.533
-p.Flatback Mud Crab.Wet.Seagrass      0.094 0.076 0.007 0.011 0.039 0.076 0.131 0.232 0.263
-p.Flatback Mud Crab.Wet.SPOM          0.099 0.144 0.000 0.001 0.013 0.049 0.130 0.347 0.446
-p.Goldspotted Killifish.Wet.Epiphytes 0.510 0.253 0.053 0.086 0.312 0.516 0.712 0.910 0.946
-p.Goldspotted Killifish.Wet.Mangrove  0.047 0.061 0.000 0.001 0.005 0.023 0.066 0.179 0.223
-p.Goldspotted Killifish.Wet.Seagrass  0.290 0.179 0.017 0.031 0.151 0.275 0.405 0.609 0.666
-p.Goldspotted Killifish.Wet.SPOM      0.153 0.198 0.001 0.002 0.017 0.069 0.207 0.597 0.720
-p.Gulf Pipefish.Dry.Epiphytes         0.431 0.224 0.051 0.083 0.262 0.416 0.594 0.826 0.882
-p.Gulf Pipefish.Dry.Mangrove          0.026 0.032 0.000 0.001 0.005 0.015 0.035 0.093 0.117
-p.Gulf Pipefish.Dry.Seagrass          0.432 0.205 0.047 0.087 0.286 0.434 0.578 0.786 0.849
-p.Gulf Pipefish.Dry.SPOM              0.110 0.146 0.001 0.003 0.018 0.056 0.144 0.402 0.523
-p.Harris Mud Crab.Wet.Epiphytes       0.676 0.221 0.166 0.247 0.531 0.722 0.854 0.955 0.970
-p.Harris Mud Crab.Wet.Mangrove        0.098 0.145 0.000 0.000 0.004 0.025 0.133 0.432 0.493
-p.Harris Mud Crab.Wet.Seagrass        0.109 0.082 0.009 0.014 0.047 0.092 0.152 0.262 0.305
-p.Harris Mud Crab.Wet.SPOM            0.116 0.159 0.001 0.001 0.014 0.053 0.155 0.430 0.563
-p.Isopod.Wet.Epiphytes                0.682 0.204 0.179 0.313 0.559 0.719 0.843 0.946 0.965
-p.Isopod.Wet.Mangrove                 0.069 0.105 0.000 0.000 0.004 0.021 0.092 0.298 0.374
-p.Isopod.Wet.Seagrass                 0.124 0.093 0.011 0.016 0.056 0.105 0.173 0.291 0.336
-p.Isopod.Wet.SPOM                     0.124 0.167 0.001 0.001 0.015 0.058 0.167 0.460 0.590
-p.Mangrove Snapper.Wet.Epiphytes      0.347 0.254 0.036 0.056 0.161 0.275 0.445 0.915 0.953
-p.Mangrove Snapper.Wet.Mangrove       0.027 0.034 0.000 0.000 0.004 0.014 0.037 0.101 0.126
-p.Mangrove Snapper.Wet.Seagrass       0.535 0.240 0.012 0.030 0.434 0.590 0.705 0.838 0.872
-p.Mangrove Snapper.Wet.SPOM           0.091 0.143 0.001 0.002 0.012 0.042 0.110 0.314 0.467
-p.Mussel.Dry.Epiphytes                0.766 0.167 0.324 0.476 0.695 0.803 0.881 0.952 0.965
-p.Mussel.Dry.Mangrove                 0.042 0.076 0.000 0.001 0.004 0.014 0.045 0.179 0.261
-p.Mussel.Dry.Seagrass                 0.112 0.091 0.012 0.017 0.050 0.093 0.151 0.256 0.313
-p.Mussel.Dry.SPOM                     0.080 0.123 0.001 0.002 0.013 0.039 0.098 0.281 0.394
-p.Pilchard.Wet.Epiphytes              0.522 0.230 0.081 0.132 0.350 0.529 0.701 0.893 0.930
-p.Pilchard.Wet.Mangrove               0.052 0.066 0.000 0.001 0.006 0.024 0.074 0.198 0.243
-p.Pilchard.Wet.Seagrass               0.237 0.146 0.023 0.038 0.129 0.214 0.321 0.508 0.575
-p.Pilchard.Wet.SPOM                   0.190 0.221 0.001 0.002 0.021 0.092 0.295 0.679 0.779
-p.Pink Shrimp.Dry.Epiphytes           0.420 0.205 0.074 0.105 0.266 0.407 0.561 0.791 0.851
-p.Pink Shrimp.Dry.Mangrove            0.023 0.027 0.000 0.001 0.005 0.014 0.032 0.078 0.094
-p.Pink Shrimp.Dry.Seagrass            0.448 0.184 0.071 0.125 0.326 0.451 0.575 0.751 0.800
-p.Pink Shrimp.Dry.SPOM                0.109 0.136 0.001 0.003 0.019 0.059 0.147 0.375 0.484
-p.Pink Shrimp.Wet.Epiphytes           0.503 0.218 0.081 0.124 0.350 0.511 0.662 0.858 0.909
-p.Pink Shrimp.Wet.Mangrove            0.037 0.052 0.000 0.001 0.004 0.016 0.048 0.148 0.196
-p.Pink Shrimp.Wet.Seagrass            0.319 0.158 0.034 0.066 0.208 0.311 0.420 0.588 0.650
-p.Pink Shrimp.Wet.SPOM                0.141 0.187 0.001 0.002 0.014 0.062 0.195 0.560 0.681
-p.Rainwater Killifish.Dry.Epiphytes   0.547 0.209 0.100 0.163 0.410 0.561 0.696 0.873 0.913
-p.Rainwater Killifish.Dry.Mangrove    0.024 0.029 0.000 0.001 0.005 0.013 0.032 0.084 0.105
-p.Rainwater Killifish.Dry.Seagrass    0.311 0.169 0.032 0.062 0.189 0.297 0.414 0.614 0.696
-p.Rainwater Killifish.Dry.SPOM        0.117 0.164 0.001 0.003 0.017 0.052 0.142 0.488 0.621
-p.Rainwater Killifish.Wet.Epiphytes   0.620 0.219 0.126 0.221 0.478 0.645 0.792 0.931 0.948
-p.Rainwater Killifish.Wet.Mangrove    0.032 0.043 0.000 0.001 0.004 0.015 0.042 0.126 0.161
-p.Rainwater Killifish.Wet.Seagrass    0.217 0.145 0.014 0.028 0.105 0.193 0.304 0.486 0.556
-p.Rainwater Killifish.Wet.SPOM        0.130 0.187 0.001 0.001 0.014 0.053 0.162 0.568 0.742
-p.Stone Crab.Dry.Epiphytes            0.302 0.181 0.036 0.057 0.163 0.276 0.411 0.632 0.708
-p.Stone Crab.Dry.Mangrove             0.023 0.026 0.000 0.001 0.005 0.014 0.031 0.079 0.097
-p.Stone Crab.Dry.Seagrass             0.581 0.181 0.165 0.272 0.467 0.592 0.709 0.866 0.894
-p.Stone Crab.Dry.SPOM                 0.094 0.119 0.001 0.002 0.017 0.052 0.127 0.329 0.405
+                                                 Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
+p.Amphipod.Dry.Epiphytic microalgae             0.571 0.151 0.263 0.313 0.469 0.579 0.679 0.807 0.843
+p.Amphipod.Dry.Mangrove                         0.029 0.032 0.001 0.001 0.008 0.018 0.039 0.087 0.109
+p.Amphipod.Dry.Seagrass                         0.291 0.123 0.084 0.110 0.198 0.278 0.367 0.511 0.560
+p.Amphipod.Dry.SPOM                             0.109 0.105 0.003 0.007 0.035 0.078 0.150 0.320 0.386
+p.Atlantic Marginella.Wet.Epiphytic microalgae  0.575 0.230 0.102 0.170 0.409 0.598 0.756 0.919 0.947
+p.Atlantic Marginella.Wet.Mangrove              0.034 0.048 0.000 0.000 0.003 0.014 0.043 0.142 0.175
+p.Atlantic Marginella.Wet.Seagrass              0.198 0.136 0.013 0.022 0.097 0.173 0.273 0.459 0.516
+p.Atlantic Marginella.Wet.SPOM                  0.194 0.220 0.001 0.002 0.022 0.096 0.311 0.661 0.762
+p.Bubble Snail.Wet.Epiphytic microalgae         0.594 0.246 0.076 0.124 0.422 0.625 0.790 0.936 0.963
+p.Bubble Snail.Wet.Mangrove                     0.036 0.053 0.000 0.000 0.003 0.013 0.045 0.147 0.193
+p.Bubble Snail.Wet.Seagrass                     0.182 0.133 0.012 0.019 0.078 0.156 0.254 0.440 0.501
+p.Bubble Snail.Wet.SPOM                         0.189 0.229 0.001 0.002 0.019 0.084 0.283 0.715 0.797
+p.Eastern Grass Shrimp.Dry.Epiphytic microalgae 0.511 0.237 0.081 0.121 0.326 0.513 0.699 0.893 0.938
+p.Eastern Grass Shrimp.Dry.Mangrove             0.039 0.058 0.000 0.001 0.005 0.015 0.046 0.164 0.221
+p.Eastern Grass Shrimp.Dry.Seagrass             0.279 0.181 0.020 0.039 0.135 0.250 0.393 0.630 0.704
+p.Eastern Grass Shrimp.Dry.SPOM                 0.172 0.200 0.002 0.003 0.025 0.086 0.245 0.618 0.718
+p.Hermit Crab.Wet.Epiphytic microalgae          0.825 0.150 0.435 0.549 0.764 0.868 0.927 0.976 0.984
+p.Hermit Crab.Wet.Mangrove                      0.039 0.076 0.000 0.000 0.002 0.009 0.039 0.191 0.263
+p.Hermit Crab.Wet.Seagrass                      0.059 0.068 0.004 0.006 0.021 0.042 0.077 0.152 0.195
+p.Hermit Crab.Wet.SPOM                          0.077 0.108 0.000 0.001 0.010 0.039 0.099 0.277 0.348
+p.Rainwater Killifish.Dry.Epiphytic microalgae  0.699 0.205 0.202 0.282 0.578 0.746 0.860 0.953 0.970
+p.Rainwater Killifish.Dry.Mangrove              0.058 0.105 0.000 0.001 0.004 0.016 0.059 0.261 0.366
+p.Rainwater Killifish.Dry.Seagrass              0.153 0.129 0.011 0.016 0.058 0.119 0.211 0.404 0.485
+p.Rainwater Killifish.Dry.SPOM                  0.090 0.120 0.001 0.002 0.015 0.045 0.118 0.320 0.432
+p.Rainwater Killifish.Wet.Epiphytic microalgae  0.746 0.194 0.254 0.368 0.650 0.795 0.893 0.967 0.980
+p.Rainwater Killifish.Wet.Mangrove              0.066 0.120 0.000 0.000 0.003 0.013 0.065 0.330 0.439
+p.Rainwater Killifish.Wet.Seagrass              0.085 0.080 0.005 0.008 0.032 0.063 0.112 0.224 0.276
+p.Rainwater Killifish.Wet.SPOM                  0.103 0.132 0.001 0.001 0.014 0.054 0.143 0.357 0.457
+p.Redfin Needlefish.Dry.Epiphytic microalgae    0.502 0.244 0.064 0.106 0.309 0.502 0.697 0.903 0.932
+p.Redfin Needlefish.Dry.Mangrove                0.030 0.045 0.000 0.001 0.005 0.014 0.036 0.118 0.167
+p.Redfin Needlefish.Dry.Seagrass                0.347 0.214 0.027 0.042 0.168 0.326 0.495 0.727 0.798
+p.Redfin Needlefish.Dry.SPOM                    0.121 0.147 0.001 0.003 0.021 0.065 0.164 0.440 0.538
+p.Snapping Shrimp.Wet.Epiphytic microalgae      0.602 0.242 0.100 0.164 0.423 0.639 0.801 0.940 0.963
+p.Snapping Shrimp.Wet.Mangrove                  0.029 0.050 0.000 0.000 0.003 0.010 0.032 0.121 0.169
+p.Snapping Shrimp.Wet.Seagrass                  0.234 0.179 0.012 0.022 0.095 0.193 0.334 0.598 0.681
+p.Snapping Shrimp.Wet.SPOM                      0.135 0.180 0.001 0.002 0.016 0.058 0.182 0.544 0.665
+p.Toadfish.Dry.Epiphytic microalgae             0.654 0.217 0.180 0.254 0.504 0.697 0.831 0.943 0.960
+p.Toadfish.Dry.Mangrove                         0.066 0.113 0.000 0.000 0.004 0.017 0.073 0.307 0.424
+p.Toadfish.Dry.Seagrass                         0.172 0.140 0.013 0.021 0.066 0.134 0.236 0.456 0.532
+p.Toadfish.Dry.SPOM                             0.107 0.131 0.001 0.003 0.019 0.057 0.146 0.383 0.479
