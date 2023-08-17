@@ -1,0 +1,73 @@
+site,season,source,contribution,transect
+RB10,Dry,Epiphytes,0.3003,Shark River Slough
+RB10,Dry,Floc,0.123,Shark River Slough
+RB10,Dry,Mangrove,0.1327,Shark River Slough
+RB10,Dry,Periphyton,0.444,Shark River Slough
+RB10,Wet,Epiphytes,0.4207,Shark River Slough
+RB10,Wet,Floc,0.0634,Shark River Slough
+RB10,Wet,Mangrove,0.143,Shark River Slough
+RB10,Wet,Periphyton,0.3728,Shark River Slough
+SRS3,Dry,Floc,0.218,Shark River Slough
+SRS3,Dry,Phytoplankton,0.694375,Shark River Slough
+SRS3,Dry,Periphyton,0.054,Shark River Slough
+SRS3,Dry,Sawgrass,0.033625,Shark River Slough
+SRS3,Wet,Floc,0.083625,Shark River Slough
+SRS3,Wet,Phytoplankton,0.8698125,Shark River Slough
+SRS3,Wet,Periphyton,0.030375,Shark River Slough
+SRS3,Wet,Sawgrass,0.0159375,Shark River Slough
+SRS4,Dry,Epiphytes,0.698428571,Shark River Slough
+SRS4,Dry,Floc,0.078285714,Shark River Slough
+SRS4,Dry,Mangrove,0.086285714,Shark River Slough
+SRS4,Dry,Periphyton,0.137142857,Shark River Slough
+SRS4,Wet,Epiphytes,0.709769231,Shark River Slough
+SRS4,Wet,Floc,0.051384615,Shark River Slough
+SRS4,Wet,Mangrove,0.068461538,Shark River Slough
+SRS4,Wet,Periphyton,0.170230769,Shark River Slough
+SRS6,Dry,Mangrove,0.202666667,Shark River Slough
+SRS6,Dry,Phytoplankton,0.450444444,Shark River Slough
+SRS6,Dry,Filamentous Green Algae,0.275777778,Shark River Slough
+SRS6,Dry,Red Macroalgae,0.071,Shark River Slough
+SRS6,Wet,Mangrove,0.725833333,Shark River Slough
+SRS6,Wet,Phytoplankton,0.076083333,Shark River Slough
+SRS6,Wet,Filamentous Green Algae,0.186916667,Shark River Slough
+SRS6,Wet,Red Macroalgae,0.011166667,Shark River Slough
+TS3,Dry,Floc,0.273,Taylor Slough
+TS3,Dry,Phytoplankton,0.184666667,Taylor Slough
+TS3,Dry,Periphyton,0.509,Taylor Slough
+TS3,Dry,Sawgrass,0.033666667,Taylor Slough
+TS3,Wet,Floc,0.062727273,Taylor Slough
+TS3,Wet,Phytoplankton,0.038727273,Taylor Slough
+TS3,Wet,Periphyton,0.888545455,Taylor Slough
+TS3,Wet,Sawgrass,0.010272727,Taylor Slough
+TS7,Dry,Epiphytes,0.565333333,Taylor Slough
+TS7,Dry,Mangrove,0.026,Taylor Slough
+TS7,Dry,SPOM,0.105666667,Taylor Slough
+TS7,Dry,Seagrass,0.302666667,Taylor Slough
+TS7,Wet,Epiphytes,0.605,Taylor Slough
+TS7,Wet,Mangrove,0.040363636,Taylor Slough
+TS7,Wet,SPOM,0.189545455,Taylor Slough
+TS7,Wet,Seagrass,0.165181818,Taylor Slough
+TS9,Dry,Epiphytes,0.70625,Taylor Slough
+TS9,Dry,Mangrove,0.07,Taylor Slough
+TS9,Dry,SPOM,0.113,Taylor Slough
+TS9,Dry,Seagrass,0.11075,Taylor Slough
+TS9,Wet,Epiphytes,0.722,Taylor Slough
+TS9,Wet,Mangrove,0.0532,Taylor Slough
+TS9,Wet,SPOM,0.1528,Taylor Slough
+TS9,Wet,Seagrass,0.0722,Taylor Slough
+TS10,Dry,Epiphytes,0.530777778,Taylor Slough
+TS10,Dry,Mangrove,0.024,Taylor Slough
+TS10,Dry,SPOM,0.239222222,Taylor Slough
+TS10,Dry,Seagrass,0.206,Taylor Slough
+TS10,Wet,Epiphytes,0.151857143,Taylor Slough
+TS10,Wet,Mangrove,0.025642857,Taylor Slough
+TS10,Wet,SPOM,0.289785714,Taylor Slough
+TS10,Wet,Seagrass,0.532714286,Taylor Slough
+TS11,Dry,Epiphytes,0.497666667,Taylor Slough
+TS11,Dry,Mangrove,0.018333333,Taylor Slough
+TS11,Dry,SPOM,0.432333333,Taylor Slough
+TS11,Dry,Seagrass,0.051333333,Taylor Slough
+TS11,Wet,Epiphytes,0.550142857,Taylor Slough
+TS11,Wet,Mangrove,0.009357143,Taylor Slough
+TS11,Wet,SPOM,0.3995,Taylor Slough
+TS11,Wet,Seagrass,0.041142857,Taylor Slough

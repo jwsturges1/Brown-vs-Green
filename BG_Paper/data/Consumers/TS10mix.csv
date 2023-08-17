@@ -1,5 +1,4 @@
 "site","hydroseason","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
-"TS10","Dry","Consumer","Amphipod","Benthic_invert",1,-16.89,NA,5.47,NA,18.26,NA
 "TS10","Dry","Consumer","Blue Crab","Crab",1,-12.87,NA,5.84,NA,8.49,NA
 "TS10","Dry","Consumer","Bluegill","demersal_fish",1,-11.7,NA,5.66,NA,9.12,NA
 "TS10","Dry","Consumer","Dwarf Seahorse","demersal_fish",2,-11.51,3.3375440072005,7.515,1.576848122046,8.655,1.66170093578839
@@ -9,7 +8,6 @@
 "TS10","Dry","Consumer","Spiny Lobster","Benthic_invert",1,-13.86,NA,5.46,NA,12.46,NA
 "TS10","Dry","Consumer","Stone Crab","Crab",1,-10.57,NA,4.2,NA,11.77,NA
 "TS10","Dry","Consumer","Tidewater Mojarra","Forage_fish",1,-13.57,NA,7.54,NA,7.53,NA
-"TS10","Dry","Consumer","Tunicate","Sessile_filter_feeder",1,-10.35,NA,5.59,NA,6.88,NA
 "TS10","Wet","Consumer","Atlantic Modulus","Gastropod",1,-10.02,NA,5.07,NA,7.9,NA
 "TS10","Wet","Consumer","Barracuda","Predator",1,-12.37,NA,10.53,NA,-0.94,NA
 "TS10","Wet","Consumer","Blue Crab","Crab",3,-11.7,0.229128784747792,5.18666666666667,0.957096303061157,6.4,4.63181389954303

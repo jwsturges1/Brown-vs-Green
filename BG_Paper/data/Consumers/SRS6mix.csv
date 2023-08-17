@@ -1,9 +1,7 @@
 "site","hydroseason","group","common_name","functional_grp","n","d13C","d13Csd","d15N","d15Nsd","d34S","d34Ssd"
-"SRS6","Dry","Consumer","Amphipod","Benthic_invert",1,-31.82,NA,7.14,NA,16.76,NA
 "SRS6","Dry","Consumer","Bay Anchovy","Forage_fish",1,-24.43,NA,9.29,NA,15.42,NA
 "SRS6","Dry","Consumer","Crested Goby","demersal_fish",4,-24.5725,0.914890703854838,8.7225,0.915655502904886,8.195,0.947048045243746
 "SRS6","Dry","Consumer","Eastern Grass Shrimp","Shrimp",1,-27.56,NA,9.17,NA,11.54,NA
-"SRS6","Dry","Consumer","Mangrove Periwinkle","Gastropod",2,-25.72,0.16970562748477,1.14,3.47896536343781,13.4,1.27279220613579
 "SRS6","Dry","Consumer","Mangrove Tree Crab","Crab",1,-24.51,NA,5.7,NA,14.15,NA
 "SRS6","Dry","Consumer","Pink Shrimp","Shrimp",6,-26.2866666666667,0.814215368724189,7.045,1.04786926665496,5.89166666666667,1.36263592594158
 "SRS6","Dry","Consumer","Porceline Crab","Crab",2,-24.34,2.00818325856979,5.855,0.601040764008566,10.585,0.558614357137373

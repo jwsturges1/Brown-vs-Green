@@ -227,15 +227,15 @@ mix <- load_mix_data(filename="data/Consumers/RB10mix.csv",
                      fac_nested=c(F,F),
                      cont_effects=NULL)
 
-source <- load_source_data(filename="data/Sources/sourcesRB10_FLOC.csv",
+source <- load_source_data(filename="data/Sources/sourcesRB10.csv",
                            source_factors=NULL,
                            conc_dep=T,
                            data_type="means",
                            mix)
 
-discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10_FLOC.csv"), mix)
+discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10.csv"), mix)
 
-plot_data(filename="figures/isospace/RB10_isospace_plot_FLOC", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
+plot_data(filename="figures/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
 model_filename <- "data/Consumers/RB10_mix.txt"
 write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
@@ -250,21 +250,21 @@ jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
   output_jags.RB10  <- list(summary_save = T,
-                          summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_FLOC",
+                          summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats",
                           sup_post = F,
                           plot_post_save_pdf = T,
-                          plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_FLOC",
+                          plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot",
                           sup_pairs = F,
                           plot_pairs_save_pdf = T,
-                          plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_FLOC",
+                          plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs",
                           sup_xy = T,
                           plot_xy_save_pdf = T,
-                          plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot_FLOC",
+                          plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot",
                           gelman = T,
                           heidel = F,
                           geweke = T,
                           diag_save = T,
-                          diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_FLOC",
+                          diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic",
                           indiv_effect = F,
                           plot_post_save_png = F,
                           plot_pairs_save_png = F,
@@ -273,9 +273,9 @@ jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
  
 output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 
-mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats_FLOC.txt",type = "RB10", nest = T)
+mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats.txt",type = "RB10", nest = T)
 
-write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10_FLOC.csv", row.names = FALSE)
+write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10.csv", row.names = FALSE)
 
 
 # combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
@@ -287,84 +287,7 @@ write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10_FLOC.csv", row.names = FALSE)
 #  summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
 #               filename = "RB10_combined_sumstats" )
 #  
- 
- 
- 
- 
 
- # RB10 with Floc + Sawgrass
- RB10mix<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
- 
- write.csv(RB10mix,"data/Consumers/RB10mix.csv",row.names = F) 
- 
- 
- 
- mix <- load_mix_data(filename="data/Consumers/RB10mix.csv",
-                      iso_names=c("d13C","d15N","d34S"),
-                      factors=c('common_name','hydroseason'),
-                      fac_random=c(F,F),
-                      fac_nested=c(F,F),
-                      cont_effects=NULL)
- 
- source <- load_source_data(filename="data/Sources/sourcesRB10_FLOC_SAW.csv",
-                            source_factors=NULL,
-                            conc_dep=T,
-                            data_type="means",
-                            mix)
- 
- discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10_FLOC_SAW.csv"), mix)
- 
- plot_data(filename="figures/isospace/RB10_isospace_plot_FLOC_SAW", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
- 
- model_filename <- "data/Consumers/RB10_mix.txt"
- write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
- 
- 
- #run a test model to make sure it works
- jags.RB10 <- run_model(run="test", mix, source, discr, model_filename, 
-                        alpha.prior = 1, resid_err=F, process_err=F)
- 
- 
- jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
-                        alpha.prior = 1, resid_err=F, process_err=F)
- 
- output_jags.RB10  <- list(summary_save = T,
-                           summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_FLOC_SAW",
-                           sup_post = F,
-                           plot_post_save_pdf = T,
-                           plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_FLOC_SAW",
-                           sup_pairs = F,
-                           plot_pairs_save_pdf = T,
-                           plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_FLOC_SAW",
-                           sup_xy = T,
-                           plot_xy_save_pdf = T,
-                           plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot_FLOC_SAW",
-                           gelman = T,
-                           heidel = F,
-                           geweke = T,
-                           diag_save = T,
-                           diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_FLOC_SAW",
-                           indiv_effect = F,
-                           plot_post_save_png = F,
-                           plot_pairs_save_png = F,
-                           plot_xy_save_png = F)
- 
- 
- output_JAGS(jags.RB10, mix, source, output_jags.RB10)
- 
- mixtable_RB10 = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats_FLOC_SAW.txt",type = "RB10", nest = T)
- 
- write.csv(mixtable_RB10, "data/Mix_Quants/MT_RB10_FLOC_SAW.csv", row.names = FALSE)
- 
- 
- # combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
- #                                 groups=list(green=c('Epiphytes','Phytoplankton'), brown=c('Mangrove', 'Floc', 'Sawgrass')))
- # 
- # # get posterior medians for new source groupings
- # apply(combinedRB10$post, 2, median)
- # 
- # summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
- #              filename = "RB10_combined_sumstats" )
 
 # SRS Mixing Models ----
 # SRS 3
@@ -575,140 +498,8 @@ write.csv(mixtable_SRS6, "data/Mix_Quants/MT_SRS6.csv", row.names = FALSE)
 # # summary_stat(combinedSRS6, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
 # #              filename = "SRS6_combined_sumstats" )
 
-# RB10 Mixing Model Not Spliting Mangroves by Season -----
-RB10mix_comb<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
-
-write.csv(RB10mix_comb,"data/RB10mix_comb.csv",row.names = F) 
 
 
-
-mix <- load_mix_data(filename="data/RB10mix_comb.csv",
-                     iso_names=c("d13C","d15N","d34S"),
-                     factors=c('common_name','hydroseason'),
-                     fac_random=c(F,F),
-                     fac_nested=c(F,F),
-                     cont_effects=NULL)
-
-source <- load_source_data(filename="data/sourcesRB10_mang_comb.csv",
-                           source_factors=NULL,
-                           conc_dep=T,
-                           data_type="means",
-                           mix)
-
-discr <- load_discr_data(file("data/FCE_TEF_RB10_mang_comb.csv"), mix)
-
-plot_data(filename="figures/isospace/RB10_isospace_plot_comb", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
-
-model_filename <- "data/RB10_mix_comb.txt"
-write_JAGS_model(model_filename, resid_err=F, process_err=T, mix, source)
-
-
-#run a test model to make sure it works
-jags.RB10_comb <- run_model(run="test", mix, source, discr, model_filename, 
-                       alpha.prior = 1, resid_err=F, process_err=F)
-
-
-jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=F)
-
-output_jags.RB10  <- list(summary_save = T,
-                          summary_name = "data/JAGS_Output/RB10/FCERB10_sumstats_comb",
-                          sup_post = F,
-                          plot_post_save_pdf = T,
-                          plot_post_name = "data/JAGS_Output/RB10/FCERB10_plot_comb",
-                          sup_pairs = F,
-                          plot_pairs_save_pdf = T,
-                          plot_pairs_name = "data/JAGS_Output/RB10/FCERB10_pairs_comb",
-                          sup_xy = T,
-                          plot_xy_save_pdf = T,
-                          plot_xy_name = "data/JAGS_Output/RB10/FCERB10_plot_comb",
-                          gelman = T,
-                          heidel = F,
-                          geweke = T,
-                          diag_save = T,
-                          diag_name = "data/JAGS_Output/RB10/FCERB10_Diagnostic_comb",
-                          indiv_effect = F,
-                          plot_post_save_png = F,
-                          plot_pairs_save_png = F,
-                          plot_xy_save_png = F)
-
-
-output_JAGS(jags.RB10, mix, source, output_jags.RB10)
-
-mixtable_RB10_comb = mixTable("data/JAGS_Output/RB10/FCERB10_sumstats_comb.txt",type = "RB10", nest = T)
-
-write.csv(mixtable_RB10_comb, "data/Mix_Quants/MT_RB10_comb.csv", row.names = FALSE)
-
-
-# combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
-#                                 groups=list(green=c('Epiphytes','Phytoplankton'), brown=c('Dry Mangrove', 'Wet Mangrove')))
-# 
-# # get posterior medians for new source groupings
-# apply(combinedRB10$post, 2, median)
-# 
-# summary_stat(combinedRB10, meanSD=T, quantiles=c(0.025, 0.25, 0.5, 0.75, 0.975), savetxt=T,
-#              filename = "RB10_combined_sumstats" )
-
-# TS 3 Mixing Model Not Spliting Sawgrass by Season ----
-TS3mix_comb <- SIa %>% filter(site == 'TS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
-
-write.csv(TS3mix_comb, "data/TS3mix_saw_comb.csv", row.names = FALSE)
-
-mix <- load_mix_data(filename = "data/TS3mix_saw_comb.csv",
-                     iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
-
-source <- load_source_data(filename = "data/sourcesTS3_saw_comb.csv",
-                           source_factors = NULL,
-                           conc_dep = TRUE,
-                           data_type = "means",
-                           mix)
-
-discr <- load_discr_data(file("data/FCE_TEF_TS3_saw_comb.csv"), mix)
-
-plot_data(filename = "figures/isospace/TS3_isospace_plot_saw_comb",
-          plot_save_pdf = TRUE,
-          plot_save_png = TRUE,
-          mix, source, discr)
-
-model_filename <- "data/TS3mix_saw_comb.csv"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
-
-jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
-
-jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
-
-output_jags.TS3 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS3/FCETS3_sumstats_comb",
-                        sup_post = FALSE,
-                        plot_post_save_pdf = T,
-                        plot_post_name = "data/JAGS_Output/TS3/FCETS3_plot_comb",
-                        sup_pairs = FALSE,
-                        plot_pairs_save_pdf = T,
-                        plot_pairs_name = "data/JAGS_Output/TS3/FCETS3_pairs_comb",
-                        sup_xy = TRUE,
-                        plot_xy_save_pdf = T,
-                        plot_xy_name = "data/JAGS_Output/TS3/FCETS3_plot_comb",
-                        gelman = TRUE,
-                        heidel = FALSE,
-                        geweke = TRUE,
-                        diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS3/FCETS3_Diagnostic_comb",
-                        indiv_effect = FALSE,
-                        plot_post_save_png = FALSE,
-                        plot_pairs_save_png = FALSE,
-                        plot_xy_save_png = FALSE)
-
-output_JAGS(jags.TS3, mix, source, output_jags.TS3)
-
-mixtable_TS3 = mixTable("data/JAGS_Output/TS3/FCETS3_sumstats_comb.txt", type = "TS3", nest = TRUE)
-
-write.csv(mixtable_TS3, "data/Mix_Quants/MT_TS3_comb.csv", row.names = FALSE)
 # TS Mixing Models ----
 
 # TS3
@@ -1073,8 +864,8 @@ write.csv(mixtable_TS11, "data/Mix_Quants/MT_TS11.csv", row.names = FALSE)
 #              filename = "TS11_combined_sumstats" )
 
 
-# Aggregating by Energy Channel RB10 Floc Only ----
-MixOut_RB10_FLOC = read.csv('data/Mix_Quants/MT_RB10_FLOC.csv')
+# Aggregating by Energy Channel ----
+MixOut_RB10 = read.csv('data/Mix_Quants/MT_RB10.csv')
 MixOut_SRS3 = read.csv('data/Mix_Quants/MT_SRS3.csv')
 MixOut_SRS4 = read.csv('data/Mix_Quants/MT_SRS4.csv')
 MixOut_SRS6 = read.csv('data/Mix_Quants/MT_SRS6.csv')
@@ -1084,7 +875,7 @@ MixOut_TS9 = read.csv('data/Mix_Quants/MT_TS9.csv')
 MixOut_TS10 = read.csv('data/Mix_Quants/MT_TS10.csv')
 MixOut_TS11 = read.csv('data/Mix_Quants/MT_TS11.csv')
 
-SRSMixout_gb <- rbind(MixOut_RB10_FLOC, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
+SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
 
 SRSMixout_gb = SRSMixout_gb %>% 
   rename(site = type, season = code) %>%
@@ -1125,57 +916,11 @@ combined_df = bind_rows(SRSMixout_gb,TSMixout_gb) %>%
     site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
     site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
 
-# Aggregating by Energy Channel (No Seasonal Split) ----
-MixOut_RB10_FLOC_SAW = read.csv('data/Mix_Quants/MT_RB10_FLOC_SAW.csv')
-MixOut_SRS3 = read.csv('data/Mix_Quants/MT_SRS3.csv')
-MixOut_SRS4 = read.csv('data/Mix_Quants/MT_SRS4.csv')
-MixOut_SRS6 = read.csv('data/Mix_Quants/MT_SRS6.csv')
-MixOut_TS3 = read.csv('data/Mix_Quants/MT_TS3.csv')
-MixOut_TS7 = read.csv('data/Mix_Quants/MT_TS7.csv')
-MixOut_TS9 = read.csv('data/Mix_Quants/MT_TS9.csv')
-MixOut_TS10 = read.csv('data/Mix_Quants/MT_TS10.csv')
-MixOut_TS11 = read.csv('data/Mix_Quants/MT_TS11.csv')
-
-SRSMixout_gb <- rbind(MixOut_RB10_FLOC_SAW, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
-
-SRSMixout_gb = SRSMixout_gb %>% 
-  rename(site = type, season = code) %>%
-  mutate(path = case_when(
-    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton") ~ "green",
-    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", 'Floc') ~ "brown",
-    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
-  ))
-
-SRSMixout_gb = SRSMixout_gb %>% 
-  group_by(name, site, season, path) %>% 
-  summarize(value = sum(mean)) %>% 
-  pivot_wider(names_from = path, values_from = value)
-
-TSMixout_gb <- rbind(MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-
-TSMixout_gb = TSMixout_gb %>% 
-  rename(site = type, season = code) %>%
-  mutate(path = case_when(
-    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 'Floc', "Epiphytic microalgae", 'SPOM') ~ "green",
-    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass") ~ "brown",
-    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
-  ))
-
-TSMixout_gb = TSMixout_gb %>% 
-  group_by(name, site, season, path) %>% 
-  summarize(value = sum(mean)) %>% 
-  pivot_wider(names_from = path, values_from = value)
+unique_names <- combined_df %>%
+  group_by(site, season) %>%
+  summarize(unique_names = n_distinct(name))
 
 
-y_label_formatter <- function(x) {
-  ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
-}
-
-
-combined_df = bind_rows(SRSMixout_gb,TSMixout_gb) %>%  
-  mutate(transect = case_when(
-    site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
-    site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
 # SRS boxplot ----
 
 mixoutput_bxplt_gb_SRS<-ggplot(SRSMixout_gb,aes(x=season, y = green, fill=source, width=0.8))+
@@ -1275,17 +1020,94 @@ mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fil
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/mixoutput_bxplt_gb_combined_FLOC_SAW.png", width = 9, height = 6, dpi = 600)
+ggsave("figures/mixoutput_bxplt_gb.png", width = 9, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
+cont_df = rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6, MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
 
+cont_df <- cont_df %>%
+  mutate(source = ifelse(source == "Filamentous Green Algae", "FGA", source))
 
-TSMixout_gb_new <- rbind( MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-
-TSMixout_gb_new = TSMixout_gb_new %>% 
+cont_df = cont_df %>% 
   rename(site = type, season = code)
 
-TSMixout_gb_new = TSMixout_gb_new %>% 
-  group_by(site, season, source) %>% 
-  summarize(value = sum(mean)) %>% 
-  pivot_wider(names_from = source, values_from = value)
+cont_df = cont_df %>% 
+  group_by(site, season, source, name) %>% 
+  summarize(value = sum(mean)) 
+
+cont_df = cont_df %>% 
+mutate(transect = case_when(
+  site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
+  site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
+  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macroalgae", "Seagrass", "Epiphytes","Periphyton" ,"Phytoplankton",  "FGA", "SPOM")),
+  site = factor(site, levels = c( "SRS3","RB10","SRS4","SRS6", "TS3", "TS7", "TS9", "TS10", "TS11")))
+
+
+text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","Red Macroalgae" = "saddlebrown","Seagrass" = "saddlebrown",
+                 "Epiphytes" = "forestgreen", "Periphyton" = "forestgreen", "Phytoplankton" = "forestgreen",
+                 "FGA" = "forestgreen", "SPOM"= "forestgreen" )
+
+
+source_cont_plot_vert = ggplot(cont_df,aes(x=source, y = value, fill=season, width=0.2))+
+  geom_boxplot()+
+  theme_bw()+
+  facet_wrap(~site, ncol = 1) +
+  theme(axis.title = element_text(size = 20), 
+        axis.text.y = element_text(size = 12, colour = "black"), 
+        axis.text.x = element_text(size = 14, colour = text_colors), 
+        plot.title = element_text(size = 18, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'right',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 18),
+        strip.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16)) +
+  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0,1),
+    labels = y_label_formatter
+  ) +
+  labs(y="Proportional Energy Contribution",
+       x=NULL,
+       fill = "Season") 
+
+source_cont_plot_vert
+
+
+
+ggsave("figures/source_cont_plot_vert.png", width = 14, height = 12, dpi = 600)
+
+source_cont_plot_side <-ggplot(cont_df,aes(x=source, y = value, fill=season, width=0.8))+
+  geom_boxplot()+
+  theme_bw()+
+  facet_grid(~site, scales = "free_y") +
+  theme(axis.title = element_text(size = 20), 
+        axis.text.y = element_text(size = 16, colour = "black"), 
+        axis.text.x = element_text(size = 12, colour = "black"), 
+        plot.title = element_text(size = 18, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'right',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 18),
+        strip.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16)) +
+  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0,1),
+    labels = y_label_formatter
+  ) +
+  labs(y="Proportional Energy Contribution",
+       x=NULL,
+       fill = "Season") +
+  coord_flip()
+
+source_cont_plot_side
+
+
+
+ggsave("figures/source_cont_plot_side.png", width = 14, height = 12, dpi = 600)
+
