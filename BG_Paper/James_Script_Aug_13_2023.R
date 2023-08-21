@@ -1,6 +1,6 @@
 # Authors: James Sturges, Ryan Rezek, Ryan James
-# Last Updated 19 July 2023
-# Seasonal differences in brown/green energy pathways across 9 FCE sites
+# Last Updated 20 August 2023
+# Seasonal differences in brown/green energy pathways and source specific contributions across multiple FCE food webs
 # DATASETUP ----
 
 # read in libraries
@@ -9,6 +9,7 @@ library(forcats)
 library(car)
 library(scales)
 library(rgl)
+library(flextable)
 library(magick)
 library(R2jags)
 library(rjags)
@@ -927,6 +928,30 @@ combined_df = combined_df %>%
   mutate(fill = mean(green),
          site = factor(site, levels = c( "TS11","TS10","TS9","TS7" ,"TS3", "SRS6", "SRS4","RB10" ,"SRS3" )))
 
+# generates a table of average contributions for brown vs green at each site during each season
+bvg_table = combined_df %>% 
+  group_by(site,season) %>% 
+  summarise(green = mean(green))
+
+
+bvg_table_ft <- flextable(bvg_table,
+                           col_keys = c("site", "season","green")) %>%
+  add_header_row(colwidths = c(1,1,1), values = c("Site", "Season", "Mean Green Pathway Contribution")) %>%
+  set_header_labels(site = "Site",
+                    season = "Season",
+                    green = "Mean Green Pathway Contribution") %>%
+  colformat_double(digits = 2) %>%
+  theme_box() %>%
+  align(align = "center") %>%
+  align(part = "header", align = "center") %>% 
+  # compose(j = "Genus_spp",
+  #         value = as_paragraph(as_i(Genus_spp))) %>%
+  merge_v(part = "header")
+
+bvg_table_ft
+
+save_as_docx(bvg_table_ft, path = "data/bvg_table_ft.docx")
+
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
   geom_boxplot()+
   theme_bw()+
@@ -1041,6 +1066,32 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
 source_cont_plot
 
 ggsave("figures/source_cont_plot.png", width = 17, height = 12, dpi = 600)
+
+# creates a table of mean values for source specific contributions. 
+cont_table = cont_df %>% 
+  group_by(site,season, source) %>% 
+  summarise(value = mean(value))
+
+
+cont_table_ft <- flextable(cont_table,
+                       col_keys = c("site", "season","source",
+                                    "value")) %>%
+  add_header_row(colwidths = c(1,1,1,1), values = c("Site", "Season", "Source","Total Energy Contribution")) %>%
+  set_header_labels(site = "Site",
+                    season = "Season",
+                    source = "Source",
+                    value   = "Total Energy Contribution") %>%
+  colformat_double(digits = 2) %>%
+  theme_box() %>%
+  align(align = "center") %>%
+  align(part = "header", align = "center") %>% 
+  # compose(j = "Genus_spp",
+  #         value = as_paragraph(as_i(Genus_spp))) %>%
+  merge_v(part = "header")
+
+cont_table_ft
+
+save_as_docx(cont_table_ft, path = "data/cont_table.docx")
 
 
 # SRS only source contribution plot
