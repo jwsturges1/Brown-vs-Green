@@ -950,7 +950,7 @@ bvg_table_ft <- flextable(bvg_table,
 
 bvg_table_ft
 
-save_as_docx(bvg_table_ft, path = "data/bvg_table_ft.docx")
+save_as_docx(bvg_table_ft, path = "tables/bvg_table_ft.docx")
 
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
   geom_boxplot()+
@@ -1091,7 +1091,7 @@ cont_table_ft <- flextable(cont_table,
 
 cont_table_ft
 
-save_as_docx(cont_table_ft, path = "data/cont_table.docx")
+save_as_docx(cont_table_ft, path = "tables/cont_table.docx")
 
 
 # SRS only source contribution plot
