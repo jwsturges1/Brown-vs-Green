@@ -921,67 +921,7 @@ unique_names <- combined_df %>%
   summarize(unique_names = n_distinct(name))
 
 
-# SRS boxplot ----
-
-mixoutput_bxplt_gb_SRS<-ggplot(SRSMixout_gb,aes(x=season, y = green, fill=source, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  scale_fill_manual(values=c("saddlebrown",'limegreen'))+ 
-  coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        axis.text.x = element_text(size = 12),
-        strip.text = element_text(face = "bold", size = 12),
-        legend.position = "top")+
-  scale_y_continuous(
-    breaks = c(0, 0.25, 0.5, 0.75, 1),
-    labels = y_label_formatter,
-    expand = c(0.01, 0)
-  ) +
-  labs(y="Proportional Dietary Contribution")+
-  coord_flip()
-
-mixoutput_bxplt_gb_SRS
-
-ggsave("figures/mixoutput_bxplt_gb_SRS.png", width = 10, height = 8, dpi = 300)
-
-
-
-# TS boxplot ----
-TSMixout_gb$site <- factor(TSMixout_gb$site, levels=c("TS3", "TS7", "TS9", "TS10", "TS11"))
-
-
-mixoutput_bxplt_gb_TS<-ggplot(TSMixout_gb,aes(x=site, y = green, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  scale_fill_manual(values=c("saddlebrown", "limegreen"))+ 
-  coord_cartesian(ylim = c( 0,1))+facet_grid(site~season)+
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        axis.text.x = element_text(size = 12),
-        legend.position = "top",
-        strip.text = element_text(face = "bold", size = 12))+
-  scale_y_continuous(
-    breaks = c(0, 0.25, 0.5, 0.75, 1),
-    labels = y_label_formatter,
-    expand = c(0.01, 0)
-  ) +
-  labs(y="Proportional Dietary Contribution")+
-  coord_flip()
-
-
-mixoutput_bxplt_gb_TS
-ggsave("figures/mixoutput_bxplt_gb_TS.png", width = 10, height = 8, dpi = 300)
-
-
-
-# Combined boxplot----
+# Combined Brown vs Green boxplot----
 combined_df = combined_df %>% 
   group_by(site, season) %>% 
   mutate(fill = mean(green),
@@ -1023,8 +963,11 @@ mixoutput_bxplt_gb_combined
 ggsave("figures/mixoutput_bxplt_gb.png", width = 9, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
+
+# combined dataset from mixing model outputs
 cont_df = rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6, MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
 
+# renaming for plotting
 cont_df <- cont_df %>%
   mutate(source = ifelse(source == "Filamentous Green Algae", "FGA", source))
 
@@ -1039,75 +982,147 @@ cont_df = cont_df %>%
 mutate(transect = case_when(
   site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
   site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
-  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macroalgae", "Seagrass", "Epiphytes","Periphyton" ,"Phytoplankton",  "FGA", "SPOM")),
-  site = factor(site, levels = c( "SRS3","RB10","SRS4","SRS6", "TS3", "TS7", "TS9", "TS10", "TS11")))
+  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macroalgae", "Seagrass", "Epiphytes","Periphyton" ,"Phytoplankton",  "FGA", "SPOM")))
 
 
 text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","Red Macroalgae" = "saddlebrown","Seagrass" = "saddlebrown",
                  "Epiphytes" = "forestgreen", "Periphyton" = "forestgreen", "Phytoplankton" = "forestgreen",
                  "FGA" = "forestgreen", "SPOM"= "forestgreen" )
 
+cont_df <- cont_df %>%
+  mutate(site = ifelse(site == "RB10", "SR Mangrove Ecotone",
+                       ifelse(site == "SRS3", "SR Marsh",
+                              ifelse(site == "SRS4", "SR Riverine Mangrove",
+                                     ifelse(site == "SRS6", "SR Lower River",
+                                            ifelse(site == "TS3", "TS Marsh",
+                                                   ifelse(site == "TS7", "TS Ecotone",
+                                                          ifelse(site == "TS9", "TS Inner Bay",
+                                                                 ifelse(site == "TS10", "TS Mid Bay",
+                                                                        ifelse(site == "TS11", "TS Outer Bay", site)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  site = factor(site, levels = c( "SR Marsh","SR Mangrove Ecotone","SR Riverine Mangrove","SR Lower River", "TS Marsh", "TS Ecotone", "TS Inner Bay", "TS Mid Bay", "TS Outer Bay")))
 
-source_cont_plot_vert = ggplot(cont_df,aes(x=source, y = value, fill=season, width=0.2))+
-  geom_boxplot()+
-  theme_bw()+
-  facet_wrap(~site, ncol = 1) +
-  theme(axis.title = element_text(size = 20), 
-        axis.text.y = element_text(size = 12, colour = "black"), 
-        axis.text.x = element_text(size = 14, colour = text_colors), 
-        plot.title = element_text(size = 18, hjust=0.5),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = 'right',
-        legend.title = element_text(size = 14),
-        strip.text.x = element_text(size = 18),
-        strip.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16)) +
+
+source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_boxplot() +
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x") +
+  theme(
+    axis.title = element_text(size = 20), 
+    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.text.x = element_text(
+      size = 12,
+      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen")), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'right',
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(size = 18),
+    strip.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16)) +
   scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0,1),
-    labels = y_label_formatter
+    limits = c(0, 1),
+    labels = y_label_formatter) +
+  labs(
+    y = "Proportional Energy Contribution",
+    x = NULL,
+    fill = "Season")
+
+source_cont_plot
+
+ggsave("figures/source_cont_plot.png", width = 17, height = 12, dpi = 600)
+
+
+# SRS only source contribution plot
+cont_SRS = cont_df %>% 
+  filter(transect == "Shark River Slough")
+
+source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_boxplot() +
+  theme_bw() +
+  facet_grid(~site, scales = "free_x") +
+  theme(
+    axis.title = element_text(size = 20), 
+    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.text.x = element_text(
+      size = 12,
+      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") # Use the merged color information
+    ), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'right',
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(size = 18),
+    strip.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16)
   ) +
-  labs(y="Proportional Energy Contribution",
-       x=NULL,
-       fill = "Season") 
-
-source_cont_plot_vert
-
-
-
-ggsave("figures/source_cont_plot_vert.png", width = 14, height = 12, dpi = 600)
-
-source_cont_plot_side <-ggplot(cont_df,aes(x=source, y = value, fill=season, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  facet_grid(~site, scales = "free_y") +
-  theme(axis.title = element_text(size = 20), 
-        axis.text.y = element_text(size = 16, colour = "black"), 
-        axis.text.x = element_text(size = 12, colour = "black"), 
-        plot.title = element_text(size = 18, hjust=0.5),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = 'right',
-        legend.title = element_text(size = 14),
-        strip.text.x = element_text(size = 18),
-        strip.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16)) +
   scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0,1),
+    limits = c(0, 1),
     labels = y_label_formatter
   ) +
-  labs(y="Proportional Energy Contribution",
-       x=NULL,
-       fill = "Season") +
-  coord_flip()
+  labs(
+    y = "Proportional Energy Contribution",
+    x = NULL,
+    fill = "Season"
+  )
 
-source_cont_plot_side
+source_plot_SRS
+
+ggsave("figures/source_plot_SRS.png", width = 24, height = 12, dpi = 600)
+
+# TS only source contribution plot
+
+cont_TS = cont_df %>% 
+  filter(transect == "Taylor Slough")
 
 
+source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_boxplot() +
+  theme_bw() +
+  facet_grid(~site, scales = "free_x") +
+  theme(
+    axis.title = element_text(size = 20), 
+    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.text.x = element_text(
+      size = 12,
+      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") # Use the merged color information
+    ), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'right',
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(size = 18),
+    strip.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16)
+  ) +
+  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter
+  ) +
+  labs(
+    y = "Proportional Energy Contribution",
+    x = NULL,
+    fill = "Season"
+  )
 
-ggsave("figures/source_cont_plot_side.png", width = 14, height = 12, dpi = 600)
+source_plot_TS
 
+ggsave("figures/source_plot_TS.png", width = 24, height = 12, dpi = 600)
+
+# END
