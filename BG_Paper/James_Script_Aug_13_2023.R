@@ -923,10 +923,30 @@ unique_names <- combined_df %>%
 
 
 # Combined Brown vs Green boxplot----
+combined_df <- combined_df %>%
+  mutate(site = ifelse(site == "RB10", "Riverine Mangrove",
+                       ifelse(site == "SRS3", "SR Marsh",
+                              ifelse(site == "SRS4", "Tarpon Bay Ecotone",
+                                     ifelse(site == "SRS6", "River Delta",
+                                            ifelse(site == "TS3", "TS Marsh",
+                                                   ifelse(site == "TS7", "Mangrove Ecotone",
+                                                          ifelse(site == "TS9", "Inner Bay",
+                                                                 ifelse(site == "TS10", "Mid Bay",
+                                                                        ifelse(site == "TS11", "Outer Bay", site)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  site = factor(site, levels = c( "SR Marsh","Riverine Mangrove","Tarpon Bay Ecotone","River Delta", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+
 combined_df = combined_df %>% 
   group_by(site, season) %>% 
   mutate(fill = mean(green),
-         site = factor(site, levels = c( "TS11","TS10","TS9","TS7" ,"TS3", "SRS6", "SRS4","RB10" ,"SRS3" )))
+         site = factor(site, levels = c( "Outer Bay","Mid Bay","Inner Bay","Mangrove Ecotone" ,"TS Marsh", "River Delta", "Tarpon Bay Ecotone","Riverine Mangrove" ,"SR Marsh" )))
 
 # generates a table of average contributions for brown vs green at each site during each season
 bvg_table = combined_df %>% 
@@ -950,7 +970,7 @@ bvg_table_ft <- flextable(bvg_table,
 
 bvg_table_ft
 
-save_as_docx(bvg_table_ft, path = "tables/bvg_table_ft.docx")
+save_as_docx(bvg_table_ft, path = "tables/bvg_table_flex.docx")
 
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
   geom_boxplot()+
@@ -985,7 +1005,7 @@ mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fil
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/mixoutput_bxplt_gb.png", width = 9, height = 6, dpi = 600)
+ggsave("figures/mixoutput_bxplt_gb.png", width = 10, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
 
@@ -994,7 +1014,24 @@ cont_df = rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6, MixOut_TS3, 
 
 # renaming for plotting
 cont_df <- cont_df %>%
-  mutate(source = ifelse(source == "Filamentous Green Algae", "FGA", source))
+  mutate(source = ifelse(source == "Phytoplankton", "Phyto",
+                         ifelse(source == "Mangrove", "Mangrove",
+                                ifelse(source == "Sawgrass", "Sawgrass",
+                                       ifelse(source == "Floc", "Floc",
+                                              ifelse(source == "Red Macroalgae", "Red Macro",
+                                                     ifelse(source == "Seagrass", "Seagrass",
+                                                            ifelse(source == "SPOM", "SPOM",
+                                                                   ifelse(source == "Epiphytes", "Epiphytes",
+                                                                          ifelse(source == "Periphyton", "Peri",
+                                                                                 ifelse(source == "Filamentous Green Algae", "FGA", source)
+                                                                          )
+                                                                   )
+                                                            )
+                                                     )
+                                              )
+                                       )
+                                )
+                         )))
 
 cont_df = cont_df %>% 
   rename(site = type, season = code)
@@ -1007,7 +1044,7 @@ cont_df = cont_df %>%
 mutate(transect = case_when(
   site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
   site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
-  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macroalgae", "Seagrass", "Epiphytes","Periphyton" ,"Phytoplankton",  "FGA", "SPOM")))
+  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macro", "Seagrass", "Epiphytes","Peri" ,"Phyto",  "FGA", "SPOM")))
 
 
 text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","Red Macroalgae" = "saddlebrown","Seagrass" = "saddlebrown",
@@ -1015,15 +1052,15 @@ text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" 
                  "FGA" = "forestgreen", "SPOM"= "forestgreen" )
 
 cont_df <- cont_df %>%
-  mutate(site = ifelse(site == "RB10", "SR Mangrove Ecotone",
+  mutate(site = ifelse(site == "RB10", "Riverine Mangrove",
                        ifelse(site == "SRS3", "SR Marsh",
-                              ifelse(site == "SRS4", "SR Riverine Mangrove",
-                                     ifelse(site == "SRS6", "SR Lower River",
+                              ifelse(site == "SRS4", "Tarpon Bay Ecotone",
+                                     ifelse(site == "SRS6", "River Delta",
                                             ifelse(site == "TS3", "TS Marsh",
-                                                   ifelse(site == "TS7", "TS Ecotone",
-                                                          ifelse(site == "TS9", "TS Inner Bay",
-                                                                 ifelse(site == "TS10", "TS Mid Bay",
-                                                                        ifelse(site == "TS11", "TS Outer Bay", site)
+                                                   ifelse(site == "TS7", "Mangrove Ecotone",
+                                                          ifelse(site == "TS9", "Inner Bay",
+                                                                 ifelse(site == "TS10", "Mid Bay",
+                                                                        ifelse(site == "TS11", "Outer Bay", site)
                                                                  )
                                                           )
                                                    )
@@ -1032,7 +1069,7 @@ cont_df <- cont_df %>%
                               )
                        )
   ),
-  site = factor(site, levels = c( "SR Marsh","SR Mangrove Ecotone","SR Riverine Mangrove","SR Lower River", "TS Marsh", "TS Ecotone", "TS Inner Bay", "TS Mid Bay", "TS Outer Bay")))
+  site = factor(site, levels = c( "SR Marsh","Riverine Mangrove","Tarpon Bay Ecotone","River Delta", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
 
 
 source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
@@ -1053,7 +1090,7 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
     strip.text.x = element_text(size = 18),
     strip.text.y = element_text(size = 18),
     legend.text = element_text(size = 16)) +
-  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
@@ -1065,7 +1102,7 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
 
 source_cont_plot
 
-ggsave("figures/source_cont_plot.png", width = 17, height = 12, dpi = 600)
+ggsave("figures/source_cont_plot.png", width = 12, height = 11, dpi = 600)
 
 # creates a table of mean values for source specific contributions. 
 cont_table = cont_df %>% 
@@ -1091,7 +1128,7 @@ cont_table_ft <- flextable(cont_table,
 
 cont_table_ft
 
-save_as_docx(cont_table_ft, path = "tables/cont_table.docx")
+save_as_docx(cont_table_ft, path = "tables/cont_table_flex.docx")
 
 
 # SRS only source contribution plot
@@ -1101,12 +1138,12 @@ cont_SRS = cont_df %>%
 source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
   geom_boxplot() +
   theme_bw() +
-  facet_grid(~site, scales = "free_x") +
+  facet_wrap(~site, scales = "free_x", ncol = 2) +
   theme(
     axis.title = element_text(size = 20), 
     axis.text.y = element_text(size = 12, colour = "black"), 
     axis.text.x = element_text(
-      size = 12,
+      size = 16,
       colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") # Use the merged color information
     ), 
     plot.title = element_text(size = 18, hjust = 0.5),
@@ -1118,7 +1155,7 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
     strip.text.y = element_text(size = 18),
     legend.text = element_text(size = 16)
   ) +
-  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
@@ -1132,18 +1169,21 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
 
 source_plot_SRS
 
-ggsave("figures/source_plot_SRS.png", width = 24, height = 12, dpi = 600)
+ggsave("figures/source_plot_SRS.png", width = 12, height = 6, dpi = 600)
 
 # TS only source contribution plot
 
 cont_TS = cont_df %>% 
   filter(transect == "Taylor Slough")
 
+cont_TS = cont_TS %>% 
+  mutate(site = factor(site, levels = c( "Inner Bay","Mid Bay","Outer Bay","TS Marsh","Mangrove Ecotone")))
+
 
 source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
   geom_boxplot() +
   theme_bw() +
-  facet_grid(~site, scales = "free_x") +
+  facet_wrap(~site, scales = "free_x", ncol = 3, nrow = 2) +
   theme(
     axis.title = element_text(size = 20), 
     axis.text.y = element_text(size = 12, colour = "black"), 
@@ -1160,7 +1200,7 @@ source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width
     strip.text.y = element_text(size = 18),
     legend.text = element_text(size = 16)
   ) +
-  scale_fill_manual(values = c("Dry" = "yellow", "Wet" = "blue")) +
+  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
@@ -1174,6 +1214,6 @@ source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width
 
 source_plot_TS
 
-ggsave("figures/source_plot_TS.png", width = 24, height = 12, dpi = 600)
+ggsave("figures/source_plot_TS.png", width = 12, height = 8, dpi = 600)
 
 # END
