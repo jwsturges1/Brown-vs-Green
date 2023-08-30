@@ -896,8 +896,8 @@ TSMixout_gb <- rbind(MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS1
 TSMixout_gb = TSMixout_gb %>% 
   rename(site = type, season = code) %>%
   mutate(path = case_when(
-    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 'Floc', "Epiphytic microalgae", 'SPOM') ~ "green",
-    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass") ~ "brown",
+    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", "Epiphytic microalgae", 'SPOM') ~ "green",
+    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass", 'Floc') ~ "brown",
     TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
   ))
 
@@ -972,6 +972,7 @@ bvg_table_ft
 
 save_as_docx(bvg_table_ft, path = "tables/bvg_table_flex.docx")
 
+
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
   geom_boxplot()+
   theme_bw()+
@@ -1005,7 +1006,7 @@ mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fil
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/mixoutput_bxplt_gb.png", width = 10, height = 6, dpi = 600)
+ggsave("figures/mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
 
@@ -1073,6 +1074,7 @@ cont_df <- cont_df %>%
 
 
 source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
   geom_boxplot() +
   theme_bw() +
   facet_wrap(~site, scales = "free_x") +
@@ -1096,7 +1098,7 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
     limits = c(0, 1),
     labels = y_label_formatter) +
   labs(
-    y = "Proportional Energy Contribution",
+    y = "Source Contribution",
     x = NULL,
     fill = "Season")
 
@@ -1136,15 +1138,17 @@ cont_SRS = cont_df %>%
   filter(transect == "Shark River Slough")
 
 source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
   geom_boxplot() +
   theme_bw() +
-  facet_wrap(~site, scales = "free_x", ncol = 2) +
+  facet_wrap(~site, scales = "free_x", nrow = 1) +
   theme(
+    axis.ticks.length.x = unit(0.1, "inch"),
     axis.title = element_text(size = 20), 
     axis.text.y = element_text(size = 12, colour = "black"), 
     axis.text.x = element_text(
       size = 16,
-      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") # Use the merged color information
+      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") 
     ), 
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
@@ -1162,14 +1166,14 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
     labels = y_label_formatter
   ) +
   labs(
-    y = "Proportional Energy Contribution",
+    y = "Source Contribution",
     x = NULL,
     fill = "Season"
   )
 
 source_plot_SRS
 
-ggsave("figures/source_plot_SRS.png", width = 12, height = 6, dpi = 600)
+ggsave("figures/source_plot_SRS.png", width = 22, height = 6, dpi = 600)
 
 # TS only source contribution plot
 
@@ -1177,20 +1181,22 @@ cont_TS = cont_df %>%
   filter(transect == "Taylor Slough")
 
 cont_TS = cont_TS %>% 
-  mutate(site = factor(site, levels = c( "Inner Bay","Mid Bay","Outer Bay","TS Marsh","Mangrove Ecotone")))
+  mutate(site = factor(site, levels = c( "TS Marsh","Mangrove Ecotone", "Inner Bay","Mid Bay","Outer Bay")))
 
 
-source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
+source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
+  geom_rect(aes(xmin=source, xmax=source, ymin=-Inf, ymax=Inf, fill = season), alpha=0.5, stat="identity") +
   geom_boxplot() +
   theme_bw() +
-  facet_wrap(~site, scales = "free_x", ncol = 3, nrow = 2) +
+  facet_wrap(~ site, scales = "free_x", nrow = 1) +
   theme(
-    axis.title = element_text(size = 20), 
-    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.title = element_text(size = 20),
+    axis.text.y = element_text(size = 12, colour = "black"),
     axis.text.x = element_text(
       size = 12,
-      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") # Use the merged color information
-    ), 
+      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen")
+    ),
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -1207,13 +1213,97 @@ source_plot_TS = ggplot(cont_TS, aes(x = source, y = value, fill = season, width
     labels = y_label_formatter
   ) +
   labs(
-    y = "Proportional Energy Contribution",
+    y = "Source Contribution",
     x = NULL,
     fill = "Season"
   )
 
 source_plot_TS
 
-ggsave("figures/source_plot_TS.png", width = 12, height = 8, dpi = 600)
+
+ggsave("figures/source_plot_TS.png", width = 18, height = 6, dpi = 600)
+
+# FCE proposal plots ----
+combined_df_dry = combined_df %>% 
+  filter(season == "Dry")
+
+dry_plot <-ggplot(combined_df_dry,aes(x=site, y = green, fill=fill, width=0.8))+
+  geom_boxplot()+
+  theme_bw()+
+  scale_fill_gradient2(low = "saddlebrown",
+                       high = "forestgreen",
+                       mid = 'white',
+                       midpoint = 0.5,
+                       limits = c(0,1),
+                       na.value = "grey50") +
+  facet_grid(transect~season, scales = "free_y") +
+  theme(axis.title = element_text(size = 20), 
+        axis.text.y = element_text(size = 20, colour = "black"), 
+        axis.text.x = element_text(size = 18, colour = "black"), 
+        plot.title = element_text(size = 18, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'right',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 18),
+        strip.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16)) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0,1),
+    labels = y_label_formatter
+  ) +
+  labs(y="Green Pathway Source Contribution",
+       x=NULL,
+       fill = "Green Pathway\nSource Contribution\n ")+
+  coord_flip()
+
+dry_plot
+ggsave("figures/dry_plot.png", width = 8, height = 6, dpi = 600)
+
+
+
+
+no_season <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
+  geom_boxplot()+
+  theme_bw()+
+  scale_fill_gradient2(low = "saddlebrown",
+                       high = "forestgreen",
+                       mid = 'white',
+                       midpoint = 0.5,
+                       limits = c(0,1),
+                       na.value = "grey50") +
+  facet_grid(transect~season, scales = "free_y") +
+  theme(axis.title = element_text(size = 20), 
+        axis.text.y = element_text(size = 20, colour = "black"), 
+        axis.text.x = element_text(size = 18, colour = "black"), 
+        plot.title = element_text(size = 18, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'right',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 18),
+        strip.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16)) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0,1),
+    labels = y_label_formatter
+  ) +
+  labs(y="Green Pathway Source Contribution",
+       x=NULL,
+       fill = "Green Pathway\nSource Contribution\n ")+
+  coord_flip()
+
+no_season
+
+ggsave("figures/no_season.png", width = 8, height = 6, dpi = 600)
+
+
+allmix = SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6,MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
+
+
+write.csv(allmix,"data/Consumers/allmix.csv",row.names = F) 
+write.csv(combined_df,"data/Consumers/combined.csv",row.names = F) 
 
 # END
