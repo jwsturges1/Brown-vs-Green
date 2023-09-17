@@ -1131,6 +1131,7 @@ cont_table_ft <- flextable(cont_table,
 cont_table_ft
 
 save_as_docx(cont_table_ft, path = "tables/cont_table_flex.docx")
+write.csv(cont_table,"data/Sources/cont_table.csv",row.names = F) 
 
 
 # SRS only source contribution plot
@@ -1304,6 +1305,54 @@ allmix = SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS
 
 
 write.csv(allmix,"data/Consumers/allmix.csv",row.names = F) 
-write.csv(combined_df,"data/Consumers/combined.csv",row.names = F) 
+write.csv(combined_df,"data/Consumers/combined.csv",row.names = F)
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+stacked_source_cont = ggplot(cont_table, aes(x = season, y = value, fill = source)) +
+  geom_col(colour = "black", position = "stack", width = 0.5) +  # Set width to adjust spacing
+  scale_y_continuous(breaks = c(0.0, 0.25, 0.5, 0.75, 1.0)) +
+  facet_wrap(facets = c("site"), nrow = 3, ncol = 3) +
+  theme(
+    plot.title = element_text(size = 24, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'bottom',
+    legend.title = element_text(size = 24),
+    strip.text.x = element_text(size = 24),
+    strip.text.y = element_text(size = 24),
+    axis.title.y = element_text(size = 24),
+    axis.text.x = element_text(size = 24),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 18)) +
+  scale_x_discrete(expand = c(0,1)) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter
+  ) +
+  scale_fill_manual(values = c("Mangrove" = "wheat4", "Sawgrass" = "wheat4", "Floc" = "wheat1","Red Macro" = "wheat1","Seagrass" = "wheat1",
+                               "Epiphytes" = "darkolivegreen4", "Peri" = "darkolivegreen4", "Phyto" = "darkolivegreen1",
+                               "FGA" = "darkolivegreen1", "POM"= "darkolivegreen1" )) +
+  labs(
+    y = "Proportional Energy Contribution (%)",
+    x = NULL,
+    fill = "Basal Resource"
+  )
+
+stacked_source_cont
+
+ggsave("figures/stacked_source_cont.png", width = 12, height = 11, dpi = 600)
 
 # END
