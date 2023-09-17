@@ -924,10 +924,10 @@ unique_names <- combined_df %>%
 
 # Combined Brown vs Green boxplot----
 combined_df <- combined_df %>%
-  mutate(site = ifelse(site == "RB10", "Riverine Mangrove",
-                       ifelse(site == "SRS3", "SR Marsh",
-                              ifelse(site == "SRS4", "Tarpon Bay Ecotone",
-                                     ifelse(site == "SRS6", "River Delta",
+  mutate(site = ifelse(site == "RB10", "Upper River",
+                       ifelse(site == "SRS3", "SRS Marsh",
+                              ifelse(site == "SRS4", "Mid River",
+                                     ifelse(site == "SRS6", "Lower River",
                                             ifelse(site == "TS3", "TS Marsh",
                                                    ifelse(site == "TS7", "Mangrove Ecotone",
                                                           ifelse(site == "TS9", "Inner Bay",
@@ -941,12 +941,12 @@ combined_df <- combined_df %>%
                               )
                        )
   ),
-  site = factor(site, levels = c( "SR Marsh","Riverine Mangrove","Tarpon Bay Ecotone","River Delta", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+  site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
 
 combined_df = combined_df %>% 
   group_by(site, season) %>% 
   mutate(fill = mean(green),
-         site = factor(site, levels = c( "Outer Bay","Mid Bay","Inner Bay","Mangrove Ecotone" ,"TS Marsh", "River Delta", "Tarpon Bay Ecotone","Riverine Mangrove" ,"SR Marsh" )))
+         site = factor(site, levels = c( "Outer Bay","Mid Bay","Inner Bay","Mangrove Ecotone" ,"TS Marsh", "Lower River", "Mid River","Upper River" ,"SRS Marsh" )))
 
 # generates a table of average contributions for brown vs green at each site during each season
 bvg_table = combined_df %>% 
@@ -1021,7 +1021,7 @@ cont_df <- cont_df %>%
                                        ifelse(source == "Floc", "Floc",
                                               ifelse(source == "Red Macroalgae", "Red Macro",
                                                      ifelse(source == "Seagrass", "Seagrass",
-                                                            ifelse(source == "SPOM", "SPOM",
+                                                            ifelse(source == "SPOM", "POM",
                                                                    ifelse(source == "Epiphytes", "Epiphytes",
                                                                           ifelse(source == "Periphyton", "Peri",
                                                                                  ifelse(source == "Filamentous Green Algae", "FGA", source)
@@ -1045,18 +1045,18 @@ cont_df = cont_df %>%
 mutate(transect = case_when(
   site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
   site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
-  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macro", "Seagrass", "Epiphytes","Peri" ,"Phyto",  "FGA", "SPOM")))
+  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macro", "Seagrass", "Epiphytes","Peri" ,"Phyto",  "FGA", "POM")))
 
 
 text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","Red Macroalgae" = "saddlebrown","Seagrass" = "saddlebrown",
                  "Epiphytes" = "forestgreen", "Periphyton" = "forestgreen", "Phytoplankton" = "forestgreen",
-                 "FGA" = "forestgreen", "SPOM"= "forestgreen" )
+                 "FGA" = "forestgreen", "POM"= "forestgreen" )
 
 cont_df <- cont_df %>%
-  mutate(site = ifelse(site == "RB10", "Riverine Mangrove",
-                       ifelse(site == "SRS3", "SR Marsh",
-                              ifelse(site == "SRS4", "Tarpon Bay Ecotone",
-                                     ifelse(site == "SRS6", "River Delta",
+  mutate(site = ifelse(site == "RB10", "Upper River",
+                       ifelse(site == "SRS3", "SRS Marsh",
+                              ifelse(site == "SRS4", "Mid River",
+                                     ifelse(site == "SRS6", "Lower River",
                                             ifelse(site == "TS3", "TS Marsh",
                                                    ifelse(site == "TS7", "Mangrove Ecotone",
                                                           ifelse(site == "TS9", "Inner Bay",
@@ -1070,7 +1070,7 @@ cont_df <- cont_df %>%
                               )
                        )
   ),
-  site = factor(site, levels = c( "SR Marsh","Riverine Mangrove","Tarpon Bay Ecotone","River Delta", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+  site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
 
 
 source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
