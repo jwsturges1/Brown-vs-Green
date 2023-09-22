@@ -976,8 +976,8 @@ save_as_docx(bvg_table_ft, path = "tables/bvg_table_flex.docx")
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
   geom_boxplot()+
   theme_bw()+
-  scale_fill_gradient2(low = "saddlebrown",
-                       high = "forestgreen",
+  scale_fill_gradient2(low = "#663300",
+                       high = "#92D050",
                        mid = 'white',
                        midpoint = 0.5,
                        limits = c(0,1),
@@ -1015,15 +1015,15 @@ cont_df = rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6, MixOut_TS3, 
 
 # renaming for plotting
 cont_df <- cont_df %>%
-  mutate(source = ifelse(source == "Phytoplankton", "Phyto",
-                         ifelse(source == "Mangrove", "Mangrove",
+  mutate(source = ifelse(source == "Phytoplankton", "Phyto.",
+                         ifelse(source == "Mangrove", "Mang.",
                                 ifelse(source == "Sawgrass", "Sawgrass",
                                        ifelse(source == "Floc", "Floc",
-                                              ifelse(source == "Red Macroalgae", "Red Macro",
+                                              ifelse(source == "Red Macroalgae", "RMA",
                                                      ifelse(source == "Seagrass", "Seagrass",
                                                             ifelse(source == "SPOM", "POM",
-                                                                   ifelse(source == "Epiphytes", "Epiphytes",
-                                                                          ifelse(source == "Periphyton", "Peri",
+                                                                   ifelse(source == "Epiphytes", "Epi.",
+                                                                          ifelse(source == "Periphyton", "Peri.",
                                                                                  ifelse(source == "Filamentous Green Algae", "FGA", source)
                                                                           )
                                                                    )
@@ -1045,11 +1045,11 @@ cont_df = cont_df %>%
 mutate(transect = case_when(
   site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
   site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
-  source = factor(source, levels = c( "Mangrove","Sawgrass","Floc","Red Macro", "Seagrass", "Epiphytes","Peri" ,"Phyto",  "FGA", "POM")))
+  source = factor(source, levels = c( "Mang.","Sawgrass","Floc","RMA", "Seagrass", "Epi.","Peri." ,"Phyto.",  "FGA", "POM")))
 
 
-text_colors <- c("Mangrove" = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","Red Macroalgae" = "saddlebrown","Seagrass" = "saddlebrown",
-                 "Epiphytes" = "forestgreen", "Periphyton" = "forestgreen", "Phytoplankton" = "forestgreen",
+text_colors <- c("Mang." = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","RMA" = "saddlebrown","Seagrass" = "saddlebrown",
+                 "Epi." = "forestgreen", "Peri." = "forestgreen", "Phyto." = "forestgreen",
                  "FGA" = "forestgreen", "POM"= "forestgreen" )
 
 cont_df <- cont_df %>%
@@ -1072,39 +1072,38 @@ cont_df <- cont_df %>%
   ),
   site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
 
-
 source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
   geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
   geom_boxplot() +
   theme_bw() +
   facet_wrap(~site, scales = "free_x") +
   theme(
-    axis.title = element_text(size = 20), 
-    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
     axis.text.x = element_text(
-      size = 12,
-      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen")), 
+      size = 18,
+      colour = c("black", "black", "black", "black")), 
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
-    legend.position = 'right',
-    legend.title = element_text(size = 14),
-    strip.text.x = element_text(size = 18),
-    strip.text.y = element_text(size = 18),
-    legend.text = element_text(size = 16)) +
-  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 26, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
     labels = y_label_formatter) +
   labs(
-    y = "Source Contribution",
+    y = "Basal Resource Energy Contribution (%)",
     x = NULL,
     fill = "Season")
 
 source_cont_plot
 
-ggsave("figures/source_cont_plot.png", width = 12, height = 11, dpi = 600)
+ggsave("figures/source_cont_plot.png", width = 15, height = 11, dpi = 600)
 
 # creates a table of mean values for source specific contributions. 
 cont_table = cont_df %>% 
@@ -1137,6 +1136,8 @@ write.csv(cont_table,"data/Sources/cont_table.csv",row.names = F)
 # SRS only source contribution plot
 cont_SRS = cont_df %>% 
   filter(transect == "Shark River Slough")
+  # group_by(site,season, source) %>% 
+  # summarise(value = mean(value))
 
 source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
   geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
@@ -1145,36 +1146,37 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
   facet_wrap(~site, scales = "free_x", nrow = 1) +
   theme(
     axis.ticks.length.x = unit(0.1, "inch"),
-    axis.title = element_text(size = 20), 
-    axis.text.y = element_text(size = 12, colour = "black"), 
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
     axis.text.x = element_text(
-      size = 16,
-      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen") 
+      size = 22,
+      colour = c("black", "black", "black", "black", face = "bold", family = "arial") 
     ), 
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
-    legend.position = 'right',
-    legend.title = element_text(size = 14),
-    strip.text.x = element_text(size = 18),
-    strip.text.y = element_text(size = 18),
-    legend.text = element_text(size = 16)
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")
   ) +
-  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
     labels = y_label_formatter
   ) +
   labs(
-    y = "Source Contribution",
+    y = "Basal Resource Energy Contribution (%)",
     x = NULL,
     fill = "Season"
-  )
+  ) 
+
 
 source_plot_SRS
 
-ggsave("figures/source_plot_SRS.png", width = 22, height = 6, dpi = 600)
+ggsave("figures/source_plot_SRS.png", width = 22, height = 10, dpi = 600)
 
 # TS only source contribution plot
 
@@ -1192,29 +1194,29 @@ source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, widt
   theme_bw() +
   facet_wrap(~ site, scales = "free_x", nrow = 1) +
   theme(
-    axis.title = element_text(size = 20),
-    axis.text.y = element_text(size = 12, colour = "black"),
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
     axis.text.x = element_text(
-      size = 12,
-      colour = c("saddlebrown", "saddlebrown", "forestgreen", "forestgreen")
+      size = 18,
+      colour = c("black", "black", "black", "black")
     ),
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
-    legend.position = 'right',
-    legend.title = element_text(size = 14),
-    strip.text.x = element_text(size = 18),
-    strip.text.y = element_text(size = 18),
-    legend.text = element_text(size = 16)
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 28, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")
   ) +
-  scale_fill_manual(values = c("Dry" = "darkgoldenrod2", "Wet" = "powderblue")) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
     labels = y_label_formatter
   ) +
   labs(
-    y = "Source Contribution",
+    y = "Basal Resource Energy Contribution (%)",
     x = NULL,
     fill = "Season"
   )
@@ -1222,7 +1224,7 @@ source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, widt
 source_plot_TS
 
 
-ggsave("figures/source_plot_TS.png", width = 18, height = 6, dpi = 600)
+ggsave("figures/source_plot_TS.png", width = 22, height = 10, dpi = 600)
 
 # FCE proposal plots ----
 combined_df_dry = combined_df %>% 
@@ -1342,8 +1344,8 @@ stacked_source_cont = ggplot(cont_table, aes(x = season, y = value, fill = sourc
     limits = c(0, 1),
     labels = y_label_formatter
   ) +
-  scale_fill_manual(values = c("Mangrove" = "wheat4", "Sawgrass" = "wheat4", "Floc" = "wheat1","Red Macro" = "wheat1","Seagrass" = "wheat1",
-                               "Epiphytes" = "darkolivegreen4", "Peri" = "darkolivegreen4", "Phyto" = "darkolivegreen1",
+   scale_fill_manual(values = c("Mang." = "wheat4", "Sawgrass" = "wheat4", "Floc" = "wheat1","RMA" = "wheat1","Seagrass" = "wheat1",
+                               "Epi." = "darkolivegreen4", "Peri." = "darkolivegreen4", "Phyto." = "darkolivegreen1",
                                "FGA" = "darkolivegreen1", "POM"= "darkolivegreen1" )) +
   labs(
     y = "Proportional Energy Contribution (%)",
