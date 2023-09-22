@@ -3,110 +3,86 @@
 # Summary Statistics
 #################################################################
 
-DIC = 190.3207
+DIC = 140.3611
 
                                                     Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
-p.Amphipod.Dry.Filamentous Green Algae             0.198 0.088 0.060 0.074 0.134 0.187 0.251 0.361 0.400
-p.Amphipod.Dry.Mangrove                            0.284 0.103 0.110 0.133 0.207 0.277 0.352 0.469 0.505
-p.Amphipod.Dry.Phytoplankton                       0.337 0.108 0.148 0.173 0.260 0.330 0.406 0.522 0.569
-p.Amphipod.Dry.Red Macroalgae                      0.181 0.067 0.066 0.083 0.134 0.175 0.223 0.300 0.326
-p.Bay Anchovy.Dry.Filamentous Green Algae          0.174 0.134 0.016 0.023 0.068 0.137 0.251 0.436 0.498
-p.Bay Anchovy.Dry.Mangrove                         0.196 0.147 0.022 0.030 0.082 0.154 0.277 0.489 0.563
-p.Bay Anchovy.Dry.Phytoplankton                    0.349 0.267 0.025 0.035 0.115 0.266 0.572 0.841 0.869
-p.Bay Anchovy.Dry.Red Macroalgae                   0.281 0.184 0.016 0.027 0.135 0.258 0.404 0.619 0.690
-p.Brown Grass Shrimp.Wet.Filamentous Green Algae   0.194 0.173 0.004 0.007 0.050 0.143 0.293 0.546 0.609
-p.Brown Grass Shrimp.Wet.Mangrove                  0.680 0.203 0.256 0.320 0.539 0.705 0.847 0.959 0.974
-p.Brown Grass Shrimp.Wet.Phytoplankton             0.094 0.107 0.002 0.004 0.019 0.053 0.131 0.342 0.404
-p.Brown Grass Shrimp.Wet.Red Macroalgae            0.032 0.032 0.001 0.002 0.009 0.022 0.044 0.098 0.120
-p.Clown Goby.Wet.Filamentous Green Algae           0.282 0.211 0.004 0.008 0.080 0.277 0.440 0.650 0.713
-p.Clown Goby.Wet.Mangrove                          0.618 0.228 0.181 0.234 0.444 0.619 0.817 0.958 0.976
-p.Clown Goby.Wet.Phytoplankton                     0.075 0.079 0.003 0.004 0.019 0.047 0.102 0.247 0.301
-p.Clown Goby.Wet.Red Macroalgae                    0.025 0.027 0.001 0.002 0.007 0.017 0.034 0.078 0.099
-p.Crested Goby.Dry.Filamentous Green Algae         0.267 0.165 0.018 0.029 0.136 0.253 0.377 0.563 0.615
-p.Crested Goby.Dry.Mangrove                        0.418 0.185 0.114 0.144 0.275 0.402 0.553 0.747 0.792
-p.Crested Goby.Dry.Phytoplankton                   0.224 0.161 0.023 0.031 0.093 0.185 0.328 0.534 0.588
-p.Crested Goby.Dry.Red Macroalgae                  0.091 0.057 0.013 0.019 0.048 0.081 0.120 0.200 0.231
-p.Crested Goby.Wet.Filamentous Green Algae         0.120 0.109 0.004 0.007 0.036 0.093 0.178 0.326 0.394
-p.Crested Goby.Wet.Mangrove                        0.832 0.126 0.533 0.597 0.763 0.862 0.929 0.977 0.984
-p.Crested Goby.Wet.Phytoplankton                   0.039 0.047 0.001 0.002 0.008 0.021 0.049 0.142 0.180
-p.Crested Goby.Wet.Red Macroalgae                  0.009 0.009 0.001 0.001 0.003 0.007 0.013 0.026 0.032
-p.Eastern Grass Shrimp.Dry.Filamentous Green Algae 0.303 0.182 0.021 0.034 0.146 0.299 0.444 0.604 0.646
-p.Eastern Grass Shrimp.Dry.Mangrove                0.277 0.185 0.030 0.042 0.124 0.241 0.392 0.641 0.708
-p.Eastern Grass Shrimp.Dry.Phytoplankton           0.243 0.168 0.025 0.037 0.108 0.202 0.348 0.580 0.635
-p.Eastern Grass Shrimp.Dry.Red Macroalgae          0.177 0.099 0.028 0.043 0.103 0.164 0.234 0.359 0.410
-p.Eastern Grass Shrimp.Wet.Filamentous Green Algae 0.226 0.197 0.003 0.006 0.047 0.177 0.370 0.587 0.659
-p.Eastern Grass Shrimp.Wet.Mangrove                0.690 0.220 0.225 0.292 0.524 0.724 0.886 0.969 0.980
-p.Eastern Grass Shrimp.Wet.Phytoplankton           0.056 0.065 0.002 0.003 0.014 0.034 0.073 0.190 0.234
-p.Eastern Grass Shrimp.Wet.Red Macroalgae          0.029 0.027 0.001 0.002 0.009 0.021 0.040 0.083 0.099
-p.Eastern Mosquitofish.Wet.Filamentous Green Algae 0.175 0.165 0.002 0.005 0.037 0.124 0.275 0.509 0.569
-p.Eastern Mosquitofish.Wet.Mangrove                0.733 0.187 0.310 0.385 0.611 0.765 0.889 0.970 0.982
-p.Eastern Mosquitofish.Wet.Phytoplankton           0.071 0.078 0.002 0.003 0.017 0.043 0.098 0.232 0.288
-p.Eastern Mosquitofish.Wet.Red Macroalgae          0.021 0.022 0.001 0.001 0.006 0.014 0.028 0.064 0.083
-p.Gastropods.Dry.Filamentous Green Algae           0.056 0.045 0.006 0.009 0.025 0.045 0.073 0.141 0.174
-p.Gastropods.Dry.Mangrove                          0.078 0.049 0.012 0.018 0.044 0.070 0.100 0.167 0.200
-p.Gastropods.Dry.Phytoplankton                     0.782 0.111 0.494 0.554 0.730 0.810 0.861 0.908 0.919
-p.Gastropods.Dry.Red Macroalgae                    0.085 0.069 0.008 0.012 0.037 0.066 0.113 0.226 0.281
-p.Golden Topminnow.Wet.Filamentous Green Algae     0.185 0.180 0.003 0.005 0.038 0.128 0.291 0.556 0.630
-p.Golden Topminnow.Wet.Mangrove                    0.735 0.196 0.282 0.358 0.608 0.779 0.898 0.972 0.982
-p.Golden Topminnow.Wet.Phytoplankton               0.062 0.069 0.002 0.003 0.015 0.038 0.083 0.208 0.262
-p.Golden Topminnow.Wet.Red Macroalgae              0.017 0.017 0.001 0.001 0.005 0.011 0.024 0.053 0.064
-p.Isopod.Dry.Filamentous Green Algae               0.121 0.092 0.010 0.015 0.049 0.099 0.173 0.299 0.344
-p.Isopod.Dry.Mangrove                              0.244 0.137 0.038 0.059 0.148 0.220 0.318 0.497 0.574
-p.Isopod.Dry.Phytoplankton                         0.508 0.176 0.163 0.207 0.379 0.516 0.650 0.777 0.801
-p.Isopod.Dry.Red Macroalgae                        0.126 0.085 0.014 0.020 0.063 0.108 0.170 0.292 0.334
-p.Isopod.Wet.Filamentous Green Algae               0.083 0.084 0.004 0.007 0.026 0.057 0.110 0.248 0.309
-p.Isopod.Wet.Mangrove                              0.757 0.164 0.321 0.426 0.680 0.793 0.876 0.951 0.962
-p.Isopod.Wet.Phytoplankton                         0.136 0.114 0.009 0.014 0.049 0.106 0.190 0.368 0.421
-p.Isopod.Wet.Red Macroalgae                        0.025 0.029 0.001 0.002 0.006 0.015 0.033 0.084 0.104
-p.Mangrove Periwinkle.Dry.Filamentous Green Algae  0.110 0.078 0.011 0.016 0.049 0.096 0.154 0.258 0.295
-p.Mangrove Periwinkle.Dry.Mangrove                 0.161 0.086 0.031 0.045 0.101 0.149 0.208 0.320 0.374
-p.Mangrove Periwinkle.Dry.Phytoplankton            0.656 0.127 0.357 0.416 0.582 0.677 0.754 0.821 0.838
-p.Mangrove Periwinkle.Dry.Red Macroalgae           0.072 0.054 0.008 0.011 0.033 0.060 0.096 0.180 0.209
-p.Mangrove Tree Crab.Dry.Filamentous Green Algae   0.164 0.114 0.018 0.027 0.079 0.137 0.225 0.387 0.448
-p.Mangrove Tree Crab.Dry.Mangrove                  0.168 0.126 0.021 0.029 0.077 0.134 0.229 0.424 0.498
-p.Mangrove Tree Crab.Dry.Phytoplankton             0.538 0.205 0.160 0.195 0.373 0.548 0.718 0.831 0.852
-p.Mangrove Tree Crab.Dry.Red Macroalgae            0.130 0.091 0.011 0.016 0.057 0.112 0.185 0.303 0.342
-p.Pink Shrimp.Dry.Filamentous Green Algae          0.223 0.161 0.013 0.022 0.088 0.194 0.329 0.524 0.590
-p.Pink Shrimp.Dry.Mangrove                         0.491 0.189 0.130 0.182 0.355 0.489 0.628 0.808 0.856
-p.Pink Shrimp.Dry.Phytoplankton                    0.228 0.139 0.026 0.039 0.117 0.204 0.320 0.486 0.539
-p.Pink Shrimp.Dry.Red Macroalgae                   0.057 0.038 0.008 0.012 0.029 0.049 0.076 0.131 0.151
-p.Pink Shrimp.Wet.Filamentous Green Algae          0.094 0.101 0.002 0.004 0.021 0.060 0.132 0.292 0.355
-p.Pink Shrimp.Wet.Mangrove                         0.864 0.120 0.551 0.630 0.810 0.898 0.952 0.985 0.989
-p.Pink Shrimp.Wet.Phytoplankton                    0.036 0.045 0.001 0.002 0.008 0.020 0.046 0.126 0.160
-p.Pink Shrimp.Wet.Red Macroalgae                   0.006 0.007 0.000 0.000 0.002 0.004 0.007 0.017 0.024
-p.Polychete.Dry.Filamentous Green Algae            0.199 0.150 0.015 0.023 0.078 0.167 0.286 0.483 0.559
-p.Polychete.Dry.Mangrove                           0.261 0.150 0.031 0.048 0.144 0.251 0.354 0.538 0.590
-p.Polychete.Dry.Phytoplankton                      0.161 0.129 0.021 0.029 0.072 0.125 0.210 0.418 0.516
-p.Polychete.Dry.Red Macroalgae                     0.378 0.143 0.106 0.156 0.282 0.373 0.469 0.625 0.668
-p.Porceline Crab.Dry.Filamentous Green Algae       0.263 0.148 0.024 0.044 0.150 0.254 0.361 0.528 0.572
-p.Porceline Crab.Dry.Mangrove                      0.233 0.158 0.027 0.044 0.113 0.194 0.318 0.557 0.628
-p.Porceline Crab.Dry.Phytoplankton                 0.417 0.174 0.102 0.138 0.282 0.412 0.550 0.702 0.731
-p.Porceline Crab.Dry.Red Macroalgae                0.088 0.055 0.012 0.018 0.046 0.077 0.119 0.190 0.219
-p.Sailfin Molly.Wet.Filamentous Green Algae        0.074 0.091 0.002 0.003 0.017 0.042 0.096 0.246 0.326
-p.Sailfin Molly.Wet.Mangrove                       0.857 0.123 0.543 0.621 0.804 0.891 0.946 0.983 0.988
-p.Sailfin Molly.Wet.Phytoplankton                  0.058 0.069 0.001 0.002 0.011 0.030 0.079 0.212 0.261
-p.Sailfin Molly.Wet.Red Macroalgae                 0.011 0.012 0.001 0.001 0.003 0.007 0.015 0.035 0.044
-p.Salt Marsh Mud Crab.Dry.Filamentous Green Algae  0.362 0.153 0.060 0.111 0.257 0.358 0.465 0.624 0.679
-p.Salt Marsh Mud Crab.Dry.Mangrove                 0.185 0.137 0.027 0.037 0.087 0.146 0.246 0.460 0.557
-p.Salt Marsh Mud Crab.Dry.Phytoplankton            0.366 0.168 0.079 0.107 0.234 0.352 0.496 0.656 0.688
-p.Salt Marsh Mud Crab.Dry.Red Macroalgae           0.087 0.053 0.013 0.018 0.047 0.078 0.118 0.186 0.211
-p.Salt Marsh Mud Crab.Wet.Filamentous Green Algae  0.281 0.175 0.011 0.025 0.146 0.266 0.399 0.595 0.669
-p.Salt Marsh Mud Crab.Wet.Mangrove                 0.598 0.200 0.202 0.264 0.456 0.599 0.748 0.925 0.954
-p.Salt Marsh Mud Crab.Wet.Phytoplankton            0.105 0.092 0.006 0.010 0.035 0.077 0.151 0.293 0.340
-p.Salt Marsh Mud Crab.Wet.Red Macroalgae           0.016 0.014 0.001 0.002 0.006 0.012 0.021 0.045 0.055
-p.Silver Jenny.Wet.Filamentous Green Algae         0.076 0.095 0.002 0.003 0.016 0.042 0.099 0.255 0.333
-p.Silver Jenny.Wet.Mangrove                        0.875 0.111 0.607 0.667 0.831 0.908 0.953 0.984 0.989
-p.Silver Jenny.Wet.Phytoplankton                   0.038 0.046 0.001 0.002 0.009 0.022 0.050 0.131 0.168
-p.Silver Jenny.Wet.Red Macroalgae                  0.011 0.012 0.001 0.001 0.003 0.007 0.014 0.033 0.043
-p.Striped Mullet.Wet.Filamentous Green Algae       0.107 0.135 0.003 0.004 0.022 0.055 0.133 0.404 0.539
-p.Striped Mullet.Wet.Mangrove                      0.794 0.171 0.332 0.427 0.717 0.844 0.922 0.975 0.984
-p.Striped Mullet.Wet.Phytoplankton                 0.059 0.068 0.002 0.003 0.013 0.035 0.078 0.197 0.257
-p.Striped Mullet.Wet.Red Macroalgae                0.041 0.043 0.001 0.001 0.008 0.025 0.061 0.127 0.153
-p.Tidewater Mojarra.Dry.Filamentous Green Algae    0.359 0.170 0.034 0.060 0.236 0.361 0.481 0.640 0.690
-p.Tidewater Mojarra.Dry.Mangrove                   0.292 0.178 0.049 0.069 0.156 0.253 0.393 0.644 0.719
-p.Tidewater Mojarra.Dry.Phytoplankton              0.272 0.151 0.039 0.057 0.153 0.256 0.380 0.549 0.590
-p.Tidewater Mojarra.Dry.Red Macroalgae             0.077 0.052 0.011 0.016 0.039 0.066 0.103 0.175 0.205
-p.Tidewater Mojarra.Wet.Filamentous Green Algae    0.221 0.170 0.005 0.011 0.081 0.193 0.327 0.545 0.613
-p.Tidewater Mojarra.Wet.Mangrove                   0.710 0.188 0.284 0.367 0.586 0.741 0.863 0.962 0.977
-p.Tidewater Mojarra.Wet.Phytoplankton              0.058 0.058 0.003 0.004 0.017 0.038 0.079 0.177 0.220
-p.Tidewater Mojarra.Wet.Red Macroalgae             0.011 0.011 0.001 0.001 0.004 0.007 0.014 0.031 0.039
+p.Bay Anchovy.Dry.Filamentous Green Algae          0.201 0.110 0.035 0.047 0.112 0.191 0.273 0.399 0.438
+p.Bay Anchovy.Dry.Mangrove                         0.231 0.099 0.081 0.092 0.156 0.218 0.291 0.415 0.456
+p.Bay Anchovy.Dry.Phytoplankton                    0.511 0.183 0.200 0.236 0.370 0.491 0.645 0.835 0.860
+p.Bay Anchovy.Dry.Red Macroalgae                   0.057 0.043 0.001 0.002 0.022 0.051 0.084 0.137 0.156
+p.Brown Grass Shrimp.Wet.Filamentous Green Algae   0.117 0.118 0.003 0.005 0.029 0.078 0.168 0.357 0.431
+p.Brown Grass Shrimp.Wet.Mangrove                  0.674 0.192 0.310 0.357 0.519 0.684 0.837 0.956 0.974
+p.Brown Grass Shrimp.Wet.Phytoplankton             0.197 0.164 0.005 0.009 0.052 0.156 0.318 0.503 0.542
+p.Brown Grass Shrimp.Wet.Red Macroalgae            0.012 0.017 0.000 0.000 0.002 0.006 0.016 0.048 0.064
+p.Clown Goby.Wet.Filamentous Green Algae           0.215 0.177 0.003 0.006 0.051 0.185 0.334 0.549 0.619
+p.Clown Goby.Wet.Mangrove                          0.642 0.213 0.238 0.287 0.476 0.641 0.828 0.958 0.973
+p.Clown Goby.Wet.Phytoplankton                     0.134 0.118 0.004 0.008 0.037 0.097 0.205 0.373 0.420
+p.Clown Goby.Wet.Red Macroalgae                    0.009 0.013 0.000 0.000 0.002 0.005 0.012 0.034 0.045
+p.Crested Goby.Dry.Filamentous Green Algae         0.268 0.149 0.032 0.055 0.159 0.248 0.362 0.538 0.605
+p.Crested Goby.Dry.Mangrove                        0.315 0.143 0.096 0.119 0.212 0.291 0.398 0.588 0.659
+p.Crested Goby.Dry.Phytoplankton                   0.377 0.188 0.052 0.075 0.222 0.380 0.532 0.671 0.701
+p.Crested Goby.Dry.Red Macroalgae                  0.040 0.038 0.000 0.001 0.011 0.029 0.057 0.114 0.137
+p.Crested Goby.Wet.Filamentous Green Algae         0.109 0.106 0.004 0.008 0.034 0.076 0.147 0.319 0.398
+p.Crested Goby.Wet.Mangrove                        0.821 0.125 0.493 0.584 0.759 0.847 0.912 0.966 0.976
+p.Crested Goby.Wet.Phytoplankton                   0.066 0.057 0.004 0.007 0.023 0.051 0.092 0.179 0.214
+p.Crested Goby.Wet.Red Macroalgae                  0.004 0.006 0.000 0.000 0.001 0.003 0.005 0.015 0.019
+p.Eastern Grass Shrimp.Dry.Filamentous Green Algae 0.162 0.145 0.011 0.016 0.054 0.116 0.226 0.485 0.551
+p.Eastern Grass Shrimp.Dry.Mangrove                0.383 0.167 0.073 0.112 0.263 0.379 0.497 0.666 0.724
+p.Eastern Grass Shrimp.Dry.Phytoplankton           0.356 0.191 0.055 0.077 0.204 0.335 0.487 0.712 0.757
+p.Eastern Grass Shrimp.Dry.Red Macroalgae          0.099 0.076 0.000 0.002 0.037 0.087 0.147 0.233 0.271
+p.Eastern Grass Shrimp.Wet.Filamentous Green Algae 0.070 0.101 0.001 0.002 0.010 0.028 0.079 0.300 0.375
+p.Eastern Grass Shrimp.Wet.Mangrove                0.856 0.139 0.447 0.550 0.813 0.904 0.950 0.982 0.987
+p.Eastern Grass Shrimp.Wet.Phytoplankton           0.064 0.073 0.003 0.004 0.017 0.039 0.086 0.206 0.282
+p.Eastern Grass Shrimp.Wet.Red Macroalgae          0.010 0.013 0.000 0.000 0.002 0.006 0.013 0.034 0.043
+p.Eastern Mosquitofish.Wet.Filamentous Green Algae 0.125 0.131 0.002 0.004 0.026 0.078 0.188 0.391 0.478
+p.Eastern Mosquitofish.Wet.Mangrove                0.746 0.170 0.379 0.435 0.630 0.771 0.888 0.971 0.983
+p.Eastern Mosquitofish.Wet.Phytoplankton           0.120 0.108 0.004 0.007 0.033 0.085 0.183 0.345 0.393
+p.Eastern Mosquitofish.Wet.Red Macroalgae          0.008 0.011 0.000 0.000 0.001 0.004 0.010 0.031 0.043
+p.Golden Topminnow.Wet.Filamentous Green Algae     0.117 0.124 0.003 0.005 0.024 0.072 0.172 0.363 0.443
+p.Golden Topminnow.Wet.Mangrove                    0.767 0.163 0.396 0.465 0.667 0.794 0.900 0.971 0.981
+p.Golden Topminnow.Wet.Phytoplankton               0.109 0.099 0.003 0.006 0.030 0.078 0.165 0.314 0.355
+p.Golden Topminnow.Wet.Red Macroalgae              0.007 0.009 0.000 0.000 0.001 0.004 0.009 0.024 0.032
+p.Mangrove Tree Crab.Dry.Filamentous Green Algae   0.089 0.068 0.009 0.015 0.043 0.074 0.116 0.220 0.264
+p.Mangrove Tree Crab.Dry.Mangrove                  0.113 0.058 0.025 0.034 0.077 0.108 0.141 0.203 0.236
+p.Mangrove Tree Crab.Dry.Phytoplankton             0.763 0.108 0.475 0.556 0.723 0.789 0.835 0.878 0.891
+p.Mangrove Tree Crab.Dry.Red Macroalgae            0.034 0.038 0.000 0.001 0.008 0.023 0.047 0.106 0.133
+p.Pink Shrimp.Dry.Filamentous Green Algae          0.135 0.102 0.011 0.017 0.058 0.113 0.186 0.324 0.387
+p.Pink Shrimp.Dry.Mangrove                         0.464 0.155 0.186 0.233 0.351 0.446 0.561 0.753 0.800
+p.Pink Shrimp.Dry.Phytoplankton                    0.378 0.156 0.057 0.091 0.267 0.395 0.496 0.608 0.642
+p.Pink Shrimp.Dry.Red Macroalgae                   0.024 0.023 0.000 0.001 0.008 0.017 0.032 0.067 0.085
+p.Pink Shrimp.Wet.Filamentous Green Algae          0.040 0.048 0.001 0.002 0.010 0.023 0.051 0.134 0.174
+p.Pink Shrimp.Wet.Mangrove                         0.903 0.081 0.685 0.741 0.871 0.926 0.960 0.985 0.990
+p.Pink Shrimp.Wet.Phytoplankton                    0.055 0.056 0.002 0.004 0.017 0.037 0.073 0.166 0.210
+p.Pink Shrimp.Wet.Red Macroalgae                   0.002 0.003 0.000 0.000 0.000 0.001 0.003 0.008 0.011
+p.Porceline Crab.Dry.Filamentous Green Algae       0.157 0.092 0.021 0.034 0.091 0.146 0.205 0.327 0.378
+p.Porceline Crab.Dry.Mangrove                      0.173 0.095 0.038 0.052 0.113 0.161 0.214 0.318 0.399
+p.Porceline Crab.Dry.Phytoplankton                 0.645 0.126 0.323 0.400 0.587 0.669 0.731 0.794 0.815
+p.Porceline Crab.Dry.Red Macroalgae                0.025 0.026 0.000 0.001 0.007 0.018 0.036 0.074 0.089
+p.Sailfin Molly.Wet.Filamentous Green Algae        0.047 0.058 0.001 0.002 0.011 0.028 0.062 0.155 0.192
+p.Sailfin Molly.Wet.Mangrove                       0.891 0.088 0.663 0.722 0.850 0.914 0.954 0.984 0.989
+p.Sailfin Molly.Wet.Phytoplankton                  0.058 0.062 0.002 0.004 0.016 0.036 0.078 0.183 0.227
+p.Sailfin Molly.Wet.Red Macroalgae                 0.004 0.006 0.000 0.000 0.001 0.002 0.005 0.015 0.021
+p.Salt Marsh Mud Crab.Dry.Filamentous Green Algae  0.226 0.094 0.070 0.097 0.164 0.214 0.278 0.395 0.442
+p.Salt Marsh Mud Crab.Dry.Mangrove                 0.118 0.070 0.026 0.033 0.068 0.105 0.151 0.252 0.295
+p.Salt Marsh Mud Crab.Dry.Phytoplankton            0.633 0.123 0.338 0.399 0.567 0.657 0.720 0.788 0.808
+p.Salt Marsh Mud Crab.Dry.Red Macroalgae           0.022 0.021 0.000 0.001 0.007 0.016 0.030 0.066 0.081
+p.Salt Marsh Mud Crab.Wet.Filamentous Green Algae  0.166 0.113 0.013 0.022 0.082 0.148 0.227 0.382 0.445
+p.Salt Marsh Mud Crab.Wet.Mangrove                 0.607 0.169 0.285 0.329 0.486 0.605 0.733 0.883 0.914
+p.Salt Marsh Mud Crab.Wet.Phytoplankton            0.222 0.132 0.024 0.038 0.109 0.205 0.319 0.456 0.492
+p.Salt Marsh Mud Crab.Wet.Red Macroalgae           0.005 0.006 0.000 0.000 0.001 0.003 0.006 0.017 0.024
+p.Silver Jenny.Wet.Filamentous Green Algae         0.088 0.126 0.001 0.003 0.013 0.040 0.106 0.359 0.475
+p.Silver Jenny.Wet.Mangrove                        0.853 0.142 0.431 0.560 0.808 0.897 0.949 0.983 0.988
+p.Silver Jenny.Wet.Phytoplankton                   0.054 0.053 0.002 0.004 0.016 0.037 0.073 0.162 0.194
+p.Silver Jenny.Wet.Red Macroalgae                  0.005 0.007 0.000 0.000 0.001 0.002 0.006 0.016 0.023
+p.Striped Mullet.Wet.Filamentous Green Algae       0.067 0.112 0.001 0.003 0.012 0.029 0.067 0.290 0.443
+p.Striped Mullet.Wet.Mangrove                      0.851 0.148 0.388 0.538 0.811 0.897 0.948 0.983 0.988
+p.Striped Mullet.Wet.Phytoplankton                 0.073 0.080 0.003 0.004 0.018 0.044 0.100 0.231 0.287
+p.Striped Mullet.Wet.Red Macroalgae                0.010 0.016 0.000 0.000 0.001 0.004 0.011 0.041 0.055
+p.Tidewater Mojarra.Dry.Filamentous Green Algae    0.348 0.159 0.073 0.113 0.229 0.334 0.454 0.627 0.680
+p.Tidewater Mojarra.Dry.Mangrove                   0.253 0.135 0.060 0.075 0.154 0.233 0.322 0.514 0.590
+p.Tidewater Mojarra.Dry.Phytoplankton              0.356 0.186 0.050 0.075 0.197 0.350 0.510 0.659 0.694
+p.Tidewater Mojarra.Dry.Red Macroalgae             0.044 0.041 0.001 0.002 0.013 0.033 0.063 0.123 0.145
+p.Tidewater Mojarra.Wet.Filamentous Green Algae    0.161 0.129 0.007 0.014 0.064 0.130 0.227 0.413 0.498
+p.Tidewater Mojarra.Wet.Mangrove                   0.756 0.152 0.382 0.464 0.669 0.782 0.870 0.956 0.970
+p.Tidewater Mojarra.Wet.Phytoplankton              0.077 0.072 0.004 0.006 0.026 0.056 0.108 0.226 0.273
+p.Tidewater Mojarra.Wet.Red Macroalgae             0.006 0.008 0.000 0.000 0.001 0.003 0.008 0.020 0.027
