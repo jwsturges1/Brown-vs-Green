@@ -137,6 +137,17 @@ y_label_formatter <- function(x) {
   ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
 }
 
+cont_df <- cont_df %>%
+  mutate(lab = case_when(
+    lab == "Phyto" ~ "PMA",
+    TRUE ~ lab
+  ))
+cont_df <- cont_df %>%
+  mutate(lab = case_when(
+    lab == "POM" ~ "PMA",
+    TRUE ~ lab
+  ))
+
 ggplot(data = cont_df, aes(x = lab, y = mean, fill = season)) +
   geom_boxplot() + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
   geom_rect(data = cont_df |> group_by(slab) |> slice(1),
