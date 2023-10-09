@@ -142,11 +142,18 @@ cont_df <- cont_df %>%
     lab == "Phyto" ~ "PMA",
     TRUE ~ lab
   ))
+
 cont_df <- cont_df %>%
   mutate(lab = case_when(
     lab == "POM" ~ "PMA",
     TRUE ~ lab
   ))
+
+cont_df <- cont_df %>%
+mutate(lab = factor(lab, levels = c('Sawgrass', 'Man',
+                                    "Floc","RMA","Seagrass",
+                                    'EMA','Peri','FGA',
+                                    'PMA')))
 
 ggplot(data = cont_df, aes(x = lab, y = mean, fill = season)) +
   geom_boxplot() + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
