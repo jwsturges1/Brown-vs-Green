@@ -67,4 +67,6 @@ Include any acknowledgments or credits for tools, datasets, or support received 
 
 ---
 
-**Note**: Customize this README template based on your project's unique features and requirements.
+## Gif Section
+
+![Does anyone check these? Email me the gif so I know! I claim no rights to the gif file posted](your-gif-file.gif)
