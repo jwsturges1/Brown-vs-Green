@@ -69,4 +69,6 @@ Include any acknowledgments or credits for tools, datasets, or support received 
 
 ## Gif Section
 
+Does anyone check these? Email me the gif so I know! I claim no rights to the gif file posted
+
 ![Does anyone check these? Email me the gif so I know! I claim no rights to the gif file posted](food-chain-ocean.gif)
