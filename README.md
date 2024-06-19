@@ -1,8 +1,8 @@
-# Brown, Green, and Everything in Between
+# Brown, Green, and Everything in Between: Seasonality drives green and brown energy pathways in food webs across an ecosystem gradient
 
 ## Abstract
 
-Food web structure and function are dynamic, influenced by spatial and temporal factors. This study investigates the dynamics of energy pathways, specifically the fast, 'green' pathways driven by primary producers and the slow, 'brown' pathways driven by detritivores. Using Bayesian mixing models, we quantify the proportional contributions of brown and green energy pathways in functionally representative food webs across two coastal drainages. These drainages span freshwater marsh, riverine mangrove, and marine seagrass habitats, experiencing hydrologically distinct seasons.
+Food web structure and function is spatially and temporally dynamic, yet few studies track their variance. Food webs typically include highly coupled fast, ‘green’ energy pathways driven by primary producers and slow, ‘brown’ energy channels driven by detritivores. Quantifying the amount of energy consumers derive from each of these pathways is important, particularly across multiple interconnected food webs over large spatial areas and over time. In this study, we used Bayesian mixing models to quantify the proportional contributions of brown and green energy pathways to functionally representative food webs across two coastal drainages that span freshwater marsh, riverine mangrove, and marine seagrass habitats over hydrologically distinct seasons. We found that green channels typically provided more total energy to consumers across both coastal drainages regardless of site and season. We observed a ‘greening effect’ as most sites exhibited greater reliance on green pathways during the wet season. Two sites were the exception and switched from green to primarily brown energy pathways between the dry and wet season. Although Everglades coastal food webs relied largely on green energy pathways, the proportional contributions of each energy channel and specific basal sources varied across both coastal gradients and seasons. Our results highlight the complexity of food web dynamics across ecosystem gradients and further investigation into mechanisms that drive shifts in energy pathway contributions will allow us to better anticipate how species, food webs, and ecological networks may respond to environmental drivers under future global change.
 
 ## Authors
 
@@ -45,25 +45,10 @@ Corresponding Author: James W. Sturges; [jstur015@fiu.edu](mailto:jstur015@fiu.e
 - Stable isotopes
 - Resource use
 
-## Installation
-
-This section is not applicable to the research project. Please refer to the main body for information related to the research findings.
-
-## Usage
-
-This section is not applicable to the research project. Please refer to the main body for information related to the research findings.
-
-## Contributing
-
-This section is not applicable to the research project. Please refer to the main body for information related to the research findings.
-
-## License
-
-This project is not software; hence, it doesn't fall under a specific license.
 
 ## Acknowledgments
 
-Include any acknowledgments or credits for tools, datasets, or support received during the research.
+We thank our collaborators at Everglades National Park for their continued support of our research. Funding for this project was supported by the National Science Foundation through the Florida Coastal Everglades Long-Term Ecological Research (FCE-LTER) program under grant No. DEB-1832229. The authors declare no conflict of interest. This is contribution #X from the Coastline and Oceans Division in the Institute of Environment at Florida International University.
 
 ---
 
