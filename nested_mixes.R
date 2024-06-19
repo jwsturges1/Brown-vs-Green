@@ -109,7 +109,7 @@ SIa<-SI %>% group_by(site, hydroseason, group, common_name, functional_grp) %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
 
 
-# not including seasonality as a factor
+# averages by species not including seasonality as a factor
 SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>% 
   summarise(n=n(),md13C = mean(d13C,na.rm = T),d13Csd=sd(d13C,na.rm = T), md15N=mean(d15N,na.rm = T),d15Nsd=sd(d15N,na.rm = T),md34S=mean(d34S,na.rm = T),d34Ssd=sd(d34S,na.rm = T))  %>%
   filter(!is.na(md13C),!is.na(md15N),!is.na(md34S))
@@ -221,7 +221,7 @@ write.csv(RB10mix,"data/Consumers/nested/RB10mix.csv",row.names = F)
 
 
 
-mix <- load_mix_data(filename="data/Consumers/RB10mix.csv",
+mix <- load_mix_data(filename="data/Consumers/nested/RB10mix.csv",
                      iso_names=c("d13C","d15N","d34S"),
                      factors=c('hydroseason','common_name'),
                      fac_random=c(F,T),
@@ -243,11 +243,11 @@ write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
 
 
 #run a test model to make sure it works
-jags.RB10 <- run_model(run="test", mix, source, discr, model_filename, 
+jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run="normal", mix, source, discr, model_filename,
+jags.RB10 <- run_model(run= "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
   output_jags.RB10  <- list(summary_save = T,
@@ -295,14 +295,14 @@ write.csv(mixtable_RB10, "data/Mix_Quants/nested/MT_RB10.csv", row.names = FALSE
 # SRS 3
 SRS3mix <- SIa %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(SRS3mix, "data/Consumers/SRS3mix.csv", row.names = FALSE)
+write.csv(SRS3mix, "data/Consumers/nested/SRS3mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/SRS3mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/SRS3mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesSRS3.csv",
                            source_factors = NULL,
@@ -312,12 +312,12 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS3.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS3.csv"), mix)
 
-plot_data(filename = "figures/isospace/SRS3_isospace_plot",
+plot_data(filename = "figures/isospace/nested/SRS3_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/SRS3_mix.txt"
+model_filename <- "data/Consumers/nested/SRS3_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
 jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
@@ -327,31 +327,33 @@ jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.SRS3 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS3/FCESRS3_sumstats",
+                         summary_name = "data/JAGS_Output/SRS3/nested/FCESRS3_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
+                         plot_post_name = "data/JAGS_Output/SRS3/nested/FCESRS3_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS3/FCESRS3_pairs",
+                         plot_pairs_name = "data/JAGS_Output/SRS3/nested/FCESRS3_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = FALSE,
-                         plot_xy_name = "data/JAGS_Output/SRS3/FCESRS3_plot",
+                         plot_xy_name = "data/JAGS_Output/SRS3/nested/FCESRS3_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS3/FCESRS3_Diagnostic",
+                         diag_name = "data/JAGS_Output/SRS3/nested/FCESRS3_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 
+saveRDS(jags.SRS3, 'data/JAGS_Output/SRS3/nested/SRS3.RDS')
+
 output_JAGS(jags.SRS3, mix, source, output_jags.SRS3)
 
-mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/FCESRS3_sumstats.txt", type = "SRS3", nest = TRUE)
+mixtable_SRS3 = mixTable("data/JAGS_Output/SRS3/nested/FCESRS3_sumstats.txt", type = "SRS3", nest = TRUE)
 
-write.csv(mixtable_SRS3, "data/Mix_Quants/MT_SRS3.csv", row.names = FALSE)
+write.csv(mixtable_SRS3, "data/Mix_Quants/nested/MT_SRS3.csv", row.names = FALSE)
 
 # combinedSRS3 <- combine_sources(jags.SRS3, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Phytoplankton','Floc'), brown=c('Sawgrass, Periphyton')))
@@ -367,14 +369,14 @@ write.csv(mixtable_SRS3, "data/Mix_Quants/MT_SRS3.csv", row.names = FALSE)
 
 SRS4mix <- SIa %>% filter(site == 'SRS4', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(SRS4mix, "data/Consumers/SRS4mix.csv", row.names = FALSE)
+write.csv(SRS4mix, "data/Consumers/nested/SRS4mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/SRS4mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/SRS4mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesSRS4.csv",
                            source_factors = NULL,
@@ -384,12 +386,12 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS4.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS4.csv"), mix)
 
-plot_data(filename = "figures/isospace/SRS4_isospace_plot",
+plot_data(filename = "figures/isospace/nested/SRS4_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/SRS4_mix.txt"
+model_filename <- "data/Consumers/nested/SRS4_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
 jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
@@ -398,31 +400,33 @@ jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
 jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.SRS4 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS4/FCESRS4_sumstats",
+                         summary_name = "data/JAGS_Output/SRS4/nested/FCESRS4_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS4/FCESRS4_plot",
+                         plot_post_name = "data/JAGS_Output/SRS4/nested/FCESRS4_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS4/FCESRS4_pairs",
+                         plot_pairs_name = "data/JAGS_Output/SRS4/nested/FCESRS4_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/SRS4/FCESRS4_plot",
+                         plot_xy_name = "data/JAGS_Output/SRS4/nested/FCESRS4_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS4/FCESRS4_Diagnostic",
+                         diag_name = "data/JAGS_Output/SRS4/nested/FCESRS4_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 
+saveRDS(jags.SRS4, 'data/JAGS_Output/SRS4/nested/SRS4.RDS')
+
 output_JAGS(jags.SRS4, mix, source, output_jags.SRS4)
 
-mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/FCESRS4_sumstats.txt", type = "SRS4", nest = TRUE)
+mixtable_SRS4 = mixTable("data/JAGS_Output/SRS4/nested/FCESRS4_sumstats.txt", type = "SRS4", nest = TRUE)
 
-write.csv(mixtable_SRS4, "data/Mix_Quants/MT_SRS4.csv", row.names = FALSE)
+write.csv(mixtable_SRS4, "data/Mix_Quants/nested/MT_SRS4.csv", row.names = FALSE)
 
 # combinedSRS4 <- combine_sources(jags.SRS4, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Phytoplankton',"Epiphytes"), brown=c('Mangrove')))
@@ -435,14 +439,14 @@ write.csv(mixtable_SRS4, "data/Mix_Quants/MT_SRS4.csv", row.names = FALSE)
 # SRS 6
 SRS6mix <- SIa %>% filter(site == 'SRS6', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(SRS6mix, "data/Consumers/SRS6mix.csv", row.names = FALSE)
+write.csv(SRS6mix, "data/Consumers/nested/SRS6mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/SRS6mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/SRS6mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesSRS6.csv",
                            source_factors = NULL,
@@ -452,7 +456,7 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS6.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS6.csv"), mix)
 
-plot_data(filename = "figures/isospace/SRS6_isospace_plot",
+plot_data(filename = "figures/isospace/nested/SRS6_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -467,31 +471,33 @@ jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.SRS6 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/SRS6/FCESRS6_sumstats",
+                         summary_name = "data/JAGS_Output/SRS6/nested/FCESRS6_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/SRS6/FCESRS6_plot",
+                         plot_post_name = "data/JAGS_Output/SRS6/nested/FCESRS6_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/SRS6/FCESRS6_pairs",
+                         plot_pairs_name = "data/JAGS_Output/SRS6/nested/FCESRS6_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/SRS6/FCESRS6_plot",
+                         plot_xy_name = "data/JAGS_Output/SRS6/nested/FCESRS6_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/SRS6/FCESRS6_Diagnostic",
+                         diag_name = "data/JAGS_Output/SRS6/nested/FCESRS6_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 
+saveRDS(jags.SRS6, 'data/JAGS_Output/SRS6/nested/SRS6.RDS')
+
 output_JAGS(jags.SRS6, mix, source, output_jags.SRS6)
 
-mixtable_SRS6 = mixTable("data/JAGS_Output/SRS6/FCESRS6_sumstats.txt", type = "SRS6", nest = TRUE)
+mixtable_SRS6 = mixTable("data/JAGS_Output/SRS6/nested/FCESRS6_sumstats.txt", type = "SRS6", nest = TRUE)
 
-write.csv(mixtable_SRS6, "data/Mix_Quants/MT_SRS6.csv", row.names = FALSE)
+write.csv(mixtable_SRS6, "data/Mix_Quants/nested/MT_SRS6.csv", row.names = FALSE)
 # combinedSRS6 <- combine_sources(jags.SRS6, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Phytoplankton','Filamentous Green Algae' ), brown=c('Mangrove', 'Red Macroalgae')))
 # 
@@ -508,14 +514,14 @@ write.csv(mixtable_SRS6, "data/Mix_Quants/MT_SRS6.csv", row.names = FALSE)
 
 TS3mix <- SIa %>% filter(site == 'TS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(TS3mix, "data/Consumers/TS3mix.csv", row.names = FALSE)
+write.csv(TS3mix, "data/Consumers/nested/TS3mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/TS3mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/TS3mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesTS3.csv",
                            source_factors = NULL,
@@ -525,46 +531,48 @@ source <- load_source_data(filename = "data/Sources/sourcesTS3.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS3.csv"), mix)
 
-plot_data(filename = "figures/isospace/TS3_isospace_plot",
+plot_data(filename = "figures/isospace/nested/TS3_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/TS3_mix.txt"
+model_filename <- "data/Consumers/nested/TS3_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
+#                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.TS3 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS3/FCETS3_sumstats",
+                        summary_name = "data/JAGS_Output/TS3/nested/FCETS3_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = T,
-                        plot_post_name = "data/JAGS_Output/TS3/FCETS3_plot",
+                        plot_post_name = "data/JAGS_Output/TS3/nested/FCETS3_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = T,
-                        plot_pairs_name = "data/JAGS_Output/TS3/FCETS3_pairs",
+                        plot_pairs_name = "data/JAGS_Output/TS3/nested/FCETS3_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = T,
-                        plot_xy_name = "data/JAGS_Output/TS3/FCETS3_plot",
+                        plot_xy_name = "data/JAGS_Output/TS3/nested/FCETS3_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS3/FCETS3_Diagnostic",
+                        diag_name = "data/JAGS_Output/TS3/nested/FCETS3_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 
+saveRDS(jags.TS3, 'data/JAGS_Output/TS3/nested/TS3.RDS')
+
 output_JAGS(jags.TS3, mix, source, output_jags.TS3)
 
-mixtable_TS3 = mixTable("data/JAGS_Output/TS3/FCETS3_sumstats.txt", type = "TS3", nest = TRUE)
+mixtable_TS3 = mixTable("data/JAGS_Output/TS3/nested/FCETS3_sumstats.txt", type = "TS3", nest = TRUE)
 
-write.csv(mixtable_TS3, "data/Mix_Quants/MT_TS3.csv", row.names = FALSE)
+write.csv(mixtable_TS3, "data/Mix_Quants/nested/MT_TS3.csv", row.names = FALSE)
 # ##combine posterior ground into brown/green
 # combinedTS3 <- combine_sources(jags.TS3, mix, source, alpha.prior=1, 
 #                                groups=list(green=c('Periphyton'), brown=c('Dry Sawgrass','Wet Sawgrass', 'Floc' )))
@@ -583,14 +591,14 @@ write.csv(mixtable_TS3, "data/Mix_Quants/MT_TS3.csv", row.names = FALSE)
 
 TS7mix <- SIa %>% filter(site == 'TS7', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(TS7mix, "data/Consumers/TS7mix.csv", row.names = FALSE)
+write.csv(TS7mix, "data/Consumers/nested/TS7mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/TS7mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/TS7mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesTS7.csv",
                            source_factors = NULL,
@@ -600,7 +608,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS7.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS7.csv"), mix)
 
-plot_data(filename = "figures/isospace/TS7_isospace_plot",
+plot_data(filename = "figures/isospace/nested/TS7_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -614,31 +622,33 @@ jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
 jags.TS7 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS7 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS7/FCETS7_sumstats",
+                        summary_name = "data/JAGS_Output/TS7/nested/FCETS7_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = T,
-                        plot_post_name = "data/JAGS_Output/TS7/FCETS7_plot",
+                        plot_post_name = "data/JAGS_Output/TS7/nested/FCETS7_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = T,
-                        plot_pairs_name = "data/JAGS_Output/TS7/FCETS7_pairs",
+                        plot_pairs_name = "data/JAGS_Output/TS7/nested/FCETS7_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = T,
-                        plot_xy_name = "data/JAGS_Output/TS7/FCETS7_plot",
+                        plot_xy_name = "data/JAGS_Output/TS7/nested/FCETS7_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS7/FCETS7_Diagnostic",
+                        diag_name = "data/JAGS_Output/TS7/nested/FCETS7_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 
+saveRDS(jags.TS7, 'data/JAGS_Output/TS7/nested/TS7.RDS')
+
 output_JAGS(jags.TS7, mix, source, output_jags.TS7)
 
-mixtable_TS7 = mixTable("data/JAGS_Output/TS7/FCETS7_sumstats.txt", type = "TS7", nest = TRUE)
+mixtable_TS7 = mixTable("data/JAGS_Output/TS7/nested/FCETS7_sumstats.txt", type = "TS7", nest = TRUE)
 
-write.csv(mixtable_TS7, "data/Mix_Quants/MT_TS7.csv", row.names = FALSE)
+write.csv(mixtable_TS7, "data/Mix_Quants/nested/MT_TS7.csv", row.names = FALSE)
 
 # ##combine posterior ground into brown/green
 # combinedTS7 <- combine_sources(jags.TS7, mix, source, alpha.prior=1, 
@@ -656,14 +666,14 @@ write.csv(mixtable_TS7, "data/Mix_Quants/MT_TS7.csv", row.names = FALSE)
 
 TS9mix <- SIa %>% filter(site == 'TS9', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(TS9mix, "data/Consumers/TS9mix.csv", row.names = FALSE)
+write.csv(TS9mix, "data/Consumers/nested/TS9mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/TS9mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/TS9mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesTS9.csv",
                            source_factors = NULL,
@@ -673,12 +683,12 @@ source <- load_source_data(filename = "data/Sources/sourcesTS9.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS9.csv"), mix)
 
-plot_data(filename = "figures/isospace/TS9_isospace_plot",
+plot_data(filename = "figures/isospace/nested/TS9_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/TS9_mix.txt"
+model_filename <- "data/Consumers/nested/TS9_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
 jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
@@ -688,31 +698,33 @@ jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.TS9 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS9/FCETS9_sumstats",
+                        summary_name = "data/JAGS_Output/TS9/nested/FCETS9_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = T,
-                        plot_post_name = "data/JAGS_Output/TS9/FCETS9_plot",
+                        plot_post_name = "data/JAGS_Output/TS9/nested/FCETS9_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = T,
-                        plot_pairs_name = "data/JAGS_Output/TS9/FCETS9_pairs",
+                        plot_pairs_name = "data/JAGS_Output/TS9/nested/FCETS9_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = T,
-                        plot_xy_name = "data/JAGS_Output/TS9/FCETS9_plot",
+                        plot_xy_name = "data/JAGS_Output/TS9/nested/FCETS9_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS9/FCETS9_Diagnostic",
+                        diag_name = "data/JAGS_Output/TS9/nested/FCETS9_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 
+saveRDS(jags.TS9, 'data/JAGS_Output/TS9/nested/TS9.RDS')
+
 output_JAGS(jags.TS9, mix, source, output_jags.TS9)
 
-mixtable_TS9 = mixTable("data/JAGS_Output/TS9/FCETS9_sumstats.txt", type = "TS9", nest = TRUE)
+mixtable_TS9 = mixTable("data/JAGS_Output/TS9/nested/FCETS9_sumstats.txt", type = "TS9", nest = TRUE)
 
-write.csv(mixtable_TS9, "data/Mix_Quants/MT_TS9.csv", row.names = FALSE)
+write.csv(mixtable_TS9, "data/Mix_Quants/nested/MT_TS9.csv", row.names = FALSE)
 # ##combine posterior ground into brown/green
 # combinedTS9 <- combine_sources(jags.TS9, mix, source, alpha.prior=1, 
 #                                groups=list(green=c('Epiphytes', 'SPOM'), brown=c('Seagrass', 'Mangrove' )))
@@ -728,14 +740,14 @@ write.csv(mixtable_TS9, "data/Mix_Quants/MT_TS9.csv", row.names = FALSE)
 
 TS10mix <- SIa %>% filter(site == 'TS10', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(TS10mix, "data/Consumers/TS10mix.csv", row.names = FALSE)
+write.csv(TS10mix, "data/Consumers/nested/TS10mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/TS10mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/TS10mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesTS10.csv",
                            source_factors = NULL,
@@ -760,31 +772,33 @@ jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.TS10 <- list(summary_save = TRUE,
-                        summary_name = "data/JAGS_Output/TS10/FCETS10_sumstats",
+                        summary_name = "data/JAGS_Output/TS10/nested/FCETS10_sumstats",
                         sup_post = FALSE,
                         plot_post_save_pdf = T,
-                        plot_post_name = "data/JAGS_Output/TS10/FCETS10_plot",
+                        plot_post_name = "data/JAGS_Output/TS10/nested/FCETS10_plot",
                         sup_pairs = FALSE,
                         plot_pairs_save_pdf = T,
-                        plot_pairs_name = "data/JAGS_Output/TS10/FCETS10_pairs",
+                        plot_pairs_name = "data/JAGS_Output/TS10/nested/FCETS10_pairs",
                         sup_xy = TRUE,
                         plot_xy_save_pdf = T,
-                        plot_xy_name = "data/JAGS_Output/TS10/FCETS10_plot",
+                        plot_xy_name = "data/JAGS_Output/TS10/nested/FCETS10_plot",
                         gelman = TRUE,
                         heidel = FALSE,
                         geweke = TRUE,
                         diag_save = TRUE,
-                        diag_name = "data/JAGS_Output/TS10/FCETS10_Diagnostic",
+                        diag_name = "data/JAGS_Output/TS10/nested/FCETS10_Diagnostic",
                         indiv_effect = FALSE,
                         plot_post_save_png = FALSE,
                         plot_pairs_save_png = FALSE,
                         plot_xy_save_png = FALSE)
 
+saveRDS(jags.TS10, 'data/JAGS_Output/TS10/nested/TS10.RDS')
+
 output_JAGS(jags.TS10, mix, source, output_jags.TS10)
 
-mixtable_TS10 = mixTable("data/JAGS_Output/TS10/FCETS10_sumstats.txt", type = "TS10", nest = TRUE)
+mixtable_TS10 = mixTable("data/JAGS_Output/TS10/nested/FCETS10_sumstats.txt", type = "TS10", nest = TRUE)
 
-write.csv(mixtable_TS10, "data/Mix_Quants/MT_TS10.csv", row.names = FALSE)
+write.csv(mixtable_TS10, "data/Mix_Quants/nested/MT_TS10.csv", row.names = FALSE)
 # ##combine posterior ground into brown/green
 # combinedTS10 <- combine_sources(jags.TS10, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('Epiphytes', 'SPOM'), brown=c('Seagrass', 'Mangrove' )))
@@ -799,14 +813,14 @@ write.csv(mixtable_TS10, "data/Mix_Quants/MT_TS10.csv", row.names = FALSE)
 
 TS11mix <- SIa %>% filter(site == 'TS11', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(TS11mix, "data/Consumers/TS11mix.csv", row.names = FALSE)
+write.csv(TS11mix, "data/Consumers/nested/TS11mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/TS11mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/nested/TS11mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
-                     factors = c('common_name', 'hydroseason'),
-                     fac_random = c(FALSE, FALSE),
-                     fac_nested = c(FALSE, FALSE),
-                     cont_effects = NULL)
+                     factors=c('hydroseason','common_name'),
+                     fac_random=c(F,T),
+                     fac_nested=c(F,T),
+                     cont_effects=NULL)
 
 source <- load_source_data(filename = "data/Sources/sourcesTS11.csv",
                            source_factors = NULL,
@@ -831,31 +845,33 @@ jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 output_jags.TS11 <- list(summary_save = TRUE,
-                         summary_name = "data/JAGS_Output/TS11/FCETS11_sumstats",
+                         summary_name = "data/JAGS_Output/TS11/nested/FCETS11_sumstats",
                          sup_post = FALSE,
                          plot_post_save_pdf = T,
-                         plot_post_name = "data/JAGS_Output/TS11/FCETS11_plot",
+                         plot_post_name = "data/JAGS_Output/TS11/nested/FCETS11_plot",
                          sup_pairs = FALSE,
                          plot_pairs_save_pdf = T,
-                         plot_pairs_name = "data/JAGS_Output/TS11/FCETS11_pairs",
+                         plot_pairs_name = "data/JAGS_Output/TS11/nested/FCETS11_pairs",
                          sup_xy = TRUE,
                          plot_xy_save_pdf = T,
-                         plot_xy_name = "data/JAGS_Output/TS11/FCETS11_plot",
+                         plot_xy_name = "data/JAGS_Output/TS11/nested/FCETS11_plot",
                          gelman = TRUE,
                          heidel = FALSE,
                          geweke = TRUE,
                          diag_save = TRUE,
-                         diag_name = "data/JAGS_Output/TS11/FCETS11_Diagnostic",
+                         diag_name = "data/JAGS_Output/TS11/nested/FCETS11_Diagnostic",
                          indiv_effect = FALSE,
                          plot_post_save_png = FALSE,
                          plot_pairs_save_png = FALSE,
                          plot_xy_save_png = FALSE)
 
+saveRDS(jags.TS11, 'data/JAGS_Output/TS11/nested/TS11.RDS')
+
 output_JAGS(jags.TS11, mix, source, output_jags.TS11)
 
-mixtable_TS11 = mixTable("data/JAGS_Output/TS11/FCETS11_sumstats.txt", type = "TS11", nest = TRUE)
+mixtable_TS11 = mixTable("data/JAGS_Output/TS11/nested/FCETS11_sumstats.txt", type = "TS11", nest = TRUE)
 
-write.csv(mixtable_TS11, "data/Mix_Quants/MT_TS11.csv", row.names = FALSE)
+write.csv(mixtable_TS11, "data/Mix_Quants/nested/MT_TS11.csv", row.names = FALSE)
 # ##combine posterior ground into brown/green
 # combinedTS11 <- combine_sources(jags.TS11, mix, source, alpha.prior=1, 
 #                                 groups=list(green=c('SPOM','Epiphytes'), brown=c('Seagrass', 'Mangrove')))
