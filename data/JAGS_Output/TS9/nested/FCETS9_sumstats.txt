@@ -1,0 +1,53 @@
+
+#################################################################
+# Summary Statistics
+#################################################################
+
+DIC = 44.51525
+
+                                      Mean    SD  2.5%    5%   25%   50%   75%    95%  97.5%
+common_name.SD                       1.573 3.376 0.024 0.047 0.233 0.539 1.098 10.341 14.633
+p.Dry.Epiphytes                      0.374 0.176 0.067 0.107 0.245 0.360 0.488  0.695  0.747
+p.Wet.Epiphytes                      0.316 0.236 0.024 0.038 0.133 0.245 0.443  0.818  0.874
+p.Dry.Mangrove                       0.129 0.097 0.005 0.010 0.056 0.113 0.182  0.304  0.356
+p.Wet.Mangrove                       0.079 0.097 0.002 0.004 0.021 0.049 0.100  0.252  0.337
+p.Dry.Seagrass                       0.181 0.120 0.009 0.018 0.088 0.168 0.251  0.398  0.446
+p.Wet.Seagrass                       0.117 0.117 0.003 0.007 0.035 0.085 0.159  0.333  0.419
+p.Dry.SPOM                           0.316 0.168 0.030 0.057 0.194 0.302 0.426  0.611  0.675
+p.Wet.SPOM                           0.488 0.253 0.011 0.027 0.294 0.547 0.690  0.837  0.871
+p.Dry.Eastern Grass Shrimp.Epiphytes 0.455 0.259 0.048 0.089 0.255 0.409 0.623  0.986  1.000
+p.Dry.Eastern Grass Shrimp.Mangrove  0.106 0.090 0.000 0.000 0.028 0.089 0.164  0.276  0.312
+p.Dry.Eastern Grass Shrimp.Seagrass  0.134 0.114 0.000 0.000 0.037 0.111 0.204  0.350  0.388
+p.Dry.Eastern Grass Shrimp.SPOM      0.305 0.220 0.000 0.000 0.126 0.280 0.450  0.700  0.793
+p.Dry.Rainwater Killifish.Epiphytes  0.454 0.255 0.046 0.088 0.258 0.424 0.605  0.988  1.000
+p.Dry.Rainwater Killifish.Mangrove   0.116 0.094 0.000 0.000 0.034 0.104 0.180  0.288  0.320
+p.Dry.Rainwater Killifish.Seagrass   0.181 0.144 0.000 0.000 0.059 0.161 0.274  0.445  0.506
+p.Dry.Rainwater Killifish.SPOM       0.249 0.181 0.000 0.000 0.105 0.226 0.365  0.577  0.662
+p.Dry.Redfin Needlefish.Epiphytes    0.399 0.248 0.031 0.065 0.218 0.356 0.521  0.977  1.000
+p.Dry.Redfin Needlefish.Mangrove     0.115 0.093 0.000 0.000 0.033 0.101 0.179  0.286  0.325
+p.Dry.Redfin Needlefish.Seagrass     0.182 0.141 0.000 0.000 0.064 0.165 0.275  0.439  0.490
+p.Dry.Redfin Needlefish.SPOM         0.303 0.211 0.000 0.001 0.142 0.284 0.437  0.692  0.773
+p.Dry.Toadfish.Epiphytes             0.356 0.237 0.001 0.027 0.188 0.315 0.483  0.858  0.994
+p.Dry.Toadfish.Mangrove              0.121 0.097 0.000 0.000 0.038 0.105 0.184  0.299  0.335
+p.Dry.Toadfish.Seagrass              0.211 0.163 0.000 0.001 0.082 0.190 0.307  0.505  0.591
+p.Dry.Toadfish.SPOM                  0.313 0.217 0.000 0.002 0.150 0.291 0.442  0.715  0.829
+p.Wet.Atlantic Marginella.Epiphytes  0.408 0.296 0.020 0.036 0.160 0.334 0.625  0.994  1.000
+p.Wet.Atlantic Marginella.Mangrove   0.058 0.064 0.000 0.000 0.011 0.037 0.087  0.190  0.229
+p.Wet.Atlantic Marginella.Seagrass   0.119 0.122 0.000 0.000 0.025 0.082 0.179  0.359  0.419
+p.Wet.Atlantic Marginella.SPOM       0.415 0.271 0.000 0.000 0.172 0.444 0.637  0.825  0.876
+p.Wet.Bubble Snail.Epiphytes         0.406 0.304 0.017 0.033 0.151 0.320 0.641  0.991  1.000
+p.Wet.Bubble Snail.Mangrove          0.063 0.073 0.000 0.000 0.011 0.039 0.090  0.214  0.268
+p.Wet.Bubble Snail.Seagrass          0.077 0.081 0.000 0.000 0.015 0.054 0.114  0.236  0.286
+p.Wet.Bubble Snail.SPOM              0.454 0.287 0.000 0.000 0.183 0.514 0.690  0.860  0.897
+p.Wet.Hermit Crab.Epiphytes          0.351 0.315 0.004 0.013 0.098 0.226 0.590  0.982  1.000
+p.Wet.Hermit Crab.Mangrove           0.051 0.059 0.000 0.000 0.009 0.031 0.072  0.175  0.212
+p.Wet.Hermit Crab.Seagrass           0.100 0.119 0.000 0.000 0.017 0.061 0.139  0.333  0.446
+p.Wet.Hermit Crab.SPOM               0.498 0.313 0.000 0.001 0.195 0.573 0.757  0.930  0.973
+p.Wet.Rainwater Killifish.Epiphytes  0.395 0.292 0.023 0.040 0.160 0.306 0.592  0.988  1.000
+p.Wet.Rainwater Killifish.Mangrove   0.072 0.082 0.000 0.000 0.013 0.043 0.102  0.245  0.306
+p.Wet.Rainwater Killifish.Seagrass   0.122 0.124 0.000 0.000 0.025 0.084 0.182  0.372  0.452
+p.Wet.Rainwater Killifish.SPOM       0.411 0.267 0.000 0.000 0.172 0.445 0.634  0.811  0.860
+p.Wet.Snapping Shrimp.Epiphytes      0.202 0.229 0.000 0.000 0.044 0.123 0.259  0.785  0.869
+p.Wet.Snapping Shrimp.Mangrove       0.068 0.089 0.000 0.000 0.010 0.036 0.092  0.242  0.324
+p.Wet.Snapping Shrimp.Seagrass       0.087 0.092 0.000 0.000 0.016 0.059 0.130  0.262  0.328
+p.Wet.Snapping Shrimp.SPOM           0.643 0.271 0.011 0.035 0.519 0.699 0.840  0.995  1.000

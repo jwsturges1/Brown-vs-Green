@@ -243,11 +243,11 @@ write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
 
 
 #run a test model to make sure it works
-jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=F)
+# jags.RB10 <- run_model(run="test", mix, source, discr, model_filename,
+#                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run= "very long", mix, source, discr, model_filename,
+jags.RB10 <- run_model(run= "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
   output_jags.RB10  <- list(summary_save = T,
@@ -320,8 +320,8 @@ plot_data(filename = "figures/isospace/nested/SRS3_isospace_plot",
 model_filename <- "data/Consumers/nested/SRS3_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
+#                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -394,8 +394,8 @@ plot_data(filename = "figures/isospace/nested/SRS4_isospace_plot",
 model_filename <- "data/Consumers/nested/SRS4_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
+#                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -461,11 +461,11 @@ plot_data(filename = "figures/isospace/nested/SRS6_isospace_plot",
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/SRS6_mix.txt"
+model_filename <- "data/Consumers/nested/SRS6_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
+#                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -691,8 +691,8 @@ plot_data(filename = "figures/isospace/nested/TS9_isospace_plot",
 model_filename <- "data/Consumers/nested/TS9_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
+#                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -757,16 +757,16 @@ source <- load_source_data(filename = "data/Sources/sourcesTS10.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS10.csv"), mix)
 
-plot_data(filename = "figures/isospace/TS10_isospace_plot",
+plot_data(filename = "figures/isospace/nested/TS10_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/TS10_mix.txt"
+model_filename <- "data/Consumers/nested/TS10_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
+#                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -830,16 +830,16 @@ source <- load_source_data(filename = "data/Sources/sourcesTS11.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS11.csv"), mix)
 
-plot_data(filename = "figures/isospace/TS11_isospace_plot",
+plot_data(filename = "figures/isospace/nested/TS11_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/TS11_mix.txt"
+model_filename <- "data/Consumers/nested/TS11_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
-jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
+#                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
@@ -883,15 +883,15 @@ write.csv(mixtable_TS11, "data/Mix_Quants/nested/MT_TS11.csv", row.names = FALSE
 
 
 # Aggregating by Energy Channel ----
-MixOut_RB10 = read.csv('data/Mix_Quants/MT_RB10.csv')
-MixOut_SRS3 = read.csv('data/Mix_Quants/MT_SRS3.csv')
-MixOut_SRS4 = read.csv('data/Mix_Quants/MT_SRS4.csv')
-MixOut_SRS6 = read.csv('data/Mix_Quants/MT_SRS6.csv')
-MixOut_TS3 = read.csv('data/Mix_Quants/MT_TS3.csv')
-MixOut_TS7 = read.csv('data/Mix_Quants/MT_TS7.csv')
-MixOut_TS9 = read.csv('data/Mix_Quants/MT_TS9.csv')
-MixOut_TS10 = read.csv('data/Mix_Quants/MT_TS10.csv')
-MixOut_TS11 = read.csv('data/Mix_Quants/MT_TS11.csv')
+MixOut_RB10 = read.csv('data/Mix_Quants/nested/MT_RB10.csv')
+MixOut_SRS3 = read.csv('data/Mix_Quants/nested/MT_SRS3.csv')
+MixOut_SRS4 = read.csv('data/Mix_Quants/nested/MT_SRS4.csv')
+MixOut_SRS6 = read.csv('data/Mix_Quants/nested/MT_SRS6.csv')
+MixOut_TS3 = read.csv('data/Mix_Quants/nested/MT_TS3.csv')
+MixOut_TS7 = read.csv('data/Mix_Quants/nested/MT_TS7.csv')
+MixOut_TS9 = read.csv('data/Mix_Quants/nested/MT_TS9.csv')
+MixOut_TS10 = read.csv('data/Mix_Quants/nested/MT_TS10.csv')
+MixOut_TS11 = read.csv('data/Mix_Quants/nested/MT_TS11.csv')
 
 SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
 
