@@ -145,7 +145,7 @@ for(i in 1:length(sites)) {
     theme( legend.title = element_blank(),
            legend.text=element_text(size=12))#,legend.position=c(.85,.15))
   
-  ggsave(paste0('figures/biplots/nested/',sites[i], 'CN.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/nested/biplots/',sites[i], 'CN.pdf'), units="in", width=10, height=6)
   
   # C and S
   wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
@@ -161,7 +161,7 @@ for(i in 1:length(sites)) {
     # scale_x_continuous(limits = c(-27, -6))+
     # scale_y_continuous(limits = c(-16.5, 24))+
     theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-  ggsave(paste0('figures/biplots/nested/',sites[i], 'CS.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/nested/biplots/',sites[i], 'CS.pdf'), units="in", width=10, height=6)
   
 }
 
@@ -193,7 +193,7 @@ for(i in 1:length(sites)) {
     theme( legend.title = element_blank(),
            legend.text=element_text(size=12))#,legend.position=c(.85,.15))
   
-  ggsave(paste0('figures/biplots/nested/',sites[i], 'CN_WD.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/nested/biplots/',sites[i], 'CN_WD.pdf'), units="in", width=10, height=6)
   
   # C and S
   wcs_season = ggplot(data = sources, aes(Meand13C, Meand34S))+
@@ -209,7 +209,7 @@ for(i in 1:length(sites)) {
     # scale_x_continuous(limits = c(-27, -6))+
     # scale_y_continuous(limits = c(-16.5, 24))+
     theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-  ggsave(paste0('figures/biplots/nested/',sites[i], 'CS_WD.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/nested/biplots/',sites[i], 'CS_WD.pdf'), units="in", width=10, height=6)
   
 }
 # RB10 Mixing Models ----
@@ -236,7 +236,7 @@ source <- load_source_data(filename="data/Sources/sourcesRB10.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10.csv"), mix)
 
-plot_data(filename="figures/isospace/nested/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
+plot_data(filename="figures/nested/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
 model_filename <- "data/Consumers/nested/RB10_mix.txt"
 write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
@@ -312,7 +312,7 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS3.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS3.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/SRS3_isospace_plot",
+plot_data(filename = "figures/nested/isospace/SRS3_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -386,7 +386,7 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS4.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS4.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/SRS4_isospace_plot",
+plot_data(filename = "figures/nested/isospace/SRS4_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -456,7 +456,7 @@ source <- load_source_data(filename = "data/Sources/sourcesSRS6.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_SRS6.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/SRS6_isospace_plot",
+plot_data(filename = "figures/nested/isospace/SRS6_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -531,7 +531,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS3.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS3.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/TS3_isospace_plot",
+plot_data(filename = "figures/nested/isospace/TS3_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -608,7 +608,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS7.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS7.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/TS7_isospace_plot",
+plot_data(filename = "figures/nested/isospace/TS7_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -683,7 +683,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS9.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS9.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/TS9_isospace_plot",
+plot_data(filename = "figures/nested/isospace/TS9_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -757,7 +757,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS10.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS10.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/TS10_isospace_plot",
+plot_data(filename = "figures/nested/isospace/TS10_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -830,7 +830,7 @@ source <- load_source_data(filename = "data/Sources/sourcesTS11.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_TS11.csv"), mix)
 
-plot_data(filename = "figures/isospace/nested/TS11_isospace_plot",
+plot_data(filename = "figures/nested/isospace/TS11_isospace_plot",
           plot_save_pdf = TRUE,
           plot_save_png = TRUE,
           mix, source, discr)
@@ -896,7 +896,7 @@ MixOut_TS11 = read.csv('data/Mix_Quants/nested/MT_TS11.csv')
 SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
 
 SRSMixout_gb = SRSMixout_gb %>% 
-  rename(site = type, season = code) %>%
+  rename(site = type, species = code, season = name) %>%
   mutate(path = case_when(
     source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton") ~ "green",
     source %in% c("Mangrove", "Sawgrass", "Red Macroalgae",'Floc') ~ "brown",
@@ -904,14 +904,14 @@ SRSMixout_gb = SRSMixout_gb %>%
   ))
 
 SRSMixout_gb = SRSMixout_gb %>% 
-  group_by(name, site, season, path) %>% 
+  group_by(season, site, species, path) %>% 
   summarize(value = sum(mean)) %>% 
   pivot_wider(names_from = path, values_from = value)
 
 TSMixout_gb <- rbind(MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
 
 TSMixout_gb = TSMixout_gb %>% 
-  rename(site = type, season = code) %>%
+  rename(site = type, species = code, season = name) %>%
   mutate(path = case_when(
     source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", "Epiphytic microalgae", 'SPOM') ~ "green",
     source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass", 'Floc') ~ "brown",
@@ -919,7 +919,7 @@ TSMixout_gb = TSMixout_gb %>%
   ))
 
 TSMixout_gb = TSMixout_gb %>% 
-  group_by(name, site, season, path) %>% 
+  group_by(season, site, species, path) %>%
   summarize(value = sum(mean)) %>% 
   pivot_wider(names_from = path, values_from = value)
 
@@ -936,7 +936,7 @@ combined_df = bind_rows(SRSMixout_gb,TSMixout_gb) %>%
 
 unique_names <- combined_df %>%
   group_by(site, season) %>%
-  summarize(unique_names = n_distinct(name))
+  summarize(unique_names = n_distinct(species))
 
 
 # Combined Brown vs Green boxplot----
@@ -987,7 +987,7 @@ bvg_table_ft <- flextable(bvg_table,
 
 bvg_table_ft
 
-save_as_docx(bvg_table_ft, path = "tables/bvg_table_flex.docx")
+save_as_docx(bvg_table_ft, path = "tables/nested/bvg_table_flex.docx")
 
 
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
@@ -1023,7 +1023,7 @@ mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fil
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
+ggsave("figures/nested/mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
 
@@ -1052,10 +1052,10 @@ cont_df <- cont_df %>%
                          )))
 
 cont_df = cont_df %>% 
-  rename(site = type, season = code)
+  rename(site = type, species = code, season = name)
 
 cont_df = cont_df %>% 
-  group_by(site, season, source, name) %>% 
+  group_by(site, season, source, species) %>% 
   summarize(value = sum(mean)) 
 
 cont_df = cont_df %>% 
@@ -1120,7 +1120,7 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
 
 source_cont_plot
 
-ggsave("figures/source_cont_plot.png", width = 15, height = 11, dpi = 600)
+ggsave("figures/nested/source_cont_plot.png", width = 15, height = 11, dpi = 600)
 
 # creates a table of mean values for source specific contributions. 
 cont_table = cont_df %>% 
@@ -1146,8 +1146,8 @@ cont_table_ft <- flextable(cont_table,
 
 cont_table_ft
 
-save_as_docx(cont_table_ft, path = "tables/cont_table_flex.docx")
-write.csv(cont_table,"data/Sources/cont_table.csv",row.names = F) 
+save_as_docx(cont_table_ft, path = "tables/nested/cont_table_flex.docx")
+write.csv(cont_table,"data/Sources/nested/cont_table.csv",row.names = F) 
 
 
 # SRS only source contribution plot
@@ -1193,7 +1193,7 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
 
 source_plot_SRS
 
-ggsave("figures/source_plot_SRS.png", width = 22, height = 10, dpi = 600)
+ggsave("figures/nested/source_plot_SRS.png", width = 22, height = 10, dpi = 600)
 
 # TS only source contribution plot
 
@@ -1241,7 +1241,7 @@ source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, widt
 source_plot_TS
 
 
-ggsave("figures/source_plot_TS.png", width = 22, height = 10, dpi = 600)
+ggsave("figures/nested/source_plot_TS.png", width = 22, height = 10, dpi = 600)
 
 # FCE proposal plots ----
 combined_df_dry = combined_df %>% 
