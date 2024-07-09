@@ -198,7 +198,7 @@ ggplot(data = cont_df, aes(x = lab, y = mean, fill = season)) +
   #   strip.text.y = element_text(size = 18, face = "bold"),
   #   legend.text = element_text(size = 24, face = "bold"))
 
-ggsave("figures/nested/source_cont_plot_GBcol.png", width = 9.5, height = 7.5, dpi = 600)
+ggsave("figures/nested/nested_source_cont_plot_GBcol.png", width = 9.5, height = 7.5, dpi = 600)
 
 # SRS only 
 srs = cont_df |> filter(transect == "Shark River Slough")
@@ -244,7 +244,7 @@ ggplot(data = srs, aes(x = lab, y = mean, fill = season)) +
   #   strip.text = element_text(size = 14, face = "bold"),
   #   legend.text = element_text(size = 12, face = "bold"))
 
-ggsave("figures/nested/Source_SRS_tall.png", width = 4, height = 8, dpi = 600)
+ggsave("figures/nested/nested_Source_SRS_tall.png", width = 4, height = 8, dpi = 600)
 
 # SRS only 
 ggplot(data = srs, aes(x = lab, y = mean, fill = season)) +
@@ -276,7 +276,7 @@ ggplot(data = srs, aes(x = lab, y = mean, fill = season)) +
         strip.text.x = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-ggsave("figures/nested/Source_SRS_wide.png", width = 12, height = 4, dpi = 600)
+ggsave("figures/nested/nested_Source_SRS_wide.png", width = 12, height = 4, dpi = 600)
 
 # TS only 
 ts = cont_df |> filter(transect == "Taylor Slough")
@@ -310,7 +310,7 @@ ggplot(data = ts, aes(x = lab, y = mean, fill = season)) +
         strip.text.x = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-ggsave("figures/nested/Source_TS_tall.png", width = 4, height = 10, dpi = 600)
+ggsave("figures/nested/nested_Source_TS_tall.png", width = 4, height = 10, dpi = 600)
 
 # TS only 
 ggplot(data = ts, aes(x = lab, y = mean, fill = season)) +
@@ -342,5 +342,5 @@ ggplot(data = ts, aes(x = lab, y = mean, fill = season)) +
         strip.text.x = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-ggsave("figures/nested/Source_TS_wide.png", width = 15, height = 4, dpi = 600)
+ggsave("figures/nested/nested_Source_TS_wide.png", width = 15, height = 4, dpi = 600)
 

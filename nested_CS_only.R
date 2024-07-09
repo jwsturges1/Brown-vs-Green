@@ -193,7 +193,7 @@ for(i in 1:length(sites)) {
     theme( legend.title = element_blank(),
            legend.text=element_text(size=12))#,legend.position=c(.85,.15))
   
-  ggsave(paste0('figures/nested/biplots/',sites[i], 'CN_WD.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/CS/biplots/',sites[i], 'CN_WD.pdf'), units="in", width=10, height=6)
   
   # C and S
   wcs_season = ggplot(data = sources, aes(Meand13C, Meand34S))+
@@ -209,19 +209,19 @@ for(i in 1:length(sites)) {
     # scale_x_continuous(limits = c(-27, -6))+
     # scale_y_continuous(limits = c(-16.5, 24))+
     theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-  ggsave(paste0('figures/nested/biplots/',sites[i], 'CS_WD.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/CS/biplots/',sites[i], 'CS_WD.pdf'), units="in", width=10, height=6)
   
 }
 # RB10 Mixing Models ----
 
 # RB10 with Floc
-RB10mix<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d15N"= "md15N","d34S"="md34S")
+RB10mix<-SIa %>% filter(site == 'RB10', common_name!="Egyptian paspalidium",group=='Consumer')%>% rename('d13C'='md13C',"d34S"="md34S")
 
-write.csv(RB10mix,"data/Consumers/nested/RB10mix.csv",row.names = F) 
+write.csv(RB10mix,"data/Consumers/CS/RB10mix.csv",row.names = F) 
 
 
 
-mix <- load_mix_data(filename="data/Consumers/nested/RB10mix.csv",
+mix <- load_mix_data(filename="data/Consumers/CS/RB10mix.csv",
                      iso_names=c("d13C","d34S"),
                      factors=c('hydroseason','common_name'),
                      fac_random=c(F,T),
@@ -236,9 +236,9 @@ source <- load_source_data(filename="data/Sources/sourcesRB10.csv",
 
 discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10.csv"), mix)
 
-plot_data(filename="figures/nested/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
+plot_data(filename="figures/CS/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
-model_filename <- "data/Consumers/nested/RB10_mix.txt"
+model_filename <- "data/Consumers/CS/RB10_mix.txt"
 write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
 
 
@@ -251,33 +251,33 @@ jags.RB10 <- run_model(run= "normal", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err=F, process_err=F)
 
 output_jags.RB10  <- list(summary_save = T,
-                          summary_name = "data/JAGS_Output/RB10/nested/FCERB10_sumstats",
+                          summary_name = "data/JAGS_Output/RB10/CS/FCERB10_sumstats",
                           sup_post = F,
                           plot_post_save_pdf = T,
-                          plot_post_name = "data/JAGS_Output/RB10/nested/FCERB10_plot",
+                          plot_post_name = "data/JAGS_Output/RB10/CS/FCERB10_plot",
                           sup_pairs = F,
                           plot_pairs_save_pdf = T,
-                          plot_pairs_name = "data/JAGS_Output/RB10/nested/FCERB10_pairs",
+                          plot_pairs_name = "data/JAGS_Output/RB10/CS/FCERB10_pairs",
                           sup_xy = T,
                           plot_xy_save_pdf = T,
-                          plot_xy_name = "data/JAGS_Output/RB10/nested/FCERB10_plot",
+                          plot_xy_name = "data/JAGS_Output/RB10/CS/FCERB10_plot",
                           gelman = T,
                           heidel = F,
                           geweke = T,
                           diag_save = T,
-                          diag_name = "data/JAGS_Output/RB10/nested/FCERB10_Diagnostic",
+                          diag_name = "data/JAGS_Output/RB10/CS/FCERB10_Diagnostic",
                           indiv_effect = F,
                           plot_post_save_png = F,
                           plot_pairs_save_png = F,
                           plot_xy_save_png = F)
 
-saveRDS(jags.RB10, 'data/JAGS_Output/RB10/nested/RB10.RDS')
+saveRDS(jags.RB10, 'data/JAGS_Output/RB10/CS/RB10.RDS')
 
 output_JAGS(jags.RB10, mix, source, output_jags.RB10)
 
-mixtable_RB10 = mixTable("data/JAGS_Output/RB10/nested/FCERB10_sumstats.txt",type = "RB10", nest = T)
+mixtable_RB10 = mixTable("data/JAGS_Output/RB10/CS/FCERB10_sumstats.txt",type = "RB10", nest = T)
 
-write.csv(mixtable_RB10, "data/Mix_Quants/nested/MT_RB10.csv", row.names = FALSE)
+write.csv(mixtable_RB10, "data/Mix_Quants/CS/MT_RB10.csv", row.names = FALSE)
 
 
 # combinedRB10 <- combine_sources(jags.RB10, mix, source, alpha.prior=1,
@@ -295,9 +295,9 @@ write.csv(mixtable_RB10, "data/Mix_Quants/nested/MT_RB10.csv", row.names = FALSE
 # SRS 3
 SRS3mix <- SIa %>% filter(site == 'SRS3', common_name != "Egyptian paspalidium", group == 'Consumer') %>% rename('d13C' = 'md13C', 'd15N' = 'md15N', 'd34S' = 'md34S')
 
-write.csv(SRS3mix, "data/Consumers/nested/SRS3mix.csv", row.names = FALSE)
+write.csv(SRS3mix, "data/Consumers/CS/SRS3mix.csv", row.names = FALSE)
 
-mix <- load_mix_data(filename = "data/Consumers/nested/SRS3mix.csv",
+mix <- load_mix_data(filename = "data/Consumers/CS/SRS3mix.csv",
                      iso_names = c("d13C", "d15N", "d34S"),
                      factors=c('hydroseason','common_name'),
                      fac_random=c(F,T),
@@ -317,7 +317,7 @@ plot_data(filename = "figures/nested/isospace/SRS3_isospace_plot",
           plot_save_png = TRUE,
           mix, source, discr)
 
-model_filename <- "data/Consumers/nested/SRS3_mix.txt"
+model_filename <- "data/Consumers/CS/SRS3_mix.txt"
 write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
 
 # jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,

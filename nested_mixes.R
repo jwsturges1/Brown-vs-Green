@@ -1023,7 +1023,7 @@ mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fil
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/nested/mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
+ggsave("figures/nested/nested_mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
 
 # Source Contribution Plots ----
 
@@ -1120,7 +1120,7 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
 
 source_cont_plot
 
-ggsave("figures/nested/source_cont_plot.png", width = 15, height = 11, dpi = 600)
+ggsave("figures/nested/nested_source_cont_plot.png", width = 15, height = 11, dpi = 600)
 
 # creates a table of mean values for source specific contributions. 
 cont_table = cont_df %>% 
@@ -1146,7 +1146,7 @@ cont_table_ft <- flextable(cont_table,
 
 cont_table_ft
 
-save_as_docx(cont_table_ft, path = "tables/nested/cont_table_flex.docx")
+save_as_docx(cont_table_ft, path = "tables/nested/nested_cont_table_flex.docx")
 write.csv(cont_table,"data/Sources/nested/cont_table.csv",row.names = F) 
 
 
@@ -1193,7 +1193,7 @@ source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, wid
 
 source_plot_SRS
 
-ggsave("figures/nested/source_plot_SRS.png", width = 22, height = 10, dpi = 600)
+ggsave("figures/nested/nested_source_plot_SRS.png", width = 22, height = 10, dpi = 600)
 
 # TS only source contribution plot
 
@@ -1241,7 +1241,7 @@ source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, widt
 source_plot_TS
 
 
-ggsave("figures/nested/source_plot_TS.png", width = 22, height = 10, dpi = 600)
+ggsave("figures/nested/nested_source_plot_TS.png", width = 22, height = 10, dpi = 600)
 
 # FCE proposal plots ----
 combined_df_dry = combined_df %>% 
@@ -1374,4 +1374,4 @@ stacked_source_cont
 
 ggsave("figures/stacked_source_cont.png", width = 12, height = 11, dpi = 600)
 
-# END
+# THE END
