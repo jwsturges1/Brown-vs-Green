@@ -239,7 +239,9 @@ discr <- load_discr_data(file("data/TEF/FCE_TEF_RB10.csv"), mix)
 plot_data(filename="figures/nested/isospace/RB10_isospace_plot", plot_save_pdf=T, plot_save_png=T, mix,source,discr)
 
 model_filename <- "data/Consumers/nested/RB10_mix.txt"
-write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 
 #run a test model to make sure it works
@@ -247,8 +249,8 @@ write_JAGS_model(model_filename, resid_err=T, process_err=T, mix, source)
 #                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run= "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err=F, process_err=F)
+jags.RB10 <- run_model(run= "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err)
 
   output_jags.RB10  <- list(summary_save = T,
                           summary_name = "data/JAGS_Output/RB10/nested/FCERB10_sumstats",
@@ -318,13 +320,15 @@ plot_data(filename = "figures/nested/isospace/SRS3_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/SRS3_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.SRS3 <- run_model(run = "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.SRS3 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS3/nested/FCESRS3_sumstats",
@@ -392,13 +396,15 @@ plot_data(filename = "figures/nested/isospace/SRS4_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/SRS4_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.SRS4 <- run_model(run = "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err)
 output_jags.SRS4 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS4/nested/FCESRS4_sumstats",
                          sup_post = FALSE,
@@ -462,13 +468,15 @@ plot_data(filename = "figures/nested/isospace/SRS6_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/SRS6_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.SRS6 <- run_model(run = "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.SRS6 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS6/nested/FCESRS6_sumstats",
@@ -537,13 +545,15 @@ plot_data(filename = "figures/nested/isospace/TS3_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/TS3_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.TS3 <- run_model(run = "very long", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS3 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS3/nested/FCETS3_sumstats",
@@ -614,12 +624,14 @@ plot_data(filename = "figures/nested/isospace/TS7_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/TS7_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
-jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+# jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
+#                       alpha.prior = 1, resid_err, process_err)
 
-jags.TS7 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS7 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 output_jags.TS7 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS7/nested/FCETS7_sumstats",
@@ -689,13 +701,15 @@ plot_data(filename = "figures/nested/isospace/TS9_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/TS9_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.TS9 <- run_model(run = "very long", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS9 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS9/nested/FCETS9_sumstats",
@@ -763,13 +777,15 @@ plot_data(filename = "figures/nested/isospace/TS10_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/TS10_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
-                      alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.TS10 <- run_model(run = "very long", mix, source, discr, model_filename,
+                      alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS10 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS10/nested/FCETS10_sumstats",
@@ -836,13 +852,15 @@ plot_data(filename = "figures/nested/isospace/TS11_isospace_plot",
           mix, source, discr)
 
 model_filename <- "data/Consumers/nested/TS11_mix.txt"
-write_JAGS_model(model_filename, resid_err = FALSE, process_err = TRUE, mix, source)
+resid_err = T
+process_err = T
+write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 # jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
+jags.TS11 <- run_model(run = "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS11 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/TS11/nested/FCETS11_sumstats",

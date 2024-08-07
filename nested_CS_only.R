@@ -145,7 +145,7 @@ for(i in 1:length(sites)) {
     theme( legend.title = element_blank(),
            legend.text=element_text(size=12))#,legend.position=c(.85,.15))
   
-  ggsave(paste0('figures/nested/biplots/',sites[i], 'CN.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/CS/biplots/',sites[i], 'CN.pdf'), units="in", width=10, height=6)
   
   # C and S
   wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
@@ -161,7 +161,7 @@ for(i in 1:length(sites)) {
     # scale_x_continuous(limits = c(-27, -6))+
     # scale_y_continuous(limits = c(-16.5, 24))+
     theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-  ggsave(paste0('figures/nested/biplots/',sites[i], 'CS.pdf'), units="in", width=10, height=6)
+  ggsave(paste0('figures/CS/biplots/',sites[i], 'CS.pdf'), units="in", width=10, height=6)
   
 }
 
@@ -250,13 +250,13 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 #                        alpha.prior = 1, resid_err=F, process_err=F)
 
 
-jags.RB10 <- run_model(run= "normal", mix, source, discr, model_filename,
+jags.RB10 <- run_model(run= "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err, process_err)
 
 
 output_jags.RB10  <- list(summary_save = T,
                           summary_name = "data/JAGS_Output/RB10/CS/FCERB10_sumstats",
-                          sup_post = F,
+                          sup_post = T,
                           plot_post_save_pdf = T,
                           plot_post_name = "data/JAGS_Output/RB10/CS/FCERB10_plot",
                           sup_pairs = F,
@@ -393,12 +393,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS3 <- run_model(run = "normal", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err, process_err)
+jags.SRS3 <- run_model(run = "very long", mix, source, discr, model_filename,
+                       alpha.prior = 1, resid_err, process_err, save.output.to.files = TRUE)
 
 output_jags.SRS3 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS3/CS/FCESRS3_sumstats",
-                         sup_post = FALSE,
+                         sup_post = T,
                          plot_post_save_pdf = T,
                          plot_post_name = "data/JAGS_Output/SRS3/CS/FCESRS3_plot",
                          sup_pairs = FALSE,
@@ -484,11 +484,11 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.SRS4 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS4 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.SRS4 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err, process_err)
 output_jags.SRS4 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS4/CS/FCESRS4_sumstats",
-                         sup_post = FALSE,
+                         sup_post = T,
                          plot_post_save_pdf = T,
                          plot_post_name = "data/JAGS_Output/SRS4/CS/FCESRS4_plot",
                          sup_pairs = FALSE,
@@ -554,12 +554,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.SRS6 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.SRS6 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.SRS6 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err, process_err)
 
 output_jags.SRS6 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS6/CS/FCESRS6_sumstats",
-                         sup_post = FALSE,
+                         sup_post = T,
                          plot_post_save_pdf = T,
                          plot_post_name = "data/JAGS_Output/SRS6/CS/FCESRS6_plot",
                          sup_pairs = FALSE,
@@ -629,12 +629,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.TS3 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS3 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS3 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS3 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS3/CS/FCETS3_sumstats",
-                        sup_post = FALSE,
+                        sup_post = T,
                         plot_post_save_pdf = T,
                         plot_post_name = "data/JAGS_Output/TS3/CS/FCETS3_plot",
                         sup_pairs = FALSE,
@@ -706,11 +706,11 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.TS7 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS7 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS7 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err, process_err)
 output_jags.TS7 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS7/CS/FCETS7_sumstats",
-                        sup_post = FALSE,
+                        sup_post = T,
                         plot_post_save_pdf = T,
                         plot_post_name = "data/JAGS_Output/TS7/CS/FCETS7_plot",
                         sup_pairs = FALSE,
@@ -781,12 +781,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.TS9 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS9 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS9 <- run_model(run = "very long", mix, source, discr, model_filename,
                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.TS9 <- list(summary_save = TRUE,
                         summary_name = "data/JAGS_Output/TS9/CS/FCETS9_sumstats",
-                        sup_post = FALSE,
+                        sup_post = T,
                         plot_post_save_pdf = T,
                         plot_post_name = "data/JAGS_Output/TS9/CS/FCETS9_plot",
                         sup_pairs = FALSE,
@@ -855,12 +855,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.TS10 <- run_model(run = "test", mix, source, discr, model_filename,
 #                       alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS10 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS10 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_er, process_err)
 
 output_jags.TS10 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/TS10/CS/FCETS10_sumstats",
-                         sup_post = FALSE,
+                         sup_post = T,
                          plot_post_save_pdf = T,
                          plot_post_name = "data/JAGS_Output/TS10/CS/FCETS10_plot",
                          sup_pairs = FALSE,
@@ -928,12 +928,12 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 # jags.TS11 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
-jags.TS11 <- run_model(run = "normal", mix, source, discr, model_filename,
+jags.TS11 <- run_model(run = "very long", mix, source, discr, model_filename,
                        alpha.prior = 1, resid_err, process_err)
 
  output_jags.TS11 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/TS11/CS/FCETS11_sumstats",
-                         sup_post = FALSE,
+                         sup_post = T,
                          plot_post_save_pdf = T,
                          plot_post_name = "data/JAGS_Output/TS11/CS/FCETS11_plot",
                          sup_pairs = FALSE,
@@ -1329,138 +1329,4 @@ source_plot_TS
 
 
 ggsave("figures/CS/CS_source_plot_TS.png", width = 22, height = 10, dpi = 600)
-
-# FCE proposal plots ----
-# combined_df_dry = combined_df %>% 
-#   filter(season == "Dry")
-# 
-# dry_plot <-ggplot(combined_df_dry,aes(x=site, y = green, fill=fill, width=0.8))+
-#   geom_boxplot()+
-#   theme_bw()+
-#   scale_fill_gradient2(low = "saddlebrown",
-#                        high = "forestgreen",
-#                        mid = 'white',
-#                        midpoint = 0.5,
-#                        limits = c(0,1),
-#                        na.value = "grey50") +
-#   facet_grid(transect~season, scales = "free_y") +
-#   theme(axis.title = element_text(size = 20), 
-#         axis.text.y = element_text(size = 20, colour = "black"), 
-#         axis.text.x = element_text(size = 18, colour = "black"), 
-#         plot.title = element_text(size = 18, hjust=0.5),
-#         panel.grid.major = element_blank(),
-#         panel.grid.minor = element_blank(),
-#         legend.position = 'right',
-#         legend.title = element_text(size = 14),
-#         strip.text.x = element_text(size = 18),
-#         strip.text.y = element_text(size = 18),
-#         legend.text = element_text(size = 16)) +
-#   scale_y_continuous(
-#     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-#     limits = c(0,1),
-#     labels = y_label_formatter
-#   ) +
-#   labs(y="Green Pathway Source Contribution",
-#        x=NULL,
-#        fill = "Green Pathway\nSource Contribution\n ")+
-#   coord_flip()
-# 
-# dry_plot
-# ggsave("figures/CSdry_plot.png", width = 8, height = 6, dpi = 600)
-# 
-# 
-# 
-# 
-# no_season <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
-#   geom_boxplot()+
-#   theme_bw()+
-#   scale_fill_gradient2(low = "saddlebrown",
-#                        high = "forestgreen",
-#                        mid = 'white',
-#                        midpoint = 0.5,
-#                        limits = c(0,1),
-#                        na.value = "grey50") +
-#   facet_grid(transect~season, scales = "free_y") +
-#   theme(axis.title = element_text(size = 20), 
-#         axis.text.y = element_text(size = 20, colour = "black"), 
-#         axis.text.x = element_text(size = 18, colour = "black"), 
-#         plot.title = element_text(size = 18, hjust=0.5),
-#         panel.grid.major = element_blank(),
-#         panel.grid.minor = element_blank(),
-#         legend.position = 'right',
-#         legend.title = element_text(size = 14),
-#         strip.text.x = element_text(size = 18),
-#         strip.text.y = element_text(size = 18),
-#         legend.text = element_text(size = 16)) +
-#   scale_y_continuous(
-#     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-#     limits = c(0,1),
-#     labels = y_label_formatter
-#   ) +
-#   labs(y="Green Pathway Source Contribution",
-#        x=NULL,
-#        fill = "Green Pathway\nSource Contribution\n ")+
-#   coord_flip()
-# 
-# no_season
-# 
-# ggsave("figures/no_season.png", width = 8, height = 6, dpi = 600)
-# 
-# 
-# allmix = SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6,MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-# 
-# 
-# write.csv(allmix,"data/Consumers/allmix.csv",row.names = F) 
-# write.csv(combined_df,"data/Consumers/combined.csv",row.names = F)
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# stacked_source_cont = ggplot(cont_table, aes(x = season, y = value, fill = source)) +
-#   geom_col(colour = "black", position = "stack", width = 0.5) +  # Set width to adjust spacing
-#   scale_y_continuous(breaks = c(0.0, 0.25, 0.5, 0.75, 1.0)) +
-#   facet_wrap(facets = c("site"), nrow = 3, ncol = 3) +
-#   theme(
-#     plot.title = element_text(size = 24, hjust = 0.5),
-#     panel.grid.major = element_blank(),
-#     panel.grid.minor = element_blank(),
-#     legend.position = 'bottom',
-#     legend.title = element_text(size = 24),
-#     strip.text.x = element_text(size = 24),
-#     strip.text.y = element_text(size = 24),
-#     axis.title.y = element_text(size = 24),
-#     axis.text.x = element_text(size = 24),
-#     axis.text.y = element_text(size = 18),
-#     legend.text = element_text(size = 18)) +
-#   scale_x_discrete(expand = c(0,1)) +
-#   scale_y_continuous(
-#     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-#     limits = c(0, 1),
-#     labels = y_label_formatter
-#   ) +
-#   scale_fill_manual(values = c("Mang." = "wheat4", "Sawgrass" = "wheat4", "Floc" = "wheat1","RMA" = "wheat1","Seagrass" = "wheat1",
-#                                "Epi." = "darkolivegreen4", "Peri." = "darkolivegreen4", "Phyto." = "darkolivegreen1",
-#                                "FGA" = "darkolivegreen1", "POM"= "darkolivegreen1" )) +
-#   labs(
-#     y = "Proportional Energy Contribution (%)",
-#     x = NULL,
-#     fill = "Basal Resource"
-#   )
-# 
-# stacked_source_cont
-# 
-# ggsave("figures/stacked_source_cont.png", width = 12, height = 11, dpi = 600)
-# 
-# # END
-
 

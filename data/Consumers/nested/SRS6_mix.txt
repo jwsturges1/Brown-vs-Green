@@ -5,7 +5,7 @@
 # nested factors: FALSE TRUE
 # factors: hydroseason common_name
 # continuous effects: 0
-# error structure: Process only (MixSIR, for N = 1)
+# error structure: Residual * Process
 # source$conc_dep: TRUE
 
 model{
@@ -93,17 +93,34 @@ model{
       }
    }
 
-
-  # calculate mix variance and likelihood
-  for(i in 1:N){
+    # Multiplicative residual error
     for(iso in 1:n.iso){
-
-      process.var[iso,i] <- inprod(1/src_tau[,iso],p2[i,]) + inprod(frac_sig2[,iso],p2[i,]);
-      mix.prcsn[iso,i] <- 1/process.var[iso,i];
-      X_iso[i,iso] ~ dnorm(mix.mu[iso,i], mix.prcsn[iso,i]);
-      loglik_mat[i,iso] <- logdensity.norm(X_iso[i,iso], mix.mu[iso,i], mix.prcsn[iso,i]);
+      resid.prop[iso] ~ dunif(0,20);
     }
-    loglik[i] <- sum(loglik_mat[i,])
-  }
-}  # end model
+
+
+   # Calculate process variance for each isotope and population
+   for(iso in 1:n.iso) {
+      for(i in 1:N) {
+
+         process.var[iso,i] <- inprod(1/src_tau[,iso],p2[i,]) + inprod(frac_sig2[,iso],p2[i,]);
+      }
+   }
+
+   # Construct Sigma, the mixture precision matrix
+   for(ind in 1:N){
+      for(i in 1:n.iso){
+        for(j in 1:n.iso){
+          Sigma.ind[ind,i,j] <- equals(i,j)/(process.var[i,ind]*resid.prop[i]);
+        }
+      }
+   }
+
+   # Likelihood
+   for(i in 1:N) {
+
+     X_iso[i,] ~ dmnorm(mix.mu[,i], Sigma.ind[i,,]);
+     loglik[i] <- logdensity.mnorm(X_iso[i,], mix.mu[,i], Sigma.ind[i,,]);
+   }
+} # end model
 
