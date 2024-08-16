@@ -3,73 +3,73 @@
 # Summary Statistics
 #################################################################
 
-DIC = 81.60257
+DIC = 82.08108
 
                                           Mean    SD  2.5%    5%   25%   50%    75%    95%  97.5%
-Epsilon.1                                7.989 4.426 1.632 2.206 4.539 7.151 10.776 16.750 18.255
-Epsilon.2                                2.704 3.355 0.147 0.201 0.587 1.321  3.447 10.254 12.912
-common_name.SD                           1.658 2.410 0.031 0.068 0.394 0.924  1.865  5.747  8.558
-p.Dry.Floc                               0.493 0.224 0.074 0.114 0.324 0.505  0.671  0.842  0.876
-p.Wet.Floc                               0.526 0.285 0.031 0.063 0.281 0.545  0.783  0.934  0.954
-p.Dry.Periphyton                         0.195 0.158 0.006 0.013 0.069 0.155  0.286  0.511  0.577
-p.Wet.Periphyton                         0.237 0.239 0.002 0.005 0.040 0.144  0.391  0.729  0.819
-p.Dry.Phytoplankton                      0.147 0.135 0.004 0.008 0.041 0.104  0.217  0.425  0.488
-p.Wet.Phytoplankton                      0.048 0.070 0.001 0.003 0.014 0.029  0.057  0.145  0.202
-p.Dry.Sawgrass                           0.165 0.153 0.004 0.009 0.051 0.117  0.236  0.481  0.564
-p.Wet.Sawgrass                           0.188 0.211 0.001 0.003 0.027 0.104  0.283  0.651  0.748
-p.Dry.Bluefin Killifish.Floc             0.410 0.278 0.000 0.001 0.150 0.419  0.645  0.843  0.883
-p.Dry.Bluefin Killifish.Periphyton       0.237 0.251 0.000 0.002 0.043 0.148  0.352  0.800  0.946
-p.Dry.Bluefin Killifish.Phytoplankton    0.183 0.190 0.000 0.000 0.032 0.112  0.285  0.578  0.665
-p.Dry.Bluefin Killifish.Sawgrass         0.170 0.221 0.000 0.001 0.027 0.092  0.214  0.691  0.946
-p.Dry.Eastern Grass Shrimp.Floc          0.405 0.261 0.000 0.003 0.178 0.404  0.622  0.820  0.857
-p.Dry.Eastern Grass Shrimp.Periphyton    0.163 0.173 0.000 0.001 0.032 0.109  0.240  0.520  0.633
-p.Dry.Eastern Grass Shrimp.Phytoplankton 0.276 0.232 0.000 0.006 0.076 0.225  0.428  0.714  0.821
-p.Dry.Eastern Grass Shrimp.Sawgrass      0.157 0.187 0.000 0.001 0.033 0.098  0.210  0.520  0.759
-p.Dry.Eastern Mosquitofish.Floc          0.409 0.285 0.000 0.001 0.143 0.406  0.647  0.861  0.904
-p.Dry.Eastern Mosquitofish.Periphyton    0.251 0.257 0.000 0.002 0.051 0.161  0.375  0.845  0.962
-p.Dry.Eastern Mosquitofish.Phytoplankton 0.143 0.162 0.000 0.000 0.019 0.078  0.214  0.494  0.569
-p.Dry.Eastern Mosquitofish.Sawgrass      0.197 0.245 0.000 0.001 0.029 0.106  0.254  0.815  0.971
-p.Wet.Asian Swamp Eel.Floc               0.445 0.354 0.000 0.000 0.093 0.412  0.794  0.981  0.992
-p.Wet.Asian Swamp Eel.Periphyton         0.307 0.341 0.000 0.000 0.017 0.134  0.584  0.973  0.997
-p.Wet.Asian Swamp Eel.Phytoplankton      0.026 0.037 0.000 0.000 0.003 0.013  0.034  0.096  0.136
-p.Wet.Asian Swamp Eel.Sawgrass           0.222 0.296 0.000 0.000 0.009 0.075  0.330  0.937  0.991
-p.Wet.Bluefin Killifish.Floc             0.445 0.314 0.000 0.001 0.146 0.444  0.735  0.926  0.953
-p.Wet.Bluefin Killifish.Periphyton       0.291 0.309 0.000 0.001 0.025 0.153  0.519  0.906  0.975
-p.Wet.Bluefin Killifish.Phytoplankton    0.058 0.073 0.000 0.000 0.011 0.035  0.079  0.198  0.246
-p.Wet.Bluefin Killifish.Sawgrass         0.205 0.263 0.000 0.000 0.015 0.085  0.302  0.835  0.956
-p.Wet.Bluegill.Floc                      0.650 0.316 0.006 0.034 0.422 0.755  0.927  0.997  1.000
-p.Wet.Bluegill.Periphyton                0.174 0.233 0.000 0.000 0.010 0.061  0.259  0.705  0.823
-p.Wet.Bluegill.Phytoplankton             0.038 0.074 0.000 0.000 0.003 0.014  0.041  0.160  0.233
-p.Wet.Bluegill.Sawgrass                  0.138 0.209 0.000 0.000 0.007 0.045  0.175  0.636  0.812
-p.Wet.Eastern Grass Shrimp.Floc          0.461 0.291 0.000 0.003 0.213 0.462  0.700  0.918  0.945
-p.Wet.Eastern Grass Shrimp.Periphyton    0.210 0.230 0.000 0.000 0.022 0.115  0.348  0.684  0.781
-p.Wet.Eastern Grass Shrimp.Phytoplankton 0.135 0.168 0.000 0.002 0.022 0.067  0.184  0.490  0.595
-p.Wet.Eastern Grass Shrimp.Sawgrass      0.194 0.229 0.000 0.001 0.021 0.106  0.292  0.691  0.865
-p.Wet.Eastern Mosquitofish.Floc          0.430 0.316 0.000 0.001 0.130 0.419  0.713  0.935  0.957
-p.Wet.Eastern Mosquitofish.Periphyton    0.300 0.312 0.000 0.001 0.027 0.170  0.534  0.920  0.976
-p.Wet.Eastern Mosquitofish.Phytoplankton 0.043 0.057 0.000 0.000 0.006 0.024  0.059  0.148  0.191
-p.Wet.Eastern Mosquitofish.Sawgrass      0.227 0.282 0.000 0.000 0.014 0.097  0.345  0.902  0.981
-p.Wet.Gar.Floc                           0.549 0.340 0.000 0.003 0.233 0.592  0.876  0.993  0.999
-p.Wet.Gar.Periphyton                     0.224 0.278 0.000 0.000 0.013 0.087  0.364  0.846  0.943
-p.Wet.Gar.Phytoplankton                  0.030 0.045 0.000 0.000 0.003 0.014  0.038  0.113  0.153
-p.Wet.Gar.Sawgrass                       0.197 0.265 0.000 0.000 0.010 0.070  0.282  0.843  0.958
-p.Wet.Golden Topminnow.Floc              0.535 0.341 0.000 0.001 0.198 0.604  0.856  0.974  0.992
-p.Wet.Golden Topminnow.Periphyton        0.242 0.291 0.000 0.000 0.018 0.099  0.394  0.890  0.974
-p.Wet.Golden Topminnow.Phytoplankton     0.032 0.043 0.000 0.000 0.004 0.018  0.043  0.118  0.148
-p.Wet.Golden Topminnow.Sawgrass          0.190 0.264 0.000 0.000 0.011 0.068  0.242  0.879  0.977
-p.Wet.Largemouth Bass.Floc               0.587 0.334 0.001 0.011 0.286 0.659  0.907  0.996  0.999
-p.Wet.Largemouth Bass.Periphyton         0.210 0.265 0.000 0.000 0.012 0.080  0.327  0.812  0.914
-p.Wet.Largemouth Bass.Phytoplankton      0.030 0.047 0.000 0.000 0.003 0.014  0.038  0.118  0.152
-p.Wet.Largemouth Bass.Sawgrass           0.173 0.242 0.000 0.000 0.009 0.059  0.232  0.764  0.900
-p.Wet.Mayan Cichlid.Floc                 0.545 0.307 0.000 0.005 0.287 0.608  0.815  0.949  0.971
-p.Wet.Mayan Cichlid.Periphyton           0.205 0.244 0.000 0.001 0.021 0.101  0.310  0.751  0.872
-p.Wet.Mayan Cichlid.Phytoplankton        0.066 0.101 0.000 0.000 0.009 0.031  0.077  0.264  0.388
-p.Wet.Mayan Cichlid.Sawgrass             0.184 0.239 0.000 0.000 0.015 0.083  0.261  0.736  0.930
-p.Wet.Peacock Eel.Floc                   0.622 0.319 0.004 0.027 0.367 0.708  0.911  0.994  0.999
-p.Wet.Peacock Eel.Periphyton             0.186 0.242 0.000 0.000 0.013 0.069  0.283  0.732  0.854
-p.Wet.Peacock Eel.Phytoplankton          0.034 0.053 0.000 0.000 0.003 0.015  0.041  0.132  0.182
-p.Wet.Peacock Eel.Sawgrass               0.159 0.226 0.000 0.000 0.008 0.056  0.210  0.699  0.847
-p.Wet.Redear Sunfish.Floc                0.627 0.313 0.001 0.024 0.397 0.726  0.898  0.986  0.997
-p.Wet.Redear Sunfish.Periphyton          0.181 0.233 0.000 0.000 0.014 0.073  0.265  0.709  0.827
-p.Wet.Redear Sunfish.Phytoplankton       0.049 0.093 0.000 0.000 0.005 0.020  0.049  0.194  0.331
-p.Wet.Redear Sunfish.Sawgrass            0.144 0.209 0.000 0.000 0.009 0.053  0.181  0.617  0.825
+Epsilon.1                                7.767 4.223 1.677 2.175 4.495 7.022 10.474 15.935 17.614
+Epsilon.2                                2.760 3.402 0.125 0.183 0.537 1.336  3.566 10.199 13.202
+common_name.SD                           1.906 2.968 0.044 0.079 0.365 0.892  1.985  8.038 11.613
+p.Dry.Floc                               0.485 0.224 0.066 0.105 0.315 0.492  0.665  0.830  0.865
+p.Wet.Floc                               0.521 0.288 0.025 0.051 0.268 0.548  0.780  0.933  0.951
+p.Dry.Periphyton                         0.202 0.164 0.007 0.015 0.075 0.158  0.288  0.536  0.620
+p.Wet.Periphyton                         0.233 0.235 0.003 0.006 0.045 0.141  0.367  0.728  0.819
+p.Dry.Phytoplankton                      0.147 0.137 0.004 0.009 0.040 0.102  0.219  0.432  0.491
+p.Wet.Phytoplankton                      0.049 0.066 0.002 0.003 0.013 0.028  0.057  0.156  0.228
+p.Dry.Sawgrass                           0.166 0.152 0.006 0.011 0.053 0.120  0.233  0.481  0.575
+p.Wet.Sawgrass                           0.198 0.220 0.002 0.004 0.031 0.109  0.295  0.691  0.803
+p.Dry.Bluefin Killifish.Floc             0.401 0.284 0.000 0.000 0.136 0.400  0.643  0.848  0.890
+p.Dry.Bluefin Killifish.Periphyton       0.252 0.263 0.000 0.002 0.051 0.159  0.367  0.864  0.969
+p.Dry.Bluefin Killifish.Phytoplankton    0.171 0.185 0.000 0.000 0.025 0.097  0.275  0.554  0.636
+p.Dry.Bluefin Killifish.Sawgrass         0.176 0.230 0.000 0.000 0.029 0.093  0.214  0.773  0.968
+p.Dry.Eastern Grass Shrimp.Floc          0.401 0.263 0.000 0.001 0.175 0.403  0.618  0.820  0.862
+p.Dry.Eastern Grass Shrimp.Periphyton    0.175 0.187 0.000 0.001 0.035 0.114  0.251  0.545  0.704
+p.Dry.Eastern Grass Shrimp.Phytoplankton 0.275 0.232 0.001 0.007 0.074 0.221  0.430  0.723  0.816
+p.Dry.Eastern Grass Shrimp.Sawgrass      0.149 0.170 0.000 0.001 0.032 0.092  0.204  0.479  0.609
+p.Dry.Eastern Mosquitofish.Floc          0.402 0.287 0.000 0.000 0.138 0.401  0.649  0.861  0.901
+p.Dry.Eastern Mosquitofish.Periphyton    0.256 0.270 0.000 0.001 0.048 0.159  0.370  0.860  0.977
+p.Dry.Eastern Mosquitofish.Phytoplankton 0.136 0.158 0.000 0.000 0.016 0.068  0.206  0.474  0.556
+p.Dry.Eastern Mosquitofish.Sawgrass      0.206 0.254 0.000 0.001 0.035 0.109  0.265  0.887  0.996
+p.Wet.Asian Swamp Eel.Floc               0.442 0.355 0.000 0.000 0.076 0.407  0.793  0.972  0.987
+p.Wet.Asian Swamp Eel.Periphyton         0.305 0.342 0.000 0.000 0.017 0.129  0.571  0.981  0.999
+p.Wet.Asian Swamp Eel.Phytoplankton      0.025 0.035 0.000 0.000 0.002 0.012  0.032  0.093  0.124
+p.Wet.Asian Swamp Eel.Sawgrass           0.228 0.304 0.000 0.000 0.012 0.078  0.319  0.966  0.997
+p.Wet.Bluefin Killifish.Floc             0.438 0.318 0.000 0.000 0.124 0.438  0.726  0.922  0.955
+p.Wet.Bluefin Killifish.Periphyton       0.295 0.311 0.000 0.001 0.028 0.166  0.509  0.921  0.978
+p.Wet.Bluefin Killifish.Phytoplankton    0.054 0.069 0.000 0.000 0.009 0.030  0.074  0.190  0.252
+p.Wet.Bluefin Killifish.Sawgrass         0.213 0.270 0.000 0.000 0.017 0.087  0.316  0.846  0.970
+p.Wet.Bluegill.Floc                      0.656 0.312 0.006 0.034 0.432 0.761  0.924  0.998  1.000
+p.Wet.Bluegill.Periphyton                0.171 0.231 0.000 0.000 0.010 0.064  0.239  0.710  0.841
+p.Wet.Bluegill.Phytoplankton             0.036 0.070 0.000 0.000 0.003 0.014  0.038  0.138  0.225
+p.Wet.Bluegill.Sawgrass                  0.137 0.209 0.000 0.000 0.007 0.045  0.172  0.636  0.827
+p.Wet.Eastern Grass Shrimp.Floc          0.457 0.295 0.000 0.001 0.190 0.471  0.706  0.918  0.944
+p.Wet.Eastern Grass Shrimp.Periphyton    0.214 0.236 0.000 0.000 0.025 0.119  0.340  0.726  0.818
+p.Wet.Eastern Grass Shrimp.Phytoplankton 0.138 0.174 0.000 0.002 0.022 0.066  0.185  0.510  0.629
+p.Wet.Eastern Grass Shrimp.Sawgrass      0.192 0.222 0.000 0.001 0.023 0.102  0.299  0.671  0.806
+p.Wet.Eastern Mosquitofish.Floc          0.428 0.318 0.000 0.000 0.112 0.421  0.712  0.928  0.956
+p.Wet.Eastern Mosquitofish.Periphyton    0.291 0.313 0.000 0.000 0.028 0.153  0.502  0.928  0.980
+p.Wet.Eastern Mosquitofish.Phytoplankton 0.040 0.054 0.000 0.000 0.006 0.022  0.052  0.140  0.182
+p.Wet.Eastern Mosquitofish.Sawgrass      0.241 0.292 0.000 0.000 0.018 0.105  0.368  0.930  0.996
+p.Wet.Gar.Floc                           0.546 0.345 0.000 0.001 0.226 0.597  0.877  0.996  1.000
+p.Wet.Gar.Periphyton                     0.221 0.276 0.000 0.000 0.012 0.088  0.347  0.852  0.951
+p.Wet.Gar.Phytoplankton                  0.029 0.043 0.000 0.000 0.002 0.014  0.037  0.110  0.154
+p.Wet.Gar.Sawgrass                       0.204 0.277 0.000 0.000 0.010 0.073  0.293  0.902  0.992
+p.Wet.Golden Topminnow.Floc              0.526 0.341 0.000 0.000 0.195 0.581  0.844  0.977  0.991
+p.Wet.Golden Topminnow.Periphyton        0.246 0.295 0.000 0.000 0.017 0.109  0.388  0.915  0.987
+p.Wet.Golden Topminnow.Phytoplankton     0.032 0.043 0.000 0.000 0.004 0.017  0.041  0.115  0.147
+p.Wet.Golden Topminnow.Sawgrass          0.197 0.269 0.000 0.000 0.013 0.072  0.265  0.868  0.981
+p.Wet.Largemouth Bass.Floc               0.586 0.338 0.000 0.007 0.288 0.663  0.899  0.997  1.000
+p.Wet.Largemouth Bass.Periphyton         0.205 0.264 0.000 0.000 0.011 0.080  0.319  0.814  0.917
+p.Wet.Largemouth Bass.Phytoplankton      0.030 0.046 0.000 0.000 0.003 0.013  0.038  0.120  0.160
+p.Wet.Largemouth Bass.Sawgrass           0.179 0.252 0.000 0.000 0.009 0.062  0.242  0.803  0.942
+p.Wet.Mayan Cichlid.Floc                 0.534 0.316 0.000 0.001 0.259 0.602  0.814  0.944  0.963
+p.Wet.Mayan Cichlid.Periphyton           0.216 0.253 0.000 0.000 0.022 0.107  0.333  0.773  0.905
+p.Wet.Mayan Cichlid.Phytoplankton        0.065 0.108 0.000 0.000 0.009 0.029  0.072  0.254  0.386
+p.Wet.Mayan Cichlid.Sawgrass             0.185 0.244 0.000 0.000 0.017 0.081  0.255  0.786  0.935
+p.Wet.Peacock Eel.Floc                   0.616 0.320 0.001 0.015 0.370 0.700  0.902  0.996  1.000
+p.Wet.Peacock Eel.Periphyton             0.187 0.242 0.000 0.000 0.012 0.079  0.269  0.741  0.888
+p.Wet.Peacock Eel.Phytoplankton          0.034 0.055 0.000 0.000 0.003 0.015  0.040  0.128  0.176
+p.Wet.Peacock Eel.Sawgrass               0.163 0.230 0.000 0.000 0.009 0.061  0.219  0.712  0.880
+p.Wet.Redear Sunfish.Floc                0.625 0.320 0.000 0.010 0.391 0.731  0.895  0.992  0.999
+p.Wet.Redear Sunfish.Periphyton          0.185 0.241 0.000 0.000 0.014 0.077  0.261  0.748  0.876
+p.Wet.Redear Sunfish.Phytoplankton       0.045 0.091 0.000 0.000 0.005 0.018  0.045  0.167  0.306
+p.Wet.Redear Sunfish.Sawgrass            0.145 0.215 0.000 0.000 0.010 0.053  0.177  0.673  0.872

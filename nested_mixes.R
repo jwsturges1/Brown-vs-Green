@@ -1261,135 +1261,51 @@ source_plot_TS
 
 ggsave("figures/nested/nested_source_plot_TS.png", width = 22, height = 10, dpi = 600)
 
-# FCE proposal plots ----
-combined_df_dry = combined_df %>% 
-  filter(season == "Dry")
-
-dry_plot <-ggplot(combined_df_dry,aes(x=site, y = green, fill=fill, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  scale_fill_gradient2(low = "saddlebrown",
-                       high = "forestgreen",
-                       mid = 'white',
-                       midpoint = 0.5,
-                       limits = c(0,1),
-                       na.value = "grey50") +
-  facet_grid(transect~season, scales = "free_y") +
-  theme(axis.title = element_text(size = 20), 
-        axis.text.y = element_text(size = 20, colour = "black"), 
-        axis.text.x = element_text(size = 18, colour = "black"), 
-        plot.title = element_text(size = 18, hjust=0.5),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = 'right',
-        legend.title = element_text(size = 14),
-        strip.text.x = element_text(size = 18),
-        strip.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16)) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0,1),
-    labels = y_label_formatter
-  ) +
-  labs(y="Green Pathway Source Contribution",
-       x=NULL,
-       fill = "Green Pathway\nSource Contribution\n ")+
-  coord_flip()
-
-dry_plot
-ggsave("figures/dry_plot.png", width = 8, height = 6, dpi = 600)
+# Read RDS files ----
+jags.RB10 <- readRDS('data/JAGS_Output/RB10/nested/RB10.RDS')
+jags.SRS4 <- readRDS('data/JAGS_Output/SRS4/nested/SRS4.RDS')
+jags.SRS6 <- readRDS('data/JAGS_Output/SRS6/nested/SRS6.RDS')
+jags.SRS3 <- readRDS('data/JAGS_Output/SRS3/nested/SRS3.RDS')
+jags.TS3 <- readRDS('data/JAGS_Output/TS3/nested/TS3.RDS')
+jags.TS7 <- readRDS('data/JAGS_Output/TS7/nested/TS7.RDS')
+jags.TS9 <- readRDS('data/JAGS_Output/TS9/nested/TS9.RDS')
+jags.TS10 <- readRDS('data/JAGS_Output/TS10/nested/TS10.RDS')
+jags.TS11 <- readRDS('data/JAGS_Output/TS11/nested/TS11.RDS')
 
 
 
+# List of sites and corresponding file paths
+sites <- c("RB10", "SRS4", "SRS6", "SRS3", "TS3", "TS7", "TS9", "TS10", "TS11")
+file_paths <- paste0('data/JAGS_Output/', sites, '/nested/', sites, '.RDS')
 
-no_season <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  scale_fill_gradient2(low = "saddlebrown",
-                       high = "forestgreen",
-                       mid = 'white',
-                       midpoint = 0.5,
-                       limits = c(0,1),
-                       na.value = "grey50") +
-  facet_grid(transect~season, scales = "free_y") +
-  theme(axis.title = element_text(size = 20), 
-        axis.text.y = element_text(size = 20, colour = "black"), 
-        axis.text.x = element_text(size = 18, colour = "black"), 
-        plot.title = element_text(size = 18, hjust=0.5),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = 'right',
-        legend.title = element_text(size = 14),
-        strip.text.x = element_text(size = 18),
-        strip.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16)) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0,1),
-    labels = y_label_formatter
-  ) +
-  labs(y="Green Pathway Source Contribution",
-       x=NULL,
-       fill = "Green Pathway\nSource Contribution\n ")+
-  coord_flip()
-
-no_season
-
-ggsave("figures/no_season.png", width = 8, height = 6, dpi = 600)
-
-
-allmix = SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6,MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-
-
-write.csv(allmix,"data/Consumers/allmix.csv",row.names = F) 
-write.csv(combined_df,"data/Consumers/combined.csv",row.names = F)
-
-
+# Function to extract and save source contribution summary
+extract_source_contrib_summary <- function(site, file_path) {
+  # Load the JAGS output object
+  jags_output <- readRDS(file_path)
   
-
-
-
-
-
+  # Extract the sims.matrix
+  sims_matrix <- jags_output$BUGSoutput$sims.matrix
   
-
-
-
-
-
-stacked_source_cont = ggplot(cont_table, aes(x = season, y = value, fill = source)) +
-  geom_col(colour = "black", position = "stack", width = 0.5) +  # Set width to adjust spacing
-  scale_y_continuous(breaks = c(0.0, 0.25, 0.5, 0.75, 1.0)) +
-  facet_wrap(facets = c("site"), nrow = 3, ncol = 3) +
-  theme(
-    plot.title = element_text(size = 24, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'bottom',
-    legend.title = element_text(size = 24),
-    strip.text.x = element_text(size = 24),
-    strip.text.y = element_text(size = 24),
-    axis.title.y = element_text(size = 24),
-    axis.text.x = element_text(size = 24),
-    axis.text.y = element_text(size = 18),
-    legend.text = element_text(size = 18)) +
-  scale_x_discrete(expand = c(0,1)) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0, 1),
-    labels = y_label_formatter
-  ) +
-   scale_fill_manual(values = c("Mang." = "wheat4", "Sawgrass" = "wheat4", "Floc" = "wheat1","RMA" = "wheat1","Seagrass" = "wheat1",
-                               "Epi." = "darkolivegreen4", "Peri." = "darkolivegreen4", "Phyto." = "darkolivegreen1",
-                               "FGA" = "darkolivegreen1", "POM"= "darkolivegreen1" )) +
-  labs(
-    y = "Proportional Energy Contribution (%)",
-    x = NULL,
-    fill = "Basal Resource"
+  # Assuming your source contributions are stored in columns with names starting with 'p'
+  source_contrib_cols <- grep("^p", colnames(sims_matrix))
+  
+  # Extract the relevant columns
+  source_contributions <- sims_matrix[, source_contrib_cols]
+  
+  # Calculate summary statistics for each source
+  source_contrib_summary <- data.frame(
+    mean = apply(source_contributions, 2, mean),
+    median = apply(source_contributions, 2, median),
+    lower_CI = apply(source_contributions, 2, quantile, probs = 0.025),
+    upper_CI = apply(source_contributions, 2, quantile, probs = 0.975)
   )
+  
+  # Save the summary statistics
+  output_file <- paste0("data/Mix_Quants/CS/Source_Contribution_Summary_", site, ".csv")
+  write.csv(source_contrib_summary, output_file, row.names = FALSE)
+}
 
-stacked_source_cont
-
-ggsave("figures/stacked_source_cont.png", width = 12, height = 11, dpi = 600)
-
-# THE END
+# Loop over each site and extract/save source contribution summary
+for (i in seq_along(sites)) {
+  extract_source_contrib_summary(sites[i], file_paths[i])
+}

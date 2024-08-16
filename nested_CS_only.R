@@ -1,7 +1,7 @@
 # Authors: James Sturges, Ryan Rezek, Ryan James
 # Last Updated 20 August 2023
 # Seasonal differences in brown/green energy pathways and source specific contributions across multiple FCE food webs
-# DATASETUP ----
+# Data Setup ----
 
 # read in libraries
 library(MixSIAR)
@@ -285,7 +285,7 @@ write.csv(mixtable_RB10, "data/Mix_Quants/CS/MT_RB10.csv", row.names = FALSE)
 
 
 
-#### Modifying ----
+# Modifying ----
 
 jags.RB10 <- readRDS('data/JAGS_Output/RB10/CS/RB10.RDS')
 
@@ -389,12 +389,13 @@ plot_data(filename = "figures/CS/isospace/SRS3_isospace_plot",
 
 model_filename <- "data/Consumers/CS/SRS3_mix.txt"
 write_JAGS_model(model_filename, resid_err, process_err, mix, source)
-
+resid_err = T
+process_err = T
 # jags.SRS3 <- run_model(run = "test", mix, source, discr, model_filename,
 #                        alpha.prior = 1, resid_err = FALSE, process_err = FALSE)
 
 jags.SRS3 <- run_model(run = "very long", mix, source, discr, model_filename,
-                       alpha.prior = 1, resid_err, process_err, save.output.to.files = TRUE)
+                       alpha.prior = 1, resid_err, process_err)
 
 output_jags.SRS3 <- list(summary_save = TRUE,
                          summary_name = "data/JAGS_Output/SRS3/CS/FCESRS3_sumstats",
@@ -969,6 +970,422 @@ write.csv(mixtable_TS11, "data/Mix_Quants/CS/MT_TS11.csv", row.names = FALSE)
 #              filename = "TS11_combined_sumstats" )
 
 
+# Extracting Combined Posterior Distribution ----
+post = function(jags,mix_file,source_file,site){
+  sims_matrix =  jags$BUGSoutput$sims.matrix %>%
+    as_tibble() %>%
+    select(contains("p.fac1")) %>%
+    mutate(site = site)
+
+
+  mix <- load_mix_data(filename = mix_file,
+                       iso_names=c("d13C","d34S"),
+                       factors=c('hydroseason','common_name'),
+                       fac_random=c(F,T),
+                       fac_nested=c(F,T),
+                       cont_effects=NULL)
+
+  mix_levels = mix$FAC[[1]]$labels
+
+  source <- load_source_data(filename=source_file,
+                             source_factors=NULL,
+                             conc_dep=T,
+                             data_type="means",
+                             mix)
+
+  source_vect = source$source_names
+
+  new_names <- names(sims_matrix) %>%
+   str_replace_all("p.fac1\\[(\\d+),(\\d+)\\]",
+                               \(x){
+                                match <- str_match(x, "p.fac1\\[(\\d+),(\\d+)\\]")
+                                vec1_value <- mix_levels[as.numeric(match[2])]
+                                vec2_value <- source_vect[as.numeric(match[3])]
+                                paste(vec1_value,vec2_value,sep = '_')})
+
+  names(sims_matrix) <- new_names
+  df = sims_matrix %>%
+    pivot_longer(-site,names_pattern = "(.*)_(.*)", names_to = c("Season", "Source"), values_to = "Source Contribution")
+}
+
+site_names <- c("RB10", "SRS4", "SRS6", "SRS3", "TS3", "TS7", "TS9", "TS10", "TS11")
+
+# Define a list of corresponding JAGS output files
+jags_files <- list(
+  RB10 = readRDS('data/JAGS_Output/RB10/CS/RB10.RDS'),
+  SRS4 = readRDS('data/JAGS_Output/SRS4/CS/SRS4.RDS'),
+  SRS6 = readRDS('data/JAGS_Output/SRS6/CS/SRS6.RDS'),
+  SRS3 = readRDS('data/JAGS_Output/SRS3/CS/SRS3.RDS'),
+  TS3 = readRDS('data/JAGS_Output/TS3/CS/TS3.RDS'),
+  TS7 = readRDS('data/JAGS_Output/TS7/CS/TS7.RDS'),
+  TS9 = readRDS('data/JAGS_Output/TS9/CS/TS9.RDS'),
+  TS10 = readRDS('data/JAGS_Output/TS10/CS/TS10.RDS'),
+  TS11 = readRDS('data/JAGS_Output/TS11/CS/TS11.RDS')
+)
+
+# Define the paths to the mix and source files
+mix_files <- list(
+  RB10 = "data/Consumers/CS/RB10mix.csv",
+  SRS4 = "data/Consumers/CS/SRS4mix.csv",
+  SRS6 = "data/Consumers/CS/SRS6mix.csv",
+  SRS3 = "data/Consumers/CS/SRS3mix.csv",
+  TS3 = "data/Consumers/CS/TS3mix.csv",
+  TS7 = "data/Consumers/CS/TS7mix.csv",
+  TS9 = "data/Consumers/CS/TS9mix.csv",
+  TS10 = "data/Consumers/CS/TS10mix.csv",
+  TS11 = "data/Consumers/CS/TS11mix.csv"
+)
+
+source_files <- list(
+  RB10 = "data/Sources/sourcesRB10.csv",
+  SRS4 = "data/Sources/sourcesSRS4.csv",
+  SRS6 = "data/Sources/sourcesSRS6.csv",
+  SRS3 = "data/Sources/sourcesSRS3.csv",
+  TS3 = "data/Sources/sourcesTS3.csv",
+  TS7 = "data/Sources/sourcesTS7.csv",
+  TS9 = "data/Sources/sourcesTS9.csv",
+  TS10 = "data/Sources/sourcesTS10.csv",
+  TS11 = "data/Sources/sourcesTS11.csv"
+)
+
+# Initialize a list to store results
+posterior_tibbles <- list()
+
+# Loop through each site and apply the post function
+for (site in site_names) {
+  jags <- jags_files[[site]]
+  mix_file <- mix_files[[site]]
+  source_file <- source_files[[site]]
+  
+  posterior_tibbles[[site]] <- post(jags, mix_file = mix_file, source_file = source_file, site = site)
+}
+
+# Combine all the results into one tibble if needed
+combined_posterior_tibble <- bind_rows(posterior_tibbles, .id = "site")
+
+# Posterior Channel Boxplot ----
+combined_posterior_tibble = combined_posterior_tibble %>%
+  mutate(path = case_when(
+    Source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", "Epiphytic microalgae", 'SPOM') ~ "green",
+    Source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass", 'Floc') ~ "brown",
+    TRUE ~ NA_character_
+  ))
+combined_posterior_tibble = combined_posterior_tibble %>%
+  mutate(transect = case_when(
+    site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
+    site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
+
+combined_posterior_tibble <- combined_posterior_tibble %>%
+  mutate(site = ifelse(site == "RB10", "Upper River",
+                       ifelse(site == "SRS3", "SRS Marsh",
+                              ifelse(site == "SRS4", "Mid River",
+                                     ifelse(site == "SRS6", "Lower River",
+                                            ifelse(site == "TS3", "TS Marsh",
+                                                   ifelse(site == "TS7", "Mangrove Ecotone",
+                                                          ifelse(site == "TS9", "Inner Bay",
+                                                                 ifelse(site == "TS10", "Mid Bay",
+                                                                        ifelse(site == "TS11", "Outer Bay", site)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+
+# Create a simulated iteration identifier based on the repeating pattern
+combined_posterior_tibble <- combined_posterior_tibble %>%
+  group_by(site, Season, Source) %>%
+  mutate(iteration = rep(1:3000, each = 1, length.out = n())) %>%
+  ungroup()
+
+
+# Sum contributions by source for each iteration
+summed_contributions <- combined_posterior_tibble %>%
+  group_by(site, Season, path, transect, iteration) %>%
+  summarize(total_contribution = sum(`Source Contribution`), .groups = 'drop')
+
+
+green_contributions <- summed_contributions %>%
+  filter(path == "green")%>%
+  group_by(site, Season) %>%
+  mutate(color_fill = mean(total_contribution)) 
+
+
+green_contributions <- green_contributions %>%
+  mutate(site = factor(site, levels = c( "Lower River","Mid River", "Upper River","SRS Marsh","Outer Bay", "Mid Bay","Inner Bay", "Mangrove Ecotone", "TS Marsh")))
+
+
+# Create the boxplot
+mixoutput_bxplt_gb_combined <- ggplot(green_contributions, aes(x = site, y = total_contribution, fill = color_fill)) +
+  geom_boxplot(outlier.size = 1, outlier.shape = 19, width = 0.5) +
+  theme_bw() +
+  scale_fill_gradient2(
+    low = "#663300",
+    high = "#92D050",
+    mid = 'white',
+    midpoint = 0.5,
+    limits = c(0, 1),
+    na.value = "grey50"
+  ) +
+  facet_grid(transect ~ Season, scales = "free_y") +
+  theme(
+    axis.title = element_text(size = 20), 
+    axis.text.y = element_text(size = 20, colour = "black"), 
+    axis.text.x = element_text(size = 18, colour = "black"), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'right',
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(size = 18),
+    strip.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16)
+  ) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = scales::percent_format(accuracy = 1)
+  ) +
+  labs(
+    y = "Green Pathway Source Contribution",
+    x = NULL,
+    fill = "Mean Green Pathway\nSource Contribution\n "
+  ) +
+  coord_flip()
+
+mixoutput_bxplt_gb_combined
+ggsave("figures/CS/CS_cplot.png", width = 12, height = 6, dpi = 600)
+
+# Calculate summary statistics for each site, season, and path
+summary_stats <- summed_contributions %>%
+  group_by(site, Season, path, transect) %>%
+  summarize(
+    mean_contribution = mean(total_contribution),
+    median_contribution = median(total_contribution),
+    sd_contribution = sd(total_contribution),
+    min_contribution = min(total_contribution),
+    max_contribution = max(total_contribution),
+    q25_contribution = quantile(total_contribution, 0.25),
+    q75_contribution = quantile(total_contribution, 0.75),
+    .groups = 'drop'
+  )
+
+
+mean_source = combined_posterior_tibble %>%
+  group_by(site, Season, Source, path, transect) %>%
+  summarize(mean_contribution = mean(`Source Contribution`)) %>%
+  ungroup()
+
+# Calculate mean across all iterations for each site, season, and path
+mean_channel <- summed_contributions %>%
+  group_by(site, Season, path, transect) %>%
+  summarize(mean_contribution = mean(total_contribution), .groups = 'drop')
+
+mean_channel_combined <- mean_channel %>%
+  left_join(summary_stats, by = c("site", "Season", "path", "transect"))
+
+
+y_label_formatter <- function(x) {
+  ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
+}
+
+
+mean_channel_wide <- mean_channel %>%
+  pivot_wider(
+    names_from = path,
+    values_from = mean_contribution,
+    names_prefix = "", # or use "contribution_" if you prefer a prefix
+    values_fill = list(mean_contribution = NA) # Fill missing values with NA
+  ) %>%
+  rename(
+    `brown contribution` = brown,
+    `green contribution` = green
+  )
+
+
+mean_source_wide <- mean_source %>%
+  pivot_wider(
+    names_from = Source,
+    values_from = mean_contribution,
+    names_prefix = "",
+    values_fill = list(mean_contribution = NA) # Fill missing values with NA
+  )
+
+channel_df = summary_stats %>% 
+ filter(path == as.character("green"))
+
+# Posterior Source Boxplot ----
+
+#colors for background source color fill in panels
+text_colors <- c("Mang." = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","RMA" = "saddlebrown","Seagrass" = "saddlebrown",
+                 "Epi." = "forestgreen", "Peri." = "forestgreen", "Phyto." = "forestgreen",
+                 "FGA" = "forestgreen", "POM"= "forestgreen" )
+
+cont_df <- combined_posterior_tibble %>%
+  filter(Source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 
+                       "Epiphytic microalgae", "SPOM", "Mangrove", "Sawgrass", "Red Macroalgae", 
+                       "Seagrass", "Floc")) %>%
+  mutate(
+    factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")),
+    season = ifelse(Season == "Dry", "Dry", "Wet"))
+  
+cont_df = cont_df %>% 
+  mutate(Source = ifelse(Source == "Epiphytes", "EMA",
+                       ifelse(Source == "Floc", "Floc",
+                              ifelse(Source == "Filamentous Green Algae", "Green Algae",
+                                     ifelse(Source == "Red Macroalgae", "Red Algae",
+                                            ifelse(Source == "Phytoplankton", "PMA",
+                                                   ifelse(Source == "Mangrove", "Mang",
+                                                          ifelse(Source == "Sawgrass", "Sawgrass",
+                                                                 ifelse(Source == "Seagrass", "Seagrass",
+                                                                        ifelse(Source == "SPOM", "POM",
+                                                                          ifelse(Source == "Periphyton", "Peri", Source)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  Source = factor(Source, levels = c( "Sawgrass","Floc","Mang","Red Algae", "Seagrass", "Peri", "EMA", "PMA", "Green Algae")))
+
+source_cont_plot <- ggplot(cont_df, aes(x = Source, y = `Source Contribution`, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
+  geom_boxplot() +
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x") +
+  theme(
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
+    axis.text.x = element_text(size = 18, colour = c("black", "black", "black", "black")), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 26, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")
+  ) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = scales::percent_format(accuracy = 1)
+  ) +
+  labs(
+    y = "Basal Resource Energy Contribution (%)",
+    x = NULL,
+    fill = "Season"
+  )
+
+source_cont_plot
+
+
+
+unique(cont_df$Source)
+
+
+
+
+
+
+# SRS only source contribution plot
+cont_SRS = cont_df %>% 
+  filter(transect == "Shark River Slough")
+# group_by(site,season, source) %>% 
+# summarise(value = mean(value))
+
+source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
+  geom_boxplot() +
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x", nrow = 1) +
+  theme(
+    axis.ticks.length.x = unit(0.1, "inch"),
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
+    axis.text.x = element_text(
+      size = 22,
+      colour = c("black", "black", "black", "black", face = "bold", family = "arial") 
+    ), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")
+  ) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter
+  ) +
+  labs(
+    y = "Basal Resource Energy Contribution (%)",
+    x = NULL,
+    fill = "Season"
+  ) 
+
+
+source_plot_SRS
+
+ggsave("figures/CS/CS_source_plot_SRS.png", width = 22, height = 10, dpi = 600)
+
+# TS only source contribution plot
+
+cont_TS = cont_df %>% 
+  filter(transect == "Taylor Slough")
+
+cont_TS = cont_TS %>% 
+  mutate(site = factor(site, levels = c( "TS Marsh","Mangrove Ecotone", "Inner Bay","Mid Bay","Outer Bay")))
+
+
+source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
+  geom_rect(aes(xmin=source, xmax=source, ymin=-Inf, ymax=Inf, fill = season), alpha=0.5, stat="identity") +
+  geom_boxplot() +
+  theme_bw() +
+  facet_wrap(~ site, scales = "free_x", nrow = 1) +
+  theme(
+    axis.title = element_text(size = 32), 
+    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
+    axis.text.x = element_text(
+      size = 18,
+      colour = c("black", "black", "black", "black")
+    ),
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'top',
+    legend.title = element_text(size = 32, face = "bold", family = "arial"),
+    strip.text.x = element_text(size = 28, face = "bold", family = "arial"),
+    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
+    legend.text = element_text(size = 24, face = "bold", family = "arial")
+  ) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter
+  ) +
+  labs(
+    y = "Basal Resource Energy Contribution (%)",
+    x = NULL,
+    fill = "Season"
+  )
+
+source_plot_TS
+
+
+ggsave("figures/CS/CS_source_plot_TS.png", width = 22, height = 10, dpi = 600)
 # Aggregating by Energy Channel ----
 MixOut_RB10 = read.csv('data/Mix_Quants/CS/MT_RB10.csv')
 MixOut_SRS3 = read.csv('data/Mix_Quants/CS/MT_SRS3.csv')
@@ -1052,29 +1469,29 @@ combined_df = combined_df %>%
   mutate(fill = mean(green),
          site = factor(site, levels = c( "Outer Bay","Mid Bay","Inner Bay","Mangrove Ecotone" ,"TS Marsh", "Lower River", "Mid River","Upper River" ,"SRS Marsh" )))
 
-# generates a table of average contributions for brown vs green at each site during each season
-bvg_table = combined_df %>% 
-  group_by(site,season) %>% 
-  summarise(green = mean(green))
-
-
-bvg_table_ft <- flextable(bvg_table,
-                          col_keys = c("site", "season","green")) %>%
-  add_header_row(colwidths = c(1,1,1), values = c("Site", "Season", "Mean Green Pathway Contribution")) %>%
-  set_header_labels(site = "Site",
-                    season = "Season",
-                    green = "Mean Green Pathway Contribution") %>%
-  colformat_double(digits = 2) %>%
-  theme_box() %>%
-  align(align = "center") %>%
-  align(part = "header", align = "center") %>% 
-  # compose(j = "Genus_spp",
-  #         value = as_paragraph(as_i(Genus_spp))) %>%
-  merge_v(part = "header")
-
-bvg_table_ft
-
-save_as_docx(bvg_table_ft, path = "tables/CS/bvg_table_flex.docx")
+# # generates a table of average contributions for brown vs green at each site during each season
+# bvg_table = combined_df %>% 
+#   group_by(site,season) %>% 
+#   summarise(green = mean(green))
+# 
+# 
+# bvg_table_ft <- flextable(bvg_table,
+#                           col_keys = c("site", "season","green")) %>%
+#   add_header_row(colwidths = c(1,1,1), values = c("Site", "Season", "Mean Green Pathway Contribution")) %>%
+#   set_header_labels(site = "Site",
+#                     season = "Season",
+#                     green = "Mean Green Pathway Contribution") %>%
+#   colformat_double(digits = 2) %>%
+#   theme_box() %>%
+#   align(align = "center") %>%
+#   align(part = "header", align = "center") %>% 
+#   # compose(j = "Genus_spp",
+#   #         value = as_paragraph(as_i(Genus_spp))) %>%
+#   merge_v(part = "header")
+# 
+# bvg_table_ft
+# 
+# save_as_docx(bvg_table_ft, path = "tables/CS/bvg_table_flex.docx")
 
 
 mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
@@ -1329,4 +1746,117 @@ source_plot_TS
 
 
 ggsave("figures/CS/CS_source_plot_TS.png", width = 22, height = 10, dpi = 600)
+#manual biplots ----
+# figure 1 biplots-----
+not = c('Snook', 'Jack crevale', 'Hard head catfish',
+        'Bonefish','Toad fish', 'Blue crab',
+        'Gray snapper', 'Spotted seatrout')
+fish = read_csv('FLBayMM.csv')%>% filter(!(Species %in% not))
+fish = fish %>% 
+  mutate(Species = str_replace(Species, "Mojarra", "Silver Jenny mojarra"))
+fish$Species = factor(fish$Species, levels = c("Pinfish" ,
+                                               "Silver Jenny mojarra",
+                                               "Silver perch",
+                                               "Bay anchovy",
+                                               "Pigfish" , 
+                                               "Pink shrimp" ,
+                                               "Rainwater killifish"))
+cols = c("Pinfish" = 'yellow',
+         "Silver Jenny mojarra" = 'slategray3',
+         "Silver perch" = 'snow3',
+         "Bay anchovy" = 'deepskyblue1',
+         "Pigfish" = 'orange', 
+         "Pink shrimp" = 'Pink',
+         "Rainwater killifish" = 'firebrick',
+         "Blue crab" = 'blue',
+         "Toad fish" = 'tan4', 
+         "Gray snapper" = 'tomato',
+         "Spotted seatrout" = 'lightsteelblue')
 
+sources = read.csv('mm_data/sFLbayPOM.csv')%>%
+  mutate(Meand13C = Meand13C + 2.5,
+         Meand15N = Meand15N + 7.25,
+         Meand34S = Meand34S + 1)
+
+# wet 
+fish = fish %>% filter(Season == 'wet')
+ 
+
+#Isotope biplots
+# C and N
+wcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
+  geom_point(data = fish, aes(x = d13C, y = d15N,color = Species), size=3, pch=c(20))+
+  scale_color_manual(values = cols, drop = F)+
+  scale_x_continuous(limits = c(-27, -6))+
+  scale_y_continuous(limits = c(0,14))+
+  theme( legend.title = element_blank(),
+         legend.text=element_text(size=12))#,legend.position=c(.85,.15))
+
+#ggsave('flbayCNwet.pdf', units="in", width=10, height=6)
+
+# C and S
+wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
+  geom_point(data = fish, aes(x = d13C, y = d34S,color = Species), size=3, pch=c(20))+
+  scale_color_manual(values = cols, drop = F)+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
+  scale_x_continuous(limits = c(-27, -6))+
+  scale_y_continuous(limits = c(-16.5, 24))+
+  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
+#ggsave('flbayCSwet.pdf', units="in", width=10, height=6)
+
+# dry 
+not = c('Snook', 'Jack crevale', 'Hard head catfish',
+        'Bonefish','Toad fish', 'Blue crab',
+        'Gray snapper', 'Spotted seatrout')
+fish = read_csv('FLBayMM.csv')%>% 
+  filter(Season == 'dry', !(Species %in% not)) %>% 
+  mutate(Species = str_replace(Species, "Mojarra", "Silver Jenny mojarra"))
+
+#Isotope biplots
+# C and N
+dcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
+  geom_point(data = fish, aes(x = d13C, y = d15N,color = Species), size=3, pch=c(20))+
+  scale_color_manual(values = cols, drop = F)+
+  scale_x_continuous(limits = c(-27, -6))+
+  scale_y_continuous(limits = c(0,14))+
+  theme( legend.title = element_blank())#,legend.position=c(.85,.15))
+
+#ggsave('flbayCNdry.pdf', units="in", width=10, height=6)
+
+# C and S
+dcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
+  geom_point(data = fish, aes(x = d13C, y = d34S,color = Species), size=3, pch=c(20))+
+  scale_color_manual(values = cols, drop = F)+
+  geom_point(data = sources, size = 3, pch=c(20))+ 
+  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
+  scale_x_continuous(limits = c(-27, -6))+
+  scale_y_continuous(limits = c(-16.5, 24))+
+  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
+
+ggarrange(wcn, dcn, wcs, dcs, 
+          labels = c("A", "B", "C", "D"),
+          ncol = 2, nrow = 2,
+          legend = 'bottom', common.legend = T)
+ggsave("figs/FLbayBiplotsDO_pom.tiff", units="in", width=10, height=8, dpi=600,compression = 'lzw')
+#ggsave('flbayCSdry.pdf', units="in", width=10, height=6)
