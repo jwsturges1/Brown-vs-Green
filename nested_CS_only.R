@@ -15,6 +15,8 @@ library(R2jags)
 library(rjags)
 library(tidyverse)
 library(dplyr)
+library(ggpubr)
+library(cowplot)
 
 #set print limits high for mixing model outputs
 options(max.print = 99999)
@@ -1157,7 +1159,52 @@ mixoutput_bxplt_gb_combined <- ggplot(green_contributions, aes(x = site, y = tot
   coord_flip()
 
 mixoutput_bxplt_gb_combined
+
 ggsave("figures/CS/CS_cplot.png", width = 12, height = 6, dpi = 600)
+
+
+
+# Posterior Boxplot No Outliers
+
+mixoutput_bxplt_gb_combined_out <- ggplot(green_contributions, aes(x = site, y = total_contribution, fill = color_fill)) +
+  geom_boxplot(outlier.shape = NA, width = 0.5) +  # Remove outliers by setting outlier.shape to NA
+  theme_bw() +
+  scale_fill_gradient2(
+    low = "#663300",
+    high = "#92D050",
+    mid = 'white',
+    midpoint = 0.5,
+    limits = c(0, 1),
+    na.value = "grey50"
+  ) +
+  facet_grid(transect ~ Season, scales = "free_y") +
+  theme(
+    axis.title = element_text(size = 20), 
+    axis.text.y = element_text(size = 20, colour = "black"), 
+    axis.text.x = element_text(size = 18, colour = "black"), 
+    plot.title = element_text(size = 18, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = 'right',
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(size = 18),
+    strip.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16)
+  ) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = scales::percent_format(accuracy = 1)
+  ) +
+  labs(
+    y = "Green Pathway Source Contribution",
+    x = NULL,
+    fill = "Mean Green Pathway\nSource Contribution\n "
+  ) +
+  coord_flip()
+
+mixoutput_bxplt_gb_combined_out
+ggsave("figures/CS/CS_cplot_out.png", width = 12, height = 6, dpi = 600)
 
 # Calculate summary statistics for each site, season, and path
 summary_stats <- summed_contributions %>%
@@ -1218,400 +1265,150 @@ channel_df = summary_stats %>%
  filter(path == as.character("green"))
 
 # Posterior Source Boxplot ----
+cont_df <- combined_posterior_tibble
+#colors and labels for background source color fill in panels
+s_df= tibble(Source = c("Sawgrass", "Mangrove",
+                        "Floc","Red Macroalgae","Seagrass",
+                        "Epiphytes","Periphyton","Filamentous Green Algae",
+                        'SPOM',"Phytoplankton"),
+             lab = c('Sawgrass', 'Mang',
+                     "Floc","Red Algae","Seagrass",
+                     'EMA','Peri','Green Algae',
+                     'POM', 'Phyto'),
+             s = c('b1', 'b1',
+                   'b2','b2','b2',
+                   'g1','g1','g1',
+                   'g2','g2'),
+             x = c(1,1,
+                   2,2,2,
+                   3,3,3,
+                   4,4),
+             g = c('brown','brown',
+                   'brown','brown','brown',
+                   'green','green','green',
+                   'green','green')) |> 
+  mutate(lab = factor(lab, levels = c('Sawgrass', 'Mang',
+                                      "Floc","Red Algae","Seagrass",
+                                      'EMA','Peri','Green Algae',
+                                      'POM', 'Phyto')),
+         lb = factor(lab, levels = c( "Sawgrass","Mang","Floc","Red Algae",
+                                      "Seagrass", "EMA","Peri" ,
+                                       "Green Algae","POM", "Phyto")))
 
-#colors for background source color fill in panels
-text_colors <- c("Mang." = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","RMA" = "saddlebrown","Seagrass" = "saddlebrown",
-                 "Epi." = "forestgreen", "Peri." = "forestgreen", "Phyto." = "forestgreen",
-                 "FGA" = "forestgreen", "POM"= "forestgreen" )
-
-cont_df <- combined_posterior_tibble %>%
-  filter(Source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", 
-                       "Epiphytic microalgae", "SPOM", "Mangrove", "Sawgrass", "Red Macroalgae", 
-                       "Seagrass", "Floc")) %>%
-  mutate(
-    factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")),
-    season = ifelse(Season == "Dry", "Dry", "Wet"))
-  
-cont_df = cont_df %>% 
-  mutate(Source = ifelse(Source == "Epiphytes", "EMA",
-                       ifelse(Source == "Floc", "Floc",
-                              ifelse(Source == "Filamentous Green Algae", "Green Algae",
-                                     ifelse(Source == "Red Macroalgae", "Red Algae",
-                                            ifelse(Source == "Phytoplankton", "PMA",
-                                                   ifelse(Source == "Mangrove", "Mang",
-                                                          ifelse(Source == "Sawgrass", "Sawgrass",
-                                                                 ifelse(Source == "Seagrass", "Seagrass",
-                                                                        ifelse(Source == "SPOM", "POM",
-                                                                          ifelse(Source == "Periphyton", "Peri", Source)
-                                                                 )
-                                                          )
-                                                   )
-                                            )
-                                     )
-                              )
-                       )
-  ),
-  Source = factor(Source, levels = c( "Sawgrass","Floc","Mang","Red Algae", "Seagrass", "Peri", "EMA", "PMA", "Green Algae")))
-
-source_cont_plot <- ggplot(cont_df, aes(x = Source, y = `Source Contribution`, fill = season, width = 0.2)) +
-  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
-  geom_boxplot() +
-  theme_bw() +
-  facet_wrap(~site, scales = "free_x") +
-  theme(
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(size = 18, colour = c("black", "black", "black", "black")), 
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 26, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")
-  ) +
-  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0, 1),
-    labels = scales::percent_format(accuracy = 1)
-  ) +
-  labs(
-    y = "Basal Resource Energy Contribution (%)",
-    x = NULL,
-    fill = "Season"
-  )
-
-source_cont_plot
-
-
-
-unique(cont_df$Source)
-
-
-
-
-
-
-# SRS only source contribution plot
-cont_SRS = cont_df %>% 
-  filter(transect == "Shark River Slough")
-# group_by(site,season, source) %>% 
-# summarise(value = mean(value))
-
-source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
-  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
-  geom_boxplot() +
-  theme_bw() +
-  facet_wrap(~site, scales = "free_x", nrow = 1) +
-  theme(
-    axis.ticks.length.x = unit(0.1, "inch"),
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(
-      size = 22,
-      colour = c("black", "black", "black", "black", face = "bold", family = "arial") 
-    ), 
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")
-  ) +
-  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0, 1),
-    labels = y_label_formatter
-  ) +
-  labs(
-    y = "Basal Resource Energy Contribution (%)",
-    x = NULL,
-    fill = "Season"
-  ) 
-
-
-source_plot_SRS
-
-ggsave("figures/CS/CS_source_plot_SRS.png", width = 22, height = 10, dpi = 600)
-
-# TS only source contribution plot
-
-cont_TS = cont_df %>% 
-  filter(transect == "Taylor Slough")
-
-cont_TS = cont_TS %>% 
-  mutate(site = factor(site, levels = c( "TS Marsh","Mangrove Ecotone", "Inner Bay","Mid Bay","Outer Bay")))
-
-
-source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
-  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
-  geom_rect(aes(xmin=source, xmax=source, ymin=-Inf, ymax=Inf, fill = season), alpha=0.5, stat="identity") +
-  geom_boxplot() +
-  theme_bw() +
-  facet_wrap(~ site, scales = "free_x", nrow = 1) +
-  theme(
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(
-      size = 18,
-      colour = c("black", "black", "black", "black")
-    ),
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 28, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")
-  ) +
-  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0, 1),
-    labels = y_label_formatter
-  ) +
-  labs(
-    y = "Basal Resource Energy Contribution (%)",
-    x = NULL,
-    fill = "Season"
-  )
-
-source_plot_TS
-
-
-ggsave("figures/CS/CS_source_plot_TS.png", width = 22, height = 10, dpi = 600)
-# Aggregating by Energy Channel ----
-MixOut_RB10 = read.csv('data/Mix_Quants/CS/MT_RB10.csv')
-MixOut_SRS3 = read.csv('data/Mix_Quants/CS/MT_SRS3.csv')
-MixOut_SRS4 = read.csv('data/Mix_Quants/CS/MT_SRS4.csv')
-MixOut_SRS6 = read.csv('data/Mix_Quants/CS/MT_SRS6.csv')
-MixOut_TS3 = read.csv('data/Mix_Quants/CS/MT_TS3.csv')
-MixOut_TS7 = read.csv('data/Mix_Quants/CS/MT_TS7.csv')
-MixOut_TS9 = read.csv('data/Mix_Quants/CS/MT_TS9.csv')
-MixOut_TS10 = read.csv('data/Mix_Quants/CS/MT_TS10.csv')
-MixOut_TS11 = read.csv('data/Mix_Quants/CS/MT_TS11.csv')
-
-SRSMixout_gb <- rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6)
-
-SRSMixout_gb = SRSMixout_gb %>% 
-  rename(site = type, species = code, season = name) %>%
-  mutate(path = case_when(
-    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton") ~ "green",
-    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae",'Floc') ~ "brown",
-    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
-  ))
-
-SRSMixout_gb = SRSMixout_gb %>% 
-  group_by(season, site, species, path) %>% 
-  summarize(value = sum(mean)) %>% 
-  pivot_wider(names_from = path, values_from = value)
-
-TSMixout_gb <- rbind(MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-
-TSMixout_gb = TSMixout_gb %>% 
-  rename(site = type, species = code, season = name) %>%
-  mutate(path = case_when(
-    source %in% c("Epiphytes", "Phytoplankton", "Filamentous Green Algae", "Periphyton", "Epiphytic microalgae", 'SPOM') ~ "green",
-    source %in% c("Mangrove", "Sawgrass", "Red Macroalgae", "Seagrass", 'Floc') ~ "brown",
-    TRUE ~ NA_character_  # For other cases, you can assign NA or something else if needed
-  ))
-
-TSMixout_gb = TSMixout_gb %>% 
-  group_by(season, site, species, path) %>%
-  summarize(value = sum(mean)) %>% 
-  pivot_wider(names_from = path, values_from = value)
+cont_df = cont_df |> 
+  as_tibble() |> 
+  left_join(s_df, by = 'Source') 
 
 
 y_label_formatter <- function(x) {
   ifelse(x %% 1 == 0, formatC(x, format = "f", digits = 0), formatC(x, format = "f", digits = 2))
 }
 
-
-combined_df = bind_rows(SRSMixout_gb,TSMixout_gb) %>%  
-  mutate(transect = case_when(
-    site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
-    site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
-
-unique_names <- combined_df %>%
-  group_by(site, season) %>%
-  summarize(unique_names = n_distinct(species))
-
-
-# Combined Brown vs Green boxplot----
-combined_df <- combined_df %>%
-  mutate(site = ifelse(site == "RB10", "Upper River",
-                       ifelse(site == "SRS3", "SRS Marsh",
-                              ifelse(site == "SRS4", "Mid River",
-                                     ifelse(site == "SRS6", "Lower River",
-                                            ifelse(site == "TS3", "TS Marsh",
-                                                   ifelse(site == "TS7", "Mangrove Ecotone",
-                                                          ifelse(site == "TS9", "Inner Bay",
-                                                                 ifelse(site == "TS10", "Mid Bay",
-                                                                        ifelse(site == "TS11", "Outer Bay", site)
-                                                                 )
-                                                          )
-                                                   )
-                                            )
-                                     )
-                              )
-                       )
-  ),
-  site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
-
-combined_df = combined_df %>% 
-  group_by(site, season) %>% 
-  mutate(fill = mean(green),
-         site = factor(site, levels = c( "Outer Bay","Mid Bay","Inner Bay","Mangrove Ecotone" ,"TS Marsh", "Lower River", "Mid River","Upper River" ,"SRS Marsh" )))
-
-# # generates a table of average contributions for brown vs green at each site during each season
-# bvg_table = combined_df %>% 
-#   group_by(site,season) %>% 
-#   summarise(green = mean(green))
-# 
-# 
-# bvg_table_ft <- flextable(bvg_table,
-#                           col_keys = c("site", "season","green")) %>%
-#   add_header_row(colwidths = c(1,1,1), values = c("Site", "Season", "Mean Green Pathway Contribution")) %>%
-#   set_header_labels(site = "Site",
-#                     season = "Season",
-#                     green = "Mean Green Pathway Contribution") %>%
-#   colformat_double(digits = 2) %>%
-#   theme_box() %>%
-#   align(align = "center") %>%
-#   align(part = "header", align = "center") %>% 
-#   # compose(j = "Genus_spp",
-#   #         value = as_paragraph(as_i(Genus_spp))) %>%
-#   merge_v(part = "header")
-# 
-# bvg_table_ft
-# 
-# save_as_docx(bvg_table_ft, path = "tables/CS/bvg_table_flex.docx")
-
-
-mixoutput_bxplt_gb_combined <-ggplot(combined_df,aes(x=site, y = green, fill=fill, width=0.8))+
-  geom_boxplot()+
-  theme_bw()+
-  scale_fill_gradient2(low = "#663300",
-                       high = "#92D050",
-                       mid = 'white',
-                       midpoint = 0.5,
-                       limits = c(0,1),
-                       na.value = "grey50") +
-  facet_grid(transect~season, scales = "free_y") +
-  theme(axis.title = element_text(size = 20), 
-        axis.text.y = element_text(size = 20, colour = "black"), 
-        axis.text.x = element_text(size = 18, colour = "black"), 
-        plot.title = element_text(size = 18, hjust=0.5),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = 'right',
-        legend.title = element_text(size = 14),
-        strip.text.x = element_text(size = 18),
-        strip.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16)) +
-  scale_y_continuous(
-    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
-    limits = c(0,1),
-    labels = y_label_formatter
-  ) +
-  labs(y="Green Pathway Source Contribution",
-       x=NULL,
-       fill = "Green Pathway\nSource Contribution\n ")+
-  coord_flip()
-
-mixoutput_bxplt_gb_combined
-
-ggsave("figures/CS/CS_mixoutput_bxplt_gb.png", width = 11, height = 6, dpi = 600)
-
-# Source Contribution Plots ----
-
-# combined dataset from mixing model outputs
-cont_df = rbind(MixOut_RB10, MixOut_SRS3, MixOut_SRS4, MixOut_SRS6, MixOut_TS3, MixOut_TS7, MixOut_TS9, MixOut_TS10, MixOut_TS11)
-
-# renaming for plotting
 cont_df <- cont_df %>%
-  mutate(source = ifelse(source == "Phytoplankton", "Phyto.",
-                         ifelse(source == "Mangrove", "Mang.",
-                                ifelse(source == "Sawgrass", "Sawgrass",
-                                       ifelse(source == "Floc", "Floc",
-                                              ifelse(source == "Red Macroalgae", "RMA",
-                                                     ifelse(source == "Seagrass", "Seagrass",
-                                                            ifelse(source == "SPOM", "POM",
-                                                                   ifelse(source == "Epiphytes", "Epi.",
-                                                                          ifelse(source == "Periphyton", "Peri.",
-                                                                                 ifelse(source == "Filamentous Green Algae", "FGA", source)
-                                                                          )
-                                                                   )
-                                                            )
-                                                     )
-                                              )
-                                       )
-                                )
-                         )))
-
-cont_df = cont_df %>% 
-  rename(site = type, species = code, season = name)
-
-cont_df = cont_df %>% 
-  group_by(site, season, source, species) %>% 
-  summarize(value = sum(mean)) 
-
-cont_df = cont_df %>% 
-  mutate(transect = case_when(
-    site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
-    site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"),
-    source = factor(source, levels = c( "Mang.","Sawgrass","Floc","RMA", "Seagrass", "Epi.","Peri." ,"Phyto.",  "FGA", "POM")))
-
-
-text_colors <- c("Mang." = "saddlebrown", "Sawgrass" = "saddlebrown", "Floc" = "saddlebrown","RMA" = "saddlebrown","Seagrass" = "saddlebrown",
-                 "Epi." = "forestgreen", "Peri." = "forestgreen", "Phyto." = "forestgreen",
-                 "FGA" = "forestgreen", "POM"= "forestgreen" )
+  mutate(lab = case_when(
+    lab == "Phyto" ~ "PMA",
+    TRUE ~ lab
+  ))
 
 cont_df <- cont_df %>%
-  mutate(site = ifelse(site == "RB10", "Upper River",
-                       ifelse(site == "SRS3", "SRS Marsh",
-                              ifelse(site == "SRS4", "Mid River",
-                                     ifelse(site == "SRS6", "Lower River",
-                                            ifelse(site == "TS3", "TS Marsh",
-                                                   ifelse(site == "TS7", "Mangrove Ecotone",
-                                                          ifelse(site == "TS9", "Inner Bay",
-                                                                 ifelse(site == "TS10", "Mid Bay",
-                                                                        ifelse(site == "TS11", "Outer Bay", site)
-                                                                 )
-                                                          )
-                                                   )
-                                            )
-                                     )
-                              )
-                       )
-  ),
-  site = factor(site, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+  mutate(lab = case_when(
+    lab == "POM" ~ "PMA",
+    TRUE ~ lab
+  ))
 
-source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, width = 0.2)) +
+cont_df <- cont_df %>%
+  mutate(lab = factor(lab, levels = c('Sawgrass', 'Mang',
+                                      "Floc","Red Algae","Seagrass",
+                                      'EMA','Peri','Green Algae',
+                                      'PMA')))
+
+
+cont_df = cont_df %>% 
+  mutate(s_cont = cont_df$`Source Contribution`)
+
+
+source_cont_plot = ggplot(data = cont_df, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot() + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
+  geom_rect(data = cont_df |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_df |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
   geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
   geom_boxplot() +
   theme_bw() +
   facet_wrap(~site, scales = "free_x") +
-  theme(
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(
-      size = 18,
-      colour = c("black", "black", "black", "black")), 
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 26, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter) +
+  labs(
+    y = "Source contribution",
+    x = NULL,
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
+
+source_cont_plot
+ggsave("figures/CS/CS_source_cont_plot_GBcol.png", width = 9.5, height = 7.5, dpi = 600)
+
+source_cont_plot_no_outliers = ggplot(data = cont_df, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot(outlier.shape = NA) + # Set outlier.shape to NA to remove outliers
+  geom_rect(data = cont_df |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_df |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
+  geom_boxplot(outlier.shape = NA) + # Also remove outliers here
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x") +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter) +
+  labs(
+    y = "Source contribution",
+    x = NULL,
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
+# Print the updated plot without outliers
+source_cont_plot_no_outliers
+ggsave("figures/CS/CS_source_cont_plot_no_outliers.png", width = 9.5, height = 7.5, dpi = 600)
+
+
+
+# SRS only tall source contribution plot ----
+cont_SRS = cont_df %>% 
+  filter(transect == "Shark River Slough")
+
+SRS_sources = ggplot(data = cont_SRS, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot() + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
+  geom_rect(data = cont_SRS |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_SRS |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
+  geom_boxplot() +
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x", drop = T, ncol = 1) +
   scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
@@ -1620,243 +1417,493 @@ source_cont_plot = ggplot(cont_df, aes(x = source, y = value, fill = season, wid
   labs(
     y = "Basal Resource Energy Contribution (%)",
     x = NULL,
-    fill = "Season")
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
-source_cont_plot
-
-ggsave("figures/CS/CS_source_cont_plot.png", width = 15, height = 11, dpi = 600)
-
-# creates a table of mean values for source specific contributions. 
-cont_table = cont_df %>% 
-  group_by(site,season, source) %>% 
-  summarise(value = mean(value))
-
-
-cont_table_ft <- flextable(cont_table,
-                           col_keys = c("site", "season","source",
-                                        "value")) %>%
-  add_header_row(colwidths = c(1,1,1,1), values = c("Site", "Season", "Source","Total Energy Contribution")) %>%
-  set_header_labels(site = "Site",
-                    season = "Season",
-                    source = "Source",
-                    value   = "Total Energy Contribution") %>%
-  colformat_double(digits = 2) %>%
-  theme_box() %>%
-  align(align = "center") %>%
-  align(part = "header", align = "center") %>% 
-  # compose(j = "Genus_spp",
-  #         value = as_paragraph(as_i(Genus_spp))) %>%
-  merge_v(part = "header")
-
-cont_table_ft
-
-save_as_docx(cont_table_ft, path = "tables/CS/cont_table_flex.docx")
-write.csv(cont_table,"data/Sources/CS/cont_table.csv",row.names = F) 
+SRS_sources
+ggsave("figures/CS/CS_Source_SRS_tall.png", width = 4, height = 8, dpi = 600)
 
 
-# SRS only source contribution plot
-cont_SRS = cont_df %>% 
-  filter(transect == "Shark River Slough")
-# group_by(site,season, source) %>% 
-# summarise(value = mean(value))
-
-source_plot_SRS = ggplot(cont_SRS, aes(x = source, y = value, fill = season, width = 0.2)) +
+SRS_sources_no_outlier = ggplot(data = cont_SRS, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot(outlier.shape = NA) + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
+  geom_rect(data = cont_SRS |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_SRS |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
   geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
-  geom_boxplot() +
+  geom_boxplot(outlier.shape = NA) +
   theme_bw() +
-  facet_wrap(~site, scales = "free_x", nrow = 1) +
-  theme(
-    axis.ticks.length.x = unit(0.1, "inch"),
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(
-      size = 22,
-      colour = c("black", "black", "black", "black", face = "bold", family = "arial") 
-    ), 
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")
-  ) +
+  facet_wrap(~site, scales = "free_x", drop = T, ncol = 1) +
   scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
-    labels = y_label_formatter
-  ) +
+    labels = y_label_formatter) +
   labs(
     y = "Basal Resource Energy Contribution (%)",
     x = NULL,
-    fill = "Season"
-  ) 
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
+SRS_sources_no_outlier
+ggsave("figures/CS/CS_Source_SRS_tall_no_outliers.png", width = 4, height = 8, dpi = 600)
 
-source_plot_SRS
-
-ggsave("figures/CS/CS_source_plot_SRS.png", width = 22, height = 10, dpi = 600)
-
-# TS only source contribution plot
+# TS only tall source contribution plot ----
 
 cont_TS = cont_df %>% 
   filter(transect == "Taylor Slough")
 
-cont_TS = cont_TS %>% 
-  mutate(site = factor(site, levels = c( "TS Marsh","Mangrove Ecotone", "Inner Bay","Mid Bay","Outer Bay")))
-
-
-source_plot_TS <- ggplot(cont_TS, aes(x = source, y = value, fill = season, width = 0.2)) +
-  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4) +
-  geom_rect(aes(xmin=source, xmax=source, ymin=-Inf, ymax=Inf, fill = season), alpha=0.5, stat="identity") +
+TS_sources = ggplot(data = cont_TS, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot() + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
+  geom_rect(data = cont_TS |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_TS |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
   geom_boxplot() +
   theme_bw() +
-  facet_wrap(~ site, scales = "free_x", nrow = 1) +
-  theme(
-    axis.title = element_text(size = 32), 
-    axis.text.y = element_text(size = 20, colour = "black", face = "bold", family = "arial"), 
-    axis.text.x = element_text(
-      size = 18,
-      colour = c("black", "black", "black", "black")
-    ),
-    plot.title = element_text(size = 18, hjust = 0.5),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    legend.position = 'top',
-    legend.title = element_text(size = 32, face = "bold", family = "arial"),
-    strip.text.x = element_text(size = 28, face = "bold", family = "arial"),
-    strip.text.y = element_text(size = 18, face = "bold", family = "arial"),
-    legend.text = element_text(size = 24, face = "bold", family = "arial")
-  ) +
+  facet_wrap(~site, scales = "free_x", drop = T, ncol = 1) +
   scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
   scale_y_continuous(
     breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
     limits = c(0, 1),
-    labels = y_label_formatter
-  ) +
+    labels = y_label_formatter) +
   labs(
     y = "Basal Resource Energy Contribution (%)",
     x = NULL,
-    fill = "Season"
-  )
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
-source_plot_TS
+TS_sources
+ggsave("figures/CS/CS_Source_TS_tall.png", width = 4, height = 8, dpi = 600)
 
 
-ggsave("figures/CS/CS_source_plot_TS.png", width = 22, height = 10, dpi = 600)
-#manual biplots ----
-# figure 1 biplots-----
-not = c('Snook', 'Jack crevale', 'Hard head catfish',
-        'Bonefish','Toad fish', 'Blue crab',
-        'Gray snapper', 'Spotted seatrout')
-fish = read_csv('FLBayMM.csv')%>% filter(!(Species %in% not))
-fish = fish %>% 
-  mutate(Species = str_replace(Species, "Mojarra", "Silver Jenny mojarra"))
-fish$Species = factor(fish$Species, levels = c("Pinfish" ,
-                                               "Silver Jenny mojarra",
-                                               "Silver perch",
-                                               "Bay anchovy",
-                                               "Pigfish" , 
-                                               "Pink shrimp" ,
-                                               "Rainwater killifish"))
-cols = c("Pinfish" = 'yellow',
-         "Silver Jenny mojarra" = 'slategray3',
-         "Silver perch" = 'snow3',
-         "Bay anchovy" = 'deepskyblue1',
-         "Pigfish" = 'orange', 
-         "Pink shrimp" = 'Pink',
-         "Rainwater killifish" = 'firebrick',
-         "Blue crab" = 'blue',
-         "Toad fish" = 'tan4', 
-         "Gray snapper" = 'tomato',
-         "Spotted seatrout" = 'lightsteelblue')
+TS_sources_no_outlier = ggplot(data = cont_TS, aes(x = lab, y = s_cont, fill = Season)) +
+  geom_boxplot(outlier.shape = NA) + # gets drawn over but sets order of axes not sure why it changes order when start with geom_rect
+  geom_rect(data = cont_TS |> group_by(site) |> slice(1),
+            aes(xmax = Inf, xmin = 2.5, ymax = Inf, ymin =-Inf), fill = '#92D050', alpha = 0.4)+
+  geom_rect(data = cont_TS |> group_by(site) |> slice(1),
+            aes(xmin = -Inf, xmax = 2.5, ymax = Inf, ymin =-Inf), fill = '#663300', alpha = 0.4)+
+  geom_hline(yintercept = c(0.25, 0.5, 0.75), linetype = 'dashed', alpha = 0.4)  +
+  geom_boxplot(outlier.shape = NA) +
+  theme_bw() +
+  facet_wrap(~site, scales = "free_x", drop = T, ncol = 1) +
+  scale_fill_manual(values = c("Dry" = "black", "Wet" = "white")) +
+  scale_y_continuous(
+    breaks = c(0.0, 0.25, 0.5, 0.75, 1.0),
+    limits = c(0, 1),
+    labels = y_label_formatter) +
+  labs(
+    y = "Basal Resource Energy Contribution (%)",
+    x = NULL,
+    fill = "Season")+
+  theme(axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14, color = "black"),
+        plot.title = element_text(size = 14, hjust=0.5),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = 'top',
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
-sources = read.csv('mm_data/sFLbayPOM.csv')%>%
-  mutate(Meand13C = Meand13C + 2.5,
-         Meand15N = Meand15N + 7.25,
-         Meand34S = Meand34S + 1)
+TS_sources_no_outlier
+ggsave("figures/CS/CS_Source_TS_tall_no_outliers.png", width = 4, height = 8, dpi = 600)
+# publication biplots-----
+# consumer <- read_csv('data/Consumers/combined.csv') %>%
+#   select(species) %>%
+#   distinct(species, .keep_all = TRUE) %>% 
+#   arrange(species)
 
-# wet 
-fish = fish %>% filter(Season == 'wet')
- 
 
-#Isotope biplots
-# C and N
-wcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
-  geom_point(data = sources, size = 3, pch=c(20))+ 
-  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
-  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+cols <- c(
+  "Bluegill"                = 'lightblue',
+  "Coastal Shiner"          = 'lightgreen',
+  "Dollar Sunfish"          = 'goldenrod',
+  "Eastern Grass Shrimp"    = 'lightpink',
+  "Flatback Mud Crab"       = 'salmon',
+  "Golden Topminnow"        = 'darkseagreen4',
+  "Hogchoker"               = 'burlywood4',
+  "Peacock Eel"             = 'darkorange',
+  "Redear Sunfish"          = 'orangered',
+  "Tidewater Silverside"    = 'lightcyan',
+  "Bluefin Killifish"       = 'dodgerblue',
+  "Eastern Mosquitofish"    = 'khaki',
+  "Flagfish"                = 'forestgreen',
+  "Gar"                     = 'darkslategray',
+  "Slough Crayfish"         = 'brown',
+  "Warmouth"                = 'chocolate',
+  "Dark False Mussel"       = 'antiquewhite4',
+  "Harris Mud Crab"         = 'firebrick',
+  "Pink Shrimp"             = 'pink',
+  "Redfish"                 = 'red',
+  "Snook"                   = 'darkgoldenrod',
+  "Water Strider"           = 'slateblue',
+  "Bay Anchovy"             = 'deepskyblue',
+  "Crested Goby"            = 'lightcoral',
+  "Mangrove Tree Crab"      = 'olivedrab4',
+  "Porceline Crab"          = 'lavender',
+  "Salt Marsh Mud Crab"     = 'lightgray',
+  "Tidewater Mojarra"       = 'plum',
+  "Bowfin"                  = 'indianred',
+  "Clown Goby"              = 'darkseagreen',
+  "Largemouth Bass"         = 'mediumseagreen',
+  "Spotted Sunfish"         = 'chartreuse3',
+  "Spotted Tilapia"         = 'powderblue',
+  "Striped Mullet"          = 'deepskyblue4',
+  "Giant Water Bug"         = 'mediumvioletred',
+  "Mayan Cichlid"           = 'mediumorchid',
+  "Sailfin Molly"           = 'darkturquoise',
+  "Walking Catfish"         = 'yellowgreen',
+  "Western Mosquitofish"    = 'lightsalmon',
+  "Blue Crab"               = 'royalblue',
+  "Striped Mojarra"         = 'lightgoldenrod',
+  "Brown Grass Shrimp"      = 'darkkhaki',
+  "Silver Jenny"            = 'azure4',
+  "Dwarf Seahorse"          = 'mediumslateblue',
+  "Hermit Crab"             = 'burlywood',
+  "Snapping Shrimp"         = 'violetred4',
+  "Spider Crab"             = 'tomato',
+  "Spiny Lobster"           = 'sandybrown',
+  "Stone Crab"              = 'sienna',
+  "Fringed Filefish"        = 'cadetblue',
+  "Eastern Oyster"          = 'lightsteelblue',
+  "Gulf Pipefish"           = 'skyblue',
+  "Mussel"                  = 'mistyrose',
+  "Rainwater Killifish"     = 'darkblue',
+  "Redfin Needlefish"       = 'darkviolet',
+  "Toadfish"                = 'peru',
+  "Atlantic Modulus"        = 'thistle3',
+  "Barracuda"               = 'slategray',
+  "Cross-Barred Venus"      = 'gold',
+  "Goldspotted Killifish"   = 'lightyellow',
+  "Scaly Pearl Oyster"      = 'orchid',
+  "West Indian False Cerith" = 'hotpink4',
+  "Arrow Shrimp"            = 'mediumturquoise',
+  "Blue Striped Grunt"      = 'grey69',
+  "Bubble Snail"            = 'lightseagreen',
+  "Chestnut Turban Snail"   = 'cyan',
+  "Giant Purple Barnacle"   = 'darkorchid',
+  "Ivory Cerith"            = 'ivory',
+  "Penaeid Shrimp"          = 'peachpuff',
+  "Schoolmaster Snapper"    = 'darkred',
+  "Asian Swamp Eel"         = 'darkgreen',
+  "Code Goby"               = 'plum4',
+  "Pilchard"                = 'antiquewhite',
+  "Atlantic Marginella"     = 'lightgoldenrod4'
+)
+# # Initialize empty lists to store plot objects
+# cn_plots <- list()
+# cs_plots <- list()
+# # Create a dummy data frame with all species for the legend
+# all_species <- unique(unlist(sapply(cn_plots, function(p) p$mapping$color)))
+# 
+# # Define the sites
+# sites <- c("SRS3", "SRS4", "SRS6", "RB10", "TS3", "TS7", "TS9", "TS10", "TS11")
+# 
+# site_names <- c(
+#   "SRS3" = "SRS Marsh",
+#   "RB10" = "Upper River",
+#   "SRS4" = "Mid River",
+#   "SRS6" = "Lower River",
+#   "TS3" = "TS Marsh",
+#   "TS7" = "Mangrove Ecotone",
+#   "TS9" = "Inner Bay",
+#   "TS10" = "Mid Bay",
+#   "TS11" = "Outer Bay"
+# )
+# 
+# # Loop through each site and create plots
+# for(i in 1:length(sites)) {
+#   
+#   fish <- read_csv(paste0('data/Consumers/', sites[i], 'mix.csv'))
+#   
+#   sources <- read_csv(paste0('data/Sources/sources', sites[i], '.csv')) %>% 
+#     mutate(Meand13C = Meand13C + 1.95,
+#            Meand15N = Meand15N + 5.1,
+#            Meand34S = Meand34S + .75)
+#   
+#   # Create CN biplot
+#   cn_plot <- ggplot(data = sources, aes(Meand13C, Meand15N)) +
+#     geom_point(size = 3, pch = 20) + 
+#     geom_errorbar(aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
+#     geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+#     geom_point(data = fish, aes(x = d13C, y = d15N, color = common_name), size = 3, pch = 20) +
+#     scale_color_manual(values = cols, drop = FALSE) +
+#     ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+#     xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+#     labs(title = paste("CN ", site_names[sites[i]])) +
+#     theme_classic() + 
+#     theme(legend.position = "none") +
+#     geom_text(data = sources, aes(label = source), hjust = -0.1, vjust = -1)
+#   
+#   cn_plots[[sites[i]]] <- cn_plot
+#   
+#   # Create CS biplot
+#   cs_plot <- ggplot(data = sources, aes(Meand13C, Meand34S)) +
+#     geom_point(size = 3, pch = 20) + 
+#     geom_errorbar(aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
+#     geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
+#     geom_point(data = fish, aes(x = d13C, y = d34S, color = common_name), size = 3, pch = 20) +
+#     scale_color_manual(values = cols, drop = FALSE) +
+#     ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
+#     xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+#     labs(title = paste("CS ", site_names[sites[i]])) +
+#     theme_classic() + 
+#     theme(legend.position = "none") +
+#     geom_text(data = sources, aes(label = source), hjust = -0.1, vjust = -1)
+#   
+#   cs_plots[[sites[i]]] <- cs_plot
+# }
+# # Create a dummy plot to extract legend
+# dummy_plot <- ggplot(data = fish, aes(x = d13C, y = d15N, color = common_name)) +
+#   geom_point(size = 3, pch = 20) +
+#   scale_color_manual(values = cols, drop = FALSE) +
+#   theme_void() +
+#   theme(legend.position = "bottom")
+# 
+# # Extract the legend from the dummy plot
+# legend <- get_legend(dummy_plot)
+# 
+# # Combine all CN plots into one facet grid plot
+# combined_cn <- ggarrange(plotlist = cn_plots, ncol = 3, nrow = 3)
+# 
+# # Combine all CS plots into one facet grid plot
+# combined_cs <- ggarrange(plotlist = cs_plots, ncol = 3, nrow = 3)
+# 
+# # Add the legend to the combined plots
+# final_cn <- plot_grid(combined_cn, legend, ncol = 1, rel_heights = c(10, 1))
+# final_cs <- plot_grid(combined_cs, legend, ncol = 1, rel_heights = c(10, 1))
+# # Save or display the final plots
+# ggsave("figures/CS/biplots/combined_CN_with_legend.pdf", final_cn, units = "in", width = 15, height = 15)
+# ggsave("figures/CS/biplots/combined_CS_with_legend.pdf", final_cs, units = "in", width = 15, height = 15)
+
+
+
+# no for loop for legend ----
+
+sites <- c("SRS3","RB10", "SRS4", "SRS6",  "TS3", "TS7", "TS9", "TS10", "TS11")
+
+site_order <- c("SRS Marsh", "Upper River", "Mid River", "Lower River", 
+                "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")
+# Placeholder for the path where your files are stored
+path <- "data/Sources/"
+
+# Initialize an empty dataframe
+sources <- data.frame()
+
+# Loop through each site to read the corresponding CSV file and bind them together
+for (site in sites) {
+  # Construct the file name
+  file_name <- paste0(path, "sources", site, ".csv")
+  
+  # Read the file
+  temp_df <- read.csv(file_name, stringsAsFactors = FALSE)
+  
+  # Optionally add a column to indicate the site (if not already included)
+  temp_df$Site <- site
+  
+  # Bind the data
+  sources <- rbind(sources, temp_df)
+}
+
+consumers = SIa %>% 
+  filter(group %in% "Consumer")
+
+consumers = consumers %>% 
+  mutate(Site = site,
+         reps = n) %>% 
+  select(!site)
+
+consumers = consumers %>% 
+  mutate(zone = ifelse(Site == "RB10", "Upper River",
+                       ifelse(Site == "SRS3", "SRS Marsh",
+                              ifelse(Site == "SRS4", "Mid River",
+                                     ifelse(Site == "SRS6", "Lower River",
+                                            ifelse(Site == "TS3", "TS Marsh",
+                                                   ifelse(Site == "TS7", "Mangrove Ecotone",
+                                                          ifelse(Site == "TS9", "Inner Bay",
+                                                                 ifelse(Site == "TS10", "Mid Bay",
+                                                                        ifelse(Site == "TS11", "Outer Bay", site)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  zone = factor(zone, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+
+sources = sources %>% 
+  mutate(zone = ifelse(Site == "RB10", "Upper River",
+                       ifelse(Site == "SRS3", "SRS Marsh",
+                              ifelse(Site == "SRS4", "Mid River",
+                                     ifelse(Site == "SRS6", "Lower River",
+                                            ifelse(Site == "TS3", "TS Marsh",
+                                                   ifelse(Site == "TS7", "Mangrove Ecotone",
+                                                          ifelse(Site == "TS9", "Inner Bay",
+                                                                 ifelse(Site == "TS10", "Mid Bay",
+                                                                        ifelse(Site == "TS11", "Outer Bay", site)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+  ),
+  zone = factor(zone, levels = c( "SRS Marsh","Upper River","Mid River","Lower River", "TS Marsh", "Mangrove Ecotone", "Inner Bay", "Mid Bay", "Outer Bay")))
+
+sources = sources %>% 
+  mutate(plot_source = ifelse(source == "Sawgrass", "Sawgrass",
+                              ifelse(source == "Mangrove", "Mang",
+                                ifelse(source == "Floc", "Floc",
+                                    ifelse(source == "Red Macroalgae", "Red Algae",
+                                        ifelse(source == "Seagrass", "Seagrass",
+                                            ifelse(source == "Epiphytes", "EMA",
+                                                ifelse(source == "Periphyton", "Peri",
+                                                      ifelse(source == "Filamentous Green Algae", "Green Algae",
+                                                            ifelse(source == "SPOM", "PMA",
+                                                                ifelse(source == "Phytoplankton", "PMA", source)
+                                                                 )
+                                                          )
+                                                   )
+                                            )
+                                     )
+                              )
+                       )
+                              )
+  ),
+  plot_source = factor(plot_source, levels = c( "Sawgrass","Mang","Floc","Red Algae", "Seagrass", "EMA", "Peri", "Green Algae", "PMA")))
+
+
+
+sources = sources %>% 
+  mutate(transect = case_when(
+  Site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
+  Site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
+
+
+# Cleaned up CN plot
+cn_plot <- ggplot(data = sources, aes(Meand13C, Meand15N)) +
+  geom_point(size = 3, pch = 20) + 
+  geom_errorbar(aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0,linetype = "dashed") + 
+  geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0,linetype = "dashed") +
+  geom_point(data = consumers, aes(x = md13C, y = md15N, color = common_name), size = 3, pch = 20) +
+  scale_color_manual(values = cols, drop = FALSE) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
   xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
-  geom_point(data = fish, aes(x = d13C, y = d15N,color = Species), size=3, pch=c(20))+
-  scale_color_manual(values = cols, drop = F)+
-  scale_x_continuous(limits = c(-27, -6))+
-  scale_y_continuous(limits = c(0,14))+
-  theme( legend.title = element_blank(),
-         legend.text=element_text(size=12))#,legend.position=c(.85,.15))
+  labs(color = "Consumer Species") +
+  facet_wrap(~zone, labeller = labeller(zone = site_names), scales = "free") +
+  theme_classic() + 
+  theme(
+    legend.position = "right",
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.key.size = unit(0.5, "lines"),
+    legend.spacing.y = unit(0.1, "cm"),
+    strip.text = element_text(size = 28),
+    strip.background = element_rect(fill = "gray"),
+    axis.title.x = element_text(size = 24, face = "bold"),
+    axis.title.y = element_text(size = 24, face = "bold"),
+    axis.text.x = element_text(size = 18, face = "bold"),
+    axis.text.y = element_text(size = 18, face = "bold")
+  ) +
+  geom_text(data = sources, aes(label = plot_source),fontface = "bold", size = 4, hjust = -0.04, vjust = -.5) + 
+  guides(color = guide_legend(ncol = 1))
 
-#ggsave('flbayCNwet.pdf', units="in", width=10, height=6)
-
-# C and S
-wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
-  geom_point(data = fish, aes(x = d13C, y = d34S,color = Species), size=3, pch=c(20))+
-  scale_color_manual(values = cols, drop = F)+
-  geom_point(data = sources, size = 3, pch=c(20))+ 
-  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
-  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
+# Create CS biplot
+cs_plot <- ggplot(data = sources, aes(Meand13C, Meand34S)) +
+  geom_point(size = 3, pch = 20) + 
+  geom_errorbar(aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0,linetype = "dashed") + 
+  geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0, linetype = "dashed") +
+  geom_point(data = consumers, aes(x = md13C, y = md34S, color = common_name), size = 4, pch = 20) +
+  scale_color_manual(values = cols, drop = FALSE) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
   xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
-  scale_x_continuous(limits = c(-27, -6))+
-  scale_y_continuous(limits = c(-16.5, 24))+
-  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-#ggsave('flbayCSwet.pdf', units="in", width=10, height=6)
+  labs(color = "Consumer Species") +
+  facet_wrap(~zone, labeller = labeller(zone = site_names), scales = "free") +
+  theme_classic() + 
+  theme(
+    legend.position = "right",
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.key.size = unit(0.5, "lines"),
+    legend.spacing.y = unit(0.1, "cm"),
+    strip.text = element_text(size = 28),
+    strip.background = element_rect(fill = "gray"),
+    axis.title.x = element_text(size = 24, face = "bold"),
+    axis.title.y = element_text(size = 24, face = "bold"),
+    axis.text.x = element_text(size = 18, face = "bold"),
+    axis.text.y = element_text(size = 18, face = "bold")
+  ) +
+  geom_text(data = sources, aes(label = plot_source),fontface = "bold", size = 4, hjust = -0.04, vjust = -.5) + 
+  guides(color = guide_legend(ncol = 1))
+# Display and save plots
+cn_plot
+ggsave("figures/CS/cn_plot_biplots.png", cn_plot, units = "in", width = 18, height = 15)
+cs_plot
+ggsave("figures/CS/cs_plot_biplots.png", cs_plot, units = "in", width = 18, height = 15)
 
-# dry 
-not = c('Snook', 'Jack crevale', 'Hard head catfish',
-        'Bonefish','Toad fish', 'Blue crab',
-        'Gray snapper', 'Spotted seatrout')
-fish = read_csv('FLBayMM.csv')%>% 
-  filter(Season == 'dry', !(Species %in% not)) %>% 
-  mutate(Species = str_replace(Species, "Mojarra", "Silver Jenny mojarra"))
 
-#Isotope biplots
-# C and N
-dcn = ggplot(data = sources, aes(Meand13C, Meand15N))+
-  geom_point(data = sources, size = 3, pch=c(20))+ 
-  geom_errorbar(data = sources, aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
-  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
+
+
+
+
+
+
+cs_plot_standard_axes <- ggplot(data = sources, aes(Meand13C, Meand34S)) +
+  geom_point(size = 3, pch = 20) + 
+  geom_errorbar(aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0,linetype = "dashed") + 
+  geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0, linetype = "dashed") +
+  geom_point(data = consumers, aes(x = md13C, y = md34S, color = common_name), size = 4, pch = 20) +
+  scale_color_manual(values = cols, drop = FALSE) +
+  ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
   xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
-  geom_point(data = fish, aes(x = d13C, y = d15N,color = Species), size=3, pch=c(20))+
-  scale_color_manual(values = cols, drop = F)+
-  scale_x_continuous(limits = c(-27, -6))+
-  scale_y_continuous(limits = c(0,14))+
-  theme( legend.title = element_blank())#,legend.position=c(.85,.15))
+  labs(color = "Consumer Species") +
+  facet_wrap(~zone, labeller = labeller(zone = site_names)) +
+  theme_classic() + 
+  theme(
+    legend.position = "right",
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.key.size = unit(0.5, "lines"),
+    legend.spacing.y = unit(0.1, "cm"),
+    strip.text = element_text(size = 28),
+    strip.background = element_rect(fill = "gray"),
+    axis.title.x = element_text(size = 24, face = "bold"),
+    axis.title.y = element_text(size = 24, face = "bold"),
+    axis.text.x = element_text(size = 18, face = "bold"),
+    axis.text.y = element_text(size = 18, face = "bold")
+  ) +
+  geom_text(data = sources, aes(label = plot_source),fontface = "bold", size = 4, hjust = -0.04, vjust = -.5) + 
+  guides(color = guide_legend(ncol = 1))
+# Display and save plots
 
-#ggsave('flbayCNdry.pdf', units="in", width=10, height=6)
-
-# C and S
-dcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
-  geom_point(data = fish, aes(x = d13C, y = d34S,color = Species), size=3, pch=c(20))+
-  scale_color_manual(values = cols, drop = F)+
-  geom_point(data = sources, size = 3, pch=c(20))+ 
-  geom_errorbar(data = sources, aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
-  geom_errorbarh(data = sources, aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-  ylab(expression(paste(delta^{34}, "S (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-  theme_classic() + geom_text(data = sources, aes(label = Source),hjust=-.1, vjust=-1) +
-  scale_x_continuous(limits = c(-27, -6))+
-  scale_y_continuous(limits = c(-16.5, 24))+
-  theme(legend.title = element_blank())#, legend.position=c(.85,.85))
-
-ggarrange(wcn, dcn, wcs, dcs, 
-          labels = c("A", "B", "C", "D"),
-          ncol = 2, nrow = 2,
-          legend = 'bottom', common.legend = T)
-ggsave("figs/FLbayBiplotsDO_pom.tiff", units="in", width=10, height=8, dpi=600,compression = 'lzw')
-#ggsave('flbayCSdry.pdf', units="in", width=10, height=6)
+cs_plot_standard_axes
+ggsave("figures/CS/cs_plot_standard_axes.png", cs_plot_standard_axes, units = "in", width = 18, height = 15)
