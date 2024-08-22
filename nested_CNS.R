@@ -1738,6 +1738,12 @@ sources = sources %>%
     Site %in% c("SRS3", "SRS4","SRS6", "RB10") ~ "Shark River Slough",
     Site %in% c("TS3", "TS7", "TS9", "TS10", "TS11") ~ "Taylor Slough"))
 
+sources <- sources %>%
+  mutate(
+    Meand13C = Meand13C + 1.95,
+    Meand15N = Meand15N + 5.1,
+    Meand34S = Meand34S + 0.75
+  )
 
 # CN Biplots free scales
 cn_plot <- ggplot(data = sources, aes(Meand13C, Meand15N)) +
