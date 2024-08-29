@@ -1547,94 +1547,6 @@ cols <- c(
   "Pilchard"                = 'antiquewhite',
   "Atlantic Marginella"     = 'lightgoldenrod4'
 )
-# # Initialize empty lists to store plot objects
-# cn_plots <- list()
-# cs_plots <- list()
-# # Create a dummy data frame with all species for the legend
-# all_species <- unique(unlist(sapply(cn_plots, function(p) p$mapping$color)))
-# 
-# # Define the sites
-# sites <- c("SRS3", "SRS4", "SRS6", "RB10", "TS3", "TS7", "TS9", "TS10", "TS11")
-# 
-# site_names <- c(
-#   "SRS3" = "SRS Marsh",
-#   "RB10" = "Upper River",
-#   "SRS4" = "Mid River",
-#   "SRS6" = "Lower River",
-#   "TS3" = "TS Marsh",
-#   "TS7" = "Mangrove Ecotone",
-#   "TS9" = "Inner Bay",
-#   "TS10" = "Mid Bay",
-#   "TS11" = "Outer Bay"
-# )
-# 
-# # Loop through each site and create plots
-# for(i in 1:length(sites)) {
-#   
-#   fish <- read_csv(paste0('data/Consumers/', sites[i], 'mix.csv'))
-#   
-#   sources <- read_csv(paste0('data/Sources/sources', sites[i], '.csv')) %>% 
-#     mutate(Meand13C = Meand13C + 1.95,
-#            Meand15N = Meand15N + 5.1,
-#            Meand34S = Meand34S + .75)
-#   
-#   # Create CN biplot
-#   cn_plot <- ggplot(data = sources, aes(Meand13C, Meand15N)) +
-#     geom_point(size = 3, pch = 20) + 
-#     geom_errorbar(aes(ymin = Meand15N - SDd15N, ymax = Meand15N + SDd15N), width = 0) + 
-#     geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-#     geom_point(data = fish, aes(x = d13C, y = d15N, color = common_name), size = 3, pch = 20) +
-#     scale_color_manual(values = cols, drop = FALSE) +
-#     ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-#     xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-#     labs(title = paste("CN ", site_names[sites[i]])) +
-#     theme_classic() + 
-#     theme(legend.position = "none") +
-#     geom_text(data = sources, aes(label = source), hjust = -0.1, vjust = -1)
-#   
-#   cn_plots[[sites[i]]] <- cn_plot
-#   
-#   # Create CS biplot
-#   cs_plot <- ggplot(data = sources, aes(Meand13C, Meand34S)) +
-#     geom_point(size = 3, pch = 20) + 
-#     geom_errorbar(aes(ymin = Meand34S - SDd34S, ymax = Meand34S + SDd34S), width = 0) + 
-#     geom_errorbarh(aes(xmin = Meand13C - SDd13C, xmax =  Meand13C + SDd13C), height = 0) +
-#     geom_point(data = fish, aes(x = d13C, y = d34S, color = common_name), size = 3, pch = 20) +
-#     scale_color_manual(values = cols, drop = FALSE) +
-#     ylab(expression(paste(delta^{34}, "S (\u2030)"))) +
-#     xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-#     labs(title = paste("CS ", site_names[sites[i]])) +
-#     theme_classic() + 
-#     theme(legend.position = "none") +
-#     geom_text(data = sources, aes(label = source), hjust = -0.1, vjust = -1)
-#   
-#   cs_plots[[sites[i]]] <- cs_plot
-# }
-# # Create a dummy plot to extract legend
-# dummy_plot <- ggplot(data = fish, aes(x = d13C, y = d15N, color = common_name)) +
-#   geom_point(size = 3, pch = 20) +
-#   scale_color_manual(values = cols, drop = FALSE) +
-#   theme_void() +
-#   theme(legend.position = "bottom")
-# 
-# # Extract the legend from the dummy plot
-# legend <- get_legend(dummy_plot)
-# 
-# # Combine all CN plots into one facet grid plot
-# combined_cn <- ggarrange(plotlist = cn_plots, ncol = 3, nrow = 3)
-# 
-# # Combine all CS plots into one facet grid plot
-# combined_cs <- ggarrange(plotlist = cs_plots, ncol = 3, nrow = 3)
-# 
-# # Add the legend to the combined plots
-# final_cn <- plot_grid(combined_cn, legend, ncol = 1, rel_heights = c(10, 1))
-# final_cs <- plot_grid(combined_cs, legend, ncol = 1, rel_heights = c(10, 1))
-# # Save or display the final plots
-# ggsave("figures/CS/biplots/combined_CN_with_legend.pdf", final_cn, units = "in", width = 15, height = 15)
-# ggsave("figures/CS/biplots/combined_CS_with_legend.pdf", final_cs, units = "in", width = 15, height = 15)
-
-
-
 
 sites <- c("SRS3","RB10", "SRS4", "SRS6",  "TS3", "TS7", "TS9", "TS10", "TS11")
 
@@ -1872,3 +1784,8 @@ ggsave("figures/nested/CN_biplots_fixed.png", cn_plot_standard_axes, units = "in
 
 cs_plot_standard_axes
 ggsave("figures/nested/CS_biplots_fixed.png", cs_plot_standard_axes, units = "in", width = 18, height = 15)
+
+
+
+
+write.csv(mean_channel,"tables/nested/mean_channel.csv",row.names = F)
