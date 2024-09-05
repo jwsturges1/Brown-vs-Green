@@ -1067,7 +1067,7 @@ mixoutput_bxplt_gb_combined <- ggplot(green_contributions, aes(x = site, y = tot
   theme(
     axis.title = element_text(size = 20), 
     axis.text.y = element_text(size = 20, colour = "black"), 
-    axis.text.x = element_text(size = 18, colour = "black"), 
+    axis.text.x = element_text(size = 16, colour = "black"), 
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -1091,7 +1091,7 @@ mixoutput_bxplt_gb_combined <- ggplot(green_contributions, aes(x = site, y = tot
 
 mixoutput_bxplt_gb_combined
 
-ggsave("figures/nested/CNS_cplot.png", width = 12, height = 6, dpi = 600)
+ggsave("figures/nested/CNS_cplot.png", width = 14, height = 6, dpi = 600)
 
 
 
@@ -1112,7 +1112,7 @@ mixoutput_bxplt_gb_combined_out <- ggplot(green_contributions, aes(x = site, y =
   theme(
     axis.title = element_text(size = 20), 
     axis.text.y = element_text(size = 20, colour = "black"), 
-    axis.text.x = element_text(size = 18, colour = "black"), 
+    axis.text.x = element_text(size = 16, colour = "black"), 
     plot.title = element_text(size = 18, hjust = 0.5),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -1135,7 +1135,7 @@ mixoutput_bxplt_gb_combined_out <- ggplot(green_contributions, aes(x = site, y =
   coord_flip()
 
 mixoutput_bxplt_gb_combined_out
-ggsave("figures/nested/CNS_cplot_out.png", width = 12, height = 6, dpi = 600)
+ggsave("figures/nested/CNS_cplot_out.png", width = 14, height = 6, dpi = 600)
 
 # Calculate summary statistics for each site, season, and path
 summary_stats <- summed_contributions %>%
