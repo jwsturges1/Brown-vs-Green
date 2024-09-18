@@ -122,7 +122,7 @@ SIb<-SI %>% group_by(site,group, common_name, functional_grp) %>%
 # create list of sites as i vector
 sites = c("SRS3", "SRS4","SRS6", "RB10", "TS3", "TS7", "TS9", "TS10", "TS11")
 
-# produces two biplots per site (one CN and one CS)
+# produces two isotope biplots per site (one CN and one CS)
 for(i in 1:length(sites)) {
   
   fish = read_csv(paste0('data/Consumers/', sites[i], 'mix.csv'))
@@ -150,7 +150,7 @@ for(i in 1:length(sites)) {
   
   ggsave(paste0('figures/nested/biplots/',sites[i], 'CN.pdf'), units="in", width=10, height=6)
   
-  # C and S
+  # Carbon and Sulfur
   wcs = ggplot(data = sources, aes(Meand13C, Meand34S))+
     geom_point(data = fish, aes(x = d13C, y = d34S,color = common_name), size=3, pch=c(20))+
     # scale_color_manual(values = cols, drop = F)+
